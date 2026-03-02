@@ -17,6 +17,7 @@ GITHUB_TOKEN = _env("GITHUB_TOKEN")
 RC_ADMIN_KEY = _env("RC_ADMIN_KEY")
 DEVTO_API_KEY = _env("DEVTO_API_KEY")
 GROK_API_KEY = _env("GROK_API_KEY")
+SAASCITY_KEY = _env("SAASCITY_KEY")
 
 # --- RustChain node ---
 
