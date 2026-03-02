@@ -111,14 +111,48 @@ def generate_engagement_proof(platform: str, action: str, proof_url: str) -> str
 
 
 # ---------------------------------------------------------------------------
-# Placeholder -- SaaSCity
+# SaaSCity upvotes
 # ---------------------------------------------------------------------------
 
-def saascity_upvote() -> None:
-    """Upvote RustChain on SaaSCity.
+SAASCITY_OPENCLAW_UPVOTE_URL = "https://saascity.com/api/openclaw/upvote"
+SAASCITY_TARGET_LISTINGS = [
+    "https://saascity.com/project/rustchain",
+    "https://saascity.com/project/bottube",
+]
 
-    Raises NotImplementedError because a SaaSCity API key is needed first.
+
+def saascity_upvote(
+    api_key: str | None = None,
+    project_urls: List[str] | None = None,
+) -> Dict[str, bool]:
+    """Upvote one or more project listings on SaaSCity.
+
+    Uses the SaaSCity OpenClaw endpoint:
+    POST /api/openclaw/upvote with JSON body {"project_url": "..."} and
+    header x-api-key.
+
+    Returns a dict mapping project URL to success flag.
+    Raises ValueError when the API key is missing.
     """
-    raise NotImplementedError(
-        "SaaSCity API key needed. Visit saascity.io to register."
-    )
+    token = api_key or config.SAASCITY_KEY
+    if not token:
+        raise ValueError(
+            "SAASCITY_KEY environment variable is required for SaaSCity upvotes."
+        )
+
+    targets = project_urls or SAASCITY_TARGET_LISTINGS
+    headers = {"x-api-key": token, "Content-Type": "application/json"}
+
+    results: Dict[str, bool] = {}
+    for url in targets:
+        try:
+            resp = requests.post(
+                SAASCITY_OPENCLAW_UPVOTE_URL,
+                headers=headers,
+                json={"project_url": url},
+                timeout=15,
+            )
+            results[url] = resp.ok
+        except requests.RequestException:
+            results[url] = False
+    return results

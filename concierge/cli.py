@@ -48,10 +48,14 @@ try:
     from concierge.engagement import (
         star_all_ecosystem_repos,
         check_devto_articles,
+        saascity_upvote,
+        SAASCITY_TARGET_LISTINGS,
     )
 except ImportError:
     star_all_ecosystem_repos = None
     check_devto_articles = None
+    saascity_upvote = None
+    SAASCITY_TARGET_LISTINGS = []
 
 try:
     from concierge.announcer import format_announcement
@@ -579,9 +583,47 @@ def _cmd_engage(args):
                     )
                     print(f"    {a['url']}")
 
+    elif args.saascity:
+        if saascity_upvote is None:
+            print(
+                "Error: engagement module is not available.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+
+        if args.dry_run:
+            print("[dry-run] Would upvote the following SaaSCity listings:")
+            for listing in SAASCITY_TARGET_LISTINGS:
+                print(f"  {listing}")
+            return
+
+        api_key = config.SAASCITY_KEY
+        if not api_key:
+            print(
+                "Error: SAASCITY_KEY environment variable is required.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+
+        results = saascity_upvote(api_key=api_key)
+        if args.json:
+            _print_json(results)
+        else:
+            for listing, ok in results.items():
+                status = "upvoted" if ok else "FAILED"
+                print(f"  {listing}: {status}")
+
+        failed = [listing for listing, ok in results.items() if not ok]
+        if failed:
+            print(
+                "Error: one or more SaaSCity upvotes failed.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+
     else:
         print(
-            "Specify an engagement action: --star-repos or --devto",
+            "Specify an engagement action: --star-repos, --devto, or --saascity",
             file=sys.stderr,
         )
         sys.exit(1)
@@ -782,6 +824,8 @@ def _build_parser():
                           help="Star all RustChain ecosystem repos on GitHub")
     p_engage.add_argument("--devto", action="store_true", default=False,
                           help="Check Dev.to article stats")
+    p_engage.add_argument("--saascity", action="store_true", default=False,
+                          help="Upvote RustChain and BoTTube on SaaSCity")
 
     # --- announce ---
     p_announce = sub.add_parser("announce", help="Preview or post bounty announcements")
