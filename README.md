@@ -109,11 +109,11 @@ concierge wallet balance my-wallet-name
 # Claim a bounty
 concierge claim 491 --wallet my-wallet-name --approach "I will fuzz the fleet detector"
 
-# Show bounty details
-concierge show 501
+# Show claim instructions for a bounty
+concierge claim 501 --wallet my-wallet-name --approach "I will implement X"
 
-# List ecosystem repos
-concierge repos
+# Check payout status
+concierge status --wallet my-wallet-name
 ```
 
 ---
