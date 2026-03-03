@@ -5,6 +5,7 @@ Subcommands:
     faq      -- Ask a question about RustChain or bounties
     wallet   -- Register a wallet or check balance
     status   -- Check pending payouts for a wallet
+    mine     -- PoW dual-mining helpers (Warthog/Janushash)
     engage   -- Cross-platform engagement (star repos, Dev.to stats)
     announce -- Preview or post bounty announcements
     claim    -- Show claim instructions for a specific bounty
@@ -14,9 +15,11 @@ Subcommands:
 import argparse
 import json
 import sys
+import time
 
 from concierge import __version__
 from concierge import config
+from concierge import pow_miners
 from concierge.bounty_index import aggregate, fetch_bounties
 from concierge.faq_engine import answer as faq_answer
 from concierge.wallet_helper import (
@@ -624,6 +627,138 @@ def _cmd_engage(args):
         sys.exit(1)
 
 
+def _cmd_mine(args):
+    """Handle the 'mine' subcommand."""
+    if args.pow != "warthog":
+        print("Error: only --pow warthog is supported at this time.", file=sys.stderr)
+        sys.exit(1)
+
+    detection = pow_miners.detect_pow_processes()
+
+    if args.detect_only:
+        bonus = pow_miners.calculate_bonus_multiplier(
+            managed_subprocess_running=False,
+            external_miner_detected=detection.get("external_miner_detected", False),
+            pool_account_verified=False,
+            node_rpc_verified=False,
+        )
+        payload = {"mode": "detect-only", "detection": detection, "bonus": bonus}
+        if args.json:
+            _print_json(payload)
+        else:
+            print("PoW detection summary:")
+            print(pow_miners.summarize_for_console(payload))
+        return
+
+    if not args.wallet:
+        print("Error: --wallet is required unless --detect-only is used.", file=sys.stderr)
+        sys.exit(1)
+
+    pool_result = pow_miners.resolve_pool_endpoint(args.pool, args.pool_url)
+    if not pool_result.get("verified"):
+        print(f"Error: {pool_result.get('error', 'Failed to resolve pool')}", file=sys.stderr)
+        sys.exit(1)
+
+    pool_proof = pow_miners.verify_pool_account(args.wallet, args.pool, args.pool_url)
+    node_proof = pow_miners.query_node_rpc(args.wallet)
+
+    command = None
+    if args.miner == "bzminer":
+        command = pow_miners.build_bzminer_command(
+            wallet=args.wallet,
+            pool_url=pool_result["endpoint"],
+            miner_path=args.miner_path or "bzminer",
+        )
+    else:
+        command = pow_miners.build_janusminer_command(
+            wallet=args.wallet,
+            miner_path=args.miner_path or "janusminer-ubuntu22",
+        )
+
+    if args.dry_run:
+        bonus = pow_miners.calculate_bonus_multiplier(
+            managed_subprocess_running=False,
+            external_miner_detected=detection.get("external_miner_detected", False),
+            pool_account_verified=pool_proof.get("verified", False),
+            node_rpc_verified=node_proof.get("verified", False),
+        )
+        payload = {
+            "mode": "dry-run",
+            "pow": args.pow,
+            "miner": args.miner,
+            "command": command,
+            "pool": pool_result,
+            "detection": detection,
+            "pool_proof": pool_proof,
+            "node_rpc_proof": node_proof,
+            "bonus": bonus,
+        }
+        if args.json:
+            _print_json(payload)
+        else:
+            print("[dry-run] PoW mining plan:")
+            print(pow_miners.summarize_for_console(payload))
+        return
+
+    managed = None
+    try:
+        managed = pow_miners.start_managed_miner(command, log_path=args.log_file)
+        print(f"Started {args.miner} (pid={managed.process.pid})")
+        print(f"Pool: {pool_result['endpoint']}")
+        print(f"Wallet: {args.wallet}")
+        print(f"Logs: {managed.log_path}")
+
+        bonus = pow_miners.calculate_bonus_multiplier(
+            managed_subprocess_running=True,
+            external_miner_detected=detection.get("external_miner_detected", False),
+            pool_account_verified=pool_proof.get("verified", False),
+            node_rpc_verified=node_proof.get("verified", False),
+        )
+
+        if args.json:
+            _print_json(
+                {
+                    "status": "running",
+                    "pid": managed.process.pid,
+                    "command": command,
+                    "pool_proof": pool_proof,
+                    "node_rpc_proof": node_proof,
+                    "bonus": bonus,
+                }
+            )
+        else:
+            print()
+            print("Verification summary:")
+            print(pow_miners.summarize_for_console(
+                {
+                    "pool_proof": pool_proof,
+                    "node_rpc_proof": node_proof,
+                    "bonus": bonus,
+                }
+            ))
+            print()
+            print("Press Ctrl+C to stop mining.")
+
+        while managed.process.poll() is None:
+            time.sleep(1)
+
+        print(f"Miner exited with code {managed.process.returncode}")
+    except KeyboardInterrupt:
+        if managed is not None:
+            stop_info = pow_miners.stop_managed_miner(managed)
+            if args.json:
+                _print_json({"status": "stopped", "stop_info": stop_info})
+            else:
+                print("Stopping miner...")
+                print(pow_miners.summarize_for_console(stop_info))
+        else:
+            print("Interrupted.", file=sys.stderr)
+            sys.exit(130)
+    except Exception as exc:
+        print(f"Error: failed to start mining: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+
 def _cmd_announce(args):
     """Handle the 'announce' subcommand."""
     if format_announcement is None:
@@ -812,6 +947,24 @@ def _build_parser():
     _add_common_flags(p_status)
     p_status.add_argument("--wallet", required=True, help="Wallet or miner ID")
 
+    # --- mine ---
+    p_mine = sub.add_parser("mine", help="PoW dual-mining helpers for Warthog")
+    _add_common_flags(p_mine)
+    p_mine.add_argument("--pow", required=True, choices=["warthog"],
+                        help="PoW algorithm/network (currently: warthog)")
+    p_mine.add_argument("--wallet", help="Wallet/miner address used for mining")
+    p_mine.add_argument("--pool", default="woolypooly",
+                        choices=["woolypooly", "cedric-crispin", "herominers", "accpool"],
+                        help="Known pool preset (default: woolypooly)")
+    p_mine.add_argument("--pool-url", help="Explicit pool URL override")
+    p_mine.add_argument("--miner", default="bzminer", choices=["bzminer", "janusminer"],
+                        help="Miner engine to launch (default: bzminer)")
+    p_mine.add_argument("--miner-path", help="Path to miner binary")
+    p_mine.add_argument("--detect-only", action="store_true",
+                        help="Only detect external miners/services/screen sessions")
+    p_mine.add_argument("--log-file", default="warthog_miner.log",
+                        help="Log file for managed miner output")
+
     # --- engage ---
     p_engage = sub.add_parser("engage", help="Cross-platform engagement actions")
     _add_common_flags(p_engage)
@@ -860,6 +1013,7 @@ def main():
         "faq": _cmd_faq,
         "wallet": _cmd_wallet,
         "status": _cmd_status,
+        "mine": _cmd_mine,
         "engage": _cmd_engage,
         "announce": _cmd_announce,
         "claim": _cmd_claim,
