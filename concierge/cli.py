@@ -48,10 +48,14 @@ try:
     from concierge.engagement import (
         star_all_ecosystem_repos,
         check_devto_articles,
+        saascity_upvote,
+        SaaSCityError,
     )
 except ImportError:
     star_all_ecosystem_repos = None
     check_devto_articles = None
+    saascity_upvote = None
+    SaaSCityError = None
 
 try:
     from concierge.announcer import format_announcement
@@ -579,9 +583,42 @@ def _cmd_engage(args):
                     )
                     print(f"    {a['url']}")
 
+    elif args.saascity:
+        if saascity_upvote is None:
+            print(
+                "Error: engagement module is not available.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+
+        if args.dry_run:
+            saascity_upvote(dry_run=True)
+            return
+
+        api_key = config.SAASCITY_KEY
+        if not api_key:
+            print(
+                "Error: SAASCITY_KEY environment variable is required to upvote on SaaSCity.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+
+        try:
+            results = saascity_upvote(api_key=api_key)
+        except SaaSCityError as exc:
+            print(f"Error: {exc}", file=sys.stderr)
+            sys.exit(1)
+
+        if args.json:
+            _print_json(results)
+        else:
+            for listing, ok in results.items():
+                status = "upvoted" if ok else "FAILED"
+                print(f"  {listing}: {status}")
+
     else:
         print(
-            "Specify an engagement action: --star-repos or --devto",
+            "Specify an engagement action: --star-repos, --devto, or --saascity",
             file=sys.stderr,
         )
         sys.exit(1)
@@ -782,6 +819,9 @@ def _build_parser():
                           help="Star all RustChain ecosystem repos on GitHub")
     p_engage.add_argument("--devto", action="store_true", default=False,
                           help="Check Dev.to article stats")
+    p_engage.add_argument("--saascity", action="store_true", default=False,
+                          help="Upvote RustChain and BoTTube on SaaSCity "
+                               "(requires SAASCITY_KEY)")
 
     # --- announce ---
     p_announce = sub.add_parser("announce", help="Preview or post bounty announcements")

@@ -1,15 +1,29 @@
 """Cross-platform engagement helpers for the RustChain ecosystem.
 
-Star repos, check Dev.to stats, and generate social-bounty proof.
+Star repos, check Dev.to stats, upvote on SaaSCity, and generate
+social-bounty proof.
 """
 
 from __future__ import annotations
 
-from typing import Dict, List
+import os
+from typing import Dict, List, Optional
 
 import requests
 
 from concierge import config
+
+
+# ---------------------------------------------------------------------------
+# SaaSCity listing slugs for RustChain ecosystem products
+# ---------------------------------------------------------------------------
+
+SAASCITY_LISTINGS: Dict[str, str] = {
+    "RustChain": "rustchain",
+    "BoTTube": "bottube",
+}
+
+SAASCITY_API_BASE = "https://www.saascity.com/api"
 
 
 # ---------------------------------------------------------------------------
@@ -111,14 +125,80 @@ def generate_engagement_proof(platform: str, action: str, proof_url: str) -> str
 
 
 # ---------------------------------------------------------------------------
-# Placeholder -- SaaSCity
+# SaaSCity upvote integration
 # ---------------------------------------------------------------------------
 
-def saascity_upvote() -> None:
-    """Upvote RustChain on SaaSCity.
+class SaaSCityError(Exception):
+    """Raised when a SaaSCity API call fails."""
 
-    Raises NotImplementedError because a SaaSCity API key is needed first.
+
+def saascity_upvote(
+    api_key: Optional[str] = None,
+    listings: Optional[Dict[str, str]] = None,
+    dry_run: bool = False,
+) -> Dict[str, bool]:
+    """Upvote RustChain and BoTTube listings on SaaSCity.
+
+    Sends a POST request to the SaaSCity upvote endpoint for each listing
+    slug.  The API key is read from the ``SAASCITY_KEY`` environment variable
+    if not supplied directly.
+
+    Parameters
+    ----------
+    api_key : str, optional
+        SaaSCity API key.  Defaults to ``config.SAASCITY_KEY`` (env var
+        ``SAASCITY_KEY``).
+    listings : dict, optional
+        Mapping of display name -> slug to upvote.  Defaults to
+        ``SAASCITY_LISTINGS`` (RustChain + BoTTube).
+    dry_run : bool
+        When True, print what would be upvoted and return without making any
+        network calls.
+
+    Returns
+    -------
+    dict
+        Mapping of display name -> True (success) / False (failure).
+
+    Raises
+    ------
+    SaaSCityError
+        If ``api_key`` is not available and ``SAASCITY_KEY`` is unset.
     """
-    raise NotImplementedError(
-        "SaaSCity API key needed. Visit saascity.io to register."
-    )
+    resolved_key = api_key or config.SAASCITY_KEY
+    if not resolved_key and not dry_run:
+        raise SaaSCityError(
+            "SAASCITY_KEY environment variable is required. "
+            "Obtain an API key at https://www.saascity.com and set "
+            "SAASCITY_KEY=<your-key>."
+        )
+
+    target_listings = listings if listings is not None else SAASCITY_LISTINGS
+
+    if dry_run:
+        print("[dry-run] Would upvote the following SaaSCity listings:")
+        for name, slug in target_listings.items():
+            print(f"  {name}  ->  {SAASCITY_API_BASE}/listings/{slug}/upvote")
+        return {name: True for name in target_listings}
+
+    results: Dict[str, bool] = {}
+    headers = {
+        "Authorization": f"Bearer {resolved_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+    }
+
+    for name, slug in target_listings.items():
+        url = f"{SAASCITY_API_BASE}/listings/{slug}/upvote"
+        try:
+            resp = requests.post(url, headers=headers, timeout=15)
+            # 200 = upvoted, 201 = upvoted (created), 204 = success no-content
+            # 409 = already upvoted today (idempotent -- treat as success)
+            if resp.status_code in (200, 201, 204, 409):
+                results[name] = True
+            else:
+                results[name] = False
+        except requests.RequestException:
+            results[name] = False
+
+    return results
