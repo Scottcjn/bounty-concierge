@@ -13,3 +13,4 @@ dependencies = ["requests>=2.28"]
 
 [project.scripts]
 concierge = "concierge.cli:main"
+clawrtc = "concierge.cli:main"
