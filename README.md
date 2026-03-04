@@ -109,6 +109,9 @@ concierge wallet balance my-wallet-name
 # Claim a bounty
 concierge claim 491 --wallet my-wallet-name --approach "I will fuzz the fleet detector"
 
+# Browse recent bounties
+concierge browse --limit 5
+
 # Check concierge status
 concierge status
 
