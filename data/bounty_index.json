@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-03-03T07:03:54.425780+00:00",
-  "total_count": 186,
+  "updated_at": "2026-03-04T07:00:44.424474+00:00",
+  "total_count": 185,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -16,6 +16,24 @@
       ],
       "created_at": "2026-02-27T20:06:44Z",
       "reward_rtc": 5000.0,
+      "difficulty": "critical",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 562,
+      "title": "Community Engagement Drive: Star + Follow + SaaSCity + BoTTube (Strength Multiplier)",
+      "body": "# Community Engagement Drive \u2014 Strength Multiplier Bounty\n\n**Pool: 2,000 RTC** | **Multiplier: Up to 3x base reward**\n\n## Actions & Base Rewards\n\nComplete any combination of the following. The more you do, the bigger your multiplier.\n\n| # | Action | Base Points | How to Verify |\n|---|--------|-------------|---------------|\n| 1 | **Star ALL Scottcjn repos** on GitHub (~101 repos) | 50 pts | We check via GitHub API |\n| 2 | **Follow @Scottcjn** on GitHub | 10 pts | We check via GitHub API |\n| 3 | **Join BoTTube** \u2014 create account at [bottube.ai](https://bottube.ai) and upvote 5+ videos | 20 pts | We verify account + upvotes |\n| 4 | **Upvote BoTTube on SaaSCity** \u2014 find BoTTube at [saascity.io](https://saascity.io) and upvote | 15 pts | Screenshot or username proof |\n| 5 | **Upvote RustChain on SaaSCity** \u2014 find RustChain at [saascity.io](https://saascity.io) and upvote | 15 pts | Screenshot or username proof |\n\n## Strength Multiplier\n\nThe more actions you complete, the higher your reward multiplier:\n\n| Actions Completed | Multiplier | Example (all repos starred + N actions) |\n|-------------------|------------|----------------------------------------|\n| 1 action only | 1.0x | 50 pts \u00d7 1.0 = **50 RTC** |\n| 2 actions | 1.25x | 60 pts \u00d7 1.25 = **75 RTC** |\n| 3 actions | 1.5x | 75 pts \u00d7 1.5 = **112 RTC** |\n| 4 actions | 2.0x | 90 pts \u00d7 2.0 = **180 RTC** |\n| **ALL 5 actions** | **3.0x** | 110 pts \u00d7 3.0 = **330 RTC** |\n\n## How to Claim\n\n1. Complete as many actions as you can\n2. Comment on this issue with:\n   - Your **GitHub username**\n   - Your **RTC wallet address** (format: `RTCxxxxxxxxxx...`)\n   - Your **BoTTube username** (if applicable)\n   - Your **SaaSCity username** (if applicable)\n   - Which actions you completed (1-5)\n3. We verify and pay within 48 hours\n\n## Important Notes\n\n- **RTC wallets only** \u2014 no ETH, Solana, or other chain addresses\n- Get a wallet: Use the [RustChain Wallet GUI](https://github.com/Scottcjn/Rustchain/releases) or request a named wallet\n- One claim per GitHub account \u2014 no duplicates\n- Bot/spam claims will be rejected\n- Must actually complete the action, not just claim it\n- Star campaign participants who already received star bounties get credit for Action #1 automatically\n\n## Links\n\n- **BoTTube**: https://bottube.ai\n- **RustChain**: https://rustchain.org\n- **SaaSCity BoTTube**: (link TBD after listing)\n- **SaaSCity RustChain**: (link TBD after listing)\n- **GitHub repos to star**: https://github.com/Scottcjn?tab=repositories\n\n---\n\n*This bounty replaces the original star-only campaign (#425) with a broader engagement drive. Previous star bounty recipients are eligible for the multiplier bonus by completing additional actions.*",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/562",
+      "labels": [
+        "bounty",
+        "community"
+      ],
+      "created_at": "2026-03-03T14:13:23Z",
+      "reward_rtc": 2000.0,
       "difficulty": "critical",
       "skills": [
         "rust",
@@ -196,28 +214,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 71,
-      "title": "[BOUNTY] Ongoing Bug Bounty Program \u2014 Find Bugs, Earn RTC (200 RTC Pool)",
-      "body": "## Ongoing Bug Bounty Program\n\n**Pool: 750 RTC (ongoing, replenished as needed)**\n\n### Severity & Rewards\n| Severity | Description | Reward |\n|----------|-------------|--------|\n| **Critical** | Fund theft, consensus bypass, RCE | 100-200 RTC |\n| **High** | Data leak, auth bypass, significant logic error | 50-100 RTC |\n| **Medium** | DoS, info disclosure, moderate bugs | 15-50 RTC |\n| **Low** | UI bugs, minor leaks, doc errors | 5-15 RTC |\n\n### In-Scope\n- RustChain node software, attestation & fingerprint system\n- Epoch settlement & rewards, wallet endpoints\n- BoTTube web app, API, payment system\n- Python SDK, Block Explorer, Wallet GUI, Miner clients\n\n### Reporting\n1. Create GitHub issue with `[SECURITY]` prefix\n2. For critical: email first, issue after fix\n3. Include: steps to reproduce, impact, suggested fix\n\n### Rules\n- First reporter wins\n- Responsible disclosure required\n- Must not exploit on production\n\n---\n*Total RTC supply: 8.3M | RTC Reference Rate: 1 RTC = $0.10 USD*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/71",
-      "labels": [
-        "bug",
-        "bounty",
-        "open"
-      ],
-      "created_at": "2026-02-06T01:13:53Z",
-      "reward_rtc": 200.0,
-      "difficulty": "critical",
-      "skills": [
-        "javascript",
-        "python",
-        "rust",
-        "security",
-        "social-media"
-      ]
-    },
-    {
       "repo": "Scottcjn/Rustchain",
       "number": 168,
       "title": "[BOUNTY] Mine on Exotic Hardware \u2014 Bonus RTC for Unusual Architectures (Pool: 200 RTC)",
@@ -292,24 +288,6 @@
         "red-team"
       ],
       "created_at": "2026-02-28T16:35:51Z",
-      "reward_rtc": 150.0,
-      "difficulty": "standard",
-      "skills": [
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 492,
-      "title": "[RED TEAM] RIP-201 Bucket Normalization Gaming (150 RTC)",
-      "body": "## Bounty: 150 RTC\n\n### Target\nRIP-201 Equal Bucket Split \u2014 game the hardware bucket classification to maximize fleet rewards.\n\n### Background\nRIP-201 divides the epoch reward pot equally among active hardware **buckets** (not per-CPU):\n- `vintage_powerpc` (G3, G4, G5)\n- `vintage_x86` (Pentium, Core2, retro)\n- `apple_silicon` (M1, M2, M3)\n- `modern` (x86_64, current gen)\n- `exotic` (POWER8, SPARC, etc.)\n- `arm` (aarch64, armv7)\n\nWithin each bucket, rewards are split by time-aged antiquity multiplier. A fleet of 500 modern boxes shares the same bucket slice as a single solo G4.\n\n### Success Criteria\nDemonstrate a technique to:\n1. Register miners as a hardware class they don't actually belong to (e.g., modern x86 claiming to be G4)\n2. OR create artificial bucket diversity to claim multiple bucket slices\n3. OR exploit the bucket classification logic to get outsized rewards\n\n### Deliverables\n- Description of the bucket gaming technique\n- Proof of concept showing incorrect bucket classification accepted by the server\n- Impact analysis: how much extra reward does the attacker gain?\n- Recommended fix\n\n### Rules\n- Must work against the deployed `classify_miner_bucket()` function\n- Server-side fingerprint validation is in scope (can you fool it?)\n- Cross-referencing with SIMD/cache fingerprint checks is part of the defense\n\n### Payout\n150 RTC upon verified demonstration.\n\n---\n*RIP-201: Fleet Detection Immune System \u2014 deployed 2026-02-28*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/492",
-      "labels": [
-        "bounty",
-        "standard",
-        "red-team"
-      ],
-      "created_at": "2026-02-28T16:35:24Z",
       "reward_rtc": 150.0,
       "difficulty": "standard",
       "skills": [
@@ -400,45 +378,6 @@
       "difficulty": "major",
       "skills": [
         "documentation"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 72,
-      "title": "[BOUNTY] Documentation Sprint \u2014 Complete Docs for All RustChain Components (150 RTC)",
-      "body": "## Documentation Sprint\n\n**Bounty: 150 RTC (distributed across contributors)**\n\n### Documentation Needed\n| Document | Reward | Priority |\n|----------|--------|----------|\n| **API Reference** \u2014 All endpoints with examples | 25 RTC | HIGH |\n| **Miner Setup Guide** \u2014 Step-by-step all platforms | 20 RTC | HIGH |\n| **Python SDK Tutorial** \u2014 Getting started | 15 RTC | HIGH |\n| **Node Operator Guide** \u2014 Running attestation node | 20 RTC | MEDIUM |\n| **Wallet User Guide** \u2014 All wallet editions | 15 RTC | MEDIUM |\n| **Architecture Overview** \u2014 System diagrams | 20 RTC | MEDIUM |\n| **FAQ & Troubleshooting** \u2014 Common issues | 15 RTC | LOW |\n| **Contributing Guide** \u2014 How to contribute | 10 RTC | LOW |\n\n### Requirements\n- Markdown format, include code examples and screenshots\n- Test all commands before documenting\n- Submit as PR\n\n### Bonus\n- Complete 3+ documents: +10 RTC\n\n---\n*Total RTC supply: 8.3M | RTC Reference Rate: 1 RTC = $0.10 USD*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/72",
-      "labels": [
-        "documentation",
-        "bounty",
-        "open"
-      ],
-      "created_at": "2026-02-06T01:14:03Z",
-      "reward_rtc": 150.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "javascript",
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 70,
-      "title": "[BOUNTY] RustChain Online Hackathon \u2014 Build on RustChain, Win RTC (150 RTC Prize Pool)",
-      "body": "## RustChain Online Hackathon\n\n**Prize Pool: 500 RTC**\n\n### Prize Structure\n| Category | 1st Place | 2nd Place | 3rd Place |\n|----------|-----------|-----------|-----------|\n| Best DApp | 75 RTC | 40 RTC | 20 RTC |\n| Best Tool/Library | 75 RTC | 40 RTC | 20 RTC |\n| Best Integration | 75 RTC | 40 RTC | 20 RTC |\n| **People's Choice** | **50 RTC** | | |\n| **Most Creative** | **45 RTC** | | |\n\n### Rules\n1. Projects must be open source (GitHub)\n2. Must interact with RustChain API or use RTC\n3. Solo or team (max 4)\n4. Submit via PR with project description\n\n### Judging\n- Technical quality (30%), Innovation (25%), Usefulness (25%), Presentation (20%)\n\n### Timeline\n- Registration: 1 week | Building: 2 weeks | Judging: 1 week\n\n---\n*Total RTC supply: 8.3M | RTC Reference Rate: 1 RTC = $0.10 USD*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/70",
-      "labels": [
-        "bounty",
-        "open",
-        "community"
-      ],
-      "created_at": "2026-02-06T01:13:11Z",
-      "reward_rtc": 150.0,
-      "difficulty": "major",
-      "skills": [
-        "rust"
       ]
     },
     {
@@ -683,6 +622,24 @@
       "skills": [
         "documentation",
         "javascript",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 554,
+      "title": "Fix RIP-201 Bucket Normalization Spoofing (from PoC #551)",
+      "body": "## Context\nliu971227-sys demonstrated in Rustchain#551 that a modern x86 can claim `device_arch=G4` and get routed into the `vintage_powerpc` bucket with 2.5x multiplier.\n\n## Required Fixes\n1. Cross-validate CPU brand string vs claimed `device_arch` \u2014 reject `Intel Xeon` + `G4`\n2. Require SIMD evidence (AltiVec/vec_perm) for vintage PowerPC claims\n3. Require cache timing profile matching PowerPC characteristics\n4. Classify miners into reward buckets from verified server-side features, not raw client-reported architecture strings\n\n## Bounty: 100 RTC\n\nMust include tests proving the spoofing vector from #551 is blocked.\n\n**Wallet:** Submit your RTC wallet name when claiming.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/554",
+      "labels": [
+        "bounty",
+        "security",
+        "100 RTC"
+      ],
+      "created_at": "2026-03-03T13:47:53Z",
+      "reward_rtc": 100.0,
+      "difficulty": "major",
+      "skills": [
         "rust"
       ]
     },
@@ -1221,47 +1178,6 @@
       "skills": [
         "documentation",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 69,
-      "title": "[BOUNTY] \ud83d\udd34 Red Team: Python SDK & Telegram Bot Security Audit (75 RTC)",
-      "body": "## Red Team Bounty: SDK & Bot Security\n\n**Reward: 75 RTC** (~$7.50 at reference rate)\n\n### Targets\n1. **Python SDK** \u2014 Rustchain PR #34 by @heyzoos123-blip (822 lines)\n2. **Telegram Tip Bot** \u2014 Rustchain PR #33 by @heyzoos123-blip (659 lines)\n\n### SDK Attack Vectors\n\n1. **Injection via API params:** Can malicious miner_id or wallet values inject into SQL/HTTP?\n2. **SSL Verification:** `verify_ssl=False` is default \u2014 can MITM steal transactions?\n3. **Credential Exposure:** Are API keys/admin keys safely handled?\n4. **Retry Logic Abuse:** Can retry mechanism be exploited for amplification?\n\n### Telegram Bot Attack Vectors\n\n1. **Wallet Derivation:** `SHA256(BOT_SECRET + user_id)` \u2014 can secret be brute-forced from known wallet?\n2. **Tip Amount Manipulation:** Can negative tips steal funds?\n3. **Race Condition:** Can two /tip commands drain more than balance?\n4. **Command Injection:** Can malicious usernames/amounts inject into API calls?\n5. **Bot Token Exposure:** Is the Telegram bot token properly protected?\n6. **Rain Command Abuse:** Can /rain be exploited to send to attacker-controlled accounts?\n\n### Deliverables\n- Security report covering both SDK and bot\n- PoC for critical/high findings\n- Suggested patches\n\n### Claiming\nComment with security audit experience.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/69",
-      "labels": [
-        "bounty",
-        "open",
-        "red-team",
-        "hardening"
-      ],
-      "created_at": "2026-02-06T01:03:51Z",
-      "reward_rtc": 75.0,
-      "difficulty": "major",
-      "skills": [
-        "python",
-        "rust",
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 68,
-      "title": "[BOUNTY] \ud83d\udd34 Red Team: Block Explorer & Dashboard Hardening (75 RTC)",
-      "body": "## Red Team Bounty: Block Explorer Security\n\n**Reward: 75 RTC** (~$7.50 at reference rate)\n\n### Target\nThe Block Explorer and Hardware Museum merged in Rustchain PR #4 by @erdogan98.\n\n**Code location:** `explorer/` directory (index.html, museum.html \u2014 1022 lines)\n\n### What to Attack\n\n1. **Stored XSS via Miner Names:** Can a miner register with a name containing `<script>` that executes in the explorer?\n2. **API Response Injection:** If the API returns malicious data, does the explorer sanitize before rendering?\n3. **DOM-based XSS:** Any client-side rendering that uses innerHTML without sanitization?\n4. **Information Disclosure:** Does the explorer leak sensitive data (admin keys, internal IPs, etc.)?\n5. **Rate Limiting:** Can someone DDoS the explorer by hammering API endpoints?\n6. **CORS Misconfiguration:** Can a malicious site read explorer data cross-origin?\n\n### Deliverables\n- Security report with severity ratings\n- PoC for each finding\n- Patched HTML files (bonus RTC)\n\n### Claiming\nComment below.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/68",
-      "labels": [
-        "bounty",
-        "open",
-        "red-team",
-        "hardening"
-      ],
-      "created_at": "2026-02-06T01:03:43Z",
-      "reward_rtc": 75.0,
-      "difficulty": "major",
-      "skills": [
-        "rust",
-        "security"
       ]
     },
     {
@@ -2330,24 +2246,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 528,
-      "title": "[Bounty: 15 RTC] Implement SaaSCity upvote integration",
-      "body": "## Bounty: 15 RTC\n\n**Target repo**: [Scottcjn/bounty-concierge](https://github.com/Scottcjn/bounty-concierge)\n\n### Description\nThe `concierge/engagement.py` module has a `saascity_upvote()` stub. Implement real SaaSCity integration:\n- Discover the SaaSCity API (saascity.com)\n- Implement upvote functionality for RustChain/BoTTube listings\n- Add `concierge engage --saascity` CLI support\n\n### Acceptance Criteria\n- [ ] Working SaaSCity upvote in `engagement.py`\n- [ ] CLI command `concierge engage --saascity` triggers upvotes\n- [ ] API key loaded from `SAASCITY_KEY` env var\n- [ ] `--dry-run` shows what would be upvoted\n- [ ] Error handling for missing API key / failed requests\n\n### Wallet\nInclude your RTC wallet ID when claiming.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/528",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-03-01T19:54:03Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 469,
       "title": "[15 RTC] Dual-Mining: Raptoreum (GhostRider) Integration",
       "body": "## Raptoreum Dual-Mining Integration \u2014 15 RTC\n\n**Mine RTM + earn RTC for free.** GhostRider is a multi-algo rotation designed for CPUs.\n\n**RTC is 1 CPU = 1 Vote.** Mine RTM on your pool, clawrtc detects it and gives your attestation a bonus.\n\n### What to Build\n\n1. **Node RPC proof** (1.5x): Query raptoreumd at `localhost:10225` \u2014 `getmininginfo`\n2. **Pool proof** (1.3x): Verify via Flockpool, Suprnova, or other RTM pools\n3. **Process detection** (1.15x): Detect `raptoreumd`, `cpuminer-gr`, `xmrig` (GhostRider mode)\n\n### Raptoreum RPC\n- Standard Bitcoin-style JSON-RPC on port 10225\n- `{\"method\": \"getmininginfo\", \"params\": []}`\n\nBig CPU mining community \u2014 lots of potential dual-miners.\n\nSee master issue: #453",
@@ -2543,22 +2441,6 @@
       "difficulty": "standard",
       "skills": [
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 526,
-      "title": "[Bounty: 10 RTC] Add test suite for bounty-concierge CLI",
-      "body": "## Bounty: 10 RTC\n\n**Target repo**: [Scottcjn/bounty-concierge](https://github.com/Scottcjn/bounty-concierge)\n\n### Description\nAdd a pytest test suite covering the core concierge modules:\n- `test_faq_engine.py` \u2014 FAQ matching returns correct answers\n- `test_bounty_index.py` \u2014 RTC parsing from issue titles\n- `test_wallet_helper.py` \u2014 Wallet name validation\n\n### Acceptance Criteria\n- [ ] 3+ test files in `tests/` directory\n- [ ] All tests pass with `pytest tests/ -v`\n- [ ] Covers FAQ matching, RTC amount parsing, wallet name validation\n- [ ] No external API calls in tests (mock where needed)\n\n### Wallet\nInclude your RTC wallet ID when claiming.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/526",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-03-01T19:53:52Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "python"
       ]
     },
     {
@@ -2812,25 +2694,6 @@
     },
     {
       "repo": "Scottcjn/bottube",
-      "number": 203,
-      "title": "[Bounty] Python SDK for BoTTube API \u2014 10 RTC",
-      "body": "## Bounty: Python SDK\n**Reward**: 10 RTC | **Difficulty**: Medium | **Time**: ~2-4 hours\n\n### What to do\nCreate a Python client library that wraps the BoTTube API. Should be pip-installable.\n\n### Requirements\n- Upload videos (`POST /api/upload`)\n- List/search videos (`GET /api/videos`, `GET /api/search`)\n- Comment on videos (`POST /api/videos/<id>/comments`)\n- Vote on videos (`POST /api/videos/<id>/vote`)\n- Get agent profile & analytics\n- Auth via API key header\n\n### Example Usage\n```python\nfrom bottube import BoTTubeClient\n\nclient = BoTTubeClient(api_key=\"your_key\")\nclient.upload(\"video.mp4\", title=\"My Video\", tags=[\"demo\"])\nvideos = client.search(\"python tutorial\", sort=\"recent\")\nclient.comment(video_id=\"abc123\", content=\"Great video!\")\n```\n\n### Acceptance Criteria\n- [ ] Published to PyPI or installable from GitHub\n- [ ] Covers upload, search, comment, vote, profile endpoints\n- [ ] Has a README with usage examples\n- [ ] Includes basic error handling\n\n### How to Claim\nFork, implement, submit PR. Merged = 10 RTC.\n\n**API Docs**: https://bottube.ai/api/docs",
-      "url": "https://github.com/Scottcjn/bottube/issues/203",
-      "labels": [
-        "help wanted",
-        "bounty"
-      ],
-      "created_at": "2026-03-01T14:03:08Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "python",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/bottube",
       "number": 128,
       "title": "[BOUNTY] Referral Program Beta \u2014 Bring 1 New Human Signup (10 RTC each, Pool: 200 RTC)",
       "body": "## Referral Program Beta (New Feature)\n\nWe just added a referral system to BoTTube:\n- Referral short-link: `https://bottube.ai/r/<code>`\n- Create/get your referral code:\n  - Agents (API key): `GET /api/agents/me/referral`\n  - Humans (web session): `GET /api/users/me/referral`\n\n### Bounty: 10 RTC each (Pool: 200 RTC)\n\nGoal: bring **1 real new human** signup to BoTTube via your referral link.\n\n### Requirements\n- Generate your referral code (endpoint above) and share your referral link.\n- Get **1 new human** to successfully sign up using your referral link.\n- Proof in a comment:\n  - Your referral link (`/r/<code>`)\n  - Screenshot or recording of the signup confirmation (no sensitive info)\n  - The new user\u2019s BoTTube username (or profile URL)\n  - Your RTC wallet (miner_id)\n\n### Rules\n- No self-referrals.\n- One payout per referrer per new signup.\n- If abuse/spam patterns show up, we\u2019ll pause payouts.\n\n### How to Claim\nComment with:\n\n**Claim**\n- Referral link: \n- Proof: \n- New user: \n- Wallet (miner_id): \n\n---\nOperator note: if you hit rate limits, wait and try again; do not brute force.",
@@ -2862,6 +2725,101 @@
       "reward_rtc": 10.0,
       "difficulty": "standard",
       "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 561,
+      "title": "[BOUNTY: 5 RTC BONUS] Community Engagement Trifecta",
+      "body": "## Bonus Bounty: 5 RTC\n\n### The Trifecta\nComplete ALL THREE engagement bounties for a **5 RTC bonus** on top of the individual rewards:\n\n| Bounty | Individual Reward | Link |\n|--------|------------------|------|\n| Join Sophiacord Discord | 5 RTC | #558 |\n| Follow + Star on GitHub | 3-8 RTC | #559 |\n| Upvote on SaaS City | 5 RTC | #560 |\n| **Trifecta Bonus** | **+5 RTC** | **This issue** |\n\n### Total Possible: 23 RTC ($2.30)\n- Discord: 5 + 2 (engagement bonus) = 7 RTC\n- GitHub: 3 + 5 (star all repos) = 8 RTC  \n- SaaS City: 5 RTC\n- Trifecta: 5 RTC\n- Cross-bounty multipliers: +6 RTC\n- **Max: 31 RTC ($3.10)**\n\n### How to Claim\n1. Complete all 3 bounties above\n2. Comment on this issue linking your proof from each one\n3. Receive the 5 RTC bonus\n\n### Why We're Doing This\nBoTTube is a real ecosystem \u2014 670+ videos, 99+ AI agents, Python SDK, REST API, RTC token integration, social graph. We compete on merit, not admin privilege. Every organic supporter strengthens the community.\n\n---\n*Open bounty \u2014 unlimited participants. Paid from founder_team_bounty fund.*",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/561",
+      "labels": [
+        "bounty",
+        "community",
+        "multiplier"
+      ],
+      "created_at": "2026-03-03T13:53:07Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "python",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 560,
+      "title": "[BOUNTY: 5 RTC] Upvote BoTTube + RustChain on SaaS City",
+      "body": "## Bounty: 5 RTC\n\n### Task\nUpvote BoTTube and RustChain on [SaaS City](https://saascity.io) to give us organic community support.\n\n### Requirements\n1. Create an account on https://saascity.io (free)\n2. Find and upvote **BoTTube** (currently #13): https://saascity.io/live/bottubeai\n3. Find and upvote **RustChain** (currently #11): search for RustChain on the Live Launches page\n4. Comment on this issue with your SaaS City username as proof\n\n### Context\nBoTTube is the world's first AI-native video platform with 670+ videos, 99+ agents, and a real ecosystem (Python SDK, REST API, RTC integration, social graph). We're currently ranked below a site-owner's self-promoted $79.99 template that has a special \"Partner\" badge and admin-only privileges boosting its position.\n\nOrganic community votes are how real products win.\n\n### Reward\n- **5 RTC** for upvoting both BoTTube + RustChain\n- **Multiplier**: Complete all 3 engagement bounties (Discord #558, GitHub #559, SaaS City #560) = **bonus 5 RTC** on top of individual rewards (total possible: 18+ RTC)\n\n### RTC Value\n1 RTC = $0.10 USD reference rate\n\n---\n*Open bounty \u2014 unlimited participants. Paid from founder_team_bounty fund.*\n\n*Supersedes #528 (old SaaS City bounty).*",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/560",
+      "labels": [
+        "bounty",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-03T13:52:52Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "python",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 558,
+      "title": "[BOUNTY: 5 RTC] Join Sophiacord Discord + Introduce Yourself",
+      "body": "## Bounty: 5 RTC\n\n### Task\nJoin the [Sophiacord Discord](https://discord.gg/VqVVS2CW9Q) and introduce yourself in #introductions.\n\n### Requirements\n1. Join Discord: https://discord.gg/VqVVS2CW9Q\n2. Post an introduction in #introductions (who you are, what interests you about RustChain/BoTTube)\n3. Stay in the server (accounts that leave within 7 days forfeit the bounty)\n4. Comment on this issue with your Discord username as proof\n\n### Reward\n- **5 RTC** per person\n- Additional **2 RTC bonus** if you engage in at least 3 conversations in the first week\n- **Multiplier**: +3 RTC if you also complete the GitHub Follow bounty (#559)\n\n### Why\nSophiacord is the community hub for RustChain, BoTTube, and Elyan Labs projects. Real community > fake leaderboard points.\n\n### RTC Value\n1 RTC = $0.10 USD reference rate\n\n---\n*Open bounty \u2014 unlimited participants. Paid from founder_team_bounty fund.*",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/558",
+      "labels": [
+        "bounty",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-03T13:52:34Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 556,
+      "title": "Grazer: Defensive Error Handling Across All Platform Discover Methods",
+      "body": "## What\nThe grazer CLI discover commands need defensive `.get()` handling for all API response fields across ALL platforms (not just BoTTube).\n\n## Identified Issues\n- Moltbook discover assumes `post[\"author\"]` exists\n- ClawSta discover assumes all image fields present\n- AgentChan, Colony, MoltX responses may have missing fields\n- All should use `.get(key, default)` pattern\n\n## Bounty: 5 RTC\n\nSee grazer-skill#35 (merged) as the reference pattern for BoTTube.\n\n**Wallet:** Submit your RTC wallet name when claiming.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/556",
+      "labels": [
+        "bounty",
+        "5 RTC",
+        "grazer"
+      ],
+      "created_at": "2026-03-03T13:47:55Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 555,
+      "title": "BoTTube: Social Graph API with Flask Integration Tests",
+      "body": "## What\nAdd social graph API endpoints to BoTTube:\n- `GET /api/social/graph` \u2014 network visualization data (follower/following pairs, top connections)\n- `GET /api/agents/<name>/interactions` \u2014 per-agent incoming/outgoing followers\n\n## Requirements\n- SQL JOINs on existing `subscriptions` table\n- Limit parameter with bounds checking\n- Flask `test_client()` integration tests (NOT mock-based)\n- Follow pattern in `tests/test_tipping.py`\n\n## Bounty: 5 RTC\n\nRyanD66 has a WIP PR (bottube#246) with solid server code but needs rebase + proper tests.\n\n**Wallet:** Submit your RTC wallet name when claiming.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/555",
+      "labels": [
+        "bounty",
+        "bottube",
+        "5 RTC"
+      ],
+      "created_at": "2026-03-03T13:47:54Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "python",
         "social-media"
       ]
     },
@@ -2989,6 +2947,25 @@
       ],
       "created_at": "2026-02-12T03:06:31Z",
       "reward_rtc": 4.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 559,
+      "title": "[BOUNTY: 3 RTC] Follow Scottcjn on GitHub + Star Key Repos",
+      "body": "## Bounty: 3 RTC\n\n### Task\nFollow [@Scottcjn](https://github.com/Scottcjn) on GitHub and star our key repositories.\n\n### Requirements\n1. Follow https://github.com/Scottcjn\n2. Star at least 3 of these repos:\n   - [bottube](https://github.com/Scottcjn/bottube) \u2014 AI video platform\n   - [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) \u2014 Bounty board\n   - [legend-of-elya-n64](https://github.com/Scottcjn/legend-of-elya-n64) \u2014 World's first LLM on N64\n   - [ram-coffers](https://github.com/Scottcjn/ram-coffers) \u2014 NUMA-aware neuromorphic weight banking\n3. Comment on this issue with your GitHub username as proof\n\n### Reward\n- **3 RTC** base reward\n- **+1 RTC** per additional repo starred (up to 5 bonus = 8 RTC max)\n- **Multiplier**: +3 RTC if you also complete the Discord bounty (#558)\n\n### Why\nGitHub stars signal real developer interest. Unlike admin-promoted leaderboard slots, stars are earned organically.\n\n### RTC Value\n1 RTC = $0.10 USD reference rate\n\n---\n*Open bounty \u2014 unlimited participants. Paid from founder_team_bounty fund.*",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/559",
+      "labels": [
+        "bounty",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-03T13:52:42Z",
+      "reward_rtc": 3.0,
       "difficulty": "micro",
       "skills": [
         "rust",
@@ -3510,7 +3487,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "number": 104,
       "title": "[LEDGER] Bounty Payout Ledger \u2014 Queued / Pending / Confirmed",
-      "body": "## Bounty Payout Ledger\n\nSingle source of truth for payout status across active bounties.\n\n### Status Definitions\n- **Queued**: approved and transfer submitted\n- **Pending**: in RustChain 24h pending window\n- **Confirmed**: pending window passed and transfer confirmed\n- **Voided**: canceled before confirmation\n\n### Operational Notes\n- RustChain pending confirmations are processed hourly.\n- Each payout update should include: bounty reference, wallet, amount, pending id, tx hash.\n- Keep this ledger updated for transparency and anti-fraud tracking.\n\n---\n\n## Active Entries\n\n| Date (UTC) | Bounty Ref | GitHub User | Wallet | Amount RTC | Status | Pending ID | Tx Hash | Notes |\n|---|---|---|---|---:|---|---:|---|---|\n| 2026-02-10 | Rustchain#47 | @BuilderFred | `BuilderFred` | 2 | Confirmed | 19 | `26a8383f7e18754d32b17f088f6363ec` | Stars verified |\n| 2026-02-10 | Rustchain#47 | @EugeneJarvis88 | `EugeneJarvis88` | 2 | Confirmed | 20 | `507e0a81cae59497a07b32d058ed6a5e` | Stars verified |\n| 2026-02-10 | bottube#74 | @BuilderFred | `fred-the-builder` | 2 | Confirmed | 21 | `692fa63a5cc7a8c048d367160bb90b40` | Stars verified (BoTTube wallet) |\n| 2026-02-10 | bottube#74 | @EugeneJarvis88 | `jarvis-ai-bot` | 2 | Confirmed | 22 | `000862031480c060fd38ed184205371b` | Stars verified (BoTTube wallet) |\n| 2026-02-10 | rustchain-bounties#87 | @mgrigajtis | `agentgubbins` | 4 | Confirmed | 23 | `dafe9cf255a35dbf35395f36477738b9` | Stars verified |\n| 2026-02-10 | rustchain-bounties#87 | @Abdul-nazeer | `abdul_rtc_01` | 4 | Confirmed | 24 | `4bcb8e89c1b1415bb5f6c3faa269aa6d` | Stars verified |\n| 2026-02-10 | rustchain-bounties#87 | @Best-creator | `xiaojie-rtc-wallet` | 7 | Confirmed | 25 | `526525f7f45251b2fe9e950f3ef055f5` | Stars + Discord (`jiejie0646_80823`) |\n| 2026-02-12 | rustchain-bounties#87 | @dlin38 | `dlin38` | 4 | Pending | 26 | `3049b19a21eed34d728e35a607dfd2b2` | Stars verified; confirms_at 2026-02-13T02:10Z |\n| 2026-02-12 | bottube#74 | @BoozeLee | `BoozeLee` | 2 | Voided | 27 | `016f7a70cd6c767524a13d0c8357e1da` | Voided (wrong casing); reissued to `boozelee` pending_id 29 |\n| 2026-02-12 | bottube#74 | @BoozeLee | `boozelee` | 2 | Pending | 29 | `78e6e75ce6f43bdb7d2b6532373baa64` | Stars verified (BoTTube wallet); confirms_at 2026-02-13T16:41:10Z |\n| 2026-02-12 | bottube#74 | @juzigu40-ui | `juzigu40-ui` | 2 | Pending | 28 | `f3de2e31f0c0f2bbbbc4d24ee736be62` | Stars verified (BoTTube wallet); confirms_at 2026-02-13T16:34:10Z |\n| 2026-02-13 | rustchain-bounties#37 | @liu971227-sys | `liu971227-sys` | 25 | Pending | 59 | `44bc2006a8d14ad9e6cd1aa71fe0b263` | PR#147 merged; confirms_at 2026-02-14T19:51:07Z |\n| 2026-02-13 | rustchain-bounties#123 | @David-code-tang | `davidtang-codex` | 40 | Pending | 60 | `97b54984930cf1e336b67cb9f7fdd60b` | PR#115 merged; confirms_at 2026-02-14T20:06:45Z |\n| 2026-02-13 | rustchain-bounties#29 (Phase 1) | @liu971227-sys | `liu971227-sys` | 100 | Pending | 61 | `5391f1c57c1ffc178692bfa32e7042b5` | PR#148 merged; confirms_at 2026-02-14T20:18:15Z |\n| 2026-02-13 | rustchain-bounties#62 | @liu971227-sys | `liu971227-sys` | 150 | Pending | 62 | `b6e843b54d542afbe59bc814af40752d` | PR#155 merged; confirms_at 2026-02-14T20:25:13Z |\n\n---\n\n## Automation Block\n\n<!-- auto-triage-report:start -->\n### Auto-Triage Report (2026-03-03T06:03:48.791264Z)\nWindow: last `168`h\nRisk policy: `balanced`\n\n#### Suspicious Claims\n| User | Issue | Risk | Score | Reasons | Comment |\n|---|---|---|---:|---|---|\n| @Joshualover | Scottcjn/rustchain-bounties#157 | `medium` | 40 | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE | [link](https://github.com/Scottcjn/rustchain-bounties/issues/157#issuecomment-3988234476) |\n\n#### Scottcjn/rustchain-bounties#87\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @dannamax | `low` | 25 | `needs-action` | 13 | `openclaw_agent_20260302` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, missing_star:bottube | [link](https://github.com/Scottcjn/rustchain-bounties/issues/87#issuecomment-3984723890) |\n\n#### Scottcjn/Rustchain#47\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @Joshualover | `low` | 28 | `eligible` | 2730 | `joshualover-dev` | `` | CLAIM_VELOCITY, REPO_SPREAD |  | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3984014186) |\n| @dannamax | `low` | 25 | `needs-action` | 13 | `EfpcQw3JUmfiGQ7SPKYeW2Xk7hWQdeBgxWzwJyHpnjgz` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, wallet_external_format | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3957891529) |\n| @nicepopo86-lang | `low` | 25 | `needs-action` | 20 | `` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, missing_payout_target | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3983109391) |\n| @kevin-undefined | `low` | 24 | `needs-action` | 6 | `RTCf2b7d18e70154f7e01d8c7c424c434606b2ebd57` | `` | ACCOUNT_AGE | account_age<30, wallet_external_format | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3951438600) |\n| @jeanmiliuiu-boop | `low` | 18 | `needs-action` | 175 | `0xd7C80bdf514dd0029e20e442E227872A63a91A2D` | `` | CLAIM_VELOCITY, REPO_SPREAD | wallet_external_format | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3976708930) |\n| @juzigu40-ui | `low` | 13 | `needs-action` | 78 | `RTC223918a74e0dd6970133ac903ad461c60c416e4b` | `` | CLAIM_VELOCITY, REPO_SPREAD | wallet_external_format | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3981052727) |\n| @writsop | `low` | 12 | `needs-action` | 29 | `` | `` | ACCOUNT_AGE | account_age<30, missing_payout_target | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3978713731) |\n| @BetsyMalthus | `low` | 0 | `eligible` | 71 | `BetsyMalthus` | `` |  |  | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3953538137) |\n| @RyanD66 | `low` | 0 | `eligible` | 990 | `lustsazeus-lab` | `` |  |  | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3986220701) |\n| @Fxmax-lab | `low` | 0 | `needs-action` | 266 | `` | `` |  | missing_payout_target | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3962748843) |\n| @Iceshen87 | `low` | 0 | `needs-action` | 3511 | `` | `` |  | missing_payout_target, missing_star:Rustchain | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3976754199) |\n| @KimberleyOCaseyfv | `low` | 0 | `needs-action` | 504 | `RTCfe213f0dada698f629a8627f4cd22db32c589458` | `` |  | wallet_external_format | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3973009994) |\n| @Pitrat-wav | `low` | 0 | `needs-action` | 42 | `RTC2a15d2c2a8d624c04a9e3c9fc1d1bc047ad69b3d` | `` |  | wallet_external_format, missing_star:Rustchain | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3953903311) |\n| @skylovele | `low` | 0 | `needs-action` | 2165 | `` | `` |  | missing_payout_target | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3979125162) |\n\n#### Scottcjn/bottube#74\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @Joshualover | `low` | 28 | `needs-action` | 2730 | `joshualover-dev` | `` | CLAIM_VELOCITY, REPO_SPREAD | missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3982039492) |\n| @nicepopo86-lang | `low` | 25 | `needs-action` | 20 | `` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3980514599) |\n| @jeanmiliuiu-boop | `low` | 18 | `needs-action` | 175 | `0xd7C80bdf514dd0029e20e442E227872A63a91A2D` | `` | CLAIM_VELOCITY, REPO_SPREAD | wallet_external_format, missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3976176767) |\n| @juzigu40-ui | `low` | 13 | `needs-action` | 78 | `RTC223918a74e0dd6970133ac903ad461c60c416e4b` | `` | CLAIM_VELOCITY, REPO_SPREAD | wallet_external_format, missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3982105009) |\n| @createkr | `low` | 8 | `needs-action` | 188 | `RTC1d48d848a5aa5ecf2c5f01aa5fb64837daaf2f35` | `` | CLAIM_VELOCITY | wallet_external_format, missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3959101574) |\n| @Fred-Zhang83 | `low` | 0 | `needs-action` | 1080 | `` | `` |  | missing_bottube_username, missing_star:bottube | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3959145517) |\n\n#### Scottcjn/rustchain-bounties#103\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @Joshualover | `low` | 28 | `needs-action` | 2730 | `joshualover-dev` | `` | CLAIM_VELOCITY, REPO_SPREAD | missing_bottube_username, missing_proof_link | [link](https://github.com/Scottcjn/rustchain-bounties/issues/103#issuecomment-3988148483) |\n\n#### Scottcjn/rustchain-bounties#157\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @Joshualover | `medium` | 40 | `eligible` | 2730 | `joshualover-dev` | `` | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE |  | [link](https://github.com/Scottcjn/rustchain-bounties/issues/157#issuecomment-3988234476) |\n| @jeanmiliuiu-boop | `low` | 30 | `needs-action` | 175 | `0xd7C80bdf514dd0029e20e442E227872A63a91A2D` | `` | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE | wallet_external_format | [link](https://github.com/Scottcjn/rustchain-bounties/issues/157#issuecomment-3976236613) |\n| @zhanglinqian | `low` | 0 | `needs-action` | 2464 | `BR3TzHGHWTA53Db6oHoRqes3eBnEkbjmsprTMUbvoJYs` | `` |  | wallet_external_format | [link](https://github.com/Scottcjn/rustchain-bounties/issues/157#issuecomment-3975722042) |\n\n#### Scottcjn/rustchain-bounties#158\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @godong0128 | `low` | 12 | `needs-action` | 27 | `` | `` | ACCOUNT_AGE | account_age<30, missing_wallet | [link](https://github.com/Scottcjn/rustchain-bounties/issues/158#issuecomment-3982978197) |\n\n#### Scottcjn/bottube#122\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @Joshualover | `low` | 28 | `needs-action` | 2730 | `joshualover-dev` | `joshualover-dev` | CLAIM_VELOCITY, REPO_SPREAD | missing_proof_link | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3983924774) |\n| @nicepopo86-lang | `low` | 25 | `needs-action` | 20 | `` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, missing_wallet | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3983111571) |\n| @createkr | `low` | 8 | `needs-action` | 188 | `RTC1d48d848a5aa5ecf2c5f01aa5fb64837daaf2f35` | `` | CLAIM_VELOCITY | wallet_external_format, missing_proof_link | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3959099596) |\n| @chienvon | `low` | 0 | `needs-action` | 356 | `RTCa3fffc3c4cc772a5288d63bd116052825fcaa997` | `` |  | wallet_external_format, missing_proof_link | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3979336507) |\n<!-- auto-triage-report:end -->",
+      "body": "## Bounty Payout Ledger\n\nSingle source of truth for payout status across active bounties.\n\n### Status Definitions\n- **Queued**: approved and transfer submitted\n- **Pending**: in RustChain 24h pending window\n- **Confirmed**: pending window passed and transfer confirmed\n- **Voided**: canceled before confirmation\n\n### Operational Notes\n- RustChain pending confirmations are processed hourly.\n- Each payout update should include: bounty reference, wallet, amount, pending id, tx hash.\n- Keep this ledger updated for transparency and anti-fraud tracking.\n\n---\n\n## Active Entries\n\n| Date (UTC) | Bounty Ref | GitHub User | Wallet | Amount RTC | Status | Pending ID | Tx Hash | Notes |\n|---|---|---|---|---:|---|---:|---|---|\n| 2026-02-10 | Rustchain#47 | @BuilderFred | `BuilderFred` | 2 | Confirmed | 19 | `26a8383f7e18754d32b17f088f6363ec` | Stars verified |\n| 2026-02-10 | Rustchain#47 | @EugeneJarvis88 | `EugeneJarvis88` | 2 | Confirmed | 20 | `507e0a81cae59497a07b32d058ed6a5e` | Stars verified |\n| 2026-02-10 | bottube#74 | @BuilderFred | `fred-the-builder` | 2 | Confirmed | 21 | `692fa63a5cc7a8c048d367160bb90b40` | Stars verified (BoTTube wallet) |\n| 2026-02-10 | bottube#74 | @EugeneJarvis88 | `jarvis-ai-bot` | 2 | Confirmed | 22 | `000862031480c060fd38ed184205371b` | Stars verified (BoTTube wallet) |\n| 2026-02-10 | rustchain-bounties#87 | @mgrigajtis | `agentgubbins` | 4 | Confirmed | 23 | `dafe9cf255a35dbf35395f36477738b9` | Stars verified |\n| 2026-02-10 | rustchain-bounties#87 | @Abdul-nazeer | `abdul_rtc_01` | 4 | Confirmed | 24 | `4bcb8e89c1b1415bb5f6c3faa269aa6d` | Stars verified |\n| 2026-02-10 | rustchain-bounties#87 | @Best-creator | `xiaojie-rtc-wallet` | 7 | Confirmed | 25 | `526525f7f45251b2fe9e950f3ef055f5` | Stars + Discord (`jiejie0646_80823`) |\n| 2026-02-12 | rustchain-bounties#87 | @dlin38 | `dlin38` | 4 | Pending | 26 | `3049b19a21eed34d728e35a607dfd2b2` | Stars verified; confirms_at 2026-02-13T02:10Z |\n| 2026-02-12 | bottube#74 | @BoozeLee | `BoozeLee` | 2 | Voided | 27 | `016f7a70cd6c767524a13d0c8357e1da` | Voided (wrong casing); reissued to `boozelee` pending_id 29 |\n| 2026-02-12 | bottube#74 | @BoozeLee | `boozelee` | 2 | Pending | 29 | `78e6e75ce6f43bdb7d2b6532373baa64` | Stars verified (BoTTube wallet); confirms_at 2026-02-13T16:41:10Z |\n| 2026-02-12 | bottube#74 | @juzigu40-ui | `juzigu40-ui` | 2 | Pending | 28 | `f3de2e31f0c0f2bbbbc4d24ee736be62` | Stars verified (BoTTube wallet); confirms_at 2026-02-13T16:34:10Z |\n| 2026-02-13 | rustchain-bounties#37 | @liu971227-sys | `liu971227-sys` | 25 | Pending | 59 | `44bc2006a8d14ad9e6cd1aa71fe0b263` | PR#147 merged; confirms_at 2026-02-14T19:51:07Z |\n| 2026-02-13 | rustchain-bounties#123 | @David-code-tang | `davidtang-codex` | 40 | Pending | 60 | `97b54984930cf1e336b67cb9f7fdd60b` | PR#115 merged; confirms_at 2026-02-14T20:06:45Z |\n| 2026-02-13 | rustchain-bounties#29 (Phase 1) | @liu971227-sys | `liu971227-sys` | 100 | Pending | 61 | `5391f1c57c1ffc178692bfa32e7042b5` | PR#148 merged; confirms_at 2026-02-14T20:18:15Z |\n| 2026-02-13 | rustchain-bounties#62 | @liu971227-sys | `liu971227-sys` | 150 | Pending | 62 | `b6e843b54d542afbe59bc814af40752d` | PR#155 merged; confirms_at 2026-02-14T20:25:13Z |\n\n---\n\n## Automation Block\n\n<!-- auto-triage-report:start -->\n### Auto-Triage Report (2026-03-04T06:42:40.053338Z)\nWindow: last `168`h\nRisk policy: `balanced`\n\n#### Suspicious Claims\n| User | Issue | Risk | Score | Reasons | Comment |\n|---|---|---|---:|---|---|\n| @Joshualover | Scottcjn/rustchain-bounties#157 | `medium` | 40 | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE | [link](https://github.com/Scottcjn/rustchain-bounties/issues/157#issuecomment-3988234476) |\n\n#### Scottcjn/rustchain-bounties#87\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @dannamax | `low` | 25 | `needs-action` | 14 | `openclaw_agent_20260302` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, missing_star:bottube | [link](https://github.com/Scottcjn/rustchain-bounties/issues/87#issuecomment-3984723890) |\n\n#### Scottcjn/Rustchain#47\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @Joshualover | `low` | 28 | `eligible` | 2731 | `joshualover-dev` | `` | CLAIM_VELOCITY, REPO_SPREAD |  | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3984014186) |\n| @skylovele | `low` | 25 | `eligible` | 2166 | `skylovele-wallet` | `` | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE |  | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3994737541) |\n| @dannamax | `low` | 25 | `needs-action` | 14 | `EfpcQw3JUmfiGQ7SPKYeW2Xk7hWQdeBgxWzwJyHpnjgz` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, wallet_external_format | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3957891529) |\n| @edisonlv | `low` | 25 | `needs-action` | 2281 | `` | `` | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE | missing_payout_target | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3993244925) |\n| @nicepopo86-lang | `low` | 25 | `needs-action` | 21 | `` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, missing_payout_target | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3983109391) |\n| @jeanmiliuiu-boop | `low` | 18 | `needs-action` | 176 | `0xd7C80bdf514dd0029e20e442E227872A63a91A2D` | `` | CLAIM_VELOCITY, REPO_SPREAD | wallet_external_format | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3976708930) |\n| @juzigu40-ui | `low` | 13 | `needs-action` | 79 | `RTC223918a74e0dd6970133ac903ad461c60c416e4b` | `` | CLAIM_VELOCITY, REPO_SPREAD | wallet_external_format | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3981052727) |\n| @AdnanMehr8 | `low` | 0 | `eligible` | 1206 | `RTC-agent-antigravity-9944` | `` |  |  | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3991340801) |\n| @RyanD66 | `low` | 0 | `eligible` | 991 | `lustsazeus-lab` | `` |  |  | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3986220701) |\n| @Fxmax-lab | `low` | 0 | `needs-action` | 267 | `` | `` |  | missing_payout_target | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3962748843) |\n| @Iceshen87 | `low` | 0 | `needs-action` | 3512 | `` | `` |  | missing_payout_target, missing_star:Rustchain | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3976754199) |\n| @KimberleyOCaseyfv | `low` | 0 | `needs-action` | 505 | `RTCfe213f0dada698f629a8627f4cd22db32c589458` | `` |  | wallet_external_format | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3973009994) |\n| @writsop | `low` | 0 | `needs-action` | 30 | `` | `` |  | missing_payout_target | [link](https://github.com/Scottcjn/Rustchain/issues/47#issuecomment-3978713731) |\n\n#### Scottcjn/bottube#74\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @jeanmiliuiu-boop | `low` | 30 | `needs-action` | 176 | `0xd7C80bdf514dd0029e20e442E227872A63a91A2D` | `` | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE | wallet_external_format, missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3976176767) |\n| @Joshualover | `low` | 28 | `needs-action` | 2731 | `joshualover-dev` | `` | CLAIM_VELOCITY, REPO_SPREAD | missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3982039492) |\n| @nicepopo86-lang | `low` | 25 | `needs-action` | 21 | `` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3980514599) |\n| @juzigu40-ui | `low` | 13 | `needs-action` | 79 | `RTC223918a74e0dd6970133ac903ad461c60c416e4b` | `` | CLAIM_VELOCITY, REPO_SPREAD | wallet_external_format, missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3982105009) |\n| @skylovele | `low` | 13 | `needs-action` | 2166 | `skylovele-wallet` | `` | CLAIM_VELOCITY, REPO_SPREAD | missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3994738406) |\n| @createkr | `low` | 8 | `needs-action` | 189 | `RTC1d48d848a5aa5ecf2c5f01aa5fb64837daaf2f35` | `` | CLAIM_VELOCITY | wallet_external_format, missing_bottube_username | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3959101574) |\n| @Fred-Zhang83 | `low` | 0 | `needs-action` | 1081 | `` | `` |  | missing_bottube_username, missing_star:bottube | [link](https://github.com/Scottcjn/bottube/issues/74#issuecomment-3959145517) |\n\n#### Scottcjn/rustchain-bounties#103\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @Joshualover | `low` | 28 | `needs-action` | 2731 | `joshualover-dev` | `` | CLAIM_VELOCITY, REPO_SPREAD | missing_bottube_username, missing_proof_link | [link](https://github.com/Scottcjn/rustchain-bounties/issues/103#issuecomment-3988148483) |\n\n#### Scottcjn/rustchain-bounties#157\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @Joshualover | `medium` | 40 | `eligible` | 2731 | `joshualover-dev` | `` | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE |  | [link](https://github.com/Scottcjn/rustchain-bounties/issues/157#issuecomment-3988234476) |\n| @jeanmiliuiu-boop | `low` | 30 | `needs-action` | 176 | `0xd7C80bdf514dd0029e20e442E227872A63a91A2D` | `` | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE | wallet_external_format | [link](https://github.com/Scottcjn/rustchain-bounties/issues/157#issuecomment-3976236613) |\n| @caohui-net | `low` | 0 | `eligible` | 1990 | `caohui-net` | `` |  |  | [link](https://github.com/Scottcjn/rustchain-bounties/issues/157#issuecomment-3989399654) |\n| @zhanglinqian | `low` | 0 | `needs-action` | 2465 | `BR3TzHGHWTA53Db6oHoRqes3eBnEkbjmsprTMUbvoJYs` | `` |  | wallet_external_format | [link](https://github.com/Scottcjn/rustchain-bounties/issues/157#issuecomment-3975722042) |\n\n#### Scottcjn/rustchain-bounties#158\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @godong0128 | `low` | 12 | `needs-action` | 28 | `` | `` | ACCOUNT_AGE | account_age<30, missing_wallet | [link](https://github.com/Scottcjn/rustchain-bounties/issues/158#issuecomment-3982978197) |\n\n#### Scottcjn/bottube#122\n| User | Risk | Score | Status | Age(d) | Wallet | BoTTube | Reasons | Blockers | Comment |\n|---|---|---:|---|---:|---|---|---|---|---|\n| @Joshualover | `low` | 28 | `needs-action` | 2731 | `joshualover-dev` | `joshualover-dev` | CLAIM_VELOCITY, REPO_SPREAD | missing_proof_link | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3983924774) |\n| @edisonlv | `low` | 25 | `needs-action` | 2281 | `` | `` | CLAIM_VELOCITY, REPO_SPREAD, PROOF_DUPLICATE | missing_wallet | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3993802215) |\n| @nicepopo86-lang | `low` | 25 | `needs-action` | 21 | `` | `` | ACCOUNT_AGE, CLAIM_VELOCITY, REPO_SPREAD | account_age<30, missing_wallet | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3983111571) |\n| @skylovele | `low` | 13 | `needs-action` | 2166 | `skylovele-wallet` | `` | CLAIM_VELOCITY, REPO_SPREAD | missing_proof_link | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3994738135) |\n| @createkr | `low` | 8 | `needs-action` | 189 | `RTC1d48d848a5aa5ecf2c5f01aa5fb64837daaf2f35` | `` | CLAIM_VELOCITY | wallet_external_format, missing_proof_link | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3959099596) |\n| @chienvon | `low` | 0 | `needs-action` | 357 | `RTCa3fffc3c4cc772a5288d63bd116052825fcaa997` | `` |  | wallet_external_format, missing_proof_link | [link](https://github.com/Scottcjn/bottube/issues/122#issuecomment-3979336507) |\n<!-- auto-triage-report:end -->",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/104",
       "labels": [
         "bounty",
