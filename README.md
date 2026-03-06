@@ -1,5 +1,8 @@
 # RustChain Bounty Concierge
 
+[![BCOS Certified](https://img.shields.io/badge/BCOS-Certified-brightgreen?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik05IDE2LjE3TDQuODMgMTJsLTEuNDIgMS40MUw5IDE5IDIxIDdsLTEuNDEtMS40MXoiLz48L3N2Zz4=)](https://github.com/Scottcjn/Rustchain/blob/main/BCOS.md)
+
+
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![GitHub Stars](https://img.shields.io/github/stars/Scottcjn/bounty-concierge?style=social)
 ![Open Bounties](https://img.shields.io/github/issues-raw/Scottcjn/rustchain-bounties?label=open%20bounties&color=brightgreen)
