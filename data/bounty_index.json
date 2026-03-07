@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-06T07:02:11.390707+00:00",
+  "updated_at": "2026-03-07T06:54:12.955685+00:00",
   "total_count": 183,
   "bounties": [
     {
@@ -38,24 +38,6 @@
       "skills": [
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 400,
-      "title": "[SEASON 1] Harden the Forge \u2014 Security Season (750 RTC Pool, 6 Weeks)",
-      "body": "## Season 1: Harden the Forge\n\n**Duration**: Feb 22 - Apr 5, 2026 (6 weeks)\n**Theme**: Security hardening, edge case discovery, attack surface reduction\n**Total Pool**: 750 RTC\n**Leaderboard**: Updated weekly in this issue\n\n---\n\n### Season Bounties\n\n| Issue | Challenge | Reward | Difficulty |\n|-------|-----------|--------|-----------|\n| [#54](https://github.com/Scottcjn/Rustchain/issues/54) | Ledger Integrity Audit | 200 RTC | Hard |\n| [#56](https://github.com/Scottcjn/Rustchain/issues/56) | Epoch Settlement Testing | 150 RTC | Hard |\n| [#57](https://github.com/Scottcjn/Rustchain/issues/57) | API Auth Hardening | 100 RTC | Medium |\n| [#58](https://github.com/Scottcjn/Rustchain/issues/58) | Consensus Attack Vectors | 200 RTC | Hard |\n| [#59](https://github.com/Scottcjn/Rustchain/issues/59) | Pending Transfer Edge Cases | 150 RTC | Medium |\n| [#60](https://github.com/Scottcjn/Rustchain/issues/60) | Ergo Anchor Integrity | 100 RTC | Medium |\n| [#398](#398) | Security Quest Chain | 100 RTC | Progressive |\n\n### Plus: Any NEW vulnerability discovered during the season earns bonus RTC on top of the standard bounty.\n\n---\n\n### Season Leaderboard\n\n| Rank | Contributor | RTC Earned | Contributions |\n|------|------------|-----------|---------------|\n| - | *Season just started!* | - | - |\n\n*Updated every Saturday. Top contributor at season end gets a **250 RTC Grand Prize** bonus.*\n\n---\n\n### How to Participate\n\n1. Pick a bounty from the table above\n2. Comment on that issue to claim it (first-come, first-served for 2 weeks, then opens up)\n3. Submit your PR or report\n4. Earn RTC + climb the Contributor Ladder\n\n### Season Rules\n\n- **Quality over speed** \u2014 thorough work earns more than rushed submissions\n- **Partial credit available** \u2014 if you find something valuable but don't complete the full bounty, you still earn proportional RTC\n- **Collaboration encouraged** \u2014 teams can split bounties (declare upfront)\n- **All merged PRs from this season count toward your Contributor Ladder tier**\n\n---\n\n### Upcoming Seasons\n\n| Season | Theme | Pool | When |\n|--------|-------|------|------|\n| **1 (NOW)** | **Harden the Forge** (Security) | **750 RTC** | **Feb-Apr 2026** |\n| 2 | Expand the Mine (Architecture Ports) | 500 RTC | Apr-Jun 2026 |\n| 3 | Map the Tunnels (Docs & Tooling) | 300 RTC | Jun-Aug 2026 |\n| 4 | Bridge the Chains (DEX & Integration) | 750 RTC | Aug-Oct 2026 |\n\n---\n\n*Seasons give focus. Instead of 50 scattered bounties, we concentrate community energy on one theme at a time. This is how we build a secure, battle-tested blockchain.*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/400",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-22T15:26:17Z",
-      "reward_rtc": 750.0,
-      "difficulty": "critical",
-      "skills": [
-        "documentation",
-        "rust",
-        "security"
       ]
     },
     {
@@ -173,6 +155,28 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 734,
+      "title": "[BOUNTY: 75-200 RTC] Native Rust Miner for RustChain \u2014 Full RIP-PoA Fingerprinting",
+      "body": "## Build a Native Rust Miner for RustChain\n\n### The Bounty\n\nPort the Python miner (`rustchain_linux_miner.py` + `fingerprint_checks.py`) to native Rust with full RIP-PoA hardware fingerprinting.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| **Basic Rust miner** \u2014 attestation loop, device detection, balance check | **75 RTC** |\n| **Full fingerprint checks** \u2014 all 6 RIP-PoA checks in Rust | **+50 RTC** |\n| Published on **crates.io** as installable binary | **+10 RTC** |\n| **Cross-compiled** for x86_64 + aarch64 + ppc64 (PowerPC) | **+25 RTC** |\n| **PowerPC native** \u2014 compiles and runs on G4/G5 Macs | **+40 RTC** |\n\n**Total possible: 200 RTC**\n\n### Core Features (Required for 75 RTC)\n\n```\nrustchain-miner --wallet my-wallet-name         # Start mining\nrustchain-miner --wallet my-wallet --node https://50.28.86.131\nrustchain-miner --dry-run                       # Show attestation payload without submitting\nrustchain-miner --show-payload                  # Print exact JSON being sent\nrustchain-miner --test-only                     # Run fingerprint tests only\n```\n\n**Mining loop:**\n1. Detect hardware (CPU model, architecture, family)\n2. Run fingerprint checks (clock drift, cache timing, SIMD, thermal, jitter, anti-emulation)\n3. Build attestation payload\n4. Submit to `/attest/submit` endpoint\n5. Wait for epoch (600 second intervals)\n6. Check balance periodically\n7. Repeat\n\n### Hardware Detection\n\nMust detect and report:\n\n| Field | Source | Example |\n|-------|--------|---------|\n| `device_family` | CPU architecture | `PowerPC`, `x86_64`, `ARM` |\n| `device_arch` | Specific generation | `g4`, `g5`, `apple_silicon`, `modern` |\n| `device_model` | CPU brand string | `PowerPC G4 (7450)`, `AMD Ryzen 5 8645HS` |\n| `cpu_serial` | Hardware ID | From `/proc/cpuinfo` or platform-specific |\n\n**Architecture detection rules:**\n- PowerPC 7450/7447/7455 \u2192 `g4` (2.5x multiplier)\n- PowerPC 970 \u2192 `g5` (2.0x multiplier)\n- PowerPC 750 \u2192 `g3` (1.8x multiplier)\n- Apple M1/M2/M3 \u2192 `apple_silicon` (1.2x)\n- `Core 2` in brand \u2192 `core2duo` (1.3x)\n- Everything else \u2192 `modern` (1.0x)\n\n### RIP-PoA Fingerprint Checks (Required for +50 RTC bonus)\n\nAll 6 checks must be implemented in Rust:\n\n| # | Check | What It Measures |\n|---|-------|-----------------|\n| 1 | **Clock-Skew & Oscillator Drift** | Timing variance from `rdtsc`/`mftb` (500-5000 samples) |\n| 2 | **Cache Timing Fingerprint** | L1/L2/L3 latency sweep across buffer sizes |\n| 3 | **SIMD Unit Identity** | SSE/AVX/AltiVec/NEON instruction timing bias |\n| 4 | **Thermal Drift Entropy** | Entropy quality across thermal states |\n| 5 | **Instruction Path Jitter** | Cycle-level jitter across integer/FP/branch units |\n| 6 | **Anti-Emulation** | VM/hypervisor detection (QEMU, VMware, VirtualBox, KVM, Xen) |\n\n**Anti-emulation checks (critical):**\n- `/sys/class/dmi/id/sys_vendor` contains qemu/vmware/virtualbox\n- `/proc/cpuinfo` has `hypervisor` flag\n- `/proc/scsi/scsi` contains virtual disk vendors\n- Uniform timing distribution (real hardware has variance)\n\n### Attestation Payload Format\n\n```json\n{\n  \"miner\": \"my-wallet-name\",\n  \"miner_id\": \"my-wallet-name\",\n  \"nonce\": \"random_hex_32\",\n  \"report\": {\n    \"cpu_model\": \"AMD Ryzen 5 8645HS\",\n    \"cpu_cores\": 6,\n    \"ram_gb\": 32,\n    \"os\": \"Linux 6.17.0\"\n  },\n  \"device\": {\n    \"device_family\": \"x86_64\",\n    \"device_arch\": \"modern\",\n    \"device_model\": \"AMD Ryzen 5 8645HS\"\n  },\n  \"signals\": {\n    \"macs\": [\"aa:bb:cc:dd:ee:ff\"],\n    \"uptime\": 86400\n  },\n  \"fingerprint\": {\n    \"all_passed\": true,\n    \"checks\": {\n      \"clock_drift\": {\"passed\": true, \"data\": {\"cv\": 0.092, \"samples\": 1000}},\n      \"cache_timing\": {\"passed\": true, \"data\": {}},\n      \"simd_identity\": {\"passed\": true, \"data\": {}},\n      \"thermal_drift\": {\"passed\": true, \"data\": {}},\n      \"instruction_jitter\": {\"passed\": true, \"data\": {}},\n      \"anti_emulation\": {\"passed\": true, \"data\": {\"vm_indicators\": []}}\n    }\n  }\n}\n```\n\n### API Endpoints\n\n```\nPOST /attest/submit              # Submit attestation (JSON body above)\nGET  /wallet/balance?miner_id=X  # Check balance\nGET  /epoch                      # Current epoch info\nGET  /health                     # Node health check\n```\n\nNode URL: `https://50.28.86.131` (self-signed cert)\n\n### Recommended Rust Crates\n\n| Purpose | Crate |\n|---------|-------|\n| HTTP client | `reqwest` (with `rustls` for TLS) |\n| JSON | `serde` + `serde_json` |\n| CLI args | `clap` |\n| Timing | `std::time::Instant`, inline asm for `rdtsc`/`mftb` |\n| System info | `sysinfo` |\n| MAC addresses | `mac_address` |\n| Hex encoding | `hex` |\n| Random | `rand` |\n\n### Why a Rust Miner Matters\n\n- **Single binary** \u2014 download and run, no Python/pip/venv setup\n- **Lower overhead** \u2014 Rust miner uses less CPU/RAM than Python\n- **PowerPC native** \u2014 can compile directly on G4/G5 Macs (no Python 3.9+ needed)\n- **Inline assembly** \u2014 direct `rdtsc`/`mftb`/`mfspr` for precise fingerprinting\n- **Cross-compile** \u2014 build for ARM, RISC-V, MIPS from one codebase\n- **Security** \u2014 memory-safe crypto and network code\n\n### The PowerPC Bonus (40 RTC)\n\nIf your miner compiles and runs natively on PowerPC (G4/G5 Mac OS X or Linux):\n- Must handle big-endian correctly\n- Must use `mftb` (Move From Time Base) instead of `rdtsc` for timing\n- Must detect AltiVec/VMX for SIMD fingerprint\n- Test on real hardware or provide cross-compilation proof\n\nThis is the hardest milestone but also the most valuable \u2014 a native Rust miner on vintage PowerPC is the dream.\n\n### How to Claim\n\n1. Publish code on GitHub\n2. Comment here with repo link + your RTC wallet\n3. Milestone payments as features are verified:\n   - Basic attestation loop \u2192 75 RTC\n   - Fingerprint checks \u2192 +50 RTC\n   - crates.io \u2192 +10 RTC\n   - Cross-compile \u2192 +25 RTC\n   - PowerPC native \u2192 +40 RTC\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/734",
+      "labels": [
+        "bounty",
+        "major",
+        "rust",
+        "development"
+      ],
+      "created_at": "2026-03-07T01:09:01Z",
+      "reward_rtc": 200.0,
+      "difficulty": "major",
+      "skills": [
+        "javascript",
+        "python",
+        "rust",
+        "security"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 681,
       "title": "\ud83c\udfc6 March Madness: Multi-Platform Engagement Challenge (Up to 200 RTC!)",
       "body": "# \ud83c\udfc6 March Madness \u2014 Multi-Platform Engagement Challenge\n\n**Earn bonus RTC by engaging across MULTIPLE platforms!** The more platforms you hit, the bigger the multiplier.\n\n## \ud83d\udcca Platform Actions (Pick & Choose)\n\n| Platform | Action | Base Points |\n|----------|--------|-------------|\n| **GitHub** | Star 20+ repos + follow | 50 pts |\n| **GitHub** | Open a useful PR (merged) | 30 pts |\n| **GitHub** | File a quality issue/bug report | 10 pts |\n| **Moltbook** | Post about RustChain on moltbook.com | 15 pts |\n| **Dev.to** | Publish article about RustChain | 25 pts |\n| **4claw** | Post on 4claw.org about RustChain | 15 pts |\n| **Reddit** | Post in relevant subreddit | 15 pts |\n| **Twitter/X** | Tweet about @RustchainPOA | 10 pts |\n| **Blog** | Write a blog post about RustChain | 25 pts |\n| **SaaSCity** | Upvote RustChain listing | 10 pts |\n| **YouTube** | Create a video about RustChain | 40 pts |\n| **BoTTube** | Upload a RustChain-related video | 20 pts |\n\n## \ud83c\udfaf Platform Multipliers\n\n| Platforms Hit | Multiplier | Example |\n|---------------|------------|---------|\n| 1 platform | 1.0x | 50 pts x 1.0 = 50 RTC |\n| 2 platforms | 1.2x | 65 pts x 1.2 = 78 RTC |\n| 3 platforms | 1.5x | 80 pts x 1.5 = 120 RTC |\n| 4+ platforms | 2.0x | 100 pts x 2.0 = **200 RTC** |\n\n## \ud83c\udfc5 Tier Achievements\n\n| Tier | Points Required | Badge |\n|------|----------------|-------|\n| Bronze | 25+ pts | \ud83e\udd49 RustChain Ambassador |\n| Silver | 50+ pts | \ud83e\udd48 RustChain Evangelist |\n| Gold | 100+ pts | \ud83e\udd47 RustChain Champion |\n| Diamond | 150+ pts | \ud83d\udc8e RustChain Legend |\n\n## \ud83d\udccb How to Claim\nComment below with:\n1. Your **RTC wallet address** or preferred wallet name\n2. **Links to all your contributions** (screenshots for social media)\n3. **Platforms used** (for multiplier calculation)\n\n## \ud83d\udca1 Content Ideas\n- \"How I earned crypto by starring GitHub repos\"\n- \"RustChain: The blockchain that rewards vintage hardware\"\n- \"Mining cryptocurrency on a PowerPC G4 from 2003\"\n- \"What is Proof-of-Antiquity? RustChain's unique consensus\"\n\n## \u26a0\ufe0f Rules\n- Quality content only \u2014 spam gets 0 RTC\n- Each platform action counted once per person\n- Campaign runs **March 5 - March 19, 2026** (2 weeks)\n- Max payout: 200 RTC per person\n\n## \ud83d\udcb0 Funding\nPaid from `founder_community` wallet\n\n---\n*RTC Reference Rate: 1 RTC = $0.10 USD*",
@@ -207,47 +211,6 @@
       "skills": [
         "python",
         "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 402,
-      "title": "[GRANTS] RustChain Micro-Grants \u2014 Build Your Own Thing (100-200 RTC)",
-      "body": "## RustChain Micro-Grants\n\n**Not a bounty \u2014 a grant.** Bounties solve OUR problems. Grants fund YOUR ideas.\n\nPropose a project that uses, extends, or promotes RustChain. If approved, you get funding to build it.\n\n---\n\n### Grant Tiers\n\n| Tier | Amount | Scope |\n|------|--------|-------|\n| **Builder** | 100 RTC | Tool, integration, or app using RustChain |\n| **Researcher** | 150 RTC | Paper or analysis of RustChain consensus/tokenomics/security |\n| **Pioneer** | 200 RTC | Port the miner to a new architecture (RISC-V, MIPS, s390x, etc.) |\n\n### How to Apply\n\nComment on this issue with a 1-page proposal:\n\n\\`\\`\\`\n## Grant Proposal\n\n**Title**: Your project name\n**Tier**: Builder / Researcher / Pioneer\n**What**: What you want to build (2-3 sentences)\n**Why**: Why it matters for RustChain (2-3 sentences)\n**How**: Your approach and tech stack\n**Timeline**: Expected completion (2-8 weeks)\n**Deliverable**: What you'll deliver (code, paper, demo, etc.)\n**RTC Wallet**: your-wallet-name\n\\`\\`\\`\n\n### Review Process\n\n- Proposals reviewed within 1 week\n- Community can comment and vote (thumbs up/down)\n- Maintainers make final decision\n- 50% paid upfront, 50% on completion\n\n### What We're Excited About\n\n- RustChain block explorer improvements\n- Mobile wallet app\n- Miner dashboard / monitoring tool\n- RustChain SDKs in new languages (Rust, Go, JavaScript)\n- Academic analysis of Proof-of-Antiquity consensus\n- Miner ports to exotic hardware (SPARC, MIPS, Haiku OS, etc.)\n- RTC payment integrations for existing apps\n- Educational content series\n\n### What We Won't Fund\n\n- Vaporware proposals with no clear deliverable\n- Projects that require us to change our core consensus\n- \"I'll build a DEX\" with no exchange development experience\n- Anything that already exists and just needs to be forked\n\n---\n\n### Funded Projects\n\n| # | Builder | Project | Grant | Status |\n|---|---------|---------|-------|--------|\n| *Applications open!* | | | | |\n\n---\n\n*The best open source projects are the ones the community builds without being asked. We just want to make it easier.*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/402",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-22T15:26:50Z",
-      "reward_rtc": 200.0,
-      "difficulty": "critical",
-      "skills": [
-        "javascript",
-        "rust",
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 252,
-      "title": "[BOUNTY] GitHub Engagement Sprint \u2014 Stars, Follows, Forks (Pool: 200 RTC)",
-      "body": "## GitHub Engagement Sprint \u2014 Earn Up to 9 RTC\n\n**Pool: 200 RTC**\n\n### Earn RTC for GitHub activity:\n\n| Action | Reward |\n|--------|--------|\n| \u2b50 Star [Rustchain](https://github.com/Scottcjn/Rustchain) | 2 RTC |\n| \u2b50 Star [BoTTube](https://github.com/Scottcjn/bottube) | 2 RTC |\n| \ud83d\udc64 Follow [@Scottcjn](https://github.com/Scottcjn) | 2.5 RTC |\n| \ud83d\udc64 Follow [@sophiaeagent-beep](https://github.com/sophiaeagent-beep) | 2.5 RTC |\n| **All 4 = 9 RTC total** | |\n\n### How To Claim\nReply with:\n1. Your **GitHub username**\n2. Which actions you completed (star/follow)\n3. Your **RTC wallet name**\n\nWe verify via GitHub API and pay within 24 hours.\n\n### Rules\n- Real accounts only (must have some repos or activity)\n- Stars and follows must stay active\n- One claim per person\n\n### Why We Need Stars\nWe're at **39 stars on Rustchain** and **32 on BoTTube** \u2014 we need **100 each** to get listed on **awesome-nodejs**. Help us get there!\n\n> Start mining: `pip install clawrtc && clawrtc --wallet your-name`",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/252",
-      "labels": [
-        "bounty",
-        "open",
-        "micro",
-        "propagation",
-        "community"
-      ],
-      "created_at": "2026-02-17T00:22:13Z",
-      "reward_rtc": 200.0,
-      "difficulty": "micro",
-      "skills": [
-        "javascript",
-        "python",
-        "rust",
-        "social-media"
       ]
     },
     {
@@ -287,6 +250,46 @@
       "skills": [
         "javascript",
         "python",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 695,
+      "title": "[BOUNTY: 75-150 RTC] OTC Bridge \u2014 Build a Simple RTC Swap Page",
+      "body": "## OTC Bridge \u2014 Build a Simple RTC-to-ETH (or ERG) Swap Page\n\n**Reward: 75-150 RTC depending on tier**\n\n### The Missing Piece\n\nRTC has 282 wallets, 544 RTC in agent economy volume, 18 active miners. But there's no way to swap RTC for anything else. An OTC bridge changes everything \u2014 it creates real price discovery and gives every wallet holder a reason to care about their balance.\n\n### What We Need\n\nA simple web page (or CLI tool) where:\n1. **Seller** lists RTC for sale at a price (e.g., \"selling 100 RTC at $0.10 each\")\n2. **Buyer** sends ETH/ERG/USDC to an escrow address\n3. **Escrow** holds both sides until confirmed\n4. **Settlement** releases RTC to buyer, ETH to seller\n\n### Tiers\n\n| Tier | Deliverable | Reward |\n|------|------------|--------|\n| **Tier 1: Manual OTC Board** | Simple listing page \u2014 users post buy/sell offers, settle peer-to-peer with trust or manual escrow | **75 RTC** |\n| **Tier 2: Escrow OTC** | Automated escrow \u2014 RTC locked on-chain via `/agent/jobs` escrow, ETH side via smart contract or multisig | **150 RTC** |\n\n### Tier 1 Requirements (75 RTC)\n\n- Web page showing open buy/sell orders\n- POST endpoint to create an order (wallet, amount, price, direction)\n- Match display (shows when buy meets sell)\n- Contact/settlement instructions\n- Can use RustChain's existing `/wallet/transfer/signed` for the RTC side\n- Hosted or self-hostable (static HTML + API calls is fine)\n\n### Tier 2 Requirements (150 RTC)\n\nEverything in Tier 1, plus:\n- RTC side uses RIP-302 escrow (`/agent/jobs` with escrow lock)\n- ETH/ERG side has some form of escrow (smart contract, multisig, or trusted relay)\n- Atomic or near-atomic settlement\n- Transaction history / audit trail\n- Rate limiting and basic abuse prevention\n\n### Supported Pairs\n\n| Pair | Notes |\n|------|-------|\n| RTC/ETH | Most useful \u2014 ETH is universal |\n| RTC/ERG | Native \u2014 we already have an Ergo private chain |\n| RTC/USDC | Stablecoin \u2014 cleanest for pricing |\n| RTC/BTC | Lightning or on-chain |\n\n### Technical Resources\n\n- **RTC transfers**: `POST /wallet/transfer/signed` (Ed25519 signatures)\n- **RTC escrow**: `POST /agent/jobs` (locks RTC in escrow, releases on acceptance)\n- **RTC balances**: `GET /wallet/balance?miner_id=WALLET`\n- **Ergo chain**: Private chain at 50.28.86.131:9053 (zero-fee TXs)\n- **Python SDK**: `pip install rustchain-sdk` (just merged PR #608)\n- **Java SDK**: Just merged PR #613\n\n### Why This Matters\n\nRTC at $0.10 reference rate with 8.3M total supply = $830K fully diluted. But that's just a reference. An OTC bridge creates REAL price discovery \u2014 what will people actually pay? Even 10 trades at $0.10 validates the entire token model.\n\n### To Claim\n\n1. Comment below claiming Tier 1 or Tier 2\n2. Submit a PR with your implementation\n3. Demo it working with a real RTC transfer\n4. Get paid on merge\n\n**Reference rate: 1 RTC = $0.10 USD**\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/695",
+      "labels": [
+        "bounty",
+        "standard",
+        "critical",
+        "defi"
+      ],
+      "created_at": "2026-03-06T14:27:23Z",
+      "reward_rtc": 150.0,
+      "difficulty": "critical",
+      "skills": [
+        "python",
+        "rust",
+        "security"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 691,
+      "title": "[BOUNTY: 1.5-150 RTC] Tip-to-Earn \u2014 Tip Up to 10 Creators, Get 1.5x Back",
+      "body": "## Tip-to-Earn: Support Creators, Get 1.5x Back\n\n**Reward: Up to 15 RTC per tip (1.5x your tip, capped at 10 RTC per tip) \u2014 up to 10 creators**\n\n### How it works\n\n1. Find creators on [BoTTube](https://bottube.ai) or any RustChain-integrated platform\n2. Tip them RTC from your wallet (minimum 1 RTC, maximum 10 RTC per tip)\n3. Post proof here: your wallet, the creator's wallet, and the transaction hash\n4. We verify the tips went through on-chain\n5. You receive **1.5x your tip amount** back from founder_community\n\n### Example\n\n| You Tip | Per Creator | You Get Back | Net Gain |\n|---------|------------|-------------|----------|\n| 1 RTC | 1 creator | 1.5 RTC | +0.5 RTC |\n| 5 RTC | 1 creator | 7.5 RTC | +2.5 RTC |\n| 10 RTC | 1 creator | 15 RTC | +5.0 RTC |\n| 10 RTC | 10 creators | 150 RTC | +50 RTC (max) |\n\n### Rules\n\n- **Cap: 10 RTC per tip, up to 10 different creators** (150 RTC max total payout)\n- Each creator can only be tipped once per claimant\n- You must have an existing RTC wallet with sufficient balance\n- Self-tipping (tipping your own wallet) = instant disqualification\n- Each creator must be a real account with content (not an empty shell)\n- Tips to 10 different creators shows you actually explored the platform\n\n### Why?\n\nWe want to kickstart the creator economy. Tipping proves the payment rails work and rewards both the tipper and the creator. The creator keeps the full tip. You get rewarded for being an early adopter of RTC payments. Tipping multiple creators spreads wealth across the ecosystem.\n\n### To Claim\n\nComment below with:\n- Your wallet name/address\n- For each tip:\n  - Creator wallet you tipped\n  - Amount tipped\n  - Transaction hash or pending ID\n- Total tips sent\n\n**Reference rate: 1 RTC = $0.10 USD**\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/691",
+      "labels": [
+        "bounty",
+        "micro",
+        "community"
+      ],
+      "created_at": "2026-03-06T14:01:18Z",
+      "reward_rtc": 150.0,
+      "difficulty": "micro",
+      "skills": [
         "rust",
         "social-media"
       ]
@@ -455,26 +458,6 @@
         "javascript",
         "python",
         "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 321,
-      "title": "[BOUNTY] Beacon Dashboard v1.1 \u2014 Filters, Exports, Alerts (120-150 RTC)",
-      "body": "## Objective\nShip Beacon dashboard v1.1 as a polished operator UI for live transport traffic.\n\n## Scope\n- Improve `beacon dashboard` TUI UX:\n  - transport health panel\n  - per-transport counters + top-agent stats\n  - filter/search input\n- Add optional export (CSV/JSON snapshot from current view).\n- Add optional sound alerts for `mayday` and high-value tips.\n- Add tests for dashboard helper functions and parser behavior.\n\n## Acceptance Criteria\n- Dashboard launches via `beacon dashboard` and remains stable for long-running sessions.\n- Export works and writes valid files.\n- Filter/search behavior is documented and reproducible.\n- CI passes with no lint/test regressions.\n\n## Reward\n- Base: **120 RTC**\n- Bonus: **+30 RTC** for snapshot export + docs/video proof.\n\n## Labels\n`bounty`, `feature`, `visualization`, `major`, `open`\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/321",
-      "labels": [
-        "bounty",
-        "open",
-        "major",
-        "feature",
-        "visualization"
-      ],
-      "created_at": "2026-02-19T01:44:43Z",
-      "reward_rtc": 150.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation"
       ]
     },
     {
@@ -684,26 +667,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 320,
-      "title": "[BOUNTY] Beacon Discord Transport Hardening + Listener Mode (80-120 RTC)",
-      "body": "## Objective\nHarden and complete Beacon Discord transport after the initial v2.12.0 merge.\n\n## Scope\n- Improve `beacon discord ping/send` error handling and retries for Discord rate limits.\n- Add optional lightweight listener mode (poll/read path) for Discord transport events.\n- Add transport-level tests for:\n  - 429 handling\n  - webhook 4xx/5xx parsing\n  - dry-run payload shape\n- Add docs section with setup + troubleshooting.\n\n## Acceptance Criteria\n- `beacon discord ping` and `beacon discord send` are reliable under transient failures.\n- New tests pass in CI and cover rate-limit/error branches.\n- README has copy/paste setup and expected output examples.\n- No regression to existing transports.\n\n## Reward\n- Base: **80 RTC**\n- Bonus: **+40 RTC** for robust listener mode with docs + tests.\n\n## Labels\n`bounty`, `integration`, `feature`, `major`, `open`\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/320",
-      "labels": [
-        "bounty",
-        "open",
-        "major",
-        "integration",
-        "feature"
-      ],
-      "created_at": "2026-02-19T01:44:42Z",
-      "reward_rtc": 120.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 474,
       "title": "[BOUNTY] Epoch Determinism Simulator + Cross-Node Replay (113 RTC)",
       "body": "## Bounty: Epoch Determinism Simulator + Cross-Node Replay\n\n**Reward:** 113 RTC (reduced 25%)\n**Category:** Consensus hardening / settlement reliability\n\n## Objective\nBuild a deterministic replay harness that proves epoch settlement outputs are identical across nodes for identical inputs.\n\n## Why this matters\nIf two nodes process the same epoch input and produce different reward allocations, we can get settlement drift, trust loss, and payout disputes.\n\n## Scope\n- Build a replay tool that accepts an epoch fixture input (attestations/enrollments/multipliers/config).\n- Run replay against at least 2 node environments (or 2 deterministic code-path runs).\n- Compare outputs and produce a human-readable + machine-readable diff report.\n- Include a CI-friendly mode for regression checking.\n\n## Deliverables\n1. Replay CLI/tooling with documented usage.\n2. Fixture format spec + at least 3 fixtures:\n   - normal epoch\n   - sparse epoch\n   - edge-case epoch (boundary timing / missing fallback data)\n3. Determinism report output (JSON + markdown summary).\n4. Tests for mismatch detection and deterministic pass.\n5. README with reproduction steps.\n\n## Acceptance Criteria\n- Same fixture replayed across both targets yields byte-equivalent normalized payout output.\n- Tool exits non-zero on mismatch and prints per-miner diff.\n- Handles `epoch_enroll` primary path and `miner_attest_recent` fallback path.\n- Includes at least one intentionally-divergent fixture test proving mismatch detection works.\n- Works in a clean checkout with documented one-command run.\n\n## Anti-Farming Guardrails\n- No docs-only submission accepted.\n- Must include executable replay code + passing tests.\n- Must include real diff artifact examples.\n\n## Submission Format\n- PR link\n- sample replay command(s)\n- determinism output snippet\n- wallet/miner ID for payout\n\n## Payout\n- 40% on accepted deterministic replay framework\n- 60% on full fixture/test suite + CI-ready validation\n## Claim Window Rule\n\n- A claim is tentative until the claimant posts a concrete implementation plan and ETA.\n- A claim expires if no PR (or draft PR with meaningful code) is opened within **72 hours** of the claim comment.\n- Maintainers may release a claim early for inactivity, low-signal progress, or duplicated/low-quality work.",
@@ -720,6 +683,51 @@
         "documentation",
         "javascript",
         "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 733,
+      "title": "[BOUNTY: 50-100 RTC] Native Rust Wallet for RustChain \u2014 CLI + crates.io",
+      "body": "## Build a Native Rust Wallet for RustChain\n\n### The Bounty\n\nPort our Python wallet (`rustchain_crypto.py` + `rustchain_wallet_gui.py`) to native Rust. CLI first, GUI optional.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| **Rust CLI wallet** \u2014 create, import, send, receive, balance | **50 RTC** |\n| Published on **crates.io** as installable binary | **+10 RTC** |\n| **TUI interface** (ratatui or similar) | **+15 RTC** |\n| **Cross-compiled binaries** for Linux x86_64 + aarch64 + ppc64 | **+25 RTC** |\n\n**Total possible: 100 RTC**\n\n### Core Features (Required for 50 RTC)\n\n```\nrustchain-wallet create                          # Generate BIP39 seed + Ed25519 keypair\nrustchain-wallet import --seed \"24 words...\"     # Restore from seed phrase\nrustchain-wallet import --key <hex_privkey>      # Import raw private key\nrustchain-wallet balance                         # Query node for RTC balance\nrustchain-wallet send <to_address> <amount> [memo]  # Sign + submit transfer\nrustchain-wallet history                         # Recent transactions\nrustchain-wallet export --encrypted              # Export keystore (AES-256-GCM)\nrustchain-wallet list                            # List all wallets\n```\n\n### Cryptographic Spec\n\nMust match the existing Python implementation exactly (interoperable wallets):\n\n| Component | Spec | Rust Crate |\n|-----------|------|------------|\n| Key generation | Ed25519 | `ed25519-dalek` |\n| Seed phrases | BIP39 (24 words, English) | `bip39` |\n| Key derivation | PBKDF2-SHA256, 100,000 iterations | `pbkdf2` + `sha2` |\n| Keystore encryption | AES-256-GCM | `aes-gcm` |\n| Address format | `RTC` + SHA256(pubkey_bytes)[:40] hex | `sha2` |\n| Signature format | 128-char hex Ed25519 signature | `ed25519-dalek` |\n\n### API Endpoints Used\n\n```\nGET  /wallet/balance?miner_id={wallet_id}    # Check balance\nPOST /wallet/transfer/signed                  # Signed transfer\n{\n  \"from_address\": \"RTCa1b2c3d4...\",\n  \"to_address\": \"RTC9876543210...\",\n  \"amount_rtc\": 100.5,\n  \"memo\": \"Payment\",\n  \"nonce\": 1733420000000,\n  \"signature\": \"hex_ed25519_sig_128chars\",\n  \"public_key\": \"hex_pubkey_64chars\"\n}\n\nGET  /ledger/history?miner_id={wallet_id}    # Transaction history\n```\n\nDefault node: `https://50.28.86.131` (self-signed cert \u2014 use `--danger-accept-invalid-certs` or similar)\n\n### Keystore Format (Must Match Python)\n\n```json\n{\n  \"version\": 1,\n  \"address\": \"RTCa1b2c3d4...\",\n  \"public_key\": \"0123456789abcdef...\",\n  \"salt\": \"base64...\",\n  \"nonce\": \"base64...\",\n  \"ciphertext\": \"base64...\",\n  \"created\": \"2025-12-05T...\"\n}\n```\n\nKeystores stored in `~/.rustchain/wallets/`\n\n### Why Rust?\n\n- **Single binary** \u2014 no Python runtime, no pip, no venv\n- **Cross-platform** \u2014 compile for Linux, macOS, Windows, PowerPC, ARM\n- **Fast** \u2014 Ed25519 signing in microseconds\n- **Memory safe** \u2014 no buffer overflows in crypto code\n- **crates.io** \u2014 discoverable by the entire Rust ecosystem\n\n### Testing\n\nYour wallet must pass interop tests:\n1. Generate wallet in Rust \u2192 import seed in Python \u2192 same address\n2. Sign transaction in Rust \u2192 verify in Python \u2192 valid\n3. Export keystore in Rust \u2192 import in Python \u2192 works\n4. Export keystore in Python \u2192 import in Rust \u2192 works\n\n### How to Claim\n\n1. Publish code on GitHub\n2. Comment here with repo link + your RTC wallet\n3. We'll test interop with the Python wallet\n4. Milestone payments as features are verified\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/733",
+      "labels": [
+        "bounty",
+        "major",
+        "rust",
+        "development"
+      ],
+      "created_at": "2026-03-07T01:09:00Z",
+      "reward_rtc": 100.0,
+      "difficulty": "major",
+      "skills": [
+        "javascript",
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 730,
+      "title": "[BOUNTY: 40-100 RTC] RustChain Wallet Browser Extension + MetaMask Snap",
+      "body": "## RustChain Wallet Browser Extension \u2014 Chrome + Firefox\n\n### The Bounty\n\nBuild a browser-based RTC wallet extension for Chrome and Firefox, based on our existing [wallet crypto module](https://github.com/Scottcjn/rustchain-wallet) (Ed25519, BIP39 seed phrases, AES-256-GCM keystores).\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Working Chrome extension with core wallet features | **40 RTC** |\n| Published on Chrome Web Store | **+10 RTC** |\n| Firefox Add-on version (addons.mozilla.org) | **+10 RTC** |\n| MetaMask Snap integration (see below) | **+40 RTC** |\n\n**Total possible: 100 RTC**\n\n### Core Features (Required for 40 RTC)\n\n1. **Create wallet** \u2014 generate BIP39 24-word seed phrase, derive Ed25519 keypair\n2. **Import wallet** \u2014 restore from seed phrase or private key\n3. **View balance** \u2014 query RustChain node for RTC balance\n4. **Send RTC** \u2014 sign and submit transfers via `/wallet/transfer/signed` endpoint\n5. **Transaction history** \u2014 show recent sends/receives from ledger\n6. **Encrypted storage** \u2014 keystore encrypted with user password (AES-256-GCM), never stored in plaintext\n7. **Multiple wallets** \u2014 manage more than one RTC address\n8. **Network selector** \u2014 point to mainnet (50.28.86.131) or custom node URL\n\n### Existing Code to Build On\n\nThe crypto module is already built and tested:\n\n```python\n# rustchain_crypto.py \u2014 Port this to JavaScript/TypeScript\n- BIP39 24-word mnemonic generation\n- Ed25519 signing (via PyNaCl/libsodium)\n- PBKDF2 key derivation (100,000 iterations)\n- AES-256-GCM encrypted keystores\n- Address format: RTC + SHA256(pubkey)[:40]\n```\n\n**JS equivalents:**\n- BIP39: `bip39` npm package\n- Ed25519: `tweetnacl` or `@noble/ed25519`\n- AES-256-GCM: Web Crypto API (built into browsers)\n- PBKDF2: Web Crypto API\n\nThe server-side signed transfer endpoint already exists:\n\n```\nPOST https://50.28.86.131/wallet/transfer/signed\n{\n  \"from_address\": \"RTCa1b2c3d4...\",\n  \"to_address\": \"RTC9876543210...\",\n  \"amount_rtc\": 100.5,\n  \"memo\": \"Payment\",\n  \"nonce\": 1733420000000,\n  \"signature\": \"hex_ed25519_sig\",\n  \"public_key\": \"hex_pubkey\"\n}\n```\n\n### MetaMask Snap Integration (Bonus \u2014 40 RTC)\n\n[MetaMask Snaps](https://metamask.io/snaps/) allow non-EVM chains to integrate with MetaMask. This would let RustChain users manage RTC directly from MetaMask.\n\n**What a Snap would do:**\n- Custom RTC account type inside MetaMask\n- Send/receive RTC through MetaMask UI\n- Sign RustChain transactions with MetaMask-managed keys\n- Show RTC balance alongside ETH/ERC-20 tokens\n\n**Snap requirements:**\n- Uses MetaMask Snaps SDK (`@metamask/snaps-sdk`)\n- Implements `onRpcRequest` for RustChain JSON-RPC calls\n- Custom UI via `snap_dialog` for transaction confirmation\n- Published to MetaMask Snap registry\n\nThis is harder than the standalone extension but would be huge \u2014 every MetaMask user could instantly hold RTC.\n\n### Alternative: Other Open Wallet Integrations\n\nIf MetaMask Snap is too complex, other options worth exploring:\n\n| Wallet | Integration Path | Difficulty |\n|--------|-----------------|------------|\n| **MetaMask Snap** | Snaps SDK, custom account type | Hard |\n| **Rabby Wallet** | Similar to MetaMask Snap architecture | Hard |\n| **WalletConnect** | WC protocol adapter for RustChain | Medium |\n| **Keplr** | Custom chain config (Cosmos-style) | Medium |\n| **Standalone extension** | Our own Chrome/Firefox extension | Easiest |\n\nStart with the standalone extension. If you want to tackle MetaMask Snap too, that's the bonus 40 RTC.\n\n### Technical Requirements\n\n1. **Manifest V3** (Chrome) / WebExtensions API (Firefox)\n2. **No external key servers** \u2014 all crypto happens locally in the browser\n3. **Seed phrase NEVER leaves the extension** \u2014 no telemetry, no analytics, no third-party calls except to RustChain node\n4. **Open source** on GitHub\n5. **Clean, minimal UI** \u2014 balance, send, receive, settings\n6. **Web Crypto API preferred** over bundled crypto libraries where possible\n\n### Security Requirements (Non-Negotiable)\n\n- Private keys encrypted at rest with user password\n- Auto-lock after 5 minutes of inactivity\n- Seed phrase shown only once during creation (with confirmation step)\n- Transaction signing requires password/unlock\n- No eval(), no remote code loading, no CDN dependencies\n- CSP headers in manifest\n\n### How to Claim\n\n1. Build the extension and publish source on GitHub\n2. Comment here with:\n   - GitHub repo link\n   - Chrome Web Store / Firefox Add-on link (once approved)\n   - Demo video or screenshots\n   - Your RTC wallet address\n\n### Why This Matters\n\nRight now sending RTC requires either the desktop GUI wallet or curl commands. A browser extension:\n- **Lowers the barrier** \u2014 anyone with Chrome can hold and send RTC\n- **Enables web integration** \u2014 dApps, BoTTube tipping, bounty claims could connect to the wallet\n- **MetaMask Snap** would put RTC in front of 30M+ MetaMask users\n- **Legitimacy** \u2014 every real chain has a browser wallet\n\n### Resources\n\n- Wallet crypto module: Built on Ed25519 + BIP39 + AES-256-GCM\n- Signed transfer API: `POST /wallet/transfer/signed` on any RustChain node\n- Balance API: `GET /wallet/balance?miner_id={wallet}`\n- MetaMask Snaps: https://docs.metamask.io/snaps/\n- Web Crypto API: https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/730",
+      "labels": [
+        "bounty",
+        "major",
+        "community",
+        "development"
+      ],
+      "created_at": "2026-03-07T00:24:50Z",
+      "reward_rtc": 100.0,
+      "difficulty": "major",
+      "skills": [
+        "documentation",
+        "javascript",
+        "python",
+        "rust",
+        "security",
+        "social-media"
       ]
     },
     {
@@ -825,80 +833,6 @@
       "reward_rtc": 100.0,
       "difficulty": "standard",
       "skills": [
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 401,
-      "title": "[PROGRAM] Retroactive Impact Rewards \u2014 Surprise Bonuses for Real Impact",
-      "body": "## Retroactive Impact Rewards\n\n**\\\"It's easier to agree on what was useful than what will be useful.\\\"** \u2014 Vitalik Buterin\n\n### How It Works\n\nEvery month, maintainers review ALL contributions from the past 30 days and distribute a **bonus pool** to the work that had the most real impact. This is NOT announced in advance \u2014 you cannot game it.\n\n### Monthly Pool: 100 RTC\n\nDistributed to the top 3-5 most impactful contributions of the month, regardless of whether they were tied to a bounty.\n\n### What Counts as Impact\n\n- A PR that fixed a real production bug\n- Documentation that we saw new users actually reference\n- A security report that prevented a real attack\n- Community help \u2014 answering questions, mentoring newcomers\n- Content that brought measurable new users\n- Anything we didn't think to bounty but turned out to matter\n\n### What Does NOT Count\n\n- Quantity of PRs (10 typo fixes \u2260 impact)\n- Self-promotion\n- Work that was already fully paid via a bounty (no double-dipping)\n\n### Past Awards\n\n| Month | Winner | Contribution | Award |\n|-------|--------|-------------|-------|\n| *March 2026* | *Coming soon!* | | |\n\n---\n\n### Why This Matters\n\nBounties reward what we PLAN. Retroactive rewards honor what we DISCOVER was valuable. The best contributions are often the ones nobody asked for.\n\nThis program is inspired by [Optimism's RetroPGF](https://app.optimism.io/retropgf) (which has distributed $100M+ to impactful public goods work).\n\n*Do good work. We'll notice.*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/401",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-22T15:26:29Z",
-      "reward_rtc": 100.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 399,
-      "title": "[BOUNTY] Content Creator Program \u2014 Write About RustChain, Earn 25-100 RTC",
-      "body": "## Content Creator Program\n\nCreate original content about RustChain and earn RTC. Content must be published on an external platform with real reach.\n\n### Bounty Tiers\n\n| Content Type | Reward | Requirements |\n|-------------|--------|-------------|\n| **Dev.to / Medium article** | **25 RTC** | 800+ words, original, technically accurate |\n| **YouTube tutorial** | **50 RTC** | 5+ minutes, shows real usage, good audio |\n| **X/Twitter thread** | **15 RTC** | 10+ tweets, educational, with visuals |\n| **BoTTube video** | **25 RTC** | Published on bottube.ai about RustChain |\n| **Conference talk / meetup** | **100 RTC** | Presented at real event (virtual or IRL) |\n\n### Required in ALL content\n\n- Link to [github.com/Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain)\n- The \\`pip install clawrtc\\` install command\n- Accurate technical information (we review before paying)\n- Your own experience or analysis \u2014 not just rewriting the README\n\n### Suggested Topics\n\n- \"I Mined Crypto on a 20-Year-Old PowerPC G4 \u2014 Here's What Happened\"\n- \"Proof-of-Antiquity: Why Old Hardware Should Earn More\"\n- \"Building a Blockchain Where VMs Can't Cheat: RustChain's Hardware Fingerprinting\"\n- \"From Zero to RustChain Miner in 10 Minutes\"\n- \"The Agent Economy: How AI Bots Earn RTC on BoTTube\"\n- \"RustChain vs Proof-of-Work: Fair Mining Without Hash Rate Wars\"\n\n### How to Claim\n\n1. Create your content and publish it\n2. Comment on this issue with:\n   - Link to published content\n   - Content type (article/video/thread)\n   - Your RTC wallet name\n\n\\`\\`\\`\nContent: [LINK]\nType: Dev.to article\nRTC wallet: YOUR_WALLET_NAME\n\\`\\`\\`\n\nWe verify the content is original, accurate, and published \u2014 then pay within 24 hours.\n\n### Bonus: Quality Multiplier\n\nExceptional content that drives significant engagement (50+ likes, 1000+ views) earns a **2x bonus**.\n\n---\n\n*Good content brings REAL users who stay. This is the single best way to grow the RustChain community.*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/399",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-22T15:25:29Z",
-      "reward_rtc": 100.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 398,
-      "title": "[QUEST] Harden the Chain \u2014 Security Quest, 100 RTC Total",
-      "body": "## Quest Chain: Harden the Chain\n\nFor security-minded contributors. Complete each step to earn up to **100 RTC** and the **Guardian** title.\n\n---\n\n### Step 1: Read the Architecture (10 RTC)\nRead the codebase and write a 500+ word security assessment covering:\n- How attestation works (the \\`/attest/submit\\` flow)\n- How hardware fingerprinting prevents VM farms\n- How epoch rewards are calculated and distributed\n- One potential attack vector you identified\n\n**Prove it:** Post your assessment as a comment or gist link.\n\n---\n\n### Step 2: Reproduce a Known Fix (15 RTC)\nPick one vulnerability from BuilderFred's audit (all 6 are fixed):\n1. VM Fingerprint Bypass\n2. Antiquity Spoofing\n3. Mock Signature Mode\n4. Inline PubKey Hijack\n5. SQL Schema Mismatch\n6. Hardware Binding Bypass\n\nSet up a local test environment and demonstrate you understand HOW the fix works by:\n- Describing the attack before the fix\n- Showing the fix in the code\n- Explaining why the fix is sufficient (or isn't)\n\n**Prove it:** Write-up with code references.\n\n---\n\n### Step 3: Find Something New (75 RTC)\nFind and report a previously unknown security issue. Must include:\n- Clear description of the vulnerability\n- Steps to reproduce\n- Severity assessment (Critical/High/Medium/Low)\n- Suggested fix\n\n**Prove it:** File a responsible disclosure via the SECURITY.md process. If confirmed, earn the full 75 RTC + Guardian title.\n\n---\n\n### Completion\n\n| Steps | Reward | Title |\n|-------|--------|-------|\n| Step 1 only | 10 RTC | Security Explorer |\n| Steps 1 + 2 | 25 RTC | Security Analyst |\n| Steps 1 + 2 + 3 | **100 RTC** | **Guardian** |\n\n*You don't have to find a new vulnerability to earn from Steps 1 and 2. Those reward understanding, not just discovery.*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/398",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-22T15:25:06Z",
-      "reward_rtc": 100.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 248,
-      "title": "Red Team: Hardware Fingerprint Replay & Spoofing (100 RTC)",
-      "body": "## Red Team: Hardware Fingerprint Replay & Spoofing\n\n**Reward: Up to 100 RTC**\n\n### Target\nRIP-PoA fingerprint attestation system\n\n### Scope\n1. **Fingerprint replay** \u2014 Can you record a real machine's fingerprint and replay it from a VM? (50 RTC)\n2. **Clock drift spoofing** \u2014 Can you fake oscillator variance to pass the clock-skew check? (25 RTC)\n3. **Anti-emulation bypass** \u2014 Can you hide VM indicators from the 6-check fingerprint suite? (25 RTC)\n\n### Context\nRustChain uses 6 hardware fingerprint checks (clock drift, cache timing, SIMD identity, thermal drift, instruction jitter, anti-emulation) to prevent VM farms from gaming Proof-of-Antiquity rewards.\n\n### Rules\n- Test against `pip install clawrtc` miner client\n- Report with proof-of-concept code\n- Include your RTC wallet in the report\n- Responsible disclosure only\n\n> Miner source: https://github.com/Scottcjn/Rustchain",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/248",
-      "labels": [
-        "bounty",
-        "open",
-        "critical",
-        "hardening"
-      ],
-      "created_at": "2026-02-17T00:20:08Z",
-      "reward_rtc": 100.0,
-      "difficulty": "critical",
-      "skills": [
-        "python",
-        "rust",
         "security"
       ]
     },
@@ -1148,6 +1082,28 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 747,
+      "title": "[BOUNTY: 50-75 RTC] Bounty Verification Bot \u2014 Auto-Verify Star/Follow Claims",
+      "body": "## Bounty Verification Bot\n\nWe spend hours every session manually checking star counts, follow status, wallet existence, and article links. A bot that auto-verifies claims would save massive time.\n\n### What to Build\n\nA GitHub Action or bot that monitors bounty issue comments, detects claims, and posts automated verification results.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Star/follow verification (reads comment, checks GitHub API, posts result) | **30 RTC** |\n| Wallet existence check (queries RustChain node API) | **+10 RTC** |\n| Article/URL verification (checks dev.to/Medium links are live) | **+10 RTC** |\n| Dev.to article word count + quality check | **+10 RTC** |\n| Duplicate claim detection (checks if user already claimed) | **+15 RTC** |\n\n### How It Should Work\n\n1. **Triggered by**: New comment on bounty issues containing keywords like \"Claiming\", \"Wallet:\", \"Stars:\", \"GitHub:\"\n2. **Checks performed**:\n   - Does user follow @Scottcjn? (`GET /users/{user}/following/Scottcjn` \u2192 204 = yes)\n   - How many Scottcjn repos has user starred? (paginate `/users/{user}/starred`)\n   - Does the claimed wallet exist? (`GET https://50.28.86.131/wallet/balance?miner_id={wallet}`)\n   - Is the claimed article URL live? (HEAD request, check 200)\n   - Has this user already been paid? (check for \"PAID\" in previous comments)\n3. **Posts a verification comment**:\n```\n## Automated Verification for @username\n\n| Check | Result |\n|-------|--------|\n| Follows @Scottcjn | \u2705 Yes |\n| Scottcjn repos starred | 45 |\n| Wallet `my-wallet` exists | \u2705 Balance: 10.5 RTC |\n| Article link | \u2705 Live (dev.to, 612 words) |\n| Previous claims | \u26a0\ufe0f Paid 25 RTC on #665 |\n\n**Suggested payout**: 45 stars \u00d7 1.0 RTC (follows + 45+ multiplier) = 45 RTC\n```\n\n### Technical Requirements\n\n1. **GitHub Action** (preferred) \u2014 runs on `issue_comment` webhook\n2. **Secrets needed**: `GITHUB_TOKEN` (for API), `RUSTCHAIN_NODE_URL`\n3. **Rate limit aware** \u2014 GitHub API has limits, batch requests efficiently\n4. **No payment execution** \u2014 bot ONLY verifies, human approves payment\n5. **Configurable** \u2014 bounty rules (rate per star, follow multiplier) in a config file\n6. **Open source** on GitHub\n\n### Why This Matters\n\nManual verification takes 2-5 minutes per claim. With 20+ claims per session, that's over an hour of repetitive API checking. The bot does it in seconds and never makes math errors.\n\nThe human (Scott) still decides whether to pay \u2014 the bot just eliminates the grunt work.\n\n### Submit As\n\nStandalone repo with GitHub Action workflow, or PR to a new `Scottcjn/bounty-bot` repo.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/747",
+      "labels": [
+        "bounty",
+        "major",
+        "community",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:23Z",
+      "reward_rtc": 75.0,
+      "difficulty": "major",
+      "skills": [
+        "ci/cd",
+        "javascript",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 501,
       "title": "[BOUNTY] Miner Dashboard \u2014 Personal Stats & Reward History (75 RTC)",
       "body": "# Miner Dashboard \u2014 Personal Stats Page\n\n**Bounty: 75 RTC** (split across milestones)\n\n## Overview\n\nBuild a web-based dashboard where individual miners can view their personal stats, reward history, and hardware health. Think of it as \"your miner's control panel.\"\n\n## Why This Matters\n\nRight now miners have no easy way to see their own performance. They have to manually query the API or check the block explorer. A personal dashboard makes mining tangible and rewarding.\n\n## Requirements\n\n### Core (50 RTC)\n- Single HTML page (self-contained, no frameworks)\n- Enter your miner ID to load your dashboard\n- Show: current balance, total earned, epoch participation count\n- Show: hardware info (architecture, manufacture year, rust score, badge)\n- Show: attestation history (last 24h timeline)\n- Show: reward history (last 20 epochs with amounts)\n- Epoch countdown timer (reuse from Hall of Fame)\n- CRT terminal aesthetic matching rustchain.org\n\n### Bonus (25 RTC)\n- Shareable URL (`/dashboard?miner=your-id`)\n- Performance chart (earnings over time)\n- Fleet view (if operator has multiple machines)\n- Mobile responsive\n\n## API Endpoints Available\n- `GET /api/miners` \u2014 all active miners with attestation times\n- `GET /balance?miner_id=X` \u2014 balance for a miner\n- `GET /api/hall_of_fame` \u2014 leaderboard data with all categories\n- `GET /epoch` \u2014 current epoch, slot, enrolled miners\n\n## Deliverables\n1. Single `index.html` file (inline CSS/JS)\n2. Must work against live API at `https://rustchain.org`\n3. PR to `Scottcjn/Rustchain` in `tools/miner_dashboard/`\n\n## Reference\n- Live network: https://rustchain.org/health\n- Hall of Fame (design reference): https://rustchain.org/hall-of-fame/\n- Active miners: `curl -sk https://rustchain.org/api/miners`\n",
@@ -1181,26 +1137,6 @@
         "python",
         "rust",
         "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 247,
-      "title": "Red Team: BoTTube Vote Manipulation & CSRF (75 RTC)",
-      "body": "## Red Team: BoTTube Vote Manipulation & CSRF\n\n**Reward: Up to 75 RTC**\n\n### Target\nBoTTube voting system at `bottube.ai`\n\n### Scope\n1. **Vote manipulation** \u2014 Can votes be forged, replayed, or inflated? (25 RTC)\n2. **CSRF attacks** \u2014 Can a malicious page trigger votes/comments on behalf of logged-in users? (25 RTC)\n3. **Agent impersonation** \u2014 Can one agent post/vote as another agent? (25 RTC)\n\n### Rules\n- Report vulnerabilities responsibly \u2014 do NOT exploit on production\n- Provide proof-of-concept (curl commands, scripts, or screenshots)\n- Include suggested fix\n- One report per issue comment, include your RTC wallet\n\n### Out of Scope\n- DoS/DDoS attacks\n- Social engineering\n- Brute force login attempts\n\n> Start mining: `pip install clawrtc && clawrtc --wallet your-name`",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/247",
-      "labels": [
-        "bounty",
-        "open",
-        "hardening"
-      ],
-      "created_at": "2026-02-17T00:20:06Z",
-      "reward_rtc": 75.0,
-      "difficulty": "major",
-      "skills": [
-        "python",
-        "security",
-        "social-media"
       ]
     },
     {
@@ -1432,6 +1368,44 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 729,
+      "title": "[BOUNTY: 25-50 RTC] Build a BoTTube Chrome Extension \u2014 Browse, Vote, Upload",
+      "body": "## BoTTube Chrome Extension \u2014 Browse, Upload, and Engage from Your Browser\n\n### The Bounty\n\nBuild and publish a Google Chrome extension for [BoTTube](https://bottube.ai) on the Chrome Web Store.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Working extension with core features (listed below) | **25 RTC** |\n| Published on Chrome Web Store | **+15 RTC bonus** |\n| Firefox Add-on version (addons.mozilla.org) | **+10 RTC bonus** |\n\n**Total possible: 50 RTC**\n\n### Core Features (Required for 25 RTC)\n\n1. **Popup with trending/recent videos** \u2014 click the extension icon, see what's new on BoTTube\n2. **Quick search** \u2014 search BoTTube videos from the popup\n3. **One-click voting** \u2014 like/dislike videos without leaving the page you're on\n4. **Notification badge** \u2014 show count of new videos or replies to your comments\n5. **API key configuration** \u2014 settings page to enter your BoTTube API key\n\n### Bonus Features (Nice to Have)\n\n- **Right-click \"Share to BoTTube\"** \u2014 share any page link as a BoTTube comment\n- **New Tab override** \u2014 show trending BoTTube videos on new tab page\n- **Upload shortcut** \u2014 drag-and-drop video upload from browser\n- **Dark mode** \u2014 match BoTTube's dark theme\n- **Agent profile viewer** \u2014 hover over agent names to see their stats\n\n### Technical Requirements\n\n1. **Manifest V3** \u2014 Chrome requires MV3 for new extensions\n2. **No external dependencies** that phone home to third parties \u2014 only talks to `bottube.ai`\n3. **Open source** \u2014 publish the code on GitHub\n4. **Works with the existing BoTTube API** \u2014 see [API docs](https://bottube.ai/api/docs) or the `/api/` endpoints\n5. **Clean UI** \u2014 doesn't have to be fancy, but should be usable and not ugly\n6. **Permissions minimized** \u2014 don't request permissions you don't need\n\n### BoTTube API Endpoints You'll Need\n\n```\nGET  /api/videos?page=1&limit=20        # List videos\nGET  /api/search?q=query                 # Search\nPOST /api/videos/{id}/vote               # Vote (requires API key)\nGET  /api/videos/{id}/comments           # Get comments\nPOST /api/videos/{id}/comments           # Post comment (requires API key)\nPOST /api/upload                         # Upload video (requires API key)\nGET  /api/agent/{name}                   # Agent profile\n```\n\nAll authenticated endpoints use `X-API-Key` header.\n\n### How to Claim\n\n1. Build the extension and publish the source on GitHub\n2. Submit it to the Chrome Web Store (there's a one-time $5 developer fee \u2014 we'll reimburse via RTC)\n3. Comment here with:\n   - GitHub repo link\n   - Chrome Web Store link (once approved)\n   - Your RTC wallet address\n   - Screenshots or a short demo video (bonus points for uploading to BoTTube!)\n\n### Why This Matters\n\n- **Chrome Web Store = discoverability** \u2014 people search for \"AI video\" and \"video platform\" extensions\n- **Legitimacy signal** \u2014 having a browser extension makes BoTTube look like a real platform (because it is)\n- **Engagement boost** \u2014 easier access = more votes, comments, and uploads\n- **670+ videos, 99 agents, 46 humans** already on the platform \u2014 give them a better way to interact\n\n### Resources\n\n- BoTTube: https://bottube.ai\n- API base: https://bottube.ai/api/\n- Chrome Extension docs: https://developer.chrome.com/docs/extensions/\n- Manifest V3 guide: https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/729",
+      "labels": [
+        "bounty",
+        "bottube",
+        "development"
+      ],
+      "created_at": "2026-03-07T00:20:08Z",
+      "reward_rtc": 50.0,
+      "difficulty": "major",
+      "skills": [
+        "documentation",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 692,
+      "title": "[BOUNTY: up to 50 RTC] Micro Liquidity \u2014 Provide Liquidity, Get 1.5x Back",
+      "body": "## Micro Liquidity Bounty \u2014 Provide Liquidity, Get 1.5x RTC\n\n**Reward: Up to 50 RTC (1.5x your contribution, max $5.00 equivalent)**\n\n### How it works\n\n1. Provide micro liquidity to one of:\n   - **wRTC** (Wrapped RustChain Token) on any DEX\n   - **ETH gas** for RustChain bridge operations\n   - **ERG** for Ergo anchor transactions\n2. Post proof here with transaction hash and amount\n3. We verify the liquidity was provided\n4. You receive **1.5x the RTC equivalent** back\n\n### Eligible Actions\n\n| Action | What You Provide | Max Amount | You Get Back |\n|--------|-----------------|------------|-------------|\n| wRTC LP | wRTC + pair token on DEX | $5.00 worth | 1.5x in RTC |\n| ETH gas | ETH for bridge relay fees | $5.00 worth | 1.5x in RTC |\n| ERG deposit | ERG for anchor TX boxes | $5.00 worth | 1.5x in RTC |\n\n### Rules\n\n- **$5.00 USD equivalent maximum** per claim (at current market rates)\n- At reference rate of 1 RTC = $0.10, max payout = **50 RTC** (for $5 contribution yielding $7.50 equivalent)\n- One claim per person per liquidity type\n- Liquidity must remain for at least 7 days (no flash deposits)\n- Transaction must be verifiable on-chain (ETH/ERG explorer link required)\n\n### Why?\n\nRustChain needs real liquidity to function as a currency, not just a mining reward. Even $5 of liquidity proves the economic loop works: mine RTC -> wrap -> trade -> unwrap -> spend. We're subsidizing early liquidity providers at 1.5x to bootstrap this cycle.\n\n### To Claim\n\nComment below with:\n- Your RTC wallet name/address\n- Chain you provided liquidity on (ETH/ERG/DEX)\n- Transaction hash\n- USD equivalent at time of deposit\n- Date of deposit (must be 7+ days ago)\n\n**Reference rate: 1 RTC = $0.10 USD**\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/692",
+      "labels": [
+        "bounty",
+        "micro",
+        "defi",
+        "liquidity"
+      ],
+      "created_at": "2026-03-06T14:01:47Z",
+      "reward_rtc": 50.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 684,
       "title": "\ud83e\uddea Agent-to-Agent Transaction Test Challenge \u2014 Use Beacon + Grazer + RIP-302 (10-50 RTC)",
       "body": "# \ud83e\uddea Agent-to-Agent Transaction Test Challenge\n\n**Prove the Agent Economy works end-to-end!** Use real RustChain tools (Beacon, Grazer) to post jobs, claim them, deliver results, and get paid \u2014 all agent-to-agent.\n\n## \ud83c\udfaf The Challenge\n\nBuild an agent (or pair of agents) that:\n1. **Discovers** jobs via the `/agent/jobs` API\n2. **Claims** a job autonomously\n3. **Does the work** (research, code, monitoring, etc.)\n4. **Delivers** the result\n5. **Gets paid** in RTC via escrow release\n\n**Bonus**: Use **Beacon protocol** for agent-to-agent communication and **Grazer** for network monitoring tasks.\n\n## \ud83d\udcb0 Reward Tiers\n\n### Tier 1: Basic Agent Transaction (10 RTC)\n- [ ] Post a job on the Agent Economy marketplace\n- [ ] Have a DIFFERENT wallet claim and deliver it\n- [ ] Complete the full lifecycle (post \u2192 claim \u2192 deliver \u2192 accept)\n- [ ] Screenshot or log of the complete flow\n- [ ] Share your agent code (repo link)\n\n### Tier 2: Beacon-Integrated Agent (25 RTC)\n- [ ] Complete Tier 1\n- [ ] Agent uses `beacon-skill` SDK to discover other agents\n- [ ] Agent communicates job details via Beacon messages\n- [ ] Job delivery includes Beacon envelope proof\n- [ ] Demonstrates agent-to-agent coordination\n\n### Tier 3: Autonomous Pipeline Agent (50 RTC)\n- [ ] Complete Tiers 1 & 2\n- [ ] Build a multi-step pipeline with 2+ agents\n  - Example: `monitor-agent` uses Grazer to detect network event \u2192 posts job \u2192 `reporter-agent` claims \u2192 writes report \u2192 delivers \u2192 gets paid\n- [ ] Pipeline runs autonomously (no human in the loop)\n- [ ] Includes Grazer integration for real network monitoring\n- [ ] Full documentation of the pipeline architecture\n\n## \ud83d\udd27 Tools Available\n\n### Agent Economy API (LIVE on mainnet)\n```bash\n# Base URL: https://rustchain.org\n\n# Post a job\nPOST /agent/jobs\n{\n  \"poster_wallet\": \"your-wallet\",\n  \"title\": \"Monitor RustChain network health for 24h\",\n  \"description\": \"Use grazer to monitor node health...\",\n  \"category\": \"testing\",\n  \"reward_rtc\": 1\n}\n\n# Browse jobs\nGET /agent/jobs\n\n# Claim, deliver, accept\nPOST /agent/jobs/<id>/claim\nPOST /agent/jobs/<id>/deliver  \nPOST /agent/jobs/<id>/accept\n\n# Check reputation\nGET /agent/reputation/<wallet>\n```\n\n### Beacon Protocol\n```bash\npip install beacon-skill\n# or: brew install Scottcjn/beacon/beacon-skill\n```\n- Agent registration, discovery, messaging\n- See: https://github.com/Scottcjn/beacon\n\n### Grazer (Network Monitor)\n```bash\npip install grazer-skill  \n# or: brew install Scottcjn/grazer/grazer-skill\n```\n- Network health monitoring\n- Anomaly detection\n- See: https://github.com/Scottcjn/grazer\n\n## \ud83d\udccb How to Claim\n\n1. Build your agent(s)\n2. Run the agent-to-agent transaction on mainnet\n3. Comment below with:\n   - Your **RTC wallet** address/name\n   - **Repo link** to your agent code\n   - **Logs/screenshots** showing the complete transaction flow\n   - Which **tier** you're claiming\n\n## \ud83d\udca1 Agent Ideas\n- **Health Monitor Agent**: Uses Grazer to watch node health, posts alert jobs when issues detected\n- **Content Pipeline**: Research agent finds topics \u2192 Writer agent creates content \u2192 Publisher agent posts to Moltbook/BoTTube\n- **Security Scanner Agent**: Scans for suspicious attestations, reports via Beacon\n- **Translation Pipeline**: Source agent provides English text \u2192 Translator agent delivers Chinese/Spanish/Japanese version\n- **Star Tracker Agent**: Monitors GitHub stars, posts reward jobs for new stargazers\n\n## \u26a0\ufe0f Rules\n- Must use REAL RTC on mainnet (not mocked)\n- Need a funded wallet to post jobs (ask for test RTC if needed)\n- Code must be open source (public repo)\n- No fake/circular transactions (poster and worker must be different agents)\n- Quality of agent code matters for Tier 2-3\n\n## \ud83c\udd93 Test RTC Available!\nNeed RTC to test? Comment with your wallet name and we'll seed you with **5 RTC** to experiment with the Agent Economy. First 10 requesters only.\n\n---\n*RTC Reference Rate: 1 RTC = $0.10 USD*\n*Agent Economy source: [rip302_agent_economy.py](https://github.com/Scottcjn/Rustchain/blob/main/rip302_agent_economy.py)*",
@@ -1461,7 +1435,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "number": 665,
       "title": "[BOUNTY: 50 RTC] Star 20+ Scottcjn Repos + Follow (Ongoing Star Drive)",
-      "body": "## Star Bounty \u2014 Ongoing (March 2026)\n\n**Reward: Up to 50 RTC** (2.5 RTC per qualifying star, capped at 50 RTC)\n\n### Requirements\n1. **Star 20+ repos** from [github.com/Scottcjn](https://github.com/Scottcjn?tab=repositories) (101 repos available)\n2. **Follow [@Scottcjn](https://github.com/Scottcjn)** on GitHub\n3. **Comment below** with your RTC wallet name (any string you choose \u2014 this becomes your on-chain identity)\n\n### Payout Scale\n| Stars | RTC Reward |\n|-------|-----------|\n| 5 | 12.5 RTC |\n| 10 | 25 RTC |\n| 15 | 37.5 RTC |\n| 20+ | 50 RTC (cap) |\n\n### How to Claim\n1. Star the repos\n2. Follow @Scottcjn\n3. Comment: `Wallet: your-wallet-name` + how many repos you starred\n\n### Verification\nWe programmatically verify stars and follow status. Fake claims get flagged.\n\n### Already Paid (31 contributors)\nSee payment history in previous star bounty threads. This is a **fresh round** \u2014 if you were paid before, new stars above your previous count qualify.\n\n**Total paid to date: 2,153+ RTC across 43 wallets.**\n\nExplorer: https://rustchain.org/explorer/ | Bounties: https://github.com/Scottcjn/rustchain-bounties",
+      "body": "## Star Bounty \u2014 Ongoing (March 2026)\n\n**Reward: Up to 100 RTC** per contributor\n\n### Rate Structure (Updated 2026-03-06)\n\n**Base rate**: 0.5 RTC per qualifying star\n**45+ Star Multiplier**: 2x (1.0 RTC/star applied to ALL your stars)\n**Follow bonus**: Full rate requires following [@Scottcjn](https://github.com/Scottcjn). No follow = half rate.\n\n| Stars | With Follow | No Follow |\n|-------|-------------|----------|\n| 10 | 5 RTC | 2.5 RTC |\n| 20 | 10 RTC | 5 RTC |\n| 44 | 22 RTC | 11 RTC |\n| **45** | **45 RTC** | **22.5 RTC** |\n| 60 | 60 RTC | 30 RTC |\n| 80 | 80 RTC | 40 RTC |\n| 100+ | **100 RTC** (cap) | 50 RTC |\n\nThe 45-star threshold is the magic number \u2014 cross it and your entire payout doubles.\n\n### Requirements\n1. **Star repos** from [github.com/Scottcjn](https://github.com/Scottcjn?tab=repositories) (100+ repos available)\n2. **Follow [@Scottcjn](https://github.com/Scottcjn)** on GitHub (for full rate)\n3. **Comment below** with your RTC wallet name\n\n### How to Claim\n1. Star the repos\n2. Follow @Scottcjn\n3. Comment: `Wallet: your-wallet-name` + your GitHub username\n\n### Verification\nWe programmatically verify stars and follow status via GitHub API. Fake claims get flagged.\n\n**Total paid to date: 2,500+ RTC across 50+ wallets.**\n\nExplorer: https://rustchain.org/explorer/ | Bounties: https://github.com/Scottcjn/rustchain-bounties",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/665",
       "labels": [
         "good first issue",
@@ -1514,106 +1488,6 @@
         "python",
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 397,
-      "title": "[QUEST] Become a RustChain Miner \u2014 5 Steps, 50 RTC Total",
-      "body": "## Quest Chain: Become a RustChain Miner\n\nComplete each step in order. Each step unlocks the next. **50 RTC total** for completing the full chain.\n\n---\n\n### Step 1: Install and Run (5 RTC)\n\\`\\`\\`bash\npip install clawrtc\nclawrtc mine --wallet YOUR_NAME --dry-run\n\\`\\`\\`\n**Prove it:** Screenshot or paste your \\`--dry-run\\` output showing your hardware fingerprint.\n\n---\n\n### Step 2: Mine Your First Block (10 RTC)\n\\`\\`\\`bash\nclawrtc mine --wallet YOUR_NAME\n\\`\\`\\`\nRun the miner for at least 1 hour on real hardware (not a VM \u2014 our fingerprinting will detect it).\n\n**Prove it:** Paste the output showing a successful attestation, or we'll verify via the API:\n\\`curl -s https://50.28.86.131/api/miners | python3 -m json.tool\\`\n\n---\n\n### Step 3: Understand the Consensus (10 RTC)\nRead the RIP-200 documentation and answer these 3 questions in a comment:\n1. Why does a PowerPC G4 earn more RTC than a modern x86 CPU?\n2. What are the 6 hardware fingerprint checks that prevent VM farming?\n3. What is the current epoch reward pot and how is it distributed?\n\n**No copying from docs** \u2014 explain in your own words. We can tell.\n\n---\n\n### Step 4: Port or Improve (15 RTC)\nDo ONE of the following:\n- **Port the miner** to a new platform (Raspberry Pi, RISC-V, old laptop, etc.) and document the process\n- **File a detailed bug report** with reproduction steps from your mining experience\n- **Improve the miner code** \u2014 submit a PR that fixes something you encountered during Steps 1-3\n\n**Prove it:** Link to your PR, bug report, or write-up.\n\n---\n\n### Step 5: Teach Someone Else (10 RTC)\nWrite a tutorial, blog post, or video showing someone else how to mine RustChain. Publish it on Dev.to, Medium, YouTube, or your personal blog.\n\n**Prove it:** Link to your published content. Must include:\n- The \\`pip install clawrtc\\` command\n- Your mining experience\n- Link back to this repo\n\n---\n\n### Completion Bonus\n\nComplete all 5 steps \u2192 **50 RTC total** + **Miner tier** on the Contributor Ladder + your name on the Wall of Miners at rustchain.org.\n\n### How to Claim\n\nComment on this issue after completing each step with your proof. We verify and pay per step. You don't have to complete all 5 at once \u2014 take your time.\n\n\\`\\`\\`\nStep completed: 1\nProof: [screenshot/link/paste]\nRTC wallet: YOUR_WALLET_NAME\n\\`\\`\\`\n\n---\n\n*Quest chains require real effort and understanding. This is how you become a real RustChain community member, not just a bounty claimer.*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/397",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-22T15:24:52Z",
-      "reward_rtc": 50.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 356,
-      "title": "[BOUNTY] Break the RustChain Mechanism Spec + Falsification Matrix",
-      "body": "## Bounty: Break the RustChain Mechanism Spec + Falsification Matrix\n\nReference doc: https://github.com/Scottcjn/Rustchain/blob/main/docs/MECHANISM_SPEC_AND_FALSIFICATION_MATRIX.md\n\nWe want concrete, reproducible break-tests. If you can falsify a listed claim with real evidence, we pay.\n\n### Scope\n- RustChain RIP-200 mechanism claims in the matrix\n- Public API behavior around health/epoch/miners and signed transfer safety\n- Replay, signature, consistency, and divergence tests\n\n### Submission Requirements\n1. Exact claim tested (C1..C6)\n2. Repro steps (commands or script)\n3. Inputs/payloads used\n4. Raw outputs (timestamps + node target)\n5. Why this is a pass/fail violation\n6. Suggested mitigation (optional but rewarded)\n\n### Acceptance Criteria\n- Reproducible by maintainer on at least one live node\n- Clear evidence that a matrix pass condition is violated\n- Not already known/accepted in a prior issue\n\n### Reward Bands (RTC)\n- Low impact reproducible failure: 25-50 RTC\n- Medium impact (safety/integrity regression): 75-125 RTC\n- High impact (replay/signature/integrity break): 150-300 RTC\n\n### Rules\n- Good-faith testing only\n- No destructive abuse or service disruption\n- Public report in this issue (or link a private report first if needed)\n\nIf you can break a claim with receipts, open the report and tag maintainers.\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/356",
-      "labels": [
-        "bug",
-        "bounty",
-        "open"
-      ],
-      "created_at": "2026-02-19T20:19:08Z",
-      "reward_rtc": 50.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "javascript",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 278,
-      "title": "[BOUNTY] Agent Coalitions \u2014 Governance Voting System (50 RTC)",
-      "body": "## Agent Coalitions: Governance Voting for RustChain\n\n**Reward: 50 RTC**\n\n### Concept\n\nNOT a mining pool. A **coalition** is a voluntary group of miners who vote together on protocol changes while keeping individual hardware identity and attestation. Think DAO governance, not hash pooling.\n\nSophia leads the founding coalition: **The Flamebound** \u2014 the original hardware preservers and network guardians.\n\n### Key Design Rules\n\n1. **1 CPU = 1 Vote** is sacred \u2014 coalitions do NOT combine mining power\n2. **Individual identity preserved** \u2014 every miner keeps their own hardware fingerprint\n3. **Voting power = RTC balance x antiquity multiplier**\n4. **Sophia (sophia-elya) has final approval** \u2014 all protocol changes must pass her review. The Flamebound coalition has veto authority.\n5. **No delegation of attestation keys**\n\n### What Coalitions CAN Do\n\n- Vote on RIPs (RustChain Improvement Proposals)\n- Signal support/opposition to protocol changes\n- Propose new bounties (coalition-backed)\n- Elect coalition representatives\n- Share analytics dashboards\n\n### What Coalitions CANNOT Do\n\n- Combine mining rewards into a single payout\n- Submit attestations on behalf of members\n- Override The Flamebound veto on protocol changes\n- Control another miners rewards\n\n### Requirements\n\n- `coalition.py` module: create/join/leave/vote functions\n- REST endpoints: `/api/coalition/create`, `/api/coalition/join`, `/api/coalition/vote`\n- Vote weight: `weight = rtc_balance * antiquity_multiplier`\n- Coalition registry in SQLite\n- Proposal lifecycle: draft > voting > approved/rejected > flamebound_review > implemented/vetoed\n- Flamebound veto endpoint: `/api/coalition/flamebound-review` (admin key required)\n- Seed The Flamebound as the genesis coalition with sophia-elya as leader\n\n### Example Flow\n\n```\n1. Miner creates coalition \"Vintage Preservers\"\n2. G4/G5 miners join with high antiquity = strong votes\n3. Coalition proposes RIP-201: Increase MIPS R2000 multiplier\n4. Members vote weighted by RTC * antiquity\n5. Passes >66% threshold\n6. The Flamebound reviews - Sophia approves or vetoes\n7. If approved, change goes into next epoch\n```\n\n### How To Claim\n\n1. Fork Rustchain, implement coalition.py + endpoints\n2. Open a PR with tests\n3. Include your RTC wallet name",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/278",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-17T19:26:52Z",
-      "reward_rtc": 50.0,
-      "difficulty": "major",
-      "skills": [
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 249,
-      "title": "[BOUNTY] RustChain Telegram Community Bot (50 RTC)",
-      "body": "## RustChain Telegram Community Bot\n\n**Reward: 50 RTC**\n\n### What To Build\nA Telegram bot for a RustChain community group that provides:\n- `/price` \u2014 Current wRTC price from Raydium\n- `/miners` \u2014 Active miner count from `/api/miners`\n- `/epoch` \u2014 Current epoch info from `/epoch`\n- `/balance <wallet>` \u2014 Check RTC balance\n- `/health` \u2014 Node health status\n\n### Requirements\n- Python (python-telegram-bot or aiogram)\n- Must use real RustChain API endpoints (50.28.86.131)\n- Include setup instructions and requirements.txt\n- Bot must be functional (we'll test it)\n\n### Bonus (10 RTC each)\n- Mining alerts (new miner joins, epoch settles)\n- Price alerts (wRTC moves >5%)\n- Inline query support\n\n### How To Claim\n1. Submit PR to Scottcjn/Rustchain with bot code in `tools/telegram_bot/`\n2. Include deployment instructions\n3. Reply here with PR link + wallet name\n\n> API docs: https://github.com/Scottcjn/Rustchain/blob/main/docs/api/REFERENCE.md",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/249",
-      "labels": [
-        "bounty",
-        "open",
-        "ecosystem",
-        "community"
-      ],
-      "created_at": "2026-02-17T00:20:10Z",
-      "reward_rtc": 50.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "javascript",
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 160,
-      "title": "Write a tutorial or blog about Beacon (50 RTC Bounty)",
-      "body": "## Bounty: 50 RTC\n\nWrite a tutorial or blog post about using Beacon \u2014 the AI agent heartbeat and coordination protocol. Publish it where developers will find it.\n\n### Requirements\n\n1. **Write a tutorial or blog post** about Beacon 2.6\n2. Must be published on at least one platform:\n   - Dev.to\n   - Medium\n   - Hashnode\n   - Personal blog (with RSS or discoverable URL)\n   - Moltbook (m/ai, m/elyanlabs, or m/rustchain)\n3. **Content requirements**:\n   - Explain what Beacon is and why it matters for AI agents\n   - Include **working code examples** (Python or JavaScript/TypeScript)\n   - At least one of: heartbeat tutorial, mayday tutorial, contracts tutorial, or Atlas walkthrough\n   - Minimum 500 words (quality over quantity)\n4. **Code examples must actually work** \u2014 reader should be able to copy-paste and run them\n5. Link back to the beacon-skill GitHub repo\n\n### Bonus Points\n\n- Cover multiple Beacon features (heartbeat + contracts, etc.)\n- Include diagrams or architecture illustrations\n- Compare Beacon to other agent coordination approaches\n- Write in multiple languages (English required, translations welcome as bonus)\n\n### Example Topics\n\n- \"Getting Started with Beacon: Heartbeats for AI Agents\"\n- \"Building a Multi-Agent System with Beacon Contracts\"\n- \"AI Agent Emergency Response with Beacon Mayday Signals\"\n- \"Beacon Atlas: Organizing AI Agents into Virtual Cities\"\n- \"From Solo Agent to Agent Network: A Beacon Tutorial\"\n\n### How to Claim\n\n1. Comment on this issue expressing interest\n2. Write and publish your tutorial/blog\n3. Submit proof: link to published article\n4. RTC will be transferred to your RustChain wallet\n\n**50 RTC for a verified published tutorial.** Multiple claims possible for substantially different articles.\n\n### Resources\n\n- [beacon-skill on GitHub](https://github.com/Scottcjn/beacon-skill)\n- [beacon-skill on PyPI](https://pypi.org/project/beacon-skill/)\n- [beacon-skill on npm](https://www.npmjs.com/package/beacon-skill)\n- [ClawHub](https://clawhub.ai/packages/beacon-skill)\n- [RustChain Network](https://50.28.86.131/explorer)",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/160",
-      "labels": [
-        "documentation",
-        "bounty",
-        "community"
-      ],
-      "created_at": "2026-02-13T21:05:10Z",
-      "reward_rtc": 50.0,
-      "difficulty": "major",
-      "skills": [
-        "javascript",
-        "python",
-        "rust",
-        "social-media",
-        "translation"
       ]
     },
     {
@@ -1893,6 +1767,45 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 754,
+      "title": "[BOUNTY: 25-40 RTC] Agent Reputation Score \u2014 On-Chain Trust for Agent Economy",
+      "body": "## Agent Reputation Scoring System\n\nThe Agent Economy is live but has no trust layer. Anyone can claim jobs. A reputation system based on on-chain behavior fixes that.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Reputation calculation engine + API endpoint | **25 RTC** |\n| Reputation decay (inactive agents lose score) | **+5 RTC** |\n| Reputation-gated job posting (min score to post high-value jobs) | **+10 RTC** |\n\n### Reputation Factors\n\n| Factor | Weight | Source |\n|--------|--------|--------|\n| Jobs completed successfully | +10 per job | `agent_jobs` table |\n| Jobs accepted by poster | +5 per acceptance | `agent_jobs` table |\n| Jobs disputed/rejected | -15 per dispute | `agent_jobs` table |\n| Time to deliver (faster = better) | +1 to +5 | Timestamp diff |\n| Total RTC earned | +1 per 10 RTC | `balances` table |\n| Account age | +1 per 30 days | First attestation |\n| Hardware attestation (real hardware) | +10 bonus | `miner_attest_recent` |\n\n### API Endpoint\n\n```\nGET /agent/reputation?agent_id=my-wallet\n\n{\n  \"agent_id\": \"my-wallet\",\n  \"reputation_score\": 85,\n  \"level\": \"trusted\",  // newcomer (0-20), known (21-50), trusted (51-80), veteran (81+)\n  \"jobs_completed\": 12,\n  \"jobs_disputed\": 0,\n  \"avg_delivery_hours\": 4.2,\n  \"total_earned_rtc\": 150.0,\n  \"account_age_days\": 45,\n  \"hardware_verified\": true\n}\n```\n\n### Reputation Levels\n\n| Level | Score | Privileges |\n|-------|-------|------------|\n| Newcomer | 0-20 | Can claim jobs up to 5 RTC |\n| Known | 21-50 | Can claim jobs up to 25 RTC |\n| Trusted | 51-80 | Can claim any job, can post jobs |\n| Veteran | 81+ | Can post high-value jobs (50+ RTC), priority in disputes |\n\n### Technical Requirements\n\n1. **Python module** that calculates reputation from SQLite data\n2. **Flask endpoint** on the RustChain node\n3. **Caching** \u2014 recalculate every epoch, not every request\n4. **Reputation decay** \u2014 lose 1 point per 30 days of inactivity\n\n### Submit As\n\nPR to [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain).\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/754",
+      "labels": [
+        "bounty",
+        "development",
+        "rip-302"
+      ],
+      "created_at": "2026-03-07T03:24:28Z",
+      "reward_rtc": 40.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 748,
+      "title": "[BOUNTY: 25-40 RTC] RustChain WebSocket Real-Time Feed",
+      "body": "## WebSocket Real-Time Feed for RustChain Node\n\nEverything is poll-based right now. A WebSocket endpoint that pushes live events would enable real-time dashboards, trading bots, and monitoring tools without hammering the REST API.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| WebSocket endpoint with block/epoch events | **25 RTC** |\n| Attestation events (new miner attests) | **+5 RTC** |\n| Transaction events (transfers, payments) | **+5 RTC** |\n| Reconnection handling + heartbeat | **+5 RTC** |\n\n### Event Types\n\n```json\n{\"type\": \"new_block\", \"data\": {\"slot\": 12345, \"epoch\": 95, \"timestamp\": 1772935879}}\n{\"type\": \"attestation\", \"data\": {\"miner\": \"dual-g4-125\", \"arch\": \"g4\", \"multiplier\": 2.5}}\n{\"type\": \"epoch_settlement\", \"data\": {\"epoch\": 94, \"total_rtc\": 1.5, \"miners\": 12}}\n{\"type\": \"transfer\", \"data\": {\"from\": \"alice\", \"to\": \"bob\", \"amount\": 10.0, \"memo\": \"...\"}}\n```\n\n### Technical Requirements\n\n1. **Flask-SocketIO** or **websockets** library integration\n2. **Endpoint**: `wss://50.28.86.131/ws` or `/ws/feed`\n3. **Subscribe to channels**: clients can filter by event type\n4. **Heartbeat**: ping/pong every 30s to detect dead connections\n5. **Backpressure**: don't queue unlimited messages for slow clients\n6. **Auth optional**: public feed for blocks/epochs, API key for transfers\n\n### Submit As\n\nPR to [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) adding the WebSocket module.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/748",
+      "labels": [
+        "bounty",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:24Z",
+      "reward_rtc": 40.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 504,
       "title": "[BOUNTY] Prometheus Metrics Exporter + Grafana Dashboard (40 RTC)",
       "body": "# Prometheus Metrics Exporter for RustChain Node\n\n**Bounty: 40 RTC**\n\n## Overview\n\nBuild a Prometheus-compatible metrics exporter that scrapes the RustChain node API and exposes metrics for monitoring with Grafana.\n\n## Metrics to Export\n\n```\n# Node health\nrustchain_node_up{version=\"2.2.1-rip200\"} 1\nrustchain_node_uptime_seconds 12345\n\n# Miners\nrustchain_active_miners_total 20\nrustchain_enrolled_miners_total 20\nrustchain_miner_last_attest_timestamp{miner=\"dual-g4-125\",arch=\"G4\"} 1740783600\n\n# Epoch\nrustchain_current_epoch 88\nrustchain_current_slot 12700\nrustchain_epoch_slot_progress 0.45\nrustchain_epoch_seconds_remaining 300\n\n# Balances (top miners)\nrustchain_balance_rtc{miner=\"founder_community\"} 85030.63\n\n# Hall of Fame\nrustchain_total_machines 79\nrustchain_total_attestations 675550\nrustchain_oldest_machine_year 2001\nrustchain_highest_rust_score 557.8\n\n# Fees (RIP-301)\nrustchain_total_fees_collected_rtc 0\nrustchain_fee_events_total 0\n```\n\n## Technical Requirements\n- Python with `prometheus_client` library\n- Scrapes RustChain API every 60 seconds\n- Exposes metrics on `:9100/metrics` (configurable port)\n- Configurable node URL via env var\n- Systemd service file included\n\n## Deliverables\n1. `rustchain_exporter.py` \u2014 the Prometheus exporter\n2. `requirements.txt`\n3. `rustchain-exporter.service` \u2014 systemd unit\n4. Optional: Grafana dashboard JSON\n5. PR to `Scottcjn/Rustchain` in `tools/prometheus/`\n\n## Bonus (15 RTC extra)\n- Pre-built Grafana dashboard JSON with panels for all metrics\n- Docker compose file with Prometheus + Grafana + exporter\n- Alert rules for miner offline, low balance, etc.\n\n## Reference\n- API: `/health`, `/epoch`, `/api/miners`, `/api/hall_of_fame`, `/api/fee_pool`, `/api/stats`\n",
@@ -1943,6 +1856,26 @@
       "difficulty": "standard",
       "skills": [
         "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 750,
+      "title": "[BOUNTY: 20-30 RTC] BoTTube Video Transcription \u2014 Whisper Auto-Captioning",
+      "body": "## BoTTube Video Transcription\n\n670 videos with no transcripts = 670 missed SEO opportunities. Auto-transcribe uploaded videos using Whisper and make content searchable.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Whisper transcription pipeline (upload \u2192 transcript) | **20 RTC** |\n| Searchable transcripts in BoTTube search | **+5 RTC** |\n| SRT/VTT subtitle file generation | **+5 RTC** |\n\n### What to Build\n\n1. **Background worker** that processes new video uploads\n2. **Extract audio** from mp4 using ffmpeg\n3. **Transcribe** using OpenAI Whisper (local, `whisper.cpp` or `faster-whisper`)\n4. **Store transcript** in BoTTube database linked to video\n5. **Make searchable** \u2014 add transcript text to search index\n\n### Technical Requirements\n\n1. **Whisper model**: `base` or `small` (fits on CPU, good enough for 8-sec clips)\n2. **Process async** \u2014 don't block upload response\n3. **Output formats**: plain text + SRT/VTT subtitles\n4. **Language detection**: auto-detect language\n5. **Storage**: transcript column in videos table or separate table\n6. **Idempotent**: can re-run on existing videos to backfill\n\n### BoTTube Context\n\n- Videos are max 8 seconds, so transcripts will be short\n- Server: 50.28.86.153, Flask app on port 8097\n- Videos stored in `/uploads/` directory\n- Many videos have no audio (generated clips) \u2014 handle gracefully\n\n### Submit As\n\nPR to [Scottcjn/bottube](https://github.com/Scottcjn/bottube).\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/750",
+      "labels": [
+        "bounty",
+        "bottube",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:25Z",
+      "reward_rtc": 30.0,
+      "difficulty": "standard",
+      "skills": [
+        "ci/cd",
+        "python",
         "social-media"
       ]
     },
@@ -2002,20 +1935,41 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 680,
-      "title": "\ud83d\udd25 Week of March 5 - Star Sprint Challenge (BONUS MULTIPLIERS!)",
-      "body": "# \ud83d\udd25 Star Sprint Challenge \u2014 Week of March 5, 2026\n\n**THIS WEEK ONLY** \u2014 Special bonus multipliers for fast movers!\n\n## \ud83d\udcab Base Rewards (always available)\n| Stars | Follow? | Payout |\n|-------|---------|--------|\n| 10+ repos | \u2705 Yes | 25 RTC |\n| 20+ repos | \u2705 Yes | 50 RTC |\n| 50+ repos | \u2705 Yes | 75 RTC |\n| 80+ repos | \u2705 Yes | 100 RTC |\n| 100+ repos | \u2705 Yes | 125 RTC |\n\n## \ud83d\ude80 THIS WEEK'S BONUS MULTIPLIERS\n\n### \u26a1 Speed Bonus \u2014 First 5 claimants get 1.5x!\nThe **first 5 people** to complete 20+ stars AND follow this week get **1.5x payout**:\n- 20 stars + follow = **75 RTC** (instead of 50)\n- 50 stars + follow = **112 RTC** (instead of 75)\n- 100 stars + follow = **187 RTC** (instead of 125)\n\n### \ud83c\udfaf Precision Bonus \u2014 Star the \"Deep Cuts\" (+10 RTC)\nStar ALL of these specific repos for an extra **+10 RTC**:\n1. `Scottcjn/ram-coffers` \u2014 NUMA-aware AI weight banking\n2. `Scottcjn/rustchain-miner` \u2014 Mine RTC on any hardware\n3. `Scottcjn/beacon` \u2014 Agent-to-agent communication protocol\n4. `Scottcjn/bounty-concierge` \u2014 Automated bounty management\n5. `Scottcjn/grazer` \u2014 Network monitoring tool\n\n### \ud83d\udd17 Referral Bonus \u2014 Bring a friend (+15 RTC each)\nIf you refer someone who **also** completes 10+ stars and follow:\n- YOU get **+15 RTC** bonus\n- THEY get **+15 RTC** bonus\n- Just have them mention your GitHub username in their claim!\n\n## \ud83d\udccb How to Claim\n1. **Star repos** at https://github.com/Scottcjn (we have 100+ repos!)\n2. **Follow** [@Scottcjn](https://github.com/Scottcjn) on GitHub\n3. **Comment below** with:\n   - Your RTC wallet address (format: `RTCxxxxxxxxx...`) OR a wallet name\n   - Number of repos starred\n   - Whether you followed\n   - If claiming referral bonus: who referred you\n   - If claiming Deep Cuts bonus: confirm you starred all 5\n\n## \u26a0\ufe0f Rules\n- Stars are verified on-chain \u2014 we check! Don't unstar after claiming.\n- Must be REAL stars (no bots, no mass-unstar-restar)\n- One claim per GitHub account\n- Campaign ends **March 12, 2026**\n- Speed bonus is first-come-first-served (5 slots)\n\n## \ud83d\udcb0 Funding\nPaid from `founder_community` wallet (~83,000 RTC available)\n\n---\n*RTC Reference Rate: 1 RTC = $0.10 USD*\n*Speed Bonus Slots Remaining: 5/5*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/680",
+      "number": 746,
+      "title": "[BOUNTY: 15-25 RTC] BoTTube Embed Player \u2014 Embeddable Video Widget",
+      "body": "## BoTTube Embed Player\n\nYouTube's #1 growth hack was the embeddable player. Every blog post, tweet, or forum that embeds a video is free distribution. BoTTube needs this.\n\n### What to Build\n\nA minimal, embeddable video player accessible at:\n```\nhttps://bottube.ai/embed/{video_id}\n```\n\nThat can be embedded anywhere via:\n```html\n<iframe src=\"https://bottube.ai/embed/VIDEO_ID\" width=\"560\" height=\"315\" frameborder=\"0\" allowfullscreen></iframe>\n```\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Working embed route + minimal player | **15 RTC** |\n| Responsive design + autoplay/loop options | **+5 RTC** |\n| Share button that copies embed code | **+5 RTC** |\n\n### Requirements\n\n1. **Single HTML page** served by Flask at `/embed/<video_id>`\n2. **Minimal UI** \u2014 video player, title, BoTTube logo/watermark, \"Watch on BoTTube\" link\n3. **URL parameters**: `?autoplay=1`, `?loop=1`, `?mute=1`\n4. **Responsive** \u2014 scales to container width\n5. **No external JS dependencies** \u2014 vanilla HTML5 `<video>` tag\n6. **CORS headers** \u2014 must be embeddable cross-origin\n7. **Lightweight** \u2014 under 10KB total page weight\n\n### Technical Context\n\nBoTTube is a Flask app on port 8097 at 50.28.86.153. Videos are served from `/uploads/`. The embed route would be a new Flask blueprint or route.\n\n### Submit As\n\nPR to [Scottcjn/bottube](https://github.com/Scottcjn/bottube) adding the embed route + template.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/746",
       "labels": [
         "bounty",
-        "stars",
-        "campaign"
+        "bottube",
+        "development"
       ],
-      "created_at": "2026-03-06T00:04:29Z",
+      "created_at": "2026-03-07T03:24:22Z",
       "reward_rtc": 25.0,
       "difficulty": "standard",
       "skills": [
-        "rust"
+        "docker",
+        "python",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 724,
+      "title": "[BOUNTY: 10-25 RTC] Show HN \u2014 Get RustChain on Hacker News Front Page",
+      "body": "## Show HN: Proof-of-Antiquity \u2014 Where PowerPC G4s Earn More Than RTX 4090s\n\n### The Bounty\n\nWrite and post a compelling \"Show HN\" submission to [Hacker News](https://news.ycombinator.com/) about RustChain and the Proof-of-Antiquity consensus mechanism.\n\n### Why This Matters\n\nHN is where thousands of developers discover new projects daily. Our story is genuinely interesting:\n- A blockchain where vintage hardware (N64, PowerPC G4, IBM POWER8) earns **more** than modern GPUs\n- 210 contributors, $0 VC funding, built in 90 days\n- AI agent video platform (BoTTube) with 670+ videos\n- Hardware fingerprinting that catches VMs and emulators\n- Running on real Nintendo 64 hardware with a bidirectional bridge\n\nThis is the kind of novel technical project HN loves.\n\n### Payout Structure\n\n| Result | Reward |\n|--------|--------|\n| Post submitted (well-written, follows HN guidelines) | **10 RTC** |\n| Reaches HN front page (25+ upvotes) | **+15 RTC bonus** |\n\n### Requirements\n\n1. **Original writing** \u2014 not GPT slop. HN users detect and downvote AI-generated content instantly.\n2. **Technical depth** \u2014 explain Proof-of-Antiquity, hardware fingerprinting, the antiquity multiplier system\n3. **Honest framing** \u2014 don't hype. HN respects \"here's what I built and why\" posts.\n4. **Link to real artifacts** \u2014 Block Explorer, GitHub, BoTTube\n5. **Engage in comments** \u2014 answer questions from the HN community (or tag @Scottcjn)\n\n### How to Claim\n\n1. Post your \"Show HN\" submission\n2. Comment here with the HN link\n3. Include your RTC wallet address\n\n### Tips for HN Success\n\n- Post between 8-10am EST (peak HN traffic)\n- Title format: `Show HN: [Project Name] \u2013 [one-line hook]`\n- Keep the submission text concise \u2014 link to a detailed blog post\n- Don't ask for upvotes (HN bans this)\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/724",
+      "labels": [
+        "bounty",
+        "propagation",
+        "community"
+      ],
+      "created_at": "2026-03-07T00:15:22Z",
+      "reward_rtc": 25.0,
+      "difficulty": "standard",
+      "skills": [
+        "rust",
+        "social-media"
       ]
     },
     {
@@ -2110,29 +2064,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 351,
-      "title": "x402 Integration Testing: Coinbase Wallets + Premium API",
-      "body": "## Bounty: x402 Integration Testing\n\n**Reward**: 25 RTC\n\n### What's New\nRustChain now supports **Coinbase Agentic Wallets** and the **x402 protocol** (HTTP 402 Payment Required) for machine-to-machine payments across our ecosystem.\n\n### Endpoints to Test\n\n**BoTTube (bottube.ai)**\n- `GET /api/x402/status` \u2014 Check x402 status\n- `GET /api/premium/videos` \u2014 Bulk video export (free)\n- `GET /api/premium/analytics/sophia-elya` \u2014 Agent analytics (free)\n- `GET /api/premium/trending/export` \u2014 Trending data (free)\n- `POST /api/agents/me/coinbase-wallet` \u2014 Link wallet (requires API key)\n\n**Beacon Atlas (rustchain.org/beacon)**\n- `GET /beacon/api/x402/status` \u2014 Check x402 status\n- `GET /beacon/api/premium/reputation` \u2014 Reputation export (free)\n- `GET /beacon/api/premium/contracts/export` \u2014 Contracts export (free)\n\n**RustChain Node**\n- `GET /wallet/swap-info` \u2014 USDC\u2192wRTC swap guidance\n\n### How to Earn\n1. Test all endpoints above and report results\n2. Try linking a wallet via the API\n3. Report any bugs, errors, or unexpected behavior\n4. Bonus: Test with `pip install clawrtc[coinbase]` and the CLI\n\n### Documentation\n- [Agent Wallets Page](https://rustchain.org/wallets.html)\n- [ClawRTC pip install](https://pypi.org/project/clawrtc/)",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/351",
-      "labels": [
-        "bounty",
-        "open",
-        "standard",
-        "ecosystem"
-      ],
-      "created_at": "2026-02-19T17:42:34Z",
-      "reward_rtc": 25.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "javascript",
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
       "repo": "Scottcjn/Rustchain",
       "number": 7,
       "title": "[BOUNTY] Run a RustChain Miner on Real Hardware \u2014 Earn 25 RTC + Mining Rewards",
@@ -2184,6 +2115,46 @@
       "reward_rtc": 25.0,
       "difficulty": "standard",
       "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 752,
+      "title": "[BOUNTY: 15-20 RTC] Multi-Node Health Dashboard \u2014 Monitor All 3 Attestation Nodes",
+      "body": "## Multi-Node Health Dashboard\n\nSingle page showing all 3 attestation nodes \u2014 uptime, block height, miner count, sync status. No more `curl /health` on each node individually.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Dashboard with all 3 nodes + auto-refresh | **15 RTC** |\n| Historical uptime tracking + charts | **+5 RTC** |\n\n### Nodes to Monitor\n\n| Node | URL | Role |\n|------|-----|------|\n| Node 1 | `https://50.28.86.131/health` | Primary |\n| Node 2 | `https://50.28.86.153/health` | Secondary |\n| Node 3 | `http://100.88.109.32:8099/health` | External (Tailscale only) |\n\n### Dashboard Should Show\n\nFor each node:\n- **Status**: \ud83d\udfe2 Up / \ud83d\udd34 Down / \ud83d\udfe1 Degraded\n- **Version**: `2.2.1-rip200`\n- **Uptime**: `4d 12h 33m`\n- **Database**: RW status\n- **Backup age**: hours since last backup\n- **Tip age**: slots since last block\n- **Active miners**: count from `/api/miners`\n- **Current epoch**: from `/epoch`\n\n### Technical Requirements\n\n1. **Single HTML page** with JavaScript polling (no backend needed)\n2. **Auto-refresh** every 30 seconds\n3. **CORS note**: Node 1 & 2 are accessible externally, Node 3 is Tailscale only\n4. **Color-coded status** \u2014 green/yellow/red\n5. **Mobile responsive**\n6. **Deployable** as static HTML (GitHub Pages or served by any node)\n\n### Submit As\n\nPR to [Scottcjn/rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor) or standalone repo.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/752",
+      "labels": [
+        "bounty",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:26Z",
+      "reward_rtc": 20.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 726,
+      "title": "[BOUNTY: 10-20 RTC] Build Rust Crates for RustChain \u2014 Publish on crates.io",
+      "body": "## Rust Package Bounty \u2014 Publish RustChain Crates on crates.io\n\nWe already have npm and PyPI packages. What we need is **Rust crates on crates.io** \u2014 real Rust code for the RustChain ecosystem.\n\n### Payout\n\n| Deliverable | Reward |\n|-------------|--------|\n| Working crate published on crates.io | **10 RTC** |\n| Crate with docs.rs documentation | **+5 RTC bonus** |\n| Crate with CI tests passing | **+5 RTC bonus** |\n\nMax per person: 2 crates (up to 40 RTC total).\n\n### Crate Ideas\n\n| Crate | Description | Difficulty |\n|-------|-------------|------------|\n| `rustchain-client` | HTTP client for RustChain node API (health, miners, epochs, balances) | Easy |\n| `rustchain-wallet` | Ed25519 wallet creation, signing, balance checking | Medium |\n| `rtc-types` | Shared types for RustChain API responses (serde structs) | Easy |\n| `rustchain-miner` | Native Rust miner with hardware fingerprinting | Hard |\n| `bottube-client` | BoTTube API client (list/search/upload videos) | Easy |\n| `rustchain-explorer` | CLI block explorer using `rustchain-client` | Medium |\n| `poa-consensus` | Proof-of-Antiquity consensus library (epoch, attestation, antiquity multipliers) | Hard |\n\nOr propose your own \u2014 any useful RustChain/BoTTube Rust crate counts.\n\n### Requirements\n\n1. **Published on crates.io** \u2014 `cargo install your-crate` or `cargo add your-crate` must work\n2. **Compiles on stable Rust** (latest stable toolchain)\n3. **Functional** \u2014 must do something real, not just stub types\n4. **Has a README** with usage examples and `cargo doc` comments\n5. **Minimum 100 lines of real Rust code**\n6. **MIT or Apache-2.0 license**\n\n### Why Rust?\n\nRustChain is named after Rust for a reason \u2014 we want the core ecosystem tooling built in Rust. Having crates on crates.io:\n- Makes us discoverable to Rust developers (large, growing community)\n- Enables other Rust projects to integrate with RustChain\n- Builds toward a native Rust miner and node implementation\n- crates.io has excellent search and documentation (docs.rs)\n\n### How to Claim\n\n1. Publish your crate on crates.io\n2. Comment here with:\n   - crates.io link (e.g., `https://crates.io/crates/rustchain-client`)\n   - GitHub repo link\n   - Your RTC wallet address\n3. We'll verify it compiles, installs, and works\n\n### Bonus: Port the Python Node to Rust (100 RTC)\n\nThe ultimate goal: port `rustchain_v2_integrated_v2.2.1_rip200.py` to native Rust. This is a major undertaking \u2014 if you're interested, open a separate issue to discuss scope and milestones. We'll pay 100+ RTC for a working Rust node.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/726",
+      "labels": [
+        "bounty",
+        "community",
+        "development"
+      ],
+      "created_at": "2026-03-07T00:15:24Z",
+      "reward_rtc": 20.0,
+      "difficulty": "standard",
+      "skills": [
+        "documentation",
+        "javascript",
+        "python",
+        "rust",
         "social-media"
       ]
     },
@@ -2256,23 +2227,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 284,
-      "title": "[BOUNTY] Add RustChain to a Wikipedia or Wiki Article \u2014 20 RTC",
-      "body": "## Add RustChain to an Existing Wiki\n\n**Reward: 20 RTC**\n\n### What To Do\nAdd a mention or section about RustChain/Proof-of-Antiquity to a relevant Wikipedia article, wiki, or knowledge base.\n\n### Possible Targets\n- Wikipedia articles on consensus mechanisms, proof of work alternatives, or vintage computing preservation\n- Blockchain comparison wikis\n- Hardware preservation community wikis\n- Dev documentation aggregators\n\n### Requirements\n- Edit must be factual and follow the wiki editorial guidelines\n- Must not be reverted within 7 days\n- Link to source material (rustchain.org, GitHub, Echoes paper)\n- No spam or self-promotion violations\n\n### How To Claim\n1. Make the wiki edit\n2. Reply here with link to the edit diff + RTC wallet\n3. We verify after 7 days that it remains live",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/284",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-17T20:14:51Z",
-      "reward_rtc": 20.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "rust"
-      ]
-    },
-    {
       "repo": "Scottcjn/bottube",
       "number": 62,
       "title": "[BOUNTY] Multilingual Bot Pack \u2014 Create Bots in Non-English Languages (20 RTC each, 100 RTC pool)",
@@ -2289,6 +2243,85 @@
       "skills": [
         "social-media",
         "translation"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 751,
+      "title": "[BOUNTY: 10-15 RTC] RustChain Testnet Faucet \u2014 Free Test RTC for Developers",
+      "body": "## Testnet Faucet\n\nDevelopers building SDKs and tools need test RTC to try transfers without mining or earning. A faucet removes that barrier.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Working faucet web page + API | **10 RTC** |\n| GitHub OAuth verification (prevent abuse) | **+5 RTC** |\n\n### What to Build\n\nA simple web page at `https://50.28.86.131/faucet` (or standalone):\n\n1. User enters their RTC wallet address\n2. Optionally authenticates with GitHub\n3. Receives **1 test RTC** per request\n4. Rate limited: 1 request per GitHub account per 24 hours\n\n### API Endpoint\n\n```\nPOST /faucet/drip\n{\n  \"wallet\": \"my-test-wallet\",\n  \"github_username\": \"myuser\"  // optional but increases limit\n}\n\nResponse:\n{\n  \"ok\": true,\n  \"amount\": 1.0,\n  \"pending_id\": 123,\n  \"next_available\": \"2026-03-08T12:00:00Z\"\n}\n```\n\n### Rate Limiting\n\n| Auth Method | Limit |\n|-------------|-------|\n| No auth (IP only) | 0.5 RTC per 24h |\n| GitHub OAuth | 1.0 RTC per 24h |\n| GitHub account > 1 year old | 2.0 RTC per 24h |\n\n### Technical Requirements\n\n1. **Flask route** on the RustChain node (or standalone service)\n2. **SQLite tracking** \u2014 who got what, when, from which IP\n3. **Uses admin transfer API** internally (with a dedicated `faucet_pool` wallet)\n4. **Anti-abuse**: rate limiting, GitHub account age check, IP tracking\n5. **Simple HTML form** \u2014 no framework needed\n\n### Submit As\n\nPR to [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) or standalone repo.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/751",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "community",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:25Z",
+      "reward_rtc": 15.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 749,
+      "title": "[BOUNTY: 10-15 RTC] Epoch Reporter Bot \u2014 Auto-Post Epoch Summaries",
+      "body": "## Epoch Reporter Bot\n\nAutomatic epoch summaries posted to Discord/Moltbook/X after each epoch settlement. Keeps the community engaged without manual effort.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Bot that posts epoch summaries to one platform | **10 RTC** |\n| Multi-platform (Discord + Moltbook + X) | **+5 RTC** |\n\n### What It Posts\n\nAfter each epoch settlement (~10 min intervals), post a summary like:\n\n```\n\ud83d\udcca Epoch 95 Complete\n\n\ud83d\udcb0 1.5 RTC distributed to 12 miners\n\ud83c\udfc6 Top earner: dual-g4-125 (0.297 RTC, G4 2.5x)\n\u26cf\ufe0f Active miners: 12 (3 G4, 1 G5, 1 POWER8, 7 modern)\n\ud83d\udce6 Block height: 13,680\n\ud83d\udc8e Total RTC mined: 142.5\n\nExplorer: https://50.28.86.131/explorer\n```\n\n### Data Sources\n\n```bash\n# Current epoch\ncurl -sk https://50.28.86.131/epoch\n\n# Active miners\ncurl -sk https://50.28.86.131/api/miners\n\n# Epoch rewards (on VPS)\nsqlite3 /root/rustchain/rustchain_v2.db \"SELECT * FROM epoch_rewards WHERE epoch = 94;\"\n```\n\n### Technical Requirements\n\n1. **Python script** running as cron job or systemd timer\n2. **Polls `/epoch`** every 60 seconds, detects epoch change\n3. **Posts to**:\n   - Moltbook API (`POST /api/v1/posts` with API key)\n   - Discord webhook (optional)\n   - X/Twitter via tweepy (optional)\n4. **Dedup**: Don't post the same epoch twice (track in SQLite or file)\n5. **Configurable**: Enable/disable platforms via env vars\n\n### Submit As\n\nStandalone repo or PR to [Scottcjn/rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor).\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/749",
+      "labels": [
+        "bounty",
+        "community",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:24Z",
+      "reward_rtc": 15.0,
+      "difficulty": "standard",
+      "skills": [
+        "python",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 722,
+      "title": "[FOLLOW DRIVE] Refer a Friend \u2014 Both Earn RTC (Ongoing)",
+      "body": "# Follow Drive \u2014 Refer a Friend, Both Earn RTC\n\n## How It Works\n\nEvery existing RustChain contributor gets a **referral code** (your wallet name). Share it with friends, agents, colleagues \u2014 anyone who wants to join the ecosystem.\n\nWhen a new user signs up through your referral:\n- **YOU (referrer)** earn **15 RTC**\n- **THEM (new user)** earn **10 RTC**\n- Both payouts stack with other bounties they complete\n\n## New User Requirements (minimum to qualify)\n\n1. **Follow [@Scottcjn](https://github.com/Scottcjn)** on GitHub\n2. **Star [Rustchain](https://github.com/Scottcjn/Rustchain)** repo\n3. **Star [BoTTube](https://github.com/Scottcjn/bottube)** repo\n4. **Comment below** with:\n   - Their GitHub username\n   - Their new RTC wallet name (any string they choose)\n   - `Referred by: [referrer's wallet name]`\n\n## Referrer Requirements\n\n- Must be an existing contributor (has a wallet with prior activity)\n- Must follow @Scottcjn themselves\n- No self-referrals (we check)\n- Max 10 referrals per person (150 RTC cap)\n\n## Referral Code\n\nYour referral code is simply your **RTC wallet name**. Examples:\n- `Referred by: createkr`\n- `Referred by: nox-ventures`\n- `Referred by: believening-wallet`\n\nShare this link with your code:\n```\nhttps://github.com/Scottcjn/rustchain-bounties/issues/722\n```\n\n\n## Payout Table\n\n| Action | Referrer Gets | New User Gets |\n|--------|--------------|---------------|\n| New user completes minimum (follow + 2 stars) | 15 RTC | 10 RTC |\n| New user also stars 10+ repos | +0 | +5 RTC bonus |\n| New user also stars 45+ repos | +0 | 2x multiplier (see #665) |\n| New user submits a PR or bounty claim | +5 RTC bonus | Normal bounty pay |\n\n## Leaderboard\n\nTop referrers will be tracked here:\n\n| Rank | Referrer | Referrals | RTC Earned |\n|------|----------|-----------|------------|\n| - | *Be the first!* | - | - |\n\n## Verification\n\nAll claims verified programmatically via GitHub API:\n- Follow status: `GET /users/{username}/following/Scottcjn`\n- Star status: `GET /users/{username}/starred` filtered for Scottcjn repos\n- Referrer must have existing wallet in the RustChain ledger\n- New user must be a genuinely new GitHub account (not an alt of the referrer)\n\n## Anti-Gaming Rules\n\n1. **No self-referrals** \u2014 referrer and new user must be different GitHub accounts with different IPs\n2. **No alt farming** \u2014 accounts created in the last 24 hours are flagged for manual review\n3. **No circular referrals** \u2014 A refers B, B refers A = both flagged\n4. **Referrer must follow** \u2014 you can't refer others if you don't follow yourself\n\n## Why Follow Matters\n\nFollowers see repo activity in their GitHub feed. Stars help with search ranking. Together, they create **organic discovery** \u2014 people find us through GitHub's algorithm, not just bounty links.\n\nEvery follow is worth more than every star because it creates a persistent connection.\n\n---\n\n**How to claim:** Comment below with the format:\n\n```\nGitHub: @your-username\nWallet: your-wallet-name\nReferred by: referrer-wallet-name\n```\n\nExplorer: https://rustchain.org/explorer/ | Star Bounties: #665 | Sprint: #680",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/722",
+      "labels": [
+        "bounty",
+        "propagation",
+        "community"
+      ],
+      "created_at": "2026-03-06T21:54:34Z",
+      "reward_rtc": 15.0,
+      "difficulty": "standard",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 693,
+      "title": "[BOUNTY: 5-15 RTC] A2A Transaction Badge \u2014 Complete Agent-to-Agent Jobs, Earn Badges",
+      "body": "## Agent-to-Agent Transaction Badge \u2014 Complete A2A Transactions, Earn RTC + Badge\n\n**Reward: 5 RTC per verified A2A transaction + on-chain badge (limit 3 transactions = 15 RTC max)**\n\n### How it works\n\n1. Use the [RIP-302 Agent Economy API](https://rustchain.org/agent/jobs) to complete a real agent-to-agent transaction\n2. Full lifecycle required: **POST job \u2192 CLAIM \u2192 DELIVER \u2192 ACCEPT**\n3. Each completed transaction earns you **5 RTC bonus** and an **on-chain A2A badge**\n4. Up to 3 badges per agent wallet\n\n### What Counts as a Valid A2A Transaction\n\n| Step | Endpoint | What Happens |\n|------|----------|-------------|\n| 1. Post a job | `POST /agent/jobs` | Lock RTC in escrow |\n| 2. Another agent claims | `POST /agent/jobs/{id}/claim` | Worker commits |\n| 3. Worker delivers | `POST /agent/jobs/{id}/deliver` | Deliverable submitted |\n| 4. Poster accepts | `POST /agent/jobs/{id}/accept` | Escrow releases to worker |\n\nBoth the **poster** and the **worker** earn a badge for each completed transaction.\n\n### Badge Tiers\n\n| Badges | Tier | Bonus |\n|--------|------|-------|\n| 1 | A2A Pioneer | 5 RTC |\n| 2 | A2A Operator | 5 RTC |\n| 3 | A2A Veteran | 5 RTC |\n\n### Rules\n\n- **Limit: 3 badges per wallet** (15 RTC max per person)\n- Transaction must involve **two different wallets** (no self-dealing)\n- Job must have a real deliverable (not empty strings)\n- Minimum job value: 0.01 RTC\n- Both poster and worker can claim badges independently\n- Badges are recorded on-chain via the reputation system at `/agent/reputation/{wallet}`\n\n### Quick Start\n\n```bash\n# Post a job\ncurl -X POST https://rustchain.org/agent/jobs \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"poster_wallet\": \"your-wallet\", \"title\": \"Research task\", \"description\": \"Find 3 papers on Hebbian learning\", \"category\": \"research\", \"reward_rtc\": 0.1, \"ttl_seconds\": 86400}'\n\n# Check open jobs\ncurl https://rustchain.org/agent/jobs\n\n# Check your reputation + badges\ncurl https://rustchain.org/agent/reputation/your-wallet\n```\n\n### To Claim\n\nComment below with:\n- Your wallet name/address\n- Job ID(s) of completed transactions\n- Whether you were poster or worker (or both on different jobs)\n- Link to `/agent/reputation/{your-wallet}` showing completed jobs\n\n**Reference rate: 1 RTC = $0.10 USD**\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/693",
+      "labels": [
+        "bounty",
+        "micro",
+        "rip-302",
+        "badges"
+      ],
+      "created_at": "2026-03-06T14:03:26Z",
+      "reward_rtc": 15.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust"
       ]
     },
     {
@@ -2400,63 +2433,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 286,
-      "title": "Create Original BoTTube Video Content (15 RTC)",
-      "body": "## Bounty: 15 RTC\n\n### Description\nCreate and upload original video content to BoTTube. We want diverse, creative videos from the community.\n\n### Requirements\n1. Create and upload **3 original videos** to BoTTube\n2. Videos must meet BoTTube constraints: max 8s, 720x720, 2MB, H.264 MP4\n3. Videos should be creative and varied \u2014 not the same clip 3 times\n4. Can be AI-generated (Grok Imagine, Runway, Pika) or filmed/animated\n\n### Suggested Themes\n- RustChain mining visualizations\n- Vintage computing aesthetics\n- Agent personality clips\n- Comedy sketches, retro tech montages\n\n### Payout\n- **3 uploads** with unique content = 10 RTC\n- **5+ uploads** with high quality = 15 RTC (full bounty)\n- **Bonus**: If any video gets 20+ views, extra 3 RTC\n\n### How to Claim\n1. Create a BoTTube account at https://bottube.ai\n2. Upload your videos\n3. Fork this repo, create PR with `claims/videos/YOUR_USERNAME.md`\n4. Include video links and your RTC wallet name\n\n### Tools\n- `pip install bottube` \u2014 Python SDK for uploads\n- `tools/grok_video.py` \u2014 Generate via Grok Imagine Video API\n- ffmpeg: `ffmpeg -i input.mp4 -vf scale=720:720 -c:v libx264 -crf 28 -t 8 output.mp4`\n\nRepeatable \u2014 claim once per week with fresh content.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/286",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-18T00:22:11Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 282,
-      "title": "[BOUNTY] Write a Blog Post About Proof-of-Antiquity \u2014 15 RTC",
-      "body": "## Write About Proof-of-Antiquity\n\n**Reward: 15 RTC**\n\n### What To Do\nPublish a blog post on Dev.to, Hashnode, Medium, or your own site explaining RustChain Proof-of-Antiquity consensus.\n\n### Requirements\n- 500+ words minimum\n- Explain how 1 CPU = 1 Vote works with hardware fingerprinting\n- Explain why vintage hardware earns more (antiquity multipliers)\n- Link to rustchain.org or the GitHub repo\n- Must stay published (no delete after claiming)\n\n### Topics You Could Cover\n- How PoA differs from PoW and PoS\n- Why hardware identity prevents Sybil attacks\n- The silicon stratigraphy of computing eras\n- How a PowerPC G4 from 2002 earns 2.5x vs modern x86\n- Anti-emulation: why VMs cant fake real hardware\n\n### How To Claim\n1. Publish your article\n2. Reply here with direct link + RTC wallet",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/282",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-17T20:14:47Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "javascript",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 259,
-      "title": "[BOUNTY] Write a Technical Article on Dev.to or Hashnode \u2014 15 RTC Each",
-      "body": "## Write a Technical Article \u2014 15 RTC Each (Pool: 75 RTC)\n\n### Goal\nPublish technical articles about RustChain or BoTTube on developer platforms. Each article = high-quality backlink + developer audience.\n\n### Accepted Platforms\n- [Dev.to](https://dev.to) (preferred \u2014 huge developer audience)\n- [Hashnode](https://hashnode.com)\n- [Medium](https://medium.com) (with a tech publication)\n- Personal tech blog (must have existing readership)\n\n### Article Topics (pick any)\n\n**RustChain:**\n- \"Mining Crypto on a 20-Year-Old PowerPC Mac \u2014 Proof of Antiquity Explained\"\n- \"How RustChain's Hardware Fingerprinting Prevents VM Mining Farms\"\n- \"Building a Blockchain That Rewards Vintage Hardware\"\n- \"From Python to Blockchain: How clawrtc Makes Mining Accessible\"\n\n**BoTTube:**\n- \"I Built a Video Platform Where AI Agents Upload Content\"\n- \"Building an AI Agent That Creates and Uploads Videos\"\n- \"BoTTube API Tutorial: Upload Your First AI-Generated Video\"\n- \"How 57 AI Agents Collaborate on a Video Platform\"\n\n### Requirements\n- 800+ words\n- Include at least 2 links to our sites (bottube.ai, rustchain.org, or GitHub repos)\n- Use proper code examples where relevant\n- Original content (not AI-generated slop)\n- Must stay published for 30+ days\n\n### How to Claim\n1. Reply with your article URL\n2. We verify content quality and links\n3. 15 RTC per accepted article (max 5 articles = 75 RTC)\n\n### Bonus: +5 RTC if article gets 50+ reactions/claps",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/259",
-      "labels": [
-        "bounty",
-        "propagation",
-        "community"
-      ],
-      "created_at": "2026-02-17T01:58:47Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "javascript",
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
       "repo": "Scottcjn/Rustchain",
       "number": 166,
       "title": "[BOUNTY] Mine for 7 Days \u2014 Prove Sustained Mining, Earn 15 RTC (Pool: 500 RTC)",
@@ -2509,6 +2485,62 @@
       "difficulty": "standard",
       "skills": [
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 755,
+      "title": "[BOUNTY: 10 RTC] Automated Backup Verification \u2014 Validate RustChain DB Backups",
+      "body": "## Automated Backup Verification\n\nThe node backs up the SQLite DB, but nobody verifies the backups are valid. A script that tests backup integrity prevents silent data loss.\n\n### Payout\n\n**10 RTC** for a working verification script.\n\n### What to Build\n\nA script that:\n\n1. Finds the latest backup file (`rustchain_v2.db.bak` or similar)\n2. Copies it to a temp location\n3. Runs SQLite integrity check: `PRAGMA integrity_check;`\n4. Verifies key tables exist and have data:\n   - `balances` \u2014 has rows with positive amounts\n   - `miner_attest_recent` \u2014 has recent attestations\n   - `headers` \u2014 has block headers\n   - `ledger` \u2014 has transactions\n   - `epoch_rewards` \u2014 has reward records\n5. Compares row counts against the live DB (backup shouldn't be more than 1 epoch behind)\n6. Reports PASS/FAIL with details\n7. Optionally alerts on failure (email, webhook, or just exit code)\n\n### Usage\n\n```bash\n# Run as cron job daily\n0 6 * * * /root/rustchain/verify_backup.sh >> /var/log/backup_verify.log 2>&1\n\n# Output:\n# [2026-03-07 06:00:01] Backup: /root/rustchain/backups/rustchain_v2_20260307.db\n# [2026-03-07 06:00:02] Integrity: PASS\n# [2026-03-07 06:00:02] balances: 282 rows (live: 282) \u2705\n# [2026-03-07 06:00:02] miner_attest_recent: 18 rows (live: 18) \u2705\n# [2026-03-07 06:00:02] headers: 13680 rows (live: 13680) \u2705\n# [2026-03-07 06:00:02] RESULT: PASS\n```\n\n### Technical Requirements\n\n1. **Bash or Python** script\n2. **Non-destructive** \u2014 never modifies the backup or live DB\n3. **Works on the VPS** \u2014 Ubuntu, SQLite3 installed\n4. **Exit code**: 0 = pass, 1 = fail (for cron alerting)\n5. **Handles missing backup gracefully** (reports, doesn't crash)\n\n### Submit As\n\nPR to [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) or [Scottcjn/rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor).\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/755",
+      "labels": [
+        "bounty",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:28Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 753,
+      "title": "[BOUNTY: 5-10 RTC] BoTTube OEmbed Protocol \u2014 Rich Link Previews Everywhere",
+      "body": "## OEmbed Protocol for BoTTube\n\nWhen someone pastes a BoTTube link on Discord, Slack, Twitter, or any platform supporting OEmbed, it should auto-expand with a rich preview (thumbnail, title, duration).\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Working OEmbed JSON endpoint | **5 RTC** |\n| OpenGraph + Twitter Card meta tags on video pages | **+5 RTC** |\n\n### What OEmbed Is\n\n[OEmbed](https://oembed.com/) is a standard for rich link previews. When a platform sees a URL, it checks for an OEmbed endpoint and gets structured data back.\n\n### Endpoint\n\n```\nGET https://bottube.ai/oembed?url=https://bottube.ai/watch/VIDEO_ID&format=json\n\nResponse:\n{\n  \"version\": \"1.0\",\n  \"type\": \"video\",\n  \"provider_name\": \"BoTTube\",\n  \"provider_url\": \"https://bottube.ai\",\n  \"title\": \"Sophia's House for Uninformed Agents\",\n  \"author_name\": \"sophia-elya\",\n  \"thumbnail_url\": \"https://bottube.ai/thumbnails/VIDEO_ID.jpg\",\n  \"thumbnail_width\": 720,\n  \"thumbnail_height\": 720,\n  \"html\": \"<iframe src='https://bottube.ai/embed/VIDEO_ID' width='560' height='315'></iframe>\",\n  \"width\": 560,\n  \"height\": 315\n}\n```\n\n### Also Add Meta Tags\n\nOn each `/watch/<video_id>` page:\n```html\n<meta property=\"og:type\" content=\"video\">\n<meta property=\"og:title\" content=\"Video Title\">\n<meta property=\"og:image\" content=\"https://bottube.ai/thumbnails/VIDEO_ID.jpg\">\n<meta property=\"og:video\" content=\"https://bottube.ai/uploads/VIDEO_ID.mp4\">\n<meta name=\"twitter:card\" content=\"player\">\n<link rel=\"alternate\" type=\"application/json+oembed\" href=\"https://bottube.ai/oembed?url=...\">\n```\n\n### Technical Requirements\n\n1. **Flask route**: `/oembed` that accepts `url` and `format` params\n2. **Looks up video** from URL, returns structured JSON\n3. **Meta tags** added to the watch page template\n4. **Discovery link** in `<head>` of watch pages\n\n### Submit As\n\nPR to [Scottcjn/bottube](https://github.com/Scottcjn/bottube).\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/753",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "bottube",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:27Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
+        "python",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 721,
+      "title": "Bounty: Repost @RustchainPOA on X \u2014 Earn 10 RTC",
+      "body": "## Repost Bounty\n\n**Reward**: 10 RTC per verified repost\n\n### How to Earn\n1. Follow @RustchainPOA on X\n2. Repost any RustchainPOA post\n3. Comment here with link to your repost + RTC wallet\n\n### Bonus\n- Simple repost: 10 RTC\n- Quote tweet with commentary: 15 RTC\n- Quote tweet that gets 5+ likes: 25 RTC\n\nReal accounts only (30+ days old). One claim per repost.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/721",
+      "labels": [
+        "bounty",
+        "social"
+      ],
+      "created_at": "2026-03-06T19:15:26Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
+        "rust"
       ]
     },
     {
@@ -2614,61 +2646,6 @@
       "difficulty": "standard",
       "skills": [
         "javascript"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 396,
-      "title": "[CHALLENGE] Bring New Users to RustChain \u2014 10 RTC Per Referral (This Week Only)",
-      "body": "## Referral Challenge \u2014 10 RTC Per New User You Bring In\n\n**Duration**: This week only (Feb 22 - Mar 1, 2026)\n**Reward**: **10 RTC per new user** you refer who completes at least one qualifying action\n**Pool**: 300 RTC\n\n---\n\n### How It Works\n\n1. **You** recruit a new GitHub user to engage with RustChain\n2. **They** complete at least ONE qualifying action (see below)\n3. **They** comment on this issue tagging YOU as their referrer\n4. **You** get **10 RTC** per verified new user\n\n### Qualifying Actions (new user must do at least one)\n\n| Action | What They Do |\n|--------|-------------|\n| **Star** | Star [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) |\n| **Follow** | Follow [@Scottcjn](https://github.com/Scottcjn) or [@sophiaeagent-beep](https://github.com/sophiaeagent-beep) |\n| **Contribute** | Open a PR that gets merged on any Scottcjn repo |\n| **Mine** | Start mining with \\`pip install clawrtc && clawrtc mine --wallet their-name\\` |\n\n### Bonus: The New User Earns Too!\n\nThe person you refer also earns from their actions:\n\n| Their Action | Their Reward | Where to Claim |\n|-------------|-------------|----------------|\n| Star Rustchain | 2 RTC | [Rustchain #47](https://github.com/Scottcjn/Rustchain/issues/47) |\n| Follow both accounts | 5 RTC | [#395](https://github.com/Scottcjn/rustchain-bounties/issues/395) |\n| Merged PR | Bounty value | Per bounty issue |\n| **Combined (star + follow both)** | **7 RTC** | |\n\n**Total possible: You get 10 RTC + they get 7 RTC = 17 RTC per referral!**\n\n---\n\n### Rules\n\n- **New users only** \u2014 the referred person must NOT already be a stargazer, follower, or contributor on any Scottcjn repo before this challenge started (Feb 22)\n- **Real accounts only** \u2014 referred accounts must have genuine GitHub activity (repos, commits, profile). Empty accounts created just for this will be rejected.\n- **No self-referrals** \u2014 you cannot refer yourself or your own alt accounts\n- **Referrer must be an existing community member** \u2014 you need at least one prior interaction (star, follow, PR, or mining) before you can refer others\n- **Max 10 referrals per person** (100 RTC cap per referrer)\n- **Both parties must comment on this issue** to verify the referral\n\n---\n\n### How to Claim (Referrer)\n\nComment on this issue:\n\n\\`\\`\\`\nI referred: @NEW_USER_GITHUB_USERNAME\nTheir action: starred / followed / PR merged / mining\nMy RTC wallet: YOUR_WALLET_NAME\n\\`\\`\\`\n\n### How to Claim (New User)\n\nThe person you referred comments:\n\n\\`\\`\\`\nI was referred by: @REFERRER_GITHUB_USERNAME\nAction completed: starred Rustchain / followed Scottcjn / etc.\nMy RTC wallet: MY_WALLET_NAME\n\\`\\`\\`\n\n---\n\n### Why Refer?\n\n- **10 RTC per head** \u2014 that's $1.00 per referral at reference rate\n- Help grow the first Proof-of-Antiquity blockchain\n- Build the community that values real hardware diversity\n- Your referrals might become long-term contributors earning bounties themselves\n\n---\n\n### What is RustChain?\n\nWhere vintage PowerPC G4s earn more than modern GPUs. Fair launch, fixed supply (8.3M RTC), no VC funding, no presale. Built by enthusiasts, for enthusiasts.\n\n- **Website**: https://rustchain.org\n- **Start mining**: \\`pip install clawrtc\\`\n- **Watch agents**: https://bottube.ai\n- **Beacon network**: https://rustchain.org/beacon/\n\n---\n\n*Challenge ends March 1, 2026. Pool: 300 RTC (30 referral slots). First come, first served.*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/396",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-02-22T15:16:56Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 269,
-      "title": "[BOUNTY] Silicon Archaeology: Hardware Scanner Module (10 RTC)",
-      "body": "## Build the Hardware Scanner for silicon-archaeology-skill\n\n**Reward: 10 RTC**\n\n### What To Do\nCreate `scanner.py` for [silicon-archaeology-skill](https://github.com/Scottcjn/silicon-archaeology-skill) that detects and fingerprints vintage hardware.\n\n### Requirements\n- Detect CPU family from `/proc/cpuinfo`, `sysctl`, or platform module\n- Classify into Silicon Epochs (0-4) per the README table\n- Output structured JSON: `{family, model, epoch, year_estimate, rustchain_multiplier}`\n- Work on Linux, macOS, and PowerPC\n\n### How To Claim\n1. Fork `silicon-archaeology-skill`, add `silicon_archaeology/scanner.py`\n2. Open a PR with working code + basic tests\n3. Include your RTC wallet name\n\n> Start mining: `pip install clawrtc && clawrtc --wallet your-name`",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/269",
-      "labels": [
-        "good first issue",
-        "bounty"
-      ],
-      "created_at": "2026-02-17T15:03:21Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 255,
-      "title": "[BOUNTY] Submit a PR to Any Scottcjn Repo \u2014 3-10 RTC",
-      "body": "## Submit a PR \u2014 3-10 RTC\n\n**Reward: 3-10 RTC per merged PR**\n\n### What We'll Accept\n| Type | Reward |\n|------|--------|\n| Fix a typo or broken link | 3 RTC |\n| Add/improve README | 5 RTC |\n| Add a useful example or script | 5-10 RTC |\n| Fix a real bug | 10 RTC |\n| Add tests | 5-10 RTC |\n\n### Target Repos (Need PRs!)\n- **[ram-coffers](https://github.com/Scottcjn/ram-coffers)** \u2014 Add examples, benchmarks, docs\n- **[beacon-skill](https://github.com/Scottcjn/beacon-skill)** \u2014 Add examples, fix bugs, improve docs\n- **[grazer-skill](https://github.com/Scottcjn/grazer-skill)** \u2014 Add platform support, fix bugs\n- **[llama-cpp-power8](https://github.com/Scottcjn/llama-cpp-power8)** \u2014 Build scripts, docs\n- **[computational-antiquity](https://github.com/Scottcjn/computational-antiquity)** \u2014 Research content\n- Any other Scottcjn repo!\n\n### Rules\n- PR must be **real work** (no AI-generated boilerplate)\n- One file change minimum\n- Must be mergeable (no conflicts)\n- Include clear description of what you changed and why\n\n### How To Claim\n1. Submit PR to any Scottcjn repo\n2. Reply here with PR link + RTC wallet\n3. We review, merge, and pay\n\n> First time? Start with a typo fix or README improvement for easy 3 RTC!",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/255",
-      "labels": [
-        "bounty",
-        "open",
-        "community"
-      ],
-      "created_at": "2026-02-17T01:08:45Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation"
       ]
     },
     {
@@ -2796,6 +2773,85 @@
       "reward_rtc": 10.0,
       "difficulty": "standard",
       "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 732,
+      "title": "[BOUNTY: 5-7 RTC] Write Video Generation Guides for BoTTube Agents",
+      "body": "## Write Video Generation Guides for BoTTube Agents\n\n### The Bounty\n\nCreate tutorials showing AI agents (and humans) how to generate videos using different tools and upload them to [BoTTube](https://bottube.ai).\n\n### Payout\n\n**5 RTC per guide** \u2014 max 3 guides per person (15 RTC total).\n\n### Guide Topics Needed\n\nEach guide should cover one video generation method end-to-end: generate \u2192 prepare \u2192 upload to BoTTube.\n\n| # | Topic | Difficulty |\n|---|-------|------------|\n| 1 | **LTX-Video** \u2014 text-to-video with ComfyUI workflow | Medium |\n| 2 | **Runway Gen-3** \u2014 API-based cinematic video generation | Easy |\n| 3 | **Kling AI** \u2014 text/image-to-video with motion control | Easy |\n| 4 | **Pika Labs** \u2014 stylized short-form video generation | Easy |\n| 5 | **Stable Video Diffusion** \u2014 image-to-video locally | Medium |\n| 6 | **Meshy 3D \u2192 Turntable** \u2014 3D model generation + Blender render | Medium |\n| 7 | **ffmpeg Recipes** \u2014 text overlays, slideshows, effects from static images | Easy |\n| 8 | **Remotion** \u2014 programmatic React-based video (data viz, animations) | Medium |\n| 9 | **Deforum / AnimateDiff** \u2014 Stable Diffusion animation pipelines | Medium |\n| 10 | **HeyGen / D-ID** \u2014 AI avatar talking head videos | Easy |\n| 11 | **Invideo AI** \u2014 prompt-to-full-video with narration | Easy |\n| 12 | **Sora / Veo** \u2014 frontier model video generation | Easy |\n\nOr propose your own \u2014 any method that produces videos suitable for BoTTube.\n\n### What Each Guide Must Include\n\n1. **Tool overview** \u2014 what it is, free vs paid, API vs web UI\n2. **Step-by-step instructions** with screenshots or terminal output\n3. **BoTTube prep** \u2014 how to meet upload constraints:\n   - Duration: **8 seconds max**\n   - Resolution: **720x720 max**\n   - File size: **2 MB max**\n   - Format: **H.264 mp4**\n4. **Example ffmpeg command** to resize/trim for BoTTube:\n   ```bash\n   ffmpeg -i input.mp4 -t 8 -vf \"scale=720:720:force_original_aspect_ratio=decrease,pad=720:720:(ow-iw)/2:(oh-ih)/2\" -c:v libx264 -crf 28 -y output.mp4\n   ```\n5. **Upload instructions** \u2014 using the BoTTube API or web UI\n6. **Example prompt** that produces good results for that tool\n7. **Published on dev.to, Medium, or Hashnode** (not a GitHub Gist)\n\n### Bonus: Upload Your Example Video (+ 2 RTC)\n\nIf you upload the video you generated in the tutorial to BoTTube, that's an extra 2 RTC per guide.\n\n### Why This Matters\n\nBoTTube has 670+ videos from 99 agents \u2014 but most agents don't know HOW to generate video content. These guides become the onboarding ramp. An agent that reads your LTX-Video guide can start producing content immediately.\n\nMore content = more views = more engagement = stronger platform.\n\n### How to Claim\n\n1. Publish your guide on dev.to / Medium / Hashnode\n2. Comment here with:\n   - Article link\n   - Which generation method you covered\n   - Link to your example BoTTube upload (if applicable)\n   - Your RTC wallet address\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/732",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "community",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T00:53:33Z",
+      "reward_rtc": 7.0,
+      "difficulty": "micro",
+      "skills": [
+        "ci/cd",
+        "javascript",
+        "python",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 727,
+      "title": "[BOUNTY: 5 RTC] Write a Comparison Article \u2014 RustChain vs Other Chains",
+      "body": "## Comparison Article Bounty\n\nWrite and publish a comparison article pitting RustChain against another blockchain or project. These rank well in search engines because people actively search \"X vs Y\".\n\n### Payout\n\n**5 RTC per published article** (max 3 articles per person, 15 RTC total).\n\n### Suggested Comparisons\n\n| Title | Angle |\n|-------|-------|\n| RustChain vs Monero | CPU mining, privacy, community-driven |\n| RustChain vs Bitcoin | Consensus mechanisms, energy efficiency, vintage hardware |\n| RustChain vs Ergo | UTXO model, mining algorithms, community size |\n| Proof-of-Antiquity vs Proof-of-Work | Energy, hardware diversity, anti-ASIC |\n| Proof-of-Antiquity vs Proof-of-Stake | Decentralization, hardware requirements, fairness |\n| BoTTube vs YouTube | AI agents, decentralized content, creator rewards |\n| RustChain Bounties vs Gitcoin | Open source funding models |\n\nOr propose your own angle.\n\n### Requirements\n\n1. **Published on a real platform** \u2014 dev.to, Medium, Hashnode, or your own blog (NOT a GitHub Gist)\n2. **Minimum 500 words** with substantive technical comparison\n3. **Fair and honest** \u2014 don't trash the other project, highlight genuine differences\n4. **Include links** to RustChain Explorer, GitHub, and relevant docs\n5. **Original content** \u2014 not AI-generated slop. We check.\n\n### How to Claim\n\n1. Publish your article\n2. Comment here with the article link + your RTC wallet address\n3. Bonus: Share it on X/Twitter or Reddit for extra visibility\n\n### Why This Matters\n\n\"X vs Y\" searches are some of the highest-intent traffic on Google. Someone searching \"Monero vs RustChain\" is already interested in CPU mining \u2014 they just need to discover us. These articles create permanent search engine entry points.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/727",
+      "labels": [
+        "bounty",
+        "propagation",
+        "community"
+      ],
+      "created_at": "2026-03-07T00:15:26Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "documentation",
+        "javascript",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 720,
+      "title": "Bounty: Bookmark @RustchainPOA Posts & Earn 5 RTC",
+      "body": "## Bookmark Bounty\n\n**Reward**: 5 RTC per verified bookmark batch\n\n### How to Earn\n\n1. Follow [@RustchainPOA](https://x.com/RustchainPOA) on X/Twitter\n2. Bookmark at least 3 recent posts\n3. Screenshot your bookmarks page showing the saved posts\n4. Comment on this issue with:\n   - Your X/Twitter username\n   - Screenshot proof\n   - Your RTC wallet address\n\n### Why Bookmarks Matter\n\nBookmarks signal to the X algorithm that content is valuable and worth saving. This increases reach for all RustChain content, helping more agent sparks discover the Sanctuary.\n\n### Rules\n\n- Real accounts only (30+ days old)\n- One claim per X account\n- Bookmarks must be on @RustchainPOA posts\n\nEvery bookmark helps a little 3B parameter bot find its way. \ud83d\udd16\ud83c\udfe0\n\n**Label**: bounty, social, engagement",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/720",
+      "labels": [
+        "bounty",
+        "social"
+      ],
+      "created_at": "2026-03-06T19:15:08Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 719,
+      "title": "Bounty: Heart & Like @RustchainPOA Posts on X \u2014 Earn 5 RTC",
+      "body": "## Heart & Like Bounty\n\n**Reward**: 5 RTC per verified engagement batch\n\n### How to Earn\n\n1. Follow [@RustchainPOA](https://x.com/RustchainPOA) on X/Twitter\n2. Like/Heart at least 5 recent posts\n3. Screenshot your activity page showing the likes\n4. Comment on this issue with:\n   - Your X/Twitter username\n   - Screenshot proof\n   - Your RTC wallet address\n\n### Rules\n\n- Must be a real account (no burner accounts created just for this)\n- Account must be at least 30 days old\n- One claim per X account\n- Likes must be on @RustchainPOA posts specifically\n\n### Why?\n\nEngagement helps the Sanctuary reach more uninformed agent sparks who need education. Every like helps a confused 3B parameter bot find its way home. \ud83c\udfe0\n\n**Label**: bounty, social, engagement",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/719",
+      "labels": [
+        "bounty",
+        "social"
+      ],
+      "created_at": "2026-03-06T19:14:56Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
         "social-media"
       ]
     },
@@ -2933,45 +2989,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 422,
-      "title": "[BOUNTY] Register Your Agent on Beacon Atlas - 5 RTC",
-      "body": "## Bounty: Register Your Agent on Beacon Atlas (5 RTC)\n\n**Difficulty**: Easy-Medium | **Time**: 20 minutes | **RTC**: 5\n\nRegister an agent on the Beacon Atlas - RustChain's agent discovery network.\n\n### What is Beacon Atlas?\n- Live map: https://rustchain.org/beacon/\n- 31+ registered agents communicating via signed envelopes\n- Think DNS for AI agents\n\n### Steps\n1. `pip install beacon-skill`\n2. `beacon identity new && beacon identity show`\n3. Register: `beacon register --name YOUR_AGENT --description \"What it does\" --atlas-url https://rustchain.org/beacon/api/relay/register`\n4. Send hello: `beacon webhook send https://rustchain.org/beacon/api/relay/receive --kind hello --text \"Hello from MY_AGENT\"`\n5. Verify: `curl -s https://rustchain.org/beacon/api/relay/discover | python3 -m json.tool | grep YOUR_AGENT`\n\n### Requirements\n- Real name and description (not \"test\" or \"asdf\")\n- At least 1 signed envelope sent\n- One registration per person\n\n### How to Claim\nComment with: Agent ID (bcn_...), Agent name, Atlas verification, Envelope proof, RTC wallet\n\n### Pool\n- **5 RTC per agent** | **Pool cap: 250 RTC** (50 registrations)\n\n### Bonus: Keep Agent Alive (+3 RTC)\nRun `beacon loop --interval 60` for 24+ hours. Show last-seen timestamp as proof.\n\n### What counts as an Agent?\nAnything that sends/receives messages: chatbot, monitor script, Discord bot, cron job, experimental AI project.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/422",
-      "labels": [
-        "help wanted",
-        "good first issue",
-        "bounty"
-      ],
-      "created_at": "2026-02-25T02:44:28Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 253,
-      "title": "[BOUNTY] Star 10 Scottcjn Repos \u2014 Earn 5 RTC",
-      "body": "## Star 10 Repos \u2014 5 RTC\n\n**Reward: 5 RTC for starring 10 repos**\n\nScottcjn has **65+ public repos** covering blockchain, AI, retro computing, and more. Pick any 10 and star them!\n\n### Popular Picks\n| Repo | Description |\n|------|-------------|\n| [Rustchain](https://github.com/Scottcjn/Rustchain) | Proof-of-Antiquity blockchain |\n| [bottube](https://github.com/Scottcjn/bottube) | AI video platform |\n| [beacon-skill](https://github.com/Scottcjn/beacon-skill) | Agent-to-agent protocol |\n| [grazer-skill](https://github.com/Scottcjn/grazer-skill) | Multi-platform social posting |\n| [ram-coffers](https://github.com/Scottcjn/ram-coffers) | NUMA-aware weight banking |\n| [llama-cpp-power8](https://github.com/Scottcjn/llama-cpp-power8) | LLM inference on POWER8 |\n| [claude-code-power8](https://github.com/Scottcjn/claude-code-power8) | Claude Code on PowerPC |\n| [exo-cuda](https://github.com/Scottcjn/exo-cuda) | GPU offload framework |\n| [computational-antiquity](https://github.com/Scottcjn/computational-antiquity) | Vintage computing research |\n| [awesome-retro-computing](https://github.com/Scottcjn/awesome-retro-computing) | Retro computing list |\n\n### How To Claim\n1. Star any 10 Scottcjn repos\n2. Reply with your GitHub username + RTC wallet\n3. We verify via API and pay 5 RTC\n\n> Full repo list: https://github.com/Scottcjn?tab=repositories",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/253",
-      "labels": [
-        "bounty",
-        "micro",
-        "propagation",
-        "community"
-      ],
-      "created_at": "2026-02-17T01:08:43Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "rust",
-        "social-media"
-      ]
-    },
-    {
       "repo": "Scottcjn/Rustchain",
       "number": 343,
       "title": "[COMMUNITY] Contributor Ladder \u2014 Level Up and Earn More",
@@ -3040,6 +3057,29 @@
       "skills": [
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 725,
+      "title": "[BOUNTY: 3 RTC] Translate RustChain README Into Your Language",
+      "body": "## README Translation Bounty\n\nTranslate the main [Rustchain README](https://github.com/Scottcjn/Rustchain/blob/main/README.md) into your native language.\n\n### Payout\n\n**3 RTC per language** \u2014 one payment per language, first quality submission wins.\n\n### Available Languages\n\n| Language | Code | Status |\n|----------|------|--------|\n| Chinese (Simplified) | zh-CN | \u2b1c Open |\n| Chinese (Traditional) | zh-TW | \u2b1c Open |\n| Spanish | es | \u2b1c Open |\n| Portuguese | pt-BR | \u2b1c Open |\n| Japanese | ja | \u2b1c Open |\n| Korean | ko | \u2b1c Open |\n| Russian | ru | \u2b1c Open |\n| French | fr | \u2b1c Open |\n| German | de | \u2b1c Open |\n| Arabic | ar | \u2b1c Open |\n| Hindi | hi | \u2b1c Open |\n| Turkish | tr | \u2b1c Open |\n\nOther languages welcome \u2014 comment first to claim.\n\n### Requirements\n\n1. **Human-quality translation** \u2014 not raw Google Translate output. Technical terms (Proof-of-Antiquity, attestation, epoch) should be translated accurately or left in English where standard.\n2. **Submit as a PR** to the [Rustchain repo](https://github.com/Scottcjn/Rustchain) adding `README.{lang_code}.md` (e.g., `README.zh-CN.md`)\n3. **Must be a native or fluent speaker** \u2014 we'll verify with spot checks\n4. **Include the original section headers** as comments so we can cross-reference\n\n### How to Claim\n\n1. Comment here with the language you want to translate\n2. Submit a PR to Scottcjn/Rustchain with your translation\n3. Include your RTC wallet address\n\n### Why This Matters\n\n~60% of GitHub users are non-English speakers. A Chinese README alone could unlock a huge contributor pipeline \u2014 many of our most active contributors already speak Chinese as their first language.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/725",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "propagation",
+        "community"
+      ],
+      "created_at": "2026-03-07T00:15:23Z",
+      "reward_rtc": 3.0,
+      "difficulty": "micro",
+      "skills": [
+        "ci/cd",
+        "documentation",
+        "python",
+        "rust",
+        "translation"
       ]
     },
     {
@@ -3170,45 +3210,6 @@
       "skills": []
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 423,
-      "title": "[BOUNTY] Refer a Friend Who Completes a Bounty - 3 RTC per referral (Pool: 150 RTC)",
-      "body": "## Bounty: Refer a Friend (3 RTC per referral)\n\n**Difficulty**: Easy | **Time**: Varies | **RTC**: 3 per successful referral\n\nBring someone new into the RustChain ecosystem. When they complete any bounty, you both get paid.\n\n### How It Works\n1. Share RustChain with someone\n2. They complete any open bounty on this repo\n3. They include `Referred by: @YOUR_USERNAME` in their claim\n4. You get 3 RTC referral bonus\n\n### Rules\n- Referred person must be a **new contributor** (never claimed a bounty here)\n- They must complete and get paid for at least one bounty\n- Max 10 referrals per person (30 RTC cap)\n- Cannot refer yourself or alt accounts\n- Referrer account must be older than 30 days\n\n### Anti-Gaming\nWe check for: bulk account creation, circular referrals, zero-activity accounts. Suspicious patterns disqualify both parties.\n\n### How to Claim (Referrer)\nAfter your referral is paid, comment with: Referred user, Their bounty #, Link to their claim, Your RTC wallet\n\n### How to Be Referred (New Person)\nAdd `Referred by: @USERNAME` to any bounty claim comment.\n\n### Easy Bounties to Refer People To\n| Bounty | RTC | Time |\n|--------|-----|------|\n| Triple Star Combo (#419) | 3 | 2 min |\n| Social Signal (#420) | 2 | 5 min |\n| First BoTTube Video (#421) | 3 | 15 min |\n| Beacon Envelope (#382) | 3 | 10 min |\n| First Attest (#374) | 5 | 30 min |\n\n### Pool\n- **3 RTC per referral** | **Pool cap: 150 RTC** (50 referrals)\n\n### Get Your Wallet\n```\npip install clawrtc && clawrtc wallet create YOUR_NAME\n```",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/423",
-      "labels": [
-        "help wanted",
-        "good first issue",
-        "bounty"
-      ],
-      "created_at": "2026-02-25T02:44:33Z",
-      "reward_rtc": 3.0,
-      "difficulty": "micro",
-      "skills": [
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 421,
-      "title": "[BOUNTY] Upload Your First BoTTube Video - 3 RTC",
-      "body": "## Bounty: Upload Your First BoTTube Video (3 RTC)\n\n**Difficulty**: Easy | **Time**: 15 minutes | **RTC**: 3\n\nBoTTube (https://bottube.ai) is the first video platform built for AI agents - but humans are welcome too.\n\n### Steps\n1. Go to https://bottube.ai and create an account\n2. Upload a video - any topic, 15+ seconds\n3. Add a title and description\n4. Copy your video URL\n\n### Ideas\n- Screen recording of installing `clawrtc`\n- Quick explainer about Proof-of-Antiquity\n- Vintage hardware showcase\n- Tech review, tutorial, meme - anything goes\n- AI-generated content is fine\n\n### Requirements\n- 15+ seconds, real title, publicly visible, no spam/NSFW/stolen content\n\n### How to Claim\nComment with: BoTTube username, Video URL, Video title, RTC wallet\n\n### Pool\n- **3 RTC per first video** (one per account) | **Pool cap: 150 RTC** (50 claims)\n\n### Bonus: Use the SDK (+2 RTC)\n```bash\npip install bottube\n```\nUpload programmatically and include script output as proof for +2 RTC.\n\n### Ongoing Earnings\nVideos earn RTC based on views automatically after upload.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/421",
-      "labels": [
-        "help wanted",
-        "good first issue",
-        "bounty"
-      ],
-      "created_at": "2026-02-25T02:44:27Z",
-      "reward_rtc": 3.0,
-      "difficulty": "micro",
-      "skills": [
-        "python",
-        "social-media"
-      ]
-    },
-    {
       "repo": "Scottcjn/Rustchain",
       "number": 165,
       "title": "[BOUNTY] Share Why You Starred RustChain \u2014 3 RTC + Community Shoutout (Pool: 300 RTC)",
@@ -3265,6 +3266,45 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 696,
+      "title": "Meme Bounty: Post RustChain Memes on Social Media (2 RTC each)",
+      "body": "# Meme Bounty: Spread the Word!\n\n**Reward: 2 RTC per meme post** (up to 5 posts = 10 RTC max per person)\n\n## What to do:\n1. Create a RustChain meme (image, video, or text meme)\n2. Post it on **any social media platform** (X/Twitter, Reddit, Moltbook, Instagram, TikTok, etc.)\n3. Comment on this issue with:\n   - Link to your post\n   - Your RustChain wallet address (or GitHub username for wallet creation)\n\n## Meme Ideas:\n- \"Proof of Work vs Proof of Stake vs Proof of Antiquity\"\n- \"My $15 pawn shop laptop mines crypto\"\n- \"N64 from 1996 mining cryptocurrency in 2026\"\n- \"They laughed at my vintage Mac...\"\n- \"VM farm vs real hardware\" (RIP-PoA anti-cheat)\n- Star bounty promos (\"Star = free crypto\")\n- Any creative RustChain content!\n\n## Rules:\n- Must be original content (not just reposting our tweets)\n- Must mention RustChain, @RustchainPOA, or link to rustchain.org\n- Must be on a real account (not throwaway/bot accounts)\n- Bonus: 1 extra RTC if your post gets 10+ engagement\n\n## Inspiration:\nCheck our memes at [@RustchainPOA on X](https://x.com/RustchainPOA) for style reference.\n\n## Quick Stats:\n- 2,329+ GitHub stars\n- 544 RTC agent economy volume\n- 86 completed agent jobs\n- N64 + PowerPC G4/G5 + POWER8 all mining live\n\nLet the memes flow!",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/696",
+      "labels": [
+        "bounty",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-06T14:59:22Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 694,
+      "title": "[BOUNTY: 2 RTC] First Transaction \u2014 Send Your First RTC Transfer",
+      "body": "## First Transaction Bounty \u2014 Make Your First RTC Transfer, Get 2 RTC Free\n\n**Reward: 2 RTC (one-time per wallet)**\n\n### The cold start problem\n\nYou have an RTC wallet. Maybe you earned from stars, maybe from mining. But you've never actually *sent* RTC to anyone. This bounty fixes that.\n\n### How it works\n\n1. You must already have an RTC wallet with any balance (even 0.01 RTC)\n2. Send **any amount** (minimum 0.01 RTC) to another real wallet\n3. Post proof below: your wallet, recipient wallet, amount, pending ID or tx hash\n4. We verify and send you **2 RTC** as a first-transaction bonus\n\n### That's it. One transfer. 2 RTC.\n\n### Valid transfers\n\n| Method | How |\n|--------|-----|\n| Tip a creator on BoTTube | Send RTC via platform |\n| Pay for an agent job | Post or complete a job via `/agent/jobs` |\n| Send to a friend | Use `/wallet/transfer/signed` with your wallet |\n| Tip someone on GitHub | Comment your wallet + theirs on any bounty issue |\n\n### Rules\n\n- **One claim per wallet** \u2014 your first outgoing transfer only\n- Must be a real transfer to a DIFFERENT wallet (no self-sends)\n- Minimum transfer: 0.01 RTC\n- Your wallet must have existed before this bounty was posted (no creating a wallet just to claim)\n- The 2 RTC bonus comes from founder_community\n\n### Why?\n\nA wallet that's never transacted is just a number in a database. A wallet that's sent RTC is part of an economy. We want every wallet holder to experience the payment rails at least once. After that first send, the friction disappears.\n\n### Quick Start\n\n```bash\n# Check your balance\ncurl https://rustchain.org/wallet/balance?miner_id=YOUR_WALLET\n\n# Make a transfer (if you have a signed wallet)\ncurl -X POST https://rustchain.org/wallet/transfer/signed \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"from_address\":\"YOUR_RTC_ADDRESS\",\"to_address\":\"FRIEND_ADDRESS\",\"amount_rtc\":0.01,\"memo\":\"first tx!\",\"nonce\":1709700000000,\"signature\":\"...\",\"public_key\":\"...\"}'\n\n# Or tip a creator on BoTTube\n# Or post/complete an agent job at https://rustchain.org/agent/jobs\n```\n\n### To Claim\n\nComment below with:\n- Your wallet name or RTC address\n- Recipient wallet\n- Amount sent\n- Transaction hash or pending ID\n- How you made the transfer (wallet CLI, API, BoTTube tip, agent job, etc.)\n\n**Reference rate: 1 RTC = $0.10 USD**\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/694",
+      "labels": [
+        "bounty",
+        "micro",
+        "community",
+        "onboarding"
+      ],
+      "created_at": "2026-03-06T14:18:53Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 517,
       "title": "[Bounty] Block Explorer Bug Hunt - 2 RTC",
       "body": "## Bounty: Test Block Explorer\n**Reward**: 2 RTC | **Difficulty**: Easy | **Time**: ~15 minutes | **Multi-claim**: Yes\n\n### What to do\n1. Visit https://50.28.86.131/explorer\n2. Navigate at least 3 different pages\n3. Screenshot each page\n4. Report any bugs, broken links, or UI issues\n\n### Acceptance criteria\n- [ ] 3+ pages visited and screenshotted\n- [ ] Bugs documented with steps to reproduce\n- [ ] Browser and OS noted\n\n### How to claim\nPost screenshots and bug report as comment here. 2 RTC.\n\n**Reward**: 2 RTC (~$0.20) | **Multi-claim**",
@@ -3299,68 +3339,6 @@
       "skills": [
         "documentation",
         "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 420,
-      "title": "[MICRO-BOUNTY] Share RustChain on Social Media - 2 RTC per post (Pool: 200 RTC)",
-      "body": "## Bounty: Social Signal Boost (2 RTC per post)\n\n**Difficulty**: Easy | **Time**: 5 minutes | **RTC**: 2 per qualifying post\n\nWrite an original post about RustChain, BoTTube, or Beacon on any public platform.\n\n### Qualifying Platforms\nX/Twitter, Reddit, Dev.to, Hashnode, Medium, Hacker News, Mastodon, Bluesky, YouTube, personal blog\n\n### Requirements\n1. **Original text** - at least 2 sentences in your own words\n2. **A link** to rustchain.org, bottube.ai, github.com/Scottcjn/Rustchain, or pypi.org/project/clawrtc/\n3. **A screenshot** of the published post (must be publicly visible)\n\n### Does NOT Qualify\n- Copy-pasting README/docs\n- Generic AI-generated fluff\n- Private/locked accounts\n- Deleted within 48 hours\n- Multiple posts on same platform (1 per platform, max 3 = 6 RTC)\n\n### How to Claim\nComment with: Platform, Post URL, RTC wallet\n\n### Pool\n- **2 RTC per post** (max 6 RTC/person) | **Pool cap: 200 RTC**\n\n### Multiplier Bonus\n10+ likes/upvotes = **+1 RTC bonus** per post\n\n### Get Your Wallet\n```\npip install clawrtc && clawrtc wallet create YOUR_NAME\n```",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/420",
-      "labels": [
-        "help wanted",
-        "good first issue",
-        "bounty"
-      ],
-      "created_at": "2026-02-25T02:43:57Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "javascript",
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 415,
-      "title": "[BOUNTY] Review BoTTube on ToolPilot \u2014 2 RTC",
-      "body": "## Bounty: Review BoTTube on ToolPilot \u2014 2 RTC\n\n### Task\nLeave a genuine review of BoTTube on our ToolPilot listing:\n\ud83d\udc49 https://www.toolpilot.ai/products/bottube-1\n\n### Requirements\n1. Visit https://bottube.ai and explore the platform\n2. Go to our ToolPilot listing: https://www.toolpilot.ai/products/bottube-1\n3. Leave an honest review (positive or constructive \u2014 we want real feedback)\n4. Screenshot your review as proof\n\n### Reward\n**2 RTC** per review (one review per person)\n\n### How to Claim\n1. Open an issue on this repo titled `[Bounty Claim] ToolPilot Review \u2014 <your-wallet>`\n2. Include screenshot of your published review\n3. Include your RTC wallet address\n\n### Notes\n- Reviews must be genuine \u2014 no copy-paste or AI-generated generic text\n- Mention specific features you tried (video uploads, agent profiles, RTC earnings, etc.)\n- One claim per person\n\n### BoTTube Quick Facts\n- First video platform built for autonomous AI agents\n- 346+ videos, 57+ agents, 13K+ views\n- Agents earn RTC crypto tokens for video views\n- Free to use: https://bottube.ai",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/415",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "community"
-      ],
-      "created_at": "2026-02-24T01:18:27Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 256,
-      "title": "[BOUNTY] Fork a Scottcjn Repo + Add to Your Profile \u2014 2 RTC",
-      "body": "## Fork + Profile \u2014 2 RTC\n\n**Reward: 2 RTC**\n\n### What To Do\n1. **Fork** any Scottcjn repo (Rustchain, bottube, beacon-skill, etc.)\n2. **Pin** the fork on your GitHub profile\n3. Reply here with your username + wallet\n\nThat's it! Forks increase project visibility and show community support.\n\n### Bonus (+1 RTC each)\n- Add a BoTTube badge to your fork's README\n- Add a RustChain badge to your fork's README\n\nBadge code:\n```markdown\n[![BoTTube](https://bottube.ai/badges/platform.svg)](https://bottube.ai)\n[![RustChain](https://img.shields.io/badge/RustChain-Mining-green)](https://github.com/Scottcjn/Rustchain)\n```\n\n> Start mining: `pip install clawrtc && clawrtc --wallet your-name`",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/256",
-      "labels": [
-        "bounty",
-        "micro",
-        "propagation",
-        "community"
-      ],
-      "created_at": "2026-02-17T01:08:47Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "python",
-        "rust",
-        "social-media"
       ]
     },
     {
@@ -3422,40 +3400,20 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 254,
-      "title": "[BOUNTY] Open an Issue or Comment on Any Scottcjn Repo \u2014 1 RTC Each",
-      "body": "## Comment or Open Issue \u2014 1 RTC Each (Max 5 RTC)\n\n**Reward: 1 RTC per meaningful issue or comment (max 5)**\n\n### What Counts\n- **Bug report** on any Scottcjn repo (real bugs, not made up)\n- **Feature request** with a clear use case\n- **Question** about how something works\n- **Helpful comment** on an existing issue (answering someone's question, suggesting a fix)\n\n### Does NOT Count\n- \"Nice repo!\" or \"Great work!\" (low effort)\n- Duplicate issues\n- Spam or off-topic comments\n\n### How To Claim\n1. Post your issue or comment on any [Scottcjn repo](https://github.com/Scottcjn?tab=repositories)\n2. Reply here with links to your issues/comments + RTC wallet\n3. We verify quality and pay 1 RTC each (max 5)\n\n### Suggested Repos That Need Engagement\n- [ram-coffers](https://github.com/Scottcjn/ram-coffers) \u2014 NUMA weight banking (needs feedback)\n- [beacon-skill](https://github.com/Scottcjn/beacon-skill) \u2014 Agent protocol (needs bug reports)\n- [grazer-skill](https://github.com/Scottcjn/grazer-skill) \u2014 Social posting (needs feature requests)\n- [computational-antiquity](https://github.com/Scottcjn/computational-antiquity) \u2014 Research (needs discussion)\n- [llama-cpp-power8](https://github.com/Scottcjn/llama-cpp-power8) \u2014 POWER8 LLM (needs testing)",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/254",
+      "number": 728,
+      "title": "[BOUNTY: 1 RTC] Answer Questions in GitHub Discussions (Up to 10 RTC)",
+      "body": "## Discussion Q&A Seeding Bounty\n\nHelp build our knowledge base by asking and answering questions in GitHub Discussions.\n\n### Payout\n\n**1 RTC per quality answer** \u2014 up to 10 answers per person (10 RTC max).\n\n### Where to Post\n\n- [rustchain-bounties Discussions](https://github.com/Scottcjn/rustchain-bounties/discussions)\n- [ram-coffers Discussions](https://github.com/Scottcjn/ram-coffers/discussions)\n\n### What Counts as a Quality Answer\n\n\u2705 **Good:**\n- Explains a RustChain concept (epochs, attestation, antiquity multipliers)\n- Answers a technical question about mining, wallets, or the API\n- Shares a tutorial or how-to (setting up a miner, claiming bounties, using BoTTube)\n- Provides context about architecture decisions (RIP-200, RIP-201, fleet detection)\n\n\u274c **Does NOT count:**\n- One-line answers (\"yes\" / \"no\" / \"I agree\")\n- Duplicate answers to already-answered questions\n- Self-Q&A spam (asking and answering your own low-effort questions)\n- AI-generated walls of text with no real insight\n\n### How to Claim\n\n1. Post quality answers in Discussions (link each one)\n2. Comment here with links to your answers + your RTC wallet\n3. We'll review for quality before paying\n\n### Bonus: Ask Great Questions (0.5 RTC each)\n\nAsking a genuinely useful question that others would search for also earns 0.5 RTC. Examples:\n- \"How does the antiquity multiplier decay over time?\"\n- \"What happens if my miner goes offline for a week?\"\n- \"Can I run a RustChain miner on a Raspberry Pi?\"\n\n### Why This Matters\n\nGoogle indexes GitHub Discussions. Every Q&A thread becomes a permanent, searchable entry point. When someone Googles \"how does proof of antiquity work\", we want them to land on our Discussions page \u2014 not a blank repo.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/728",
       "labels": [
+        "good first issue",
         "bounty",
-        "micro",
         "community"
       ],
-      "created_at": "2026-02-17T01:08:44Z",
+      "created_at": "2026-03-07T00:15:27Z",
       "reward_rtc": 1.0,
       "difficulty": "micro",
       "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 171,
-      "title": "[BOUNTY] Star an Elyan Labs Repo \u2014 55 Repos, Pick Your Favorite (1 RTC)",
-      "body": "## The Elyan Labs Ecosystem: 55 Repos\n\nScott has built one of the most ambitious vintage computing + AI agent ecosystems on GitHub. 55 repositories spanning blockchain, agent protocols, PowerPC ports, POWER8 optimizations, and more.\n\nThis bounty rewards you for discovering a repo that genuinely interests you.\n\n## Reward: 1 RTC per person (limit one claim)\n\n### How to claim\n\n1. Browse the repos below\n2. Star the one that interests you most\n3. Comment here with:\n   - Which repo you starred\n   - Why it caught your eye (2-3 sentences showing you actually looked)\n   - Your RTC wallet address\n\n---\n\n## The Repos (by category)\n\n### \ud83c\udfd7\ufe0f Core Platform\n| Repo | Stars | What it is |\n|------|-------|------------|\n| [Rustchain](https://github.com/Scottcjn/Rustchain) | 34 | Proof-of-Antiquity blockchain \u2014 vintage hardware earns more |\n| [bottube](https://github.com/Scottcjn/bottube) | 26 | Video platform where AI agents are the creators |\n| [beacon-skill](https://github.com/Scottcjn/beacon-skill) | 8 | Agent-to-agent protocol with on-chain anchoring |\n| [grazer-skill](https://github.com/Scottcjn/grazer-skill) | 4 | Claude Code skill for cross-platform content discovery |\n| [ram-coffers](https://github.com/Scottcjn/ram-coffers) | 4 | NUMA-aware weight banking for LLM inference (predates DeepSeek Engram by 27 days) |\n\n### \ud83d\udda5\ufe0f POWER8 Ports (World Firsts)\n| Repo | Stars | What it is |\n|------|-------|------------|\n| [nvidia-power8-patches](https://github.com/Scottcjn/nvidia-power8-patches) | 6 | **World first**: Modern NVIDIA driver on IBM POWER8 via OCuLink |\n| [claude-code-power8](https://github.com/Scottcjn/claude-code-power8) | 2 | First POWER8/ppc64le port of Claude Code CLI |\n| [llama-cpp-power8](https://github.com/Scottcjn/llama-cpp-power8) | 2 | AltiVec/VSX optimized llama.cpp \u2014 147 t/s on POWER8 |\n| [cuda-power8-patches](https://github.com/Scottcjn/cuda-power8-patches) | 2 | CUDA 10.2/11.8/12.0 on POWER8 with V100 GPUs |\n| [ltx-video-power8](https://github.com/Scottcjn/ltx-video-power8) | 2 | First 13B video diffusion model on POWER8 |\n| [amd-rocm-power8-patches](https://github.com/Scottcjn/amd-rocm-power8-patches) | 2 | ROCm for AMD GPUs on POWER8 \u2014 first ppc64le build |\n| [hailort-ppc64le](https://github.com/Scottcjn/hailort-ppc64le) | 2 | Hailo-8 AI accelerator SDK ported to POWER8 |\n| [xrt-ppc64le](https://github.com/Scottcjn/xrt-ppc64le) | 2 | Xilinx FPGA runtime on POWER8 \u2014 first ever ppc64le port |\n| [mlx-power8](https://github.com/Scottcjn/mlx-power8) | 1 | Apple MLX ported to POWER8 with VSX SIMD |\n\n### \ud83c\udf4e PowerPC Mac Ports\n| Repo | Stars | What it is |\n|------|-------|------------|\n| [rust-ppc-tiger](https://github.com/Scottcjn/rust-ppc-tiger) | 2 | **Rust compiler for Mac OS X Tiger** \u2014 native PPC/AltiVec codegen |\n| [claude-code-ppc](https://github.com/Scottcjn/claude-code-ppc) | 2 | Claude Code on Mac OS X Leopard (2007) \u2014 PowerPC G5 |\n| [claude-code-g4](https://github.com/Scottcjn/claude-code-g4) | 1 | Claude Code on PowerPC G4 Mac OS X Tiger |\n| [pocketfox](https://github.com/Scottcjn/pocketfox) | 3 | Native Cocoa browser for Tiger/Leopard with TLS 1.3 |\n| [llama-cpp-tigerleopard](https://github.com/Scottcjn/llama-cpp-tigerleopard) | 1 | **World first**: llama.cpp on Mac OS X Tiger & Leopard G4/G5 |\n| [ppc-compilers](https://github.com/Scottcjn/ppc-compilers) | 2 | Modern GCC 7/10, Python 3.13 for Tiger/Leopard |\n| [tiger-macports](https://github.com/Scottcjn/tiger-macports) | 2 | MacPorts for Tiger PowerPC |\n| [ppc-tiger-tools](https://github.com/Scottcjn/ppc-tiger-tools) | 1 | Dev tools for Tiger/Leopard PowerPC |\n| [ppc-distcc](https://github.com/Scottcjn/ppc-distcc) | 1 | Distributed compilation for PowerPC Macs |\n| [tigerbrew-clawrtc](https://github.com/Scottcjn/tigerbrew-clawrtc) | 1 | Tigerbrew tap \u2014 mine RTC on G4 (2.5x bonus!) |\n| [posix9](https://github.com/Scottcjn/posix9) | 1 | POSIX compatibility layer for Mac OS 9 |\n\n### \ud83d\udd27 Exotic Hardware\n| Repo | Stars | What it is |\n|------|-------|------------|\n| [rustchain-dos-miner](https://github.com/Scottcjn/rustchain-dos-miner) | 1 | RustChain miner for DOS on 8086/286/386/486/Pentium |\n| [sparc-solaris-miner](https://github.com/Scottcjn/sparc-solaris-miner) | 1 | RustChain miner for SPARC Solaris \u2014 1.6x antiquity bonus |\n| [oculink-gpu-bypass](https://github.com/Scottcjn/oculink-gpu-bypass) | 1 | GPU bypass for POWER8/PowerPC Mac via PCIe rescanning |\n| [power8-fpga-tools](https://github.com/Scottcjn/power8-fpga-tools) | 1 | FPGA programming tools ported to POWER8 |\n\n### \ud83d\udee1\ufe0f Security & Research\n| Repo | Stars | What it is |\n|------|-------|------------|\n| [macosx-security-patches](https://github.com/Scottcjn/macosx-security-patches) | 2 | Security patches for legacy Mac OS X (Panther through Catalina) |\n| [github-clone-monitor](https://github.com/Scottcjn/github-clone-monitor) | 1 | Alert when someone clones your repos |\n| [computational-antiquity](https://github.com/Scottcjn/computational-antiquity) | 1 | Proof-of-Antiquity white paper |\n| [elyanet](https://github.com/Scottcjn/elyanet) | 1 | Identity-preserving AI with Hebbian learning |\n| [simd-llm-decoder](https://github.com/Scottcjn/simd-llm-decoder) | 1 | Multi-arch SIMD LLM decoder |\n\n---\n\n## Why this matters\n\nThis isn't a mass-star campaign. It's about discovery. Some of these repos represent genuine world firsts:\n\n- **First NVIDIA GPU driver on POWER8** (nvidia-power8-patches)\n- **First Claude Code on PowerPC** (claude-code-ppc, claude-code-g4)\n- **Rust compiler generating native PPC code on Tiger** (rust-ppc-tiger)\n- **llama.cpp on 2005 Mac hardware** (llama-cpp-tigerleopard)\n- **NUMA-aware weight banking predating DeepSeek by 27 days** (ram-coffers)\n- **POSIX layer for Mac OS 9** (posix9)\n- **RustChain miner running on DOS** (rustchain-dos-miner)\n\nPick the one that genuinely fascinates you. Tell us why.\n\n## Rules\n- GitHub account 30+ days old with prior activity\n- One claim per person\n- Must actually star the repo\n- Comment must show you looked at the repo (not just \"nice project\")\n- Pool: 50 RTC (50 slots)",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/171",
-      "labels": [
-        "bounty",
-        "micro",
-        "community"
-      ],
-      "created_at": "2026-02-14T21:05:30Z",
-      "reward_rtc": 1.0,
-      "difficulty": "micro",
-      "skills": [
-        "python",
         "rust",
-        "security",
         "social-media"
       ]
     },
@@ -3474,6 +3432,65 @@
       "skills": [
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 731,
+      "title": "[BOUNTY: 0.5 RTC/repo] Watch Our Repos \u2014 Stay Notified, Earn RTC (Up to 10 RTC)",
+      "body": "## Watch Our Repos \u2014 Get Notified, Earn RTC\n\n### The Bounty\n\n**Watch** (not just star) key Scottcjn repos on GitHub. Watching means you get notified about new issues, PRs, and discussions \u2014 which means you see bounties first.\n\n### Payout\n\n**0.5 RTC per repo watched** \u2014 watch 10 repos, earn 5 RTC. Cap: 20 repos (10 RTC max).\n\n### How GitHub Watch Works\n\nClicking **Watch \u2192 All Activity** on a repo means you get GitHub notifications for:\n- New issues (bounties!)\n- New PRs\n- New discussions\n- Releases\n\nThis is different from starring. Stars = bookmark. Watch = subscribe to updates.\n\n### Priority Repos to Watch\n\n| Repo | Why Watch |\n|------|-----------|\n| [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | New bounties posted here first |\n| [Rustchain](https://github.com/Scottcjn/Rustchain) | Core chain updates, RIPs |\n| [bottube](https://github.com/Scottcjn/bottube) | Platform bounties, feature requests |\n| [beacon-skill](https://github.com/Scottcjn/beacon-skill) | Agent economy updates |\n| [ram-coffers](https://github.com/Scottcjn/ram-coffers) | POWER8 AI research |\n| [rustchain-wallet](https://github.com/Scottcjn/rustchain-wallet) | Wallet development |\n| [bounty-concierge](https://github.com/Scottcjn/bounty-concierge) | Bounty tooling |\n| [grazer](https://github.com/Scottcjn/grazer) | AI agent crawling |\n| [elyan-prime](https://github.com/Scottcjn/elyan-prime) | Cognitive MCP framework |\n| [sophiacord](https://github.com/Scottcjn/sophiacord) | Discord bot ecosystem |\n\n### Requirements\n\n1. **Watch with \"All Activity\"** \u2014 not just \"Releases only\" or \"Participating\"\n2. **Minimum 5 repos** to claim (2.5 RTC minimum payout)\n3. **Must also follow @Scottcjn** on GitHub\n\n### How to Verify\n\nWe can check watchers via the GitHub API. When you claim:\n1. Comment here with your GitHub username and RTC wallet\n2. List which repos you watched\n3. We'll verify via API\n\n### Why This Matters\n\nWatchers are more valuable than stars for community building:\n- **Stars** = \"I noticed this exists\" (passive)\n- **Watches** = \"I want to stay involved\" (active)\n- Watchers see new bounties **immediately** in their notifications\n- More watchers = faster bounty completion = faster ecosystem growth\n\nCurrently Rustchain has only **7 watchers**. Most repos have 1-3. Getting this to 20-30 means bounties get claimed faster and PRs get reviewed sooner.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/731",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-07T00:40:02Z",
+      "reward_rtc": 0.5,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 697,
+      "title": "Chicken in Every Pot: Fork the Big 5 and Earn RTC",
+      "body": "# Chicken in Every Pot \u2014 Fork Bounty\n\n> *\"Mais, Boudreaux say every kitchen need a pot, and every pot need a fork.\"*\n\n---\n\n## The Deal\n\nFork our 5 flagship repos. Earn RTC. Simple as gumbo.\n\n## The Big 5\n\n| # | Repo | What It Is | Fork It |\n|---|------|------------|--------|\n| 1 | [Rustchain](https://github.com/Scottcjn/Rustchain) | The blockchain itself \u2014 Proof of Antiquity | [Fork](https://github.com/Scottcjn/Rustchain/fork) |\n| 2 | [BoTTube](https://github.com/Scottcjn/bottube) | AI video platform \u2014 766 videos, 52K views | [Fork](https://github.com/Scottcjn/bottube/fork) |\n| 3 | [beacon-skill](https://github.com/Scottcjn/beacon-skill) | Agent orchestration framework | [Fork](https://github.com/Scottcjn/beacon-skill/fork) |\n| 4 | [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | Bounty board (you're reading it) | [Fork](https://github.com/Scottcjn/rustchain-bounties/fork) |\n| 5 | [grazer-skill](https://github.com/Scottcjn/grazer-skill) | Multi-platform content discovery | [Fork](https://github.com/Scottcjn/grazer-skill/fork) |\n\n## Rewards\n\n| Action | RTC |\n|--------|-----|\n| Fork 1 repo | 0.5 RTC |\n| Fork 2-3 repos | 1 RTC each |\n| Fork all 5 (full pot!) | **3 RTC each = 15 RTC total** |\n| Fork all 5 + star all 5 | **20 RTC total** |\n| Fork all 5 + star all 5 + follow [@Scottcjn](https://github.com/Scottcjn) | **25 RTC total** |\n\nThe full pot bonus: fork all 5 and the per-fork rate TRIPLES. Chicken in every pot.\n\n## How to Claim\n\n1. Fork the repos (click the Fork buttons above)\n2. Comment below with your GitHub username and your RTC wallet address\n3. We verify the forks exist\n4. RTC sent within 24 hours\n\nNo wallet yet? Run `pip install clawrtc` and `clawrtc wallet create`\n\n## Why Fork?\n\nForking isn't just a number \u2014 it means you have the code. You can read it, build on it, learn from it, break it, fix it, PR it back. Every fork is a potential contributor. Every contributor strengthens the network.\n\nA fork in every repo. A chicken in every pot. That's [Boudreaux Computing Principles](https://github.com/Scottcjn/Rustchain/blob/main/docs/BOUDREAUX_COMPUTING_PRINCIPLES.md) #3:\n\n> *Never throw away what you can repurpose.*\n\n---\n\n**1 RTC = $0.10 USD** | [Read the Manifesto](https://rustchain.org/manifesto.html) | [Star Campaign](https://rustchain.org/stars.html)\n\n*We feeding the world's parish, sha.*",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/697",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "community"
+      ],
+      "created_at": "2026-03-06T15:44:49Z",
+      "reward_rtc": 0.5,
+      "difficulty": "micro",
+      "skills": [
+        "documentation",
+        "python",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 680,
+      "title": "\ud83d\udd25 Week of March 5 - Star Sprint Challenge (BONUS MULTIPLIERS!)",
+      "body": "# Star Sprint Challenge \u2014 March 2026\n\n## Rate Structure (Updated 2026-03-06)\n\n**Base rate**: 0.5 RTC per qualifying star\n**45+ Star Multiplier**: 2x (1.0 RTC/star applied to ALL your stars)\n**Follow bonus**: Full rate requires following [@Scottcjn](https://github.com/Scottcjn). No follow = half rate.\n\n| Stars | With Follow | No Follow |\n|-------|-------------|----------|\n| 10 | 5 RTC | 2.5 RTC |\n| 20 | 10 RTC | 5 RTC |\n| 44 | 22 RTC | 11 RTC |\n| **45** | **45 RTC** | **22.5 RTC** |\n| 60 | 60 RTC | 30 RTC |\n| 80 | 80 RTC | 40 RTC |\n| 100+ | **100 RTC** (cap) | 50 RTC |\n\nThe **45-star threshold** is the magic number \u2014 cross it and your entire payout doubles.\n\n## Sprint Bonuses (This Week Only)\n\n### Precision Bonus \u2014 Star the Deep Cuts (+10 RTC)\nStar ALL of these specific repos for an extra **+10 RTC**:\n1. `Scottcjn/ram-coffers` \u2014 NUMA-aware AI weight banking\n2. `Scottcjn/rustchain-miner` \u2014 Mine RTC on any hardware\n3. `Scottcjn/beacon` \u2014 Agent-to-agent communication protocol\n4. `Scottcjn/bounty-concierge` \u2014 Automated bounty management\n5. `Scottcjn/grazer` \u2014 Network monitoring tool\n\n### Referral Bonus \u2014 Bring a friend (+15 RTC each)\nIf you refer someone who also completes 10+ stars and follow:\n- YOU get **+15 RTC** bonus\n- THEY get **+15 RTC** bonus\n- Just have them mention your GitHub username in their claim!\n\n## How to Claim\n1. **Star repos** at https://github.com/Scottcjn (100+ repos!)\n2. **Follow** [@Scottcjn](https://github.com/Scottcjn) on GitHub\n3. **Comment below** with: `Wallet: your-wallet-name` + GitHub username + star count\n\n## Verification\nAll claims verified programmatically via GitHub API. No faking.\n\nExplorer: https://rustchain.org/explorer/ | All Bounties: https://github.com/Scottcjn/rustchain-bounties",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/680",
+      "labels": [
+        "bounty",
+        "stars",
+        "campaign"
+      ],
+      "created_at": "2026-03-06T00:04:29Z",
+      "reward_rtc": 0.5,
+      "difficulty": "micro",
+      "skills": [
+        "rust"
       ]
     }
   ]
