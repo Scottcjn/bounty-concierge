@@ -105,3 +105,49 @@ class TestAnswer:
         assert isinstance(result, dict)
         assert "answer" in result
         assert result["source"] in ["faq", "docs", "unknown"]
+
+
+class TestGrokApiMocking:
+    """Tests for Grok API integration with mocked responses."""
+
+    def test_grok_api_success_mock(self, monkeypatch):
+        """Grok API should return answer when mock succeeds."""
+        import requests
+
+        class MockResponse:
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                return {
+                    "choices": [
+                        {"message": {"content": "Grok says hello"}}
+                    ]
+                }
+
+        monkeypatch.setattr(
+            requests, "post",
+            lambda *a, **kw: MockResponse()
+        )
+        # Patch the module-level GROK_API_KEY
+        monkeypatch.setattr(faq_engine, "GROK_API_KEY", "test-key")
+
+        result = faq_engine.ask_grok("test question")
+        assert result == "Grok says hello"
+
+    def test_grok_api_error_mock(self, monkeypatch):
+        """Grok API should return error message on failure."""
+        import requests
+
+        class MockResponse:
+            def raise_for_status(self):
+                raise requests.RequestException("timeout")
+
+        monkeypatch.setattr(
+            requests, "post",
+            lambda *a, **kw: MockResponse()
+        )
+        monkeypatch.setattr(faq_engine, "GROK_API_KEY", "test-key")
+
+        result = faq_engine.ask_grok("test question")
+        assert "[error]" in result

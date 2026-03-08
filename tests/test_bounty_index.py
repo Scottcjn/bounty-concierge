@@ -55,6 +55,18 @@ class TestParseReward:
         reward = bounty_index.parse_reward(title, "")
         assert reward == 1
 
+    def test_parse_comma_in_number(self):
+        """Should parse bounty with comma like '1,000 RTC'."""
+        title = "[Bounty: 1,000 RTC] Major feature"
+        reward = bounty_index.parse_reward(title, "")
+        assert reward == 1000.0
+
+    def test_parse_large_comma_number(self):
+        """Should parse bounty with multiple commas like '10,000 RTC'."""
+        title = "[Bounty: 10,000 RTC] Huge feature"
+        reward = bounty_index.parse_reward(title, "")
+        assert reward == 10000.0
+
 
 class TestEstimateDifficulty:
     """Tests for difficulty estimation."""
@@ -157,3 +169,41 @@ class TestFormatMarkdown:
         """Should handle empty list."""
         result = bounty_index.format_markdown([])
         assert isinstance(result, str)
+
+
+class TestFetchBountiesIntegration:
+    """Integration tests for fetch_bounties with mocked GitHub API."""
+
+    def test_skips_pull_requests(self, monkeypatch):
+        """fetch_bounties should skip PRs that appear in issues endpoint."""
+        import requests
+
+        class MockResponse:
+            status_code = 200
+
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                # Issues endpoint can include PRs with pull_request key
+                return [
+                    {"number": 1, "title": "[Bounty: 10 RTC] Issue", "body": "",
+                     "html_url": "https://github.com/a/b/issues/1",
+                     "labels": [{"name": "bounty"}], "created_at": "2026-01-01T00:00:00Z"},
+                    {"number": 2, "title": "[Bounty: 20 RTC] PR", "body": "",
+                     "html_url": "https://github.com/a/b/pull/2",
+                     "labels": [{"name": "bounty"}], "created_at": "2026-01-01T00:00:00Z",
+                     "pull_request": {"url": "https://api.github.com/repos/a/b/pulls/2"}},
+                ]
+
+        monkeypatch.setattr(
+            requests, "get",
+            lambda *a, **kw: MockResponse()
+        )
+        monkeypatch.setattr(bounty_index, "GITHUB_TOKEN", None)
+        monkeypatch.setattr(bounty_index, "REPOS", ["a/b"])
+
+        bounties = bounty_index.fetch_bounties()
+        # Should only return the issue, not the PR
+        assert len(bounties) == 1
+        assert bounties[0]["number"] == 1
