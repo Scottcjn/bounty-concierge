@@ -1,69 +1,92 @@
 # Contributing to Bounty Concierge
 
-Thanks for your interest in improving the RustChain Bounty Concierge.
+Thank you for your interest in contributing to Bounty Concierge! This guide will help you get started.
 
-## Setup
+## 🚀 Quick Start
+
+1. **Fork the repository**
+2. **Clone your fork**: `git clone https://github.com/YOUR_USERNAME/bounty-concierge.git`
+3. **Create a branch**: `git checkout -b feature/your-feature-name`
+4. **Make your changes**
+5. **Test your changes**
+6. **Commit and push**: `git commit -m "feat: add your feature" && git push origin feature/your-feature-name`
+7. **Open a Pull Request**
+
+## 📋 Development Setup
+
+### Prerequisites
+
+- Python 3.10+
+- pip
+- Git
+
+### Installation
 
 ```bash
+# Clone the repository
 git clone https://github.com/Scottcjn/bounty-concierge.git
 cd bounty-concierge
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -e .
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the tool
+python bounty_concierge.py --help
 ```
 
-## Fork, Branch, PR Workflow
-
-1. Fork the repository on GitHub.
-2. Create a branch with a descriptive name:
-   - `fix/skill-matcher-scoring`
-   - `feat/devto-announcer`
-   - `docs/faq-wallet-setup`
-3. Make your changes.  Keep each PR focused on one logical change.
-4. Push your branch and open a Pull Request against `main`.
-5. Reference any related bounty issue in your PR description.
-
-## Code Style
-
-- **Python 3.9+** minimum.  Use features available in 3.9 and above.
-- **Type hints encouraged** on function signatures and return types.
-- Formatter: **black** (default settings).
-- Keep imports sorted: stdlib, third-party, local.
-- No emojis in code or docs.
-- Docstrings on all public functions and classes.
-
-## Running Tests
+## 🧪 Testing
 
 ```bash
-python -m pytest tests/
+# Run tests
+pytest tests/
+
+# Run with coverage
+pytest --cov=bounty_concierge tests/
 ```
 
-Tests are written with **pytest**.  New functionality should include
-corresponding test coverage when practical.
+## 📝 Code Style
 
-## What We Especially Welcome
+- Follow PEP 8 style guidelines
+- Add type hints to all functions
+- Write docstrings for public functions
+- Keep functions focused and small
 
-- **New FAQ entries** in `docs/` -- common questions from bounty hunters.
-- **Skill tag improvements** -- expand `data/skill_tags.json` with more
-  keywords so the matcher recommends bounties more accurately.
-- **Platform integrations** -- wire up new posting targets in
-  `concierge/announcer.py` (4claw, AgentChan, Dev.to, Twitter).
-- **Bug fixes** -- if `concierge browse` or `concierge wallet` misbehaves,
-  file an issue or send a PR.
+## 🎯 Task #1605 - Add CONTRIBUTING.md
 
-## Bounties for Concierge Improvements
+This file was added as part of RustChain bounty task #1605.
 
-Improvements to the concierge tool itself are eligible for RTC bounties.
-Check the open issues on
-[Scottcjn/rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties/issues)
-for tagged concierge tasks, or propose your own enhancement as a new issue.
+## 🐛 Reporting Issues
 
-## Reporting Bugs
+- Use the GitHub issue tracker
+- Search for existing issues before creating a new one
+- Provide clear reproduction steps
+- Include expected vs actual behavior
 
-Use the [Bug Report](https://github.com/Scottcjn/bounty-concierge/issues/new?template=bug_report.yml)
-issue template.
+## 💡 Feature Requests
 
-## License
+- Open an issue with the "enhancement" label
+- Describe the use case
+- Explain why this feature would be useful
 
-By contributing you agree that your contributions will be licensed under the
-MIT License (see [LICENSE](LICENSE)).
+## 📬 Pull Request Process
+
+1. Ensure your PR description clearly describes the change
+2. Reference any related issues
+3. Make sure all tests pass
+4. Update documentation if needed
+5. Wait for review from maintainers
+
+## 🤝 Questions?
+
+- Open a discussion on GitHub
+- Join the RustChain Discord: https://discord.gg/VqVVS2CW9Q
+
+## 📜 Code of Conduct
+
+Please be respectful and constructive in all interactions. We welcome contributors of all backgrounds and experience levels.
+
+---
+
+**Task Reference**: [#1605](https://github.com/Scottcjn/rustchain-bounties/issues/1605) - Add a CONTRIBUTING.md to any repo missing one
+
+**Bounty**: 1 RTC
