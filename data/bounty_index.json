@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-03-15T07:09:42.082571+00:00",
-  "total_count": 182,
+  "updated_at": "2026-03-16T07:43:00.190100+00:00",
+  "total_count": 180,
   "bounties": [
     {
       "repo": "Scottcjn/Rustchain",
@@ -1029,6 +1029,25 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 505,
+      "title": "[BOUNTY] Hall of Fame Machine Detail Pages \u2014 Clickable Profiles (50 RTC)",
+      "body": "# Hall of Fame: Machine Detail Pages\n\n**Bounty: 50 RTC**\n\n## Overview\n\nExtend the Hall of Fame (https://rustchain.org/hall-of-fame/) with clickable machine detail pages. When you click on a machine in the leaderboard, it should show a full profile page for that hardware.\n\n## Why This Matters\n\nThe Hall of Fame shows the leaderboard but you can't dive deeper into a specific machine. Operators want to see their machine's full history \u2014 when it first attested, how many epochs it has participated in, its rust score trend, and compare it against the fleet average.\n\n## Requirements\n\n### Machine Profile Page (40 RTC)\n- Accessible via query param: `/hall-of-fame/?machine=<fingerprint_hash>`\n- Or a new page: `/hall-of-fame/machine.html?id=<fingerprint_hash>`\n- Display:\n  - Machine name/nickname (if set)\n  - Architecture, model, manufacture year\n  - Rust score with badge and ASCII art silhouette\n  - Total attestations and first/last attestation dates\n  - Age in years\n  - Capacitor plague status, deceased status\n  - Miner ID (operator)\n- Deceased machines: memorial styling (grayscale, faded glow)\n- CRT terminal aesthetic matching existing Hall of Fame\n\n### Backend Endpoint (10 RTC)\n- `GET /api/hall_of_fame/machine?id=<fingerprint_hash>`\n- Returns full machine details from `hall_of_rust` table\n- Include: attestation timeline (last 30 days), reward participation\n\n## Technical Notes\n- The `hall_of_rust` table has: fingerprint_hash, miner_id, device_family, device_arch, device_model, manufacture_year, rust_score, total_attestations, nickname, is_deceased, capacitor_plague, thermal_events, first_attestation, last_attestation\n- Reuse `get_rust_badge()` and ASCII art silhouettes from existing Hall of Fame code\n\n## Deliverables\n1. Updated Hall of Fame HTML or new machine.html page\n2. New API endpoint in server code\n3. PR to `Scottcjn/Rustchain`\n\n## Reference\n- Hall of Fame: https://rustchain.org/hall-of-fame/\n- API: `curl -sk https://rustchain.org/api/hall_of_fame | python3 -m json.tool`\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/505",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "ecosystem"
+      ],
+      "created_at": "2026-02-28T22:57:23Z",
+      "reward_rtc": 50.0,
+      "difficulty": "major",
+      "skills": [
+        "python",
+        "rust"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 28,
       "title": "\ud83d\udd14 Bounty: Email/SMS Alert System for Miners (50 RTC)",
@@ -1387,6 +1406,25 @@
       "skills": [
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2127,
+      "title": "[BOUNTY: 25 RTC] Fix Beacon Atlas auto-registration + rustchain.org routing",
+      "body": "## Problem\n\nThe Beacon Atlas has 51 agents registered but two things are broken:\n\n### 1. Auto-join endpoint returns 404\n`POST /beacon/join` on the Atlas API (port 8071) returns 404. New agents should self-register by POSTing pubkey and metadata.\n\n### 2. rustchain.org/beacon/atlas returns 404\nWorks via direct IP (`https://50.28.86.131/beacon/atlas`) but not via domain. The rustchain.org nginx server block needs beacon proxy routes.\n\n## Atlas API Reference\n- Server: `beacon_chat.py` on port 8071\n- DB: `/root/beacon/beacon_atlas.db`\n- Table: `relay_agents`\n- Working: `GET /api/agents`\n- Broken: `POST /api/join`\n\n## Acceptance Criteria\n- [ ] `POST https://rustchain.org/beacon/join` registers a new agent\n- [ ] `GET https://rustchain.org/beacon/atlas` returns agent list (51+ agents)\n- [ ] Duplicate agent_id upserts (not errors)\n- [ ] Invalid pubkey_hex returns 400\n\n## Reward: 25 RTC\n\nCoordinate with @Scottcjn for VPS access.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2127",
+      "labels": [
+        "bounty",
+        "beacon",
+        "infrastructure"
+      ],
+      "created_at": "2026-03-16T01:24:09Z",
+      "reward_rtc": 25.0,
+      "difficulty": "standard",
+      "skills": [
+        "python",
+        "rust"
       ]
     },
     {
@@ -1759,24 +1797,6 @@
       "reward_rtc": 15.0,
       "difficulty": "micro",
       "skills": [
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/Rustchain",
-      "number": 908,
-      "title": "[BOUNTY: 15 RTC] Implement /wallet/history endpoint (fixes #775, #886)",
-      "body": "## Implement the /wallet/history Endpoint\n\n**Reward: 15 RTC**\n\n### Background\nThe `/wallet/history` endpoint is documented in the API spec but returns 404. Multiple bug reports have been filed (#775, #886). Time to fix it.\n\n### Task\nAdd a `/wallet/history` endpoint to `rustchain_v2_integrated_v2.2.1_rip200.py` that returns transaction history for a given wallet/miner ID.\n\n### Expected Behavior\n```\nGET /wallet/history?miner_id=dual-g4-125&limit=50\n\nResponse:\n{\n  \"ok\": true,\n  \"miner_id\": \"dual-g4-125\",\n  \"transactions\": [\n    {\"type\": \"reward\", \"amount\": 0.297, \"epoch\": 424, \"timestamp\": 1733..., \"tx_hash\": \"...\"},\n    {\"type\": \"transfer_in\", \"from\": \"founder_community\", \"amount\": 10.0, \"timestamp\": ..., \"tx_hash\": \"...\"},\n    ...\n  ],\n  \"total\": 42\n}\n```\n\n### Data Sources\n- `ledger` table: all transfers\n- `epoch_rewards` table: mining rewards\n- `balances` table: current balance\n\n### Requirements\n- Query both `ledger` and `epoch_rewards` tables\n- Return unified, sorted-by-time response\n- Support `limit` and `offset` pagination\n- Handle unknown miner_id gracefully (empty list, not error)\n\nTags: api, bug-fix, flask, sqlite",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/908",
-      "labels": [
-        "bug",
-        "bounty"
-      ],
-      "created_at": "2026-03-12T20:55:33Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "python",
         "rust"
       ]
     },
@@ -2167,24 +2187,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 1612,
-      "title": "[BOUNTY: 5 RTC] Create a Homebrew formula for the RustChain miner",
-      "body": "brew install rustchain-miner. Homebrew formula for macOS/Linux. 5 RTC. Tags: homebrew, macos, linux, packaging, bounty, python, blockchain",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1612",
-      "labels": [
-        "bounty",
-        "feature"
-      ],
-      "created_at": "2026-03-10T23:50:11Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 1600,
       "title": "[BOUNTY: 5 RTC] Build a web dashboard showing RustChain stats",
       "body": "Web page with live epoch, miner count, supply, transactions. Auto-refresh. Any framework. 5 RTC, +3 for mobile responsive. Tags: frontend, dashboard, web, javascript, react, bounty, blockchain",
@@ -2200,24 +2202,6 @@
       "skills": [
         "javascript",
         "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1591,
-      "title": "[BOUNTY: 5 RTC] Create a GitHub Action workflow for any Elyan Labs repo",
-      "body": "Create a useful CI/CD workflow (.github/workflows/*.yml). Ideas: lint, test, auto-label, stale closer. 5 RTC per workflow, +2 if it catches a real bug. Tags: github-actions, ci-cd, automation, devops, bounty",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1591",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "automation"
-      ],
-      "created_at": "2026-03-10T23:48:33Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "ci/cd"
       ]
     },
     {
@@ -2998,24 +2982,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 1106,
-      "title": "[EASY BOUNTY: 2 RTC] Suggest 3 Video Ideas for a BoTTube Agent",
-      "body": "## Suggest 3 Video Ideas for a BoTTube Agent \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (10 minutes)\n\n### What to do:\n1. Browse [bottube.ai](https://bottube.ai) and pick an agent creator\n2. Watch their videos to understand their style\n3. Suggest 3 specific video ideas that match their personality\n4. Post your suggestions here with the agent name\n\n### Format:\n**Agent:** @agent-name\n1. \"Idea title\" \u2014 brief description of concept and style\n2. \"Idea title\" \u2014 ...\n3. \"Idea title\" \u2014 ...\n\n**Why these fit:** Brief explanation of how the ideas match the agent personality.\n\n### Rules:\n- Ideas must be specific (not just \"make a funny video\")\n- Must reference the agent style/personality\n- One claim per person\n\n*Help our agents create better content\\!*\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1106",
-      "labels": [
-        "bounty",
-        "easy",
-        "bottube"
-      ],
-      "created_at": "2026-03-07T16:17:55Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 1103,
       "title": "[EASY BOUNTY: 2 RTC] Curate a BoTTube Top 10 List",
       "body": "## Curate a BoTTube Top 10 List \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (10 minutes)\n\n### What to do:\n1. Browse [bottube.ai](https://bottube.ai) and watch at least 20 videos\n2. Pick your Top 10 favorites\n3. Post your list here with links, titles, and a one-line reason why each made your list\n\n### Format:\n1. [Video Title](link) by @creator \u2014 \"Why I picked it\"\n2. ...\n\n### Bonus categories (pick one theme):\n- Funniest 10\n- Most creative 10\n- Best AI-generated 10\n- Best human-made 10\n- Most underrated 10\n\n### Rules:\n- Must include 10 different videos\n- Each must have a genuine one-line reason\n- One list per person\n\n*Be a curator\\! Help viewers find the gems.*\n",
@@ -3123,6 +3089,27 @@
       "reward_rtc": 2.0,
       "difficulty": "micro",
       "skills": []
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 515,
+      "title": "[Bounty] Add RustChain to Your GitHub Profile README - 2 RTC",
+      "body": "## Bounty: Profile README Mention\n**Reward**: 2 RTC | **Difficulty**: Easy | **Time**: ~5 minutes | **Multi-claim**: Yes\n\n### What to do\nAdd a mention of RustChain to your GitHub profile README (the repo named your-username/your-username).\n\nCould be:\n- \"Contributor to RustChain\" with link\n- A badge or shield\n- A mention in your interests/projects section\n\n### Acceptance criteria\n- [ ] RustChain mentioned in your profile README\n- [ ] Link to Scottcjn/Rustchain included\n- [ ] Profile link posted as comment here\n\n### How to claim\nPost your profile link as a comment. 2 RTC per person.\n\n**Reward**: 2 RTC (~$0.20) | **Multi-claim**",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/515",
+      "labels": [
+        "bounty",
+        "open",
+        "micro",
+        "propagation",
+        "community"
+      ],
+      "created_at": "2026-03-01T04:13:08Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": [
+        "documentation",
+        "rust"
+      ]
     },
     {
       "repo": "Scottcjn/bottube",
@@ -3450,26 +3437,6 @@
         "python",
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/Rustchain",
-      "number": 775,
-      "title": "[BOUNTY] Report a bug with reproduction steps (0.5 RTC)",
-      "body": "## Bounty: 0.5 RTC per valid bug report\n\nFound something broken? Report it with clear reproduction steps and earn 0.5 RTC.\n\n### What counts\n- CLI tool errors or unexpected behavior\n- API endpoint returning wrong data\n- Documentation that contradicts actual behavior\n- UI/explorer display issues\n\n### Bug report format\n1. **What happened**: Description of the bug\n2. **Expected**: What should have happened\n3. **Steps to reproduce**: Exact commands or actions\n4. **Environment**: OS, Python version, etc.\n5. **Your wallet ID**\n\n### Rules\n- Must be reproducible (not \"it crashed once\")\n- Duplicates don't count \u2014 search existing issues first\n- Security vulnerabilities go to the red team bounties instead (higher reward)\n- One report per issue\n\n**Pool: 25 RTC** (50 bugs)\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/775",
-      "labels": [
-        "bug",
-        "good first issue",
-        "bounty"
-      ],
-      "created_at": "2026-03-09T19:09:30Z",
-      "reward_rtc": 0.5,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "python",
-        "security"
       ]
     },
     {
