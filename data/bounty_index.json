@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-03-17T07:15:01.133807+00:00",
-  "total_count": 177,
+  "updated_at": "2026-03-18T07:13:44.138695+00:00",
+  "total_count": 176,
   "bounties": [
     {
       "repo": "Scottcjn/Rustchain",
@@ -161,23 +161,6 @@
       "skills": [
         "documentation",
         "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/Rustchain",
-      "number": 23,
-      "title": "\ud83d\udd17 Bounty: Ergo Mainnet Bridge (150 RTC)",
-      "body": "## Bounty: Ergo Mainnet Bridge\n\n**Reward: 500 RTC**\n\n### Requirements\n- Anchor RustChain state to Ergo mainnet\n- Merkle root commitments\n- ErgoScript verification contract\n- Bridge daemon\n\nTag @Scottcjn for review.",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/23",
-      "labels": [
-        "enhancement",
-        "bounty"
-      ],
-      "created_at": "2026-02-03T20:12:35Z",
-      "reward_rtc": 150.0,
-      "difficulty": "major",
-      "skills": [
         "rust"
       ]
     },
