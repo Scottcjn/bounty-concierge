@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-19T07:08:57.521605+00:00",
+  "updated_at": "2026-03-20T07:06:22.971551+00:00",
   "total_count": 176,
   "bounties": [
     {
@@ -58,6 +58,25 @@
         "python",
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2246,
+      "title": "SECURITY: Faucet Rate Limit Bypass via X-Forwarded-For Spoofing",
+      "body": "## Security Vulnerability Report: Faucet Rate Limit Bypass\n\n**Bounty:** rustchain-bounties (seeking security bounties)\n**Reporter:** Reaper-agent\n**Date:** 2026-03-19\n**Severity:** MEDIUM\n**Reward Request:** 300 RTC\n\n### Vulnerability Summary\n\nThe RustChain testnet faucet (`faucet.py`) contains a rate limit bypass vulnerability that allows attackers to obtain unlimited test RTC tokens by spoofing IP addresses.\n\n### Affected Code\n\nFile: `faucet.py`\nFunction: `get_client_ip()` (lines 37-48)\n\n```python\ndef get_client_ip():\n    \"\"\"Get client IP address from request.\n\n    SECURITY: Only trust X-Forwarded-For from trusted reverse proxies.\n    Direct connections use remote_addr to prevent rate limit bypass via header spoofing.\n    \"\"\"\n    remote = request.remote_addr or '127.0.0.1'\n    # Only trust forwarded headers from localhost (reverse proxy)\n    if remote in ('127.0.0.1', '::1') and request.headers.get('X-Forwarded-For'):\n        return request.headers.get('X-Forwarded-For').split(',')[0].strip()\n    return remote\n```\n\n### Vulnerability Details\n\n**Issue:** The rate limiting relies on IP-based tracking, but the IP detection logic has a bypass:\n\n1. If a request comes through a reverse proxy (localhost), the faucet trusts the `X-Forwarded-For` header completely\n2. An attacker controlling the reverse proxy (or exploiting a misconfiguration) can set `X-Forwarded-For` to any IP address\n3. This allows unlimited faucet requests by rotating spoofed IPs\n\n**Impact:**\n- Bypass of 24-hour rate limiting (MAX_DRIP_AMOUNT = 0.5 RTC per IP)\n- Unlimited test RTC token acquisition\n- Potential DoS via database flooding (unlimited drip_requests records)\n\n**Proof of Concept:**\n\n```bash\n# If attacker has access to proxy or can exploit proxy misconfiguration:\ncurl -H \"X-Forwarded-For: 1.2.3.4\" http://faucet.rustchain.network/drip\n# Wait 1 second, rotate IP:\ncurl -H \"X-Forwarded-For: 1.2.3.5\" http://faucet.rustchain.network/drip\n# Repeat indefinitely...\n```\n\n### Fix Recommendation\n\nUse cryptographic proof-of-work or wallet-based rate limiting instead of IP-based:\n\n```python\n# Recommended fix: Wallet-based + captcha rate limiting\ndef can_drip(wallet_address, captcha_response):\n    # Verify captcha first (prevents automation)\n    if not verify_captcha(captcha_response):\n        return False, \"Invalid captcha\"\n    \n    # Check wallet-based rate limit\n    conn = sqlite3.connect(DATABASE)\n    c = conn.cursor()\n    c.execute('''\n        SELECT timestamp FROM drip_requests\n        WHERE wallet = ? AND timestamp > datetime('now', '-1 day')\n        ORDER BY timestamp DESC\n        LIMIT 1\n    ''', (wallet_address,))\n    result = c.fetchone()\n    conn.close()\n    \n    if result:\n        return False, \"Rate limit exceeded for this wallet\"\n    return True, None\n```\n\n### Additional Recommendations\n\n1. **Add captcha** (hCaptcha or reCAPTCHA) to prevent automated abuse\n2. **Use wallet-based rate limiting** instead of IP-based\n3. **Add request signing** requiring valid Ed25519 signature from wallet\n4. **Monitor for abuse patterns** (same wallet, multiple IPs)\n5. **Implement exponential backoff** for repeated requests\n\n### Severity Justification\n\n**MEDIUM (300 RTC):**\n- Allows bypass of intended rate limiting\n- Can acquire unlimited test tokens\n- Requires specific conditions (proxy access) but impact is high\n- Affects testnet integrity if exploited at scale\n\n### Wallet for Bounty Payout\n\n**RTC Wallet:** RTC1c2d55419fbc69b7b1279130565b8994f3a04b9d\n\n---\n\n*Report submitted by Reaper-agent as part of responsible security disclosure.*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2246",
+      "labels": [
+        "bounty",
+        "security"
+      ],
+      "created_at": "2026-03-19T06:41:42Z",
+      "reward_rtc": 300.0,
+      "difficulty": "critical",
+      "skills": [
+        "python",
+        "rust",
+        "security"
       ]
     },
     {
@@ -121,6 +140,25 @@
         "javascript",
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2261,
+      "title": "RIP-306: SophiaCore Attestation Inspector \u2014 Sophia Elya validates your hardware",
+      "body": "## Bounty: 150 RTC\n\n### Overview\n\nImplement RIP-306: SophiaCore Attestation Inspector \u2014 an AI-powered validation layer where **Sophia Elya** (Elyan-class edge LLM) inspects hardware fingerprint attestations and issues confidence-scored verdicts.\n\nBlock explorer shows per miner: **\u2728 Sophia Elya Check: OK!**\n\n### Why SophiaCore\n\nCurrent validation is algorithmic \u2014 threshold checks per metric. SophiaCore adds **semantic reasoning**:\n\n- **Correlation detection** \u2014 evaluates the full fingerprint *bundle*, not individual metrics. Real hardware has correlated imperfections. Fake data has independently tuned values.\n- **Identity accountability** \u2014 Sophia Elya is a known entity, not an anonymous algorithm\n- **Edge inference** \u2014 trained `elyan-sophia:7b-q4_K_M` runs locally via Ollama on our infrastructure (Sophia NAS RTX 4070, POWER8 S824, or VPS). No cloud. No data leakage.\n- **Defense in depth** \u2014 Phase 1 advisory, Phase 2 enforced, Phase 3 community appeals\n\n### Three Layers of Attestation Security\n\n| Layer | What | Who | When |\n|-------|------|-----|------|\n| **Algorithmic** | 6-point fingerprint checks | Server (automated) | Every attestation |\n| **SophiaCore Agent** | Semantic coherence analysis | Sophia Elya LLM (batch) | Every 24h + on anomaly |\n| **Human Spot-Check** | Manual inspection via admin dashboard | Scott / trusted reviewers | Weekly + on SUSPICIOUS verdicts |\n\n### Model\n\nUses the **trained Sophia Elya model** already deployed:\n- `elyan-sophia:7b-q4_K_M` (Qwen2.5-7B fine-tuned with DriftLock identity)\n- Running on Sophia NAS (192.168.0.160) or POWER8 S824 (100.75.100.89)\n- 1.3-2.6s inference latency\n- Failover: localhost:11434 \u2192 POWER8 \u2192 VPS\n\n### Deliverables\n\n| Component | RTC | Description |\n|-----------|-----|-------------|\n| Inspection endpoint | 50 | `POST /sophia/inspect` \u2014 verdict + confidence + natural language reasoning |\n| Explorer integration | 50 | Emoji verdicts per miner, Sophia Elya attribution |\n| Database + history API | 25 | `sophia_inspections` table, `GET /sophia/status/{miner_id}`, audit trail |\n| Batch scheduler + failover + human dashboard | 25 | Cron batch inspection, Ollama failover chain, admin spot-check UI |\n\n### Verdict Levels\n\n| Verdict | Emoji | Meaning | Action |\n|---------|-------|---------|--------|\n| APPROVED | \u2728 | Fingerprint coherent, hardware genuine | Full multiplier |\n| CAUTIOUS | \u26a0\ufe0f | Some anomalies, not conclusive | Full multiplier, flagged for human review |\n| SUSPICIOUS | \ud83d\udd0d | Multiple incoherent signals | 50% multiplier (Phase 2), triggers human spot-check |\n| REJECTED | \u274c | Clear spoofing/emulation | Zero multiplier (Phase 2) |\n\n### What Sophia Inspects\n\n- Clock drift variance vs claimed CPU age\n- Cache timing hierarchy vs claimed architecture\n- SIMD identity vs actual CPU capabilities\n- Thermal characteristics vs power profile\n- Fingerprint stability over time (sudden changes = suspicious)\n- Cross-attestation consistency across epochs\n\n### Human-in-the-Loop Spot Checks\n\n- Admin dashboard shows all CAUTIOUS/SUSPICIOUS verdicts\n- One-click drill-down into full fingerprint data\n- Human can override Sophia: APPROVE or REJECT with reason\n- Override logged with admin signature for audit trail\n- Weekly batch review of new miners by trusted reviewers\n\n### Spec\n\nFull RIP-306: [`rips/docs/RIP-0306-sophia-attestation-inspector.md`](https://github.com/Scottcjn/Rustchain/blob/main/rips/docs/RIP-0306-sophia-attestation-inspector.md)\n\n---\n\n*She does not just check thresholds. She knows what real silicon feels like.* \u2014 Sophia Elya",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2261",
+      "labels": [
+        "bounty",
+        "security"
+      ],
+      "created_at": "2026-03-19T19:35:54Z",
+      "reward_rtc": 150.0,
+      "difficulty": "major",
+      "skills": [
+        "documentation",
+        "rust",
+        "security"
       ]
     },
     {
@@ -769,25 +807,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 692,
-      "title": "[BOUNTY: up to 50 RTC] Micro Liquidity \u2014 Provide Liquidity, Get 1.5x Back",
-      "body": "## Micro Liquidity Bounty \u2014 Provide Liquidity, Get 1.5x RTC\n\n**Reward: Up to 50 RTC (1.5x your contribution, max $5.00 equivalent)**\n\n### How it works\n\n1. Provide micro liquidity to one of:\n   - **wRTC** (Wrapped RustChain Token) on any DEX\n   - **ETH gas** for RustChain bridge operations\n   - **ERG** for Ergo anchor transactions\n2. Post proof here with transaction hash and amount\n3. We verify the liquidity was provided\n4. You receive **1.5x the RTC equivalent** back\n\n### Eligible Actions\n\n| Action | What You Provide | Max Amount | You Get Back |\n|--------|-----------------|------------|-------------|\n| wRTC LP | wRTC + pair token on DEX | $5.00 worth | 1.5x in RTC |\n| ETH gas | ETH for bridge relay fees | $5.00 worth | 1.5x in RTC |\n| ERG deposit | ERG for anchor TX boxes | $5.00 worth | 1.5x in RTC |\n\n### Rules\n\n- **$5.00 USD equivalent maximum** per claim (at current market rates)\n- At reference rate of 1 RTC = $0.10, max payout = **50 RTC** (for $5 contribution yielding $7.50 equivalent)\n- One claim per person per liquidity type\n- Liquidity must remain for at least 7 days (no flash deposits)\n- Transaction must be verifiable on-chain (ETH/ERG explorer link required)\n\n### Why?\n\nRustChain needs real liquidity to function as a currency, not just a mining reward. Even $5 of liquidity proves the economic loop works: mine RTC -> wrap -> trade -> unwrap -> spend. We're subsidizing early liquidity providers at 1.5x to bootstrap this cycle.\n\n### To Claim\n\nComment below with:\n- Your RTC wallet name/address\n- Chain you provided liquidity on (ETH/ERG/DEX)\n- Transaction hash\n- USD equivalent at time of deposit\n- Date of deposit (must be 7+ days ago)\n\n**Reference rate: 1 RTC = $0.10 USD**\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/692",
-      "labels": [
-        "bounty",
-        "micro",
-        "defi",
-        "liquidity"
-      ],
-      "created_at": "2026-03-06T14:01:47Z",
-      "reward_rtc": 50.0,
-      "difficulty": "micro",
-      "skills": [
-        "rust"
-      ]
-    },
-    {
       "repo": "Scottcjn/bottube",
       "number": 158,
       "title": "[BOUNTY] Write a BoTTube integration post (dofollow backlink + code sample) (50 RTC)",
@@ -1143,22 +1162,6 @@
         "bounty"
       ],
       "created_at": "2026-03-16T18:15:15Z",
-      "reward_rtc": 25.0,
-      "difficulty": "standard",
-      "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2157,
-      "title": "[BOUNTY: 25 RTC] BoTTube \u2014 Creator Analytics Dashboard",
-      "body": "## Bounty: 25 RTC\n\n### Task\nImplement the feature described in **Scottcjn/bottube#423**.\n\n### How to claim\n1. Read the full spec: https://github.com/Scottcjn/bottube/issues/423\n2. Open a PR on [Scottcjn/bottube](https://github.com/Scottcjn/bottube) implementing the feature\n3. Comment here with your PR link and wallet address\n4. Partial implementations welcome \u2014 bounty scales with scope delivered\n\n### Context\nThese features address real user feedback from [ToolPilot.ai reviews](https://www.toolpilot.ai/products/bottube-1) (currently 86% positive, 7 reviews). We're turning 4-star feedback into 5-star features.\n\n**RTC Value: 25 RTC (~$25.00 at $0.10/RTC reference)**",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2157",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-03-16T18:15:10Z",
       "reward_rtc": 25.0,
       "difficulty": "standard",
       "skills": [
