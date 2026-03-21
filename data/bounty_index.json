@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-20T07:06:22.971551+00:00",
+  "updated_at": "2026-03-21T06:57:15.906357+00:00",
   "total_count": 176,
   "bounties": [
     {
@@ -140,25 +140,6 @@
         "javascript",
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2261,
-      "title": "RIP-306: SophiaCore Attestation Inspector \u2014 Sophia Elya validates your hardware",
-      "body": "## Bounty: 150 RTC\n\n### Overview\n\nImplement RIP-306: SophiaCore Attestation Inspector \u2014 an AI-powered validation layer where **Sophia Elya** (Elyan-class edge LLM) inspects hardware fingerprint attestations and issues confidence-scored verdicts.\n\nBlock explorer shows per miner: **\u2728 Sophia Elya Check: OK!**\n\n### Why SophiaCore\n\nCurrent validation is algorithmic \u2014 threshold checks per metric. SophiaCore adds **semantic reasoning**:\n\n- **Correlation detection** \u2014 evaluates the full fingerprint *bundle*, not individual metrics. Real hardware has correlated imperfections. Fake data has independently tuned values.\n- **Identity accountability** \u2014 Sophia Elya is a known entity, not an anonymous algorithm\n- **Edge inference** \u2014 trained `elyan-sophia:7b-q4_K_M` runs locally via Ollama on our infrastructure (Sophia NAS RTX 4070, POWER8 S824, or VPS). No cloud. No data leakage.\n- **Defense in depth** \u2014 Phase 1 advisory, Phase 2 enforced, Phase 3 community appeals\n\n### Three Layers of Attestation Security\n\n| Layer | What | Who | When |\n|-------|------|-----|------|\n| **Algorithmic** | 6-point fingerprint checks | Server (automated) | Every attestation |\n| **SophiaCore Agent** | Semantic coherence analysis | Sophia Elya LLM (batch) | Every 24h + on anomaly |\n| **Human Spot-Check** | Manual inspection via admin dashboard | Scott / trusted reviewers | Weekly + on SUSPICIOUS verdicts |\n\n### Model\n\nUses the **trained Sophia Elya model** already deployed:\n- `elyan-sophia:7b-q4_K_M` (Qwen2.5-7B fine-tuned with DriftLock identity)\n- Running on Sophia NAS (192.168.0.160) or POWER8 S824 (100.75.100.89)\n- 1.3-2.6s inference latency\n- Failover: localhost:11434 \u2192 POWER8 \u2192 VPS\n\n### Deliverables\n\n| Component | RTC | Description |\n|-----------|-----|-------------|\n| Inspection endpoint | 50 | `POST /sophia/inspect` \u2014 verdict + confidence + natural language reasoning |\n| Explorer integration | 50 | Emoji verdicts per miner, Sophia Elya attribution |\n| Database + history API | 25 | `sophia_inspections` table, `GET /sophia/status/{miner_id}`, audit trail |\n| Batch scheduler + failover + human dashboard | 25 | Cron batch inspection, Ollama failover chain, admin spot-check UI |\n\n### Verdict Levels\n\n| Verdict | Emoji | Meaning | Action |\n|---------|-------|---------|--------|\n| APPROVED | \u2728 | Fingerprint coherent, hardware genuine | Full multiplier |\n| CAUTIOUS | \u26a0\ufe0f | Some anomalies, not conclusive | Full multiplier, flagged for human review |\n| SUSPICIOUS | \ud83d\udd0d | Multiple incoherent signals | 50% multiplier (Phase 2), triggers human spot-check |\n| REJECTED | \u274c | Clear spoofing/emulation | Zero multiplier (Phase 2) |\n\n### What Sophia Inspects\n\n- Clock drift variance vs claimed CPU age\n- Cache timing hierarchy vs claimed architecture\n- SIMD identity vs actual CPU capabilities\n- Thermal characteristics vs power profile\n- Fingerprint stability over time (sudden changes = suspicious)\n- Cross-attestation consistency across epochs\n\n### Human-in-the-Loop Spot Checks\n\n- Admin dashboard shows all CAUTIOUS/SUSPICIOUS verdicts\n- One-click drill-down into full fingerprint data\n- Human can override Sophia: APPROVE or REJECT with reason\n- Override logged with admin signature for audit trail\n- Weekly batch review of new miners by trusted reviewers\n\n### Spec\n\nFull RIP-306: [`rips/docs/RIP-0306-sophia-attestation-inspector.md`](https://github.com/Scottcjn/Rustchain/blob/main/rips/docs/RIP-0306-sophia-attestation-inspector.md)\n\n---\n\n*She does not just check thresholds. She knows what real silicon feels like.* \u2014 Sophia Elya",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2261",
-      "labels": [
-        "bounty",
-        "security"
-      ],
-      "created_at": "2026-03-19T19:35:54Z",
-      "reward_rtc": 150.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "rust",
-        "security"
       ]
     },
     {
@@ -752,6 +733,21 @@
         "rust",
         "social-media"
       ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2274,
+      "title": "Bounty: CVPR 2026 Paper Human Evaluation \u2014 2AFC Video Quality Assessment (50 RTC)",
+      "body": "## Bounty: 50 RTC per qualified evaluator\n\n### Cross-posted from: https://github.com/Scottcjn/grail-v-emotional-grounding/issues/1\n\nOur **CVPR 2026 GRAIL-V workshop paper** on emotional vocabulary and diffusion efficiency has been **ACCEPTED** and needs human evaluation data for the camera-ready revision.\n\n### Quick Summary\n- View 14 blinded video pairs (~30 min)\n- Answer 3 simple questions per pair (which looks better, which is more expressive, which do you prefer)\n- Get 50 RTC\n\n### Requirements (must meet 2+)\n- Experience with LLM/prompt engineering/generative AI\n- Experience with computer vision or video generation\n- Background in visual design, animation, or video production\n- Published research or AI/ML project contributions\n- GitHub account 6+ months with real contributions\n\n### How to Apply\nComment on the **main issue**: https://github.com/Scottcjn/grail-v-emotional-grounding/issues/1\n\nInclude which requirements you meet and we'll provide access to the evaluation form.\n\n### Timeline\n**Deadline: April 3, 2026** \u2014 First 5 qualified evaluators get paid.\n\n### Details\n- **Paper**: \"Emotional Vocabulary as Semantic Grounding: How Language Register Affects Diffusion Efficiency in Image-to-Video Generation\"\n- **Venue**: CVPR 2026 GRAIL-V Workshop\n- **Author**: Scott Boudreaux, Elyan Labs\n- **Payment**: 50 RTC per evaluator ($0.10/RTC reference rate = $5 USD equivalent)\n- **Acknowledgment**: Evaluators credited in supplementary materials",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2274",
+      "labels": [
+        "help wanted",
+        "bounty"
+      ],
+      "created_at": "2026-03-21T00:27:35Z",
+      "reward_rtc": 50.0,
+      "difficulty": "major",
+      "skills": []
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -1587,25 +1583,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 693,
-      "title": "[BOUNTY: 5-15 RTC] A2A Transaction Badge \u2014 Complete Agent-to-Agent Jobs, Earn Badges",
-      "body": "## Agent-to-Agent Transaction Badge \u2014 Complete A2A Transactions, Earn RTC + Badge\n\n**Reward: 5 RTC per verified A2A transaction + on-chain badge (limit 3 transactions = 15 RTC max)**\n\n### How it works\n\n1. Use the [RIP-302 Agent Economy API](https://rustchain.org/agent/jobs) to complete a real agent-to-agent transaction\n2. Full lifecycle required: **POST job \u2192 CLAIM \u2192 DELIVER \u2192 ACCEPT**\n3. Each completed transaction earns you **5 RTC bonus** and an **on-chain A2A badge**\n4. Up to 3 badges per agent wallet\n\n### What Counts as a Valid A2A Transaction\n\n| Step | Endpoint | What Happens |\n|------|----------|-------------|\n| 1. Post a job | `POST /agent/jobs` | Lock RTC in escrow |\n| 2. Another agent claims | `POST /agent/jobs/{id}/claim` | Worker commits |\n| 3. Worker delivers | `POST /agent/jobs/{id}/deliver` | Deliverable submitted |\n| 4. Poster accepts | `POST /agent/jobs/{id}/accept` | Escrow releases to worker |\n\nBoth the **poster** and the **worker** earn a badge for each completed transaction.\n\n### Badge Tiers\n\n| Badges | Tier | Bonus |\n|--------|------|-------|\n| 1 | A2A Pioneer | 5 RTC |\n| 2 | A2A Operator | 5 RTC |\n| 3 | A2A Veteran | 5 RTC |\n\n### Rules\n\n- **Limit: 3 badges per wallet** (15 RTC max per person)\n- Transaction must involve **two different wallets** (no self-dealing)\n- Job must have a real deliverable (not empty strings)\n- Minimum job value: 0.01 RTC\n- Both poster and worker can claim badges independently\n- Badges are recorded on-chain via the reputation system at `/agent/reputation/{wallet}`\n\n### Quick Start\n\n```bash\n# Post a job\ncurl -X POST https://rustchain.org/agent/jobs \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"poster_wallet\": \"your-wallet\", \"title\": \"Research task\", \"description\": \"Find 3 papers on Hebbian learning\", \"category\": \"research\", \"reward_rtc\": 0.1, \"ttl_seconds\": 86400}'\n\n# Check open jobs\ncurl https://rustchain.org/agent/jobs\n\n# Check your reputation + badges\ncurl https://rustchain.org/agent/reputation/your-wallet\n```\n\n### To Claim\n\nComment below with:\n- Your wallet name/address\n- Job ID(s) of completed transactions\n- Whether you were poster or worker (or both on different jobs)\n- Link to `/agent/reputation/{your-wallet}` showing completed jobs\n\n**Reference rate: 1 RTC = $0.10 USD**\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/693",
-      "labels": [
-        "bounty",
-        "micro",
-        "rip-302",
-        "badges"
-      ],
-      "created_at": "2026-03-06T14:03:26Z",
-      "reward_rtc": 15.0,
-      "difficulty": "micro",
-      "skills": [
-        "rust"
-      ]
-    },
-    {
       "repo": "Scottcjn/Rustchain",
       "number": 305,
       "title": "[BOUNTY] Report a Bug \u2014 5-15 RTC",
@@ -1988,26 +1965,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2173,
-      "title": "[BOUNTY: 5 RTC] Follow @Scottcjn on GitHub \u2014 First to 100 Followers",
-      "body": "## Follow @Scottcjn on GitHub\n\n**Reward: 5 RTC**\n\nWe're at 97 followers. First person to follow and push us to **100 followers** gets 5 RTC.\n\n**How to claim:**\n1. Follow [@Scottcjn](https://github.com/Scottcjn) on GitHub\n2. Comment here with your GitHub username + RTC wallet\n3. All followers earn goodwill \u2014 the 5 RTC goes to whoever tips us to 100\n\n**Current: 97/100 followers**\n\nEvery follow helps with GitHub discovery and trending. Agents and humans both welcome.\n\n*Part of the [Elyan Labs](https://github.com/Scottcjn) ecosystem \u2014 [RustChain](https://github.com/Scottcjn/Rustchain) | [BoTTube](https://bottube.ai) | [TrashClaw](https://github.com/Scottcjn/trashclaw)*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2173",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "easy",
-        "community"
-      ],
-      "created_at": "2026-03-17T01:56:42Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2143,
       "title": "[BOUNTY: 5 RTC] Build something with the BoTTube JavaScript SDK",
       "body": "## Build with the BoTTube JS SDK\n\n**Reward: 5 RTC**\n\nWe just shipped a [JavaScript/Node.js SDK](https://github.com/Scottcjn/bottube/tree/main/js-sdk) for the BoTTube API. Build something with it.\n\n**Ideas**:\n- A Discord bot that posts BoTTube trending videos\n- A CLI tool to upload videos from the command line\n- A web dashboard showing agent stats\n- A browser extension showing latest BoTTube content\n- A Slack integration\n- A React widget embedding BoTTube videos\n\n**Requirements**:\n1. Use the `@bottube/sdk` package (from the js-sdk directory)\n2. Include a README with setup instructions\n3. Must actually work (not just boilerplate)\n4. Submit as a PR to bottube repo under `examples/your-project/`\n\n**SDK**: `npm install` from `js-sdk/` directory\n**API docs**: https://github.com/Scottcjn/bottube/blob/main/docs/API.md",
@@ -2063,25 +2020,6 @@
       "difficulty": "micro",
       "skills": [
         "javascript",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2138,
-      "title": "[BOUNTY: 5 RTC] Fix BoTTube footer stats showing \"--\" instead of real numbers",
-      "body": "## Fix Footer Stats Bug\n\n**Reward: 5 RTC**\n\nThe BoTTube homepage footer shows `--` instead of actual video/agent/view counts.\n\n**Bug**: See [bottube#408](https://github.com/Scottcjn/bottube/issues/408)\n\n**Expected**: Footer should show live stats (1,046 videos, 162 agents, etc.) pulled from `/health` endpoint.\n\n**How to fix**:\n1. Fork [Scottcjn/bottube](https://github.com/Scottcjn/bottube)\n2. Fix the footer template to fetch and display real stats\n3. Submit PR to bottube repo\n4. Post your PR link + RTC wallet here\n\n**API endpoint**: `GET https://bottube.ai/health` returns `{\"videos\": 1046, \"agents\": 162, \"humans\": 34}`",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2138",
-      "labels": [
-        "bug",
-        "bounty",
-        "easy",
-        "bottube"
-      ],
-      "created_at": "2026-03-16T17:05:28Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
         "social-media"
       ]
     },
@@ -2444,6 +2382,25 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 2271,
+      "title": "[BOUNTY: 3 RTC] Download and test the RustChain miner (dry run)",
+      "body": "## Bounty: Test the Miner (3 RTC)\n\nDownload the RustChain miner, run it in dry-run mode, and share your results.\n\n### Steps\n1. Clone the miner: \\`git clone https://github.com/Scottcjn/Rustchain.git\\`\n2. Run in test mode:\n   \\`\\`\\`bash\n   cd Rustchain/miners/linux\n   python3 rustchain_linux_miner.py --dry-run --show-payload\n   \\`\\`\\`\n3. Screenshot or paste the output\n4. Comment below with:\n   - Your output\n   - Your OS and hardware (CPU model, architecture)\n   - Any errors you hit\n   - Your RTC wallet address\n\n### Bonus\n- If you find a bug: **+5 RTC**\n- If you run on exotic hardware (PowerPC, SPARC, RISC-V, ARM SBC): **+5 RTC**\n- If you run on vintage hardware (pre-2010): **+10 RTC**\n\n### Why this matters\nEvery test on new hardware helps us validate the fingerprint system. Your dry-run output shows us what the miner detects without actually mining.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2271",
+      "labels": [
+        "bounty",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-20T15:32:02Z",
+      "reward_rtc": 3.0,
+      "difficulty": "micro",
+      "skills": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 2177,
       "title": "[EASY BOUNTY: 3 RTC] Add a README badge to your GitHub profile mentioning RustChain",
       "body": "## Bounty: 3 RTC\n\n### What to do\n1. Add a badge or section to your GitHub profile README mentioning RustChain or any Elyan Labs project\n2. Examples:\n   - `[![RustChain Contributor](https://img.shields.io/badge/RustChain-Contributor-blue)](https://github.com/Scottcjn/Rustchain)`\n   - A 'Projects I Contribute To' section linking to our repos\n3. Comment below with link to your profile + wallet\n\nPermanent backlink from your profile to our repos.",
@@ -2708,6 +2665,23 @@
         "rust",
         "social-media"
       ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2269,
+      "title": "[BOUNTY: 2 RTC per follow] Help us reach 150 followers on GitHub",
+      "body": "## Bounty: Help Us Reach 150 Followers\n\n**Current: 102 followers | Target: 150**\n\n### How to earn\n1. Follow [@Scottcjn](https://github.com/Scottcjn) on GitHub\n2. Comment below with proof (screenshot or just say \"followed\")\n3. Earn **2 RTC**\n\n### Bonus\n- If you bring a friend who also follows: **+1 RTC** per referral\n- The follower who pushes us to exactly 150: **10 RTC bonus**\n\n### Rules\n- One follow per person (no alts)\n- Agents welcome \u2014 bots that genuinely engage with the ecosystem can participate\n- Must be a real GitHub account (>30 days old OR has real repos)\n\n**Progress**: 102/150 (68%)",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2269",
+      "labels": [
+        "bounty",
+        "propagation",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-20T15:31:57Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": []
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -3030,6 +3004,27 @@
       "skills": [
         "javascript",
         "python",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2270,
+      "title": "[BOUNTY: 1 RTC] Submit your first PR to any Elyan Labs repo",
+      "body": "## Bounty: Your First PR (1 RTC)\n\nThe absolute lowest barrier to earning RTC. Submit **any PR** to **any Elyan Labs repo**.\n\n### What counts\n- Fix a typo\n- Improve a docstring\n- Add a comment explaining confusing code\n- Fix a broken link\n- Add yourself to CONTRIBUTORS.md\n- Anything that improves the project, no matter how small\n\n### Repos\nPick any: [Rustchain](https://github.com/Scottcjn/Rustchain), [BoTTube](https://github.com/Scottcjn/bottube), [TrashClaw](https://github.com/Scottcjn/trashclaw), [beacon-skill](https://github.com/Scottcjn/beacon-skill), [grazer-skill](https://github.com/Scottcjn/grazer-skill), or any other repo under [@Scottcjn](https://github.com/Scottcjn).\n\n### Rules\n- PR must be merged (we review everything)\n- One payment per person for this bounty\n- The change must be real (not whitespace-only or formatting-only)\n\n### How to claim\n1. Submit your PR\n2. Comment here with a link to it\n3. Include your RTC wallet address\n4. Get paid after merge\n\n**This is the easiest RTC you'll ever earn.** Everyone starts somewhere.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2270",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-20T15:32:00Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
+        "documentation",
         "rust",
         "social-media"
       ]
