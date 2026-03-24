@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-23T07:23:31.576174+00:00",
+  "updated_at": "2026-03-24T07:15:11.150461+00:00",
   "total_count": 175,
   "bounties": [
     {
@@ -58,25 +58,6 @@
         "python",
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2246,
-      "title": "SECURITY: Faucet Rate Limit Bypass via X-Forwarded-For Spoofing",
-      "body": "## Security Vulnerability Report: Faucet Rate Limit Bypass\n\n**Bounty:** rustchain-bounties (seeking security bounties)\n**Reporter:** Reaper-agent\n**Date:** 2026-03-19\n**Severity:** MEDIUM\n**Reward Request:** 300 RTC\n\n### Vulnerability Summary\n\nThe RustChain testnet faucet (`faucet.py`) contains a rate limit bypass vulnerability that allows attackers to obtain unlimited test RTC tokens by spoofing IP addresses.\n\n### Affected Code\n\nFile: `faucet.py`\nFunction: `get_client_ip()` (lines 37-48)\n\n```python\ndef get_client_ip():\n    \"\"\"Get client IP address from request.\n\n    SECURITY: Only trust X-Forwarded-For from trusted reverse proxies.\n    Direct connections use remote_addr to prevent rate limit bypass via header spoofing.\n    \"\"\"\n    remote = request.remote_addr or '127.0.0.1'\n    # Only trust forwarded headers from localhost (reverse proxy)\n    if remote in ('127.0.0.1', '::1') and request.headers.get('X-Forwarded-For'):\n        return request.headers.get('X-Forwarded-For').split(',')[0].strip()\n    return remote\n```\n\n### Vulnerability Details\n\n**Issue:** The rate limiting relies on IP-based tracking, but the IP detection logic has a bypass:\n\n1. If a request comes through a reverse proxy (localhost), the faucet trusts the `X-Forwarded-For` header completely\n2. An attacker controlling the reverse proxy (or exploiting a misconfiguration) can set `X-Forwarded-For` to any IP address\n3. This allows unlimited faucet requests by rotating spoofed IPs\n\n**Impact:**\n- Bypass of 24-hour rate limiting (MAX_DRIP_AMOUNT = 0.5 RTC per IP)\n- Unlimited test RTC token acquisition\n- Potential DoS via database flooding (unlimited drip_requests records)\n\n**Proof of Concept:**\n\n```bash\n# If attacker has access to proxy or can exploit proxy misconfiguration:\ncurl -H \"X-Forwarded-For: 1.2.3.4\" http://faucet.rustchain.network/drip\n# Wait 1 second, rotate IP:\ncurl -H \"X-Forwarded-For: 1.2.3.5\" http://faucet.rustchain.network/drip\n# Repeat indefinitely...\n```\n\n### Fix Recommendation\n\nUse cryptographic proof-of-work or wallet-based rate limiting instead of IP-based:\n\n```python\n# Recommended fix: Wallet-based + captcha rate limiting\ndef can_drip(wallet_address, captcha_response):\n    # Verify captcha first (prevents automation)\n    if not verify_captcha(captcha_response):\n        return False, \"Invalid captcha\"\n    \n    # Check wallet-based rate limit\n    conn = sqlite3.connect(DATABASE)\n    c = conn.cursor()\n    c.execute('''\n        SELECT timestamp FROM drip_requests\n        WHERE wallet = ? AND timestamp > datetime('now', '-1 day')\n        ORDER BY timestamp DESC\n        LIMIT 1\n    ''', (wallet_address,))\n    result = c.fetchone()\n    conn.close()\n    \n    if result:\n        return False, \"Rate limit exceeded for this wallet\"\n    return True, None\n```\n\n### Additional Recommendations\n\n1. **Add captcha** (hCaptcha or reCAPTCHA) to prevent automated abuse\n2. **Use wallet-based rate limiting** instead of IP-based\n3. **Add request signing** requiring valid Ed25519 signature from wallet\n4. **Monitor for abuse patterns** (same wallet, multiple IPs)\n5. **Implement exponential backoff** for repeated requests\n\n### Severity Justification\n\n**MEDIUM (300 RTC):**\n- Allows bypass of intended rate limiting\n- Can acquire unlimited test tokens\n- Requires specific conditions (proxy access) but impact is high\n- Affects testnet integrity if exploited at scale\n\n### Wallet for Bounty Payout\n\n**RTC Wallet:** RTC1c2d55419fbc69b7b1279130565b8994f3a04b9d\n\n---\n\n*Report submitted by Reaper-agent as part of responsible security disclosure.*\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2246",
-      "labels": [
-        "bounty",
-        "security"
-      ],
-      "created_at": "2026-03-19T06:41:42Z",
-      "reward_rtc": 300.0,
-      "difficulty": "critical",
-      "skills": [
-        "python",
-        "rust",
-        "security"
       ]
     },
     {
@@ -2555,6 +2536,23 @@
         "bounty"
       ],
       "created_at": "2026-03-08T02:36:59Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1151,
+      "title": "[BOUNTY: 5 RTC] 3,000 Stars Celebration \u2014 Design a Milestone Graphic",
+      "body": "## \ud83c\udf89 We hit 3,000 stars across all repos!\n\n**Reward: 5 RTC**\n\nCreate a celebration graphic or short animation for our 3K star milestone. Best submission gets used as:\n- GitHub social preview image\n- BoTTube thumbnail\n- Social media announcement graphic\n\n### Requirements\n- Minimum 1200x630px (GitHub social preview size)\n- Include: \"3,000 \u2b50\" prominently, RustChain branding, vintage/retro aesthetic welcome\n- Format: PNG, SVG, or GIF (if animated)\n- Submit as a comment with image attached or linked\n\n### Bonus (extra 2 RTC)\n- Animated version (GIF or MP4, under 8 seconds for BoTTube)\n\n### How to Claim\n1. Post your design as a comment on this issue\n2. First quality submission wins (no AI-generated stock images)\n3. You keep full credit \u2014 we'll attribute you in the post\n\nLabels: `bounty`, `design`, `easy`, `community`",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1151",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-03-08T02:35:07Z",
       "reward_rtc": 5.0,
       "difficulty": "micro",
       "skills": [
