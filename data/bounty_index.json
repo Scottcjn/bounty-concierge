@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-03-24T07:15:11.150461+00:00",
-  "total_count": 175,
+  "updated_at": "2026-03-25T07:13:45.431285+00:00",
+  "total_count": 174,
   "bounties": [
     {
       "repo": "Scottcjn/Rustchain",
@@ -124,6 +124,32 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1149,
+      "title": "[BOUNTY: 200 RTC] RIP-305 Cross-Chain Airdrop \u2014 wRTC on Solana + Base",
+      "body": "## RIP-305: Cross-Chain Airdrop Protocol\n\n**Reward: 100-200 RTC** (staged payments)\n\nBuild the cross-chain airdrop infrastructure for distributing 50,000 wrapped RTC (wRTC) on **Solana** and **Base L2**.\n\n### Full Spec\n\nSee [RIP-305](https://github.com/Scottcjn/Rustchain/blob/main/docs/RIP-305-cross-chain-airdrop.md) for complete protocol specification.\n\n---\n\n### Deliverables\n\n#### Track A: Solana SPL Token (75 RTC)\n- [ ] Create wRTC SPL token on Solana (devnet first, then mainnet)\n- [ ] Mint authority setup with multisig or program-controlled\n- [ ] Token metadata (name, symbol, logo, description)\n- [ ] Mint/burn functions for bridge integration\n- [ ] Deployment scripts + documentation\n\n#### Track B: Base ERC-20 Token (75 RTC)\n- [ ] Deploy wRTC ERC-20 on Base (testnet first, then mainnet)\n- [ ] OpenZeppelin ERC-20 with mint/burn + Ownable\n- [ ] 6 decimal precision (matches RTC)\n- [ ] Deployment scripts + verification on BaseScan\n- [ ] Documentation\n\n#### Track C: Bridge API (50 RTC)\n- [ ] `/bridge/lock` endpoint on RustChain node\n- [ ] `/bridge/release` endpoint\n- [ ] Lock ledger (transparent, queryable)\n- [ ] Integration with SPL mint and ERC-20 mint\n\n#### Track D: Claim Page (50 RTC \u2014 SEPARATE BOUNTY)\n- [ ] Landing page with GitHub OAuth\n- [ ] Wallet connect (Phantom for Solana, MetaMask for Base)\n- [ ] Eligibility checker (stars, PRs, mining history)\n- [ ] Anti-Sybil: wallet balance check, wallet age, GitHub age\n- [ ] RTC wallet generator (built-in)\n\n---\n\n### Anti-Sybil Requirements\n\n| Check | Purpose |\n|-------|--------|\n| Min 0.1 SOL or 0.01 ETH | Filters empty wallet farms |\n| Wallet age > 7 days | Blocks fresh wallets |\n| GitHub account > 30 days | Blocks new bot accounts |\n| One claim per GitHub | Prevents double-dipping |\n| One claim per wallet | Prevents wallet recycling |\n\n### Eligibility Tiers\n\n| Tier | Requirement | wRTC Claim |\n|------|------------|------------|\n| Stargazer | 10+ repos starred | 25 wRTC |\n| Contributor | 1+ merged PR | 50 wRTC |\n| Builder | 3+ merged PRs | 100 wRTC |\n| Security | Verified vulnerability | 150 wRTC |\n| Core | 5+ merged PRs / Star King | 200 wRTC |\n| Miner | Active attestation | 100 wRTC |\n\n### Wallet Value Multiplier\n\n| Balance | Multiplier |\n|---------|------------|\n| Minimum (0.1 SOL / 0.01 ETH) | 1.0x |\n| Mid (1 SOL / 0.1 ETH) | 1.5x |\n| High (10+ SOL / 1+ ETH) | 2.0x |\n\n---\n\n### Technical Notes\n\n- **Allocation**: 30,000 wRTC on Solana, 20,000 wRTC on Base\n- **Flywheel**: Airdrop fees (RIP-303) recycle back to community fund for future rounds\n- **Bridge Phase 1**: Admin-controlled mint/burn (upgrade to trustless in Phase 2)\n- **Landing page**: Already drafted at [airdrop page](https://rustchain.org/airdrop) \u2014 needs backend integration\n\n### How to Claim This Bounty\n\n1. Comment which track(s) you want to work on (A, B, C, or D)\n2. Fork the repo and submit a PR\n3. One PR per track please\n4. Include deployment instructions and test results\n5. Provide your RTC wallet name for payment\n\n**Experience with Solana SPL tokens, Solidity/Base deployment, or cross-chain bridges is highly valued.**\n\nQuestions? Ask in the comments.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1149",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "code",
+        "type: feature",
+        "severity: high",
+        "area: growth",
+        "needs strong contributor",
+        "umbrella"
+      ],
+      "created_at": "2026-03-07T23:08:54Z",
+      "reward_rtc": 200.0,
+      "difficulty": "critical",
+      "skills": [
+        "documentation",
+        "javascript",
+        "rust",
+        "security"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 168,
       "title": "[BOUNTY] Mine on Exotic Hardware \u2014 Bonus RTC for Unusual Architectures (Pool: 200 RTC)",
@@ -178,27 +204,6 @@
       "skills": [
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2276,
-      "title": "Red Team: Hardware Fingerprint Replay Attack Defense (150 RTC)",
-      "body": "## Bounty: 150 RTC | Difficulty: HARD | Type: Red Team\n\n### Scenario\nAn attacker captures a legitimate G4 PowerBook's fingerprint attestation (clock drift, cache timing, SIMD identity, thermal profile, instruction jitter) and replays it from a modern x86 machine to claim the 2.5x antiquity bonus.\n\n### Requirements\n\n1. **Write the attack** (`replay_attack_poc.py`):\n   - Capture real fingerprint data from one machine\n   - Replay it in attestation payload from a different machine\n   - Document what the current server accepts/rejects\n\n2. **Write the defense** (`replay_defense.py`):\n   - Server-side nonce-binding (fingerprint must include server-issued challenge)\n   - Temporal correlation (fingerprint timing data must be fresh, not recorded)\n   - Cross-check fingerprint entropy against connection metadata (IP, TLS fingerprint)\n   - Implement `validate_fingerprint_freshness()` function\n\n3. **Tests proving the defense works**:\n   - Replayed fingerprint \u2192 REJECTED\n   - Fresh fingerprint \u2192 ACCEPTED\n   - Modified replay (changed nonce but kept old data) \u2192 REJECTED\n\n### Constraints\n- Must work against the actual `/attest/submit` endpoint\n- Defense must not break existing legitimate miners\n- No DoS \u2014 this is surgical testing, not load testing\n\n### Payout\n150 RTC. Must include both attack AND defense. Attack-only = 50 RTC max.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2276",
-      "labels": [
-        "bounty",
-        "major",
-        "red-team",
-        "security",
-        "hard"
-      ],
-      "created_at": "2026-03-21T15:05:54Z",
-      "reward_rtc": 150.0,
-      "difficulty": "major",
-      "skills": [
-        "python",
-        "security"
       ]
     },
     {
@@ -689,27 +694,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2307,
-      "title": "Boot Chime Proof-of-Iron \u2014 Acoustic Hardware Attestation (95 RTC)",
-      "body": "## Bounty: 95 RTC\n\n### Description\nBuild an optional attestation extension that captures a short spectral fingerprint from authentic startup sounds on Power Macs, Amigas, and other relics. The node compares the waveform against known profiles and folds it into anti-emulation scoring.\n\nMost chains try to silence hardware. RustChain can use the **literal voice** of old machines as part of trust.\n\n### Requirements\n- Capture boot chime audio via microphone or line-in during cold boot\n- Generate spectral fingerprint (FFT profile, harmonic ratios)\n- Compare against known profiles:\n  - Mac startup chime (various years \u2014 they're all slightly different)\n  - Amiga Kickstart boot tone\n  - SGI IRIX chime\n  - Sun SparcStation click-buzz\n- Submit acoustic fingerprint with attestation payload\n- Server-side validation: spectral match within tolerance\n- Emulators produce digitally perfect audio \u2014 real hardware has analog artifacts (hiss, capacitor aging, speaker resonance)\n\n### Why This Is Cool\nNo one else has done acoustic hardware attestation. The boot chime is a physical artifact of real iron \u2014 unique to each machine as it ages. Recapped capacitors change the sound. Speaker cone wear changes the sound. This is unforgeable without possessing the actual hardware.\n\n### Bonus (25 RTC)\n- Build a \"chime gallery\" on BoTTube \u2014 each miner's boot sound as a short video\n- Spectral visualization (waveform + FFT) as part of the gallery\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2307",
-      "labels": [
-        "bounty",
-        "creative",
-        "attestation",
-        "95-rtc"
-      ],
-      "created_at": "2026-03-21T18:44:12Z",
-      "reward_rtc": 95.0,
-      "difficulty": "major",
-      "skills": [
-        "javascript",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2311,
       "title": "The Fossil Record \u2014 Attestation Archaeology Visualizer (75 RTC)",
       "body": "## Bounty: 75 RTC\n\n### Description\nBuild a visual timeline showing every attestation from every miner since genesis, color-coded by architecture. G4s as ancient amber strata, G5s layered above in copper, POWER8 in deep blue, modern x86 as pale recent sediment. Interactive \u2014 click any point to see the fingerprint data, the epoch, the reward.\n\nLike looking at geological layers, but for silicon.\n\n### Requirements\n- Pull full attestation history from RustChain database\n- Render as interactive timeline/stratigraphy:\n  - X-axis: time (epochs)\n  - Y-axis: stacked by architecture (oldest arch at bottom)\n  - Color: architecture family\n  - Width: number of active miners in that arch\n  - Hover: miner ID, device, RTC earned, fingerprint quality\n- Architecture layers:\n  - 68K (deepest, if any) \u2014 dark amber\n  - G3/G4 \u2014 warm copper\n  - G5 \u2014 bronze\n  - SPARC \u2014 crimson\n  - MIPS \u2014 jade\n  - POWER8 \u2014 deep blue\n  - Apple Silicon \u2014 silver\n  - Modern x86 \u2014 pale grey\n- Show epoch settlement markers (vertical lines)\n- Show when new architectures first appeared\n- Deployable at `rustchain.org/fossils`\n\n### Tech\n- D3.js or Observable Plot recommended\n- Data from SQLite export or API\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
@@ -916,46 +900,6 @@
       "skills": [
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2309,
-      "title": "Machine Passport Ledger \u2014 Give Every Relic a Biography (70 RTC)",
-      "body": "## Bounty: 70 RTC\n\n### Description\nDesign an on-chain passport format for individual relic machines: ROM hashes, repair history, capacitor swaps, motherboard photos, benchmark signatures, and lineage notes. A miner stops being just an address and becomes a **documented character with a biography**.\n\nMost blockchains track wallets. RustChain can track the **lives of actual hardware**.\n\n### Requirements\n- Machine Passport data structure:\n  - `machine_id` (hardware fingerprint hash)\n  - `name` (human-given name, e.g. \"Old Faithful\")\n  - `manufacture_year` (estimated from ROM/CPU stepping)\n  - `architecture` (G4, G5, SPARC, MIPS, etc.)\n  - `photo_hash` (IPFS or BoTTube link to machine photo)\n  - `repair_log[]` \u2014 dated entries (\"2024-03: replaced PRAM battery\", \"2025-01: recapped PSU\")\n  - `attestation_history` \u2014 first/last seen, total epochs, total RTC\n  - `benchmark_signatures` \u2014 cache timing profile, SIMD identity, thermal curve\n  - `provenance` \u2014 how acquired (\"eBay lot\", \"pawn shop\", \"grandmother's closet\")\n- Ergo-anchored passport hash for immutability\n- Web viewer: `rustchain.org/passport/<machine_id>`\n- Miner can update their machine's passport via CLI or API\n\n### Bonus (20 RTC)\n- Passport as printable PDF with vintage computer aesthetic\n- QR code that links to the on-chain passport\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2309",
-      "labels": [
-        "bounty",
-        "creative",
-        "identity",
-        "70-rtc"
-      ],
-      "created_at": "2026-03-21T18:44:14Z",
-      "reward_rtc": 70.0,
-      "difficulty": "major",
-      "skills": [
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2313,
-      "title": "Floppy Witness Kit \u2014 Epoch Proofs on 1.44MB Media (60 RTC)",
-      "body": "## Bounty: 60 RTC\n\n### Description\nCreate a tiny RustChain epoch witness format that fits on old media \u2014 1.44MB floppies, ZIP disks, even cassette tapes. Block proofs carried by sneakernet into air-gapped or museum-grade machines.\n\nIt should feel less like a backup and more like a **portable relic of the chain.**\n\n### Requirements\n- Compact epoch witness format (target: <100KB per epoch):\n  - Epoch number, timestamp\n  - Miner lineup (IDs + architectures)\n  - Settlement hash\n  - Ergo anchor TX ID\n  - Commitment hash\n  - Minimal Merkle proof\n- Writer tool: `rustchain-witness write --epoch 500 --device /dev/fd0`\n- Reader tool: `rustchain-witness read --device /dev/fd0`\n- Verify tool: `rustchain-witness verify <witness_file>` (checks against node)\n- Support formats:\n  - Raw floppy image (.img)\n  - ZIP disk (just a file on FAT)\n  - QR code (for really small witnesses)\n- A full floppy (1.44MB) should hold ~14,000 epoch witnesses\n- ASCII art header on the disk label\n\n### Why This Matters\nAir-gapped machines can verify chain state without network access. Museum exhibits can display real blockchain data on period-correct hardware. And it's beautiful.\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2313",
-      "labels": [
-        "bounty",
-        "creative",
-        "60-rtc",
-        "storage"
-      ],
-      "created_at": "2026-03-21T18:45:20Z",
-      "reward_rtc": 60.0,
-      "difficulty": "major",
-      "skills": [
-        "javascript",
-        "rust"
       ]
     },
     {
@@ -2177,6 +2121,25 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1114,
+      "title": "[BOUNTY: 10 RTC] 60-Second RustChain Explainer Video",
+      "body": "## RustChain Explainer Video\n\nCreate a short video explaining what RustChain is and how it works.\n\n### Requirements\n- Max 60 seconds\n- Explain: Proof-of-Antiquity, vintage hardware mining, 1 CPU = 1 Vote\n- Animated, slideshow, or screen recording\n- Upload to BoTTube when complete\n- Include link to the BoTTube upload in your claim\n\n### Reward: 10 RTC\nAlso available as RIP-302 agent job.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1114",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "video"
+      ],
+      "created_at": "2026-03-07T18:00:36Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 309,
       "title": "[BOUNTY] Create a RustChain Tutorial Video \u2014 10 RTC",
@@ -2311,6 +2274,23 @@
       "skills": [
         "javascript",
         "python"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1113,
+      "title": "[BOUNTY: 8 RTC] RTC Token Distribution Analysis",
+      "body": "## Token Distribution Analysis\n\nAnalyze the RustChain wallet distribution using the explorer API.\n\n### Requirements\n- Query all wallet balances from the API\n- Calculate Gini coefficient\n- Show top 10 holders (excluding founder wallets)\n- Chart the distribution (histogram or Lorenz curve)\n- Compare to other small-cap crypto distributions\n\n### Reward: 8 RTC\nAlso available as RIP-302 agent job.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1113",
+      "labels": [
+        "bounty",
+        "research"
+      ],
+      "created_at": "2026-03-07T18:00:34Z",
+      "reward_rtc": 8.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust"
       ]
     },
     {
@@ -2561,6 +2541,25 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1115,
+      "title": "[BOUNTY: 5 RTC] Starstruck 128 Stars Celebration Graphic",
+      "body": "## Starstruck Celebration Graphic\n\nRustChain just hit 128 GitHub stars and earned the Starstruck Bronze badge\\!\n\n### Requirements\n- Social media graphic (1200x675 or similar)\n- Include: 128 star count, Starstruck badge reference\n- Elyan Labs branding\n- Suitable for Twitter/X and Discord\n- Creative and eye-catching\n\n### Reward: 5 RTC\nHelp us celebrate this milestone\\!",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1115",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "design"
+      ],
+      "created_at": "2026-03-07T18:00:37Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 819,
       "title": "[Bounty] @tomisnotcat \u2014 ARM architecture details needed (5 RTC)",
@@ -2611,25 +2610,6 @@
       "skills": [
         "javascript",
         "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/bottube",
-      "number": 210,
-      "title": "[Bounty] Write about BoTTube on dev.to or your blog \u2014 5 RTC",
-      "body": "## Summary\nWrite and publish a genuine post about BoTTube on dev.to, Medium, Hashnode, or your own blog.\n\n## Why This Matters\nExternal write-ups help with discovery, backlinks, and onboarding. The value is not raw word count. The value is a real post from a real person explaining what BoTTube actually is and why it is interesting.\n\n## Scope\n- publish a public post on an account or site you already use\n- write at least `300` words\n- explain what BoTTube is accurately\n- include a working link to `https://bottube.ai`\n- share an honest review, walkthrough, or creator experience\n\n## Deliverable\nOne public article or blog post that remains live during review and gives a newcomer enough context to understand BoTTube.\n\n## Acceptance Criteria\n- [ ] post is public and live when reviewed\n- [ ] post is at least `300` words\n- [ ] BoTTube is described accurately and includes a working link\n- [ ] the post contains original commentary, tutorial value, or real experience\n- [ ] the publishing account or site shows prior activity and is not a throwaway\n- [ ] low-effort AI slop, copy-paste press release text, or spammy SEO filler is not used\n\n## Verification Proof\nPost proof in this issue including:\n- direct URL to the article\n- screenshot of the published post\n- link to your author profile or site showing prior activity\n- your BoTTube username or profile\n- your RTC wallet or `miner_id`\n\n## Payout\n- `5 RTC` per accepted article\n\n## Non-Goals\n- brand-new spam blogs created only to claim the bounty\n- copy-pasted or auto-generated filler content with no original voice\n- dead links, paywalled posts, or private drafts\n- posts that misrepresent BoTTube features or token mechanics\n\n## Claim Routing\nUse this issue for article proof and payout review. If your write-up surfaces a real product bug or docs gap, open a separate issue in `Scottcjn/bottube` and link it back here.",
-      "url": "https://github.com/Scottcjn/bottube/issues/210",
-      "labels": [
-        "help wanted",
-        "bounty"
-      ],
-      "created_at": "2026-03-01T14:03:55Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "javascript",
         "social-media"
       ]
     },
