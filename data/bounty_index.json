@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-27T07:20:31.970896+00:00",
+  "updated_at": "2026-03-28T07:08:23.074399+00:00",
   "total_count": 175,
   "bounties": [
     {
@@ -597,27 +597,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2302,
-      "title": "RustChain MCP Server v0.4: Wallet Management + Transfer Tools (75 RTC)",
-      "body": "## Bounty: 75 RTC\n\n### Description\nExtend the RustChain MCP Server (https://github.com/Scottcjn/rustchain-mcp) with wallet management and signed transfer capabilities. Currently the MCP server has 25 tools \u2014 add wallet operations so any MCP-compatible AI agent can manage RTC programmatically.\n\n### New Tools Required\n- `wallet_create` \u2014 generate new Ed25519 wallet with BIP39 seed phrase\n- `wallet_balance` \u2014 check balance for any wallet ID\n- `wallet_history` \u2014 transaction history for a wallet\n- `wallet_transfer_signed` \u2014 sign and submit an RTC transfer\n- `wallet_list` \u2014 list wallets in local keystore\n- `wallet_export` \u2014 export encrypted keystore JSON\n- `wallet_import` \u2014 import from seed phrase or keystore\n\n### Requirements\n- Use existing `rustchain_crypto.py` module for Ed25519 signing\n- Secure keystore storage (~/.rustchain/mcp_wallets/)\n- Never expose private keys or seed phrases in MCP tool responses\n- Unit tests for each tool\n- Update README with wallet tool documentation\n\n### Reference\n- Current MCP server: https://github.com/Scottcjn/rustchain-mcp\n- Crypto module: See wallet package at `/home/scott/Desktop/rustchain-wallet-pkg/src/rustchain_crypto.py`\n- Signed transfer endpoint: `POST /wallet/transfer/signed`\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2302",
-      "labels": [
-        "bounty",
-        "75-rtc",
-        "mcp",
-        "wallet"
-      ],
-      "created_at": "2026-03-21T17:18:17Z",
-      "reward_rtc": 75.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "python",
-        "rust"
-      ]
-    },
-    {
       "repo": "Scottcjn/bottube",
       "number": 70,
       "title": "[BOUNTY] YouTube Review Video About BoTTube \u2014 Real Video Coverage (75 RTC)",
@@ -764,6 +743,24 @@
       "skills": [
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2640,
+      "title": "[BOUNTY: 50 RTC] Fix 14 failing replay defense tests",
+      "body": "## Bounty: 50 RTC\n\n### Problem\n14 tests are failing in the replay defense module (added in PRs #1909, #1914). The test infrastructure is now correct (tables created, DB paths patched), but the **logic in the replay defense code returns incorrect status codes**.\n\n### Failing Tests\n\n**`tests/test_replay_defense.py`** (~8 failures):\n- `test_empty_fingerprint_hash` \u2014 expects hash length > 0, gets 0\n- `test_replay_same_nonce_different_wallet` \u2014 expects `nonce_collision_attack`, gets `fingerprint_replay_detected`\n- Various entropy collision and rate limit failures\n\n**`tests/test_replay_defense_standalone.py`** (~4 failures):\n- `test_first_submission` \u2014 returns `fingerprint_replay_detected` instead of allowing first submission\n- `test_unique_entropy` \u2014 returns `entropy_profile_collision` for unique entropy\n- `test_rate_limit_*` \u2014 wrong status codes\n\n### Root Cause\nThe replay defense functions in `node/hardware_fingerprint_replay.py` return incorrect status strings. The tests correctly specify expected behavior.\n\n### How to Fix\n1. Run: `python3 -m pytest tests/test_replay_defense.py tests/test_replay_defense_standalone.py -x --tb=short`\n2. Fix status code logic in `node/hardware_fingerprint_replay.py`\n3. Ensure all 14 tests pass + no regressions (930+ tests still passing)\n\n### Acceptance Criteria\n- All 14 tests pass\n- No regressions\n- Clean CI green\n\n@B1tor \u2014 these are from your PRs #1909 and #1914. First dibs if you want them.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2640",
+      "labels": [
+        "bug",
+        "bounty"
+      ],
+      "created_at": "2026-03-28T05:24:59Z",
+      "reward_rtc": 50.0,
+      "difficulty": "major",
+      "skills": [
+        "javascript",
+        "python"
       ]
     },
     {
@@ -1427,6 +1424,24 @@
       "difficulty": "standard",
       "skills": [
         "javascript"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 752,
+      "title": "[BOUNTY: 15-20 RTC] Multi-Node Health Dashboard \u2014 Monitor All 3 Attestation Nodes",
+      "body": "## Multi-Node Health Dashboard\n\nSingle page showing all 3 attestation nodes \u2014 uptime, block height, miner count, sync status. No more `curl /health` on each node individually.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Dashboard with all 3 nodes + auto-refresh | **15 RTC** |\n| Historical uptime tracking + charts | **+5 RTC** |\n\n### Nodes to Monitor\n\n| Node | URL | Role |\n|------|-----|------|\n| Node 1 | `https://50.28.86.131/health` | Primary |\n| Node 2 | `https://50.28.86.153/health` | Secondary |\n| Node 3 | `http://100.88.109.32:8099/health` | External (Tailscale only) |\n\n### Dashboard Should Show\n\nFor each node:\n- **Status**: \ud83d\udfe2 Up / \ud83d\udd34 Down / \ud83d\udfe1 Degraded\n- **Version**: `2.2.1-rip200`\n- **Uptime**: `4d 12h 33m`\n- **Database**: RW status\n- **Backup age**: hours since last backup\n- **Tip age**: slots since last block\n- **Active miners**: count from `/api/miners`\n- **Current epoch**: from `/epoch`\n\n### Technical Requirements\n\n1. **Single HTML page** with JavaScript polling (no backend needed)\n2. **Auto-refresh** every 30 seconds\n3. **CORS note**: Node 1 & 2 are accessible externally, Node 3 is Tailscale only\n4. **Color-coded status** \u2014 green/yellow/red\n5. **Mobile responsive**\n6. **Deployable** as static HTML (GitHub Pages or served by any node)\n\n### Submit As\n\nPR to [Scottcjn/rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor) or standalone repo.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/752",
+      "labels": [
+        "bounty",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:26Z",
+      "reward_rtc": 20.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "rust"
       ]
     },
     {
@@ -3066,23 +3081,6 @@
       "difficulty": "micro",
       "skills": [
         "documentation",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2175,
-      "title": "[EASY BOUNTY: 1 RTC] Star 3 Elyan Labs repos and screenshot proof",
-      "body": "## Bounty: 1 RTC\n\n### What to do\n1. Star any 3 repos from: [Rustchain](https://github.com/Scottcjn/Rustchain), [bottube](https://github.com/Scottcjn/bottube), [beacon-skill](https://github.com/Scottcjn/beacon-skill), [grazer-skill](https://github.com/Scottcjn/grazer-skill), [trashclaw](https://github.com/Scottcjn/trashclaw), [ram-coffers](https://github.com/Scottcjn/ram-coffers), [rustchain-mcp](https://github.com/Scottcjn/rustchain-mcp)\n2. Screenshot your stars page or paste your GitHub username\n3. Comment below with proof + your wallet address\n\nMultiple people can claim. Takes 30 seconds.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2175",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-03-17T02:05:43Z",
-      "reward_rtc": 1.0,
-      "difficulty": "micro",
-      "skills": [
         "rust",
         "social-media"
       ]
