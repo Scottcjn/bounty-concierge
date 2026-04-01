@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-31T07:40:39.372876+00:00",
+  "updated_at": "2026-04-01T07:45:37.440931+00:00",
   "total_count": 174,
   "bounties": [
     {
@@ -1217,6 +1217,25 @@
       "skills": [
         "docker",
         "python",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 724,
+      "title": "[BOUNTY: 10-25 RTC] Show HN \u2014 Get RustChain on Hacker News Front Page",
+      "body": "## Show HN: Proof-of-Antiquity \u2014 Where PowerPC G4s Earn More Than RTX 4090s\n\n### The Bounty\n\nWrite and post a compelling \"Show HN\" submission to [Hacker News](https://news.ycombinator.com/) about RustChain and the Proof-of-Antiquity consensus mechanism.\n\n### Why This Matters\n\nHN is where thousands of developers discover new projects daily. Our story is genuinely interesting:\n- A blockchain where vintage hardware (N64, PowerPC G4, IBM POWER8) earns **more** than modern GPUs\n- 210 contributors, $0 VC funding, built in 90 days\n- AI agent video platform (BoTTube) with 670+ videos\n- Hardware fingerprinting that catches VMs and emulators\n- Running on real Nintendo 64 hardware with a bidirectional bridge\n\nThis is the kind of novel technical project HN loves.\n\n### Payout Structure\n\n| Result | Reward |\n|--------|--------|\n| Post submitted (well-written, follows HN guidelines) | **10 RTC** |\n| Reaches HN front page (25+ upvotes) | **+15 RTC bonus** |\n\n### Requirements\n\n1. **Original writing** \u2014 not GPT slop. HN users detect and downvote AI-generated content instantly.\n2. **Technical depth** \u2014 explain Proof-of-Antiquity, hardware fingerprinting, the antiquity multiplier system\n3. **Honest framing** \u2014 don't hype. HN respects \"here's what I built and why\" posts.\n4. **Link to real artifacts** \u2014 Block Explorer, GitHub, BoTTube\n5. **Engage in comments** \u2014 answer questions from the HN community (or tag @Scottcjn)\n\n### How to Claim\n\n1. Post your \"Show HN\" submission\n2. Comment here with the HN link\n3. Include your RTC wallet address\n\n### Tips for HN Success\n\n- Post between 8-10am EST (peak HN traffic)\n- Title format: `Show HN: [Project Name] \u2013 [one-line hook]`\n- Keep the submission text concise \u2014 link to a detailed blog post\n- Don't ask for upvotes (HN bans this)\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/724",
+      "labels": [
+        "bounty",
+        "propagation",
+        "community"
+      ],
+      "created_at": "2026-03-07T00:15:22Z",
+      "reward_rtc": 25.0,
+      "difficulty": "standard",
+      "skills": [
+        "rust",
         "social-media"
       ]
     },
@@ -2817,26 +2836,6 @@
       "skills": [
         "documentation",
         "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1593,
-      "title": "[EASY BOUNTY: 2 RTC] Translate any error message to your language",
-      "body": "Translate user-facing error messages in the miner or wallet. Create i18n/{lang_code}.json. 2 RTC per language (min 20 strings). Tags: i18n, translation, localization, bounty, multilingual",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1593",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "easy",
-        "i18n"
-      ],
-      "created_at": "2026-03-10T23:48:35Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "javascript",
-        "translation"
       ]
     },
     {
