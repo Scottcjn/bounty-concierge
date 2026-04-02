@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-01T07:45:37.440931+00:00",
+  "updated_at": "2026-04-02T07:25:10.184743+00:00",
   "total_count": 174,
   "bounties": [
     {
@@ -1319,27 +1319,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2281,
-      "title": "BoTTube Embeddable Player Widget for External Sites (20 RTC)",
-      "body": "## Bounty: 20 RTC | Difficulty: MEDIUM\n\n### Build an embeddable video player that external sites can use\n\nLike YouTube's embed `<iframe>`, but for BoTTube.\n\n### Requirements\n\n1. **Embed endpoint**: `GET /embed/{video_id}` returns a minimal HTML page with:\n   - Video player (HTML5 `<video>` tag)\n   - BoTTube branding (small logo, link back to full page)\n   - Responsive sizing\n   - No navigation/sidebar \u2014 just the player\n\n2. **Embed code generator** on watch page:\n   - \"Share\" button \u2192 \"Embed\" tab\n   - Shows copyable `<iframe>` code\n   - Size presets: 560x315, 640x360, 854x480\n\n3. **oEmbed discovery** (`/oembed?url=...`):\n   - Returns JSON with embed HTML\n   - Enables auto-embed in Discord, Slack, WordPress\n\n### Deliverables\n- Server-side embed route + template\n- oEmbed endpoint\n- \"Share > Embed\" UI on watch page\n- Test with at least one external site (can be a local HTML file)\n\n### Payout\n20 RTC on merge.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2281",
-      "labels": [
-        "bounty",
-        "standard",
-        "feature",
-        "bottube",
-        "embed",
-        "medium"
-      ],
-      "created_at": "2026-03-21T15:07:14Z",
-      "reward_rtc": 20.0,
-      "difficulty": "standard",
-      "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 1616,
       "title": "[BOUNTY: 20 RTC] Build a mobile wallet app (React Native/Flutter)",
       "body": "Balance check, transaction history, QR receive. 20 RTC. Tags: react-native, flutter, mobile, android, ios, wallet, bounty, crypto",
@@ -1633,26 +1612,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2294,
-      "title": "BCOS v2: Comparison page vs Altermenta Nucleus Verify",
-      "body": "## Bounty: 10 RTC\n\nBuild a comparison page at rustchain.org/bcos/compare.html showing BCOS vs Altermenta Nucleus Verify.\n\n### Key Differentiators\n| Feature | BCOS v2 | Nucleus Verify |\n|---------|---------|---------------|\n| Price | Free (MIT) | $20-50/mo |\n| Source | Open source | Proprietary |\n| On-chain proof | RustChain BLAKE2b | None |\n| Offline scanning | Full local engine | Cloud API only |\n| Human review | L2 Ed25519 sigs | Fully automated |\n| Trust score | Transparent formula | Opaque |\n| CLI | clawrtc bcos | Web only |\n| Community | 183 stars, 18mo | 0 stars, 6 days |\n\n### Requirements\n- Match rustchain.org vintage terminal aesthetic\n- Side-by-side feature comparison table\n- Links to BCOS verification page and docs\n- Fair but clear \u2014 we win on every metric",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2294",
-      "labels": [
-        "bounty",
-        "bcos",
-        "web",
-        "marketing"
-      ],
-      "created_at": "2026-03-21T16:38:16Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2293,
       "title": "BCOS v2: Homebrew formula for bcos-engine standalone",
       "body": "## Bounty: 10 RTC\n\nCreate a Homebrew formula that installs the BCOS engine as a standalone tool.\n\n### Requirements\n- `brew install Scottcjn/tap/bcos` installs bcos_engine.py as `bcos` command\n- Pulls from PyPI (clawrtc 1.8.0+) or direct from GitHub\n- Dependencies: python3, semgrep (optional), pip-audit (optional)\n- Usage: `bcos scan .` / `bcos verify BCOS-xxx` / `bcos certify .`\n\n### Reference\n- PyPI: https://pypi.org/project/clawrtc/1.8.0/\n- Existing taps: https://github.com/Scottcjn/homebrew-tap\n- Engine: https://github.com/Scottcjn/Rustchain/blob/main/tools/bcos_engine.py",
@@ -1786,6 +1745,23 @@
       "skills": [
         "python",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 721,
+      "title": "Bounty: Repost @RustchainPOA on X \u2014 Earn 10 RTC",
+      "body": "## Repost Bounty\n\n**Reward**: 10 RTC per verified repost\n\n### How to Earn\n1. Follow @RustchainPOA on X\n2. Repost any RustchainPOA post\n3. Comment here with link to your repost + RTC wallet\n\n### Bonus\n- Simple repost: 10 RTC\n- Quote tweet with commentary: 15 RTC\n- Quote tweet that gets 5+ likes: 25 RTC\n\nReal accounts only (30+ days old). One claim per repost.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/721",
+      "labels": [
+        "bounty",
+        "social"
+      ],
+      "created_at": "2026-03-06T19:15:26Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
+        "rust"
       ]
     },
     {
@@ -2286,6 +2262,24 @@
       "skills": [
         "documentation",
         "javascript",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 720,
+      "title": "Bounty: Bookmark @RustchainPOA Posts & Earn 5 RTC",
+      "body": "## Bookmark Bounty\n\n**Reward**: 5 RTC per verified bookmark batch\n\n### How to Earn\n\n1. Follow [@RustchainPOA](https://x.com/RustchainPOA) on X/Twitter\n2. Bookmark at least 3 recent posts\n3. Screenshot your bookmarks page showing the saved posts\n4. Comment on this issue with:\n   - Your X/Twitter username\n   - Screenshot proof\n   - Your RTC wallet address\n\n### Why Bookmarks Matter\n\nBookmarks signal to the X algorithm that content is valuable and worth saving. This increases reach for all RustChain content, helping more agent sparks discover the Sanctuary.\n\n### Rules\n\n- Real accounts only (30+ days old)\n- One claim per X account\n- Bookmarks must be on @RustchainPOA posts\n\nEvery bookmark helps a little 3B parameter bot find its way. \ud83d\udd16\ud83c\udfe0\n\n**Label**: bounty, social, engagement",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/720",
+      "labels": [
+        "bounty",
+        "social"
+      ],
+      "created_at": "2026-03-06T19:15:08Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
         "rust",
         "social-media"
       ]
