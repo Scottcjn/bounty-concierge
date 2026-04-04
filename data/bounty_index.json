@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-03T07:22:06.213467+00:00",
+  "updated_at": "2026-04-04T07:11:33.135667+00:00",
   "total_count": 174,
   "bounties": [
     {
@@ -97,6 +97,28 @@
         "documentation",
         "python",
         "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2819,
+      "title": "[BOUNTY] Red Team UTXO Implementation \u2014 Find Bugs, Earn RTC (50-200 RTC)",
+      "body": "## Overview\n\nRustChain is migrating from an account-based balance model to a full UTXO (Unspent Transaction Output) model. **Phase 1+2 just landed** in [`39bf02b`](https://github.com/Scottcjn/Rustchain/commit/39bf02b).\n\nWe want adversarial eyes on this before enabling dual-write on production. Break it, get paid.\n\n## Files to Review\n\nAll in the [`node/`](https://github.com/Scottcjn/Rustchain/tree/main/node) directory of the main Rustchain repo:\n\n| File | Lines | Purpose |\n|------|-------|---------|\n| `utxo_db.py` | ~708 | Core UTXO database layer \u2014 UTXOs, transactions, mempool, Merkle roots, coin selection |\n| `test_utxo_db.py` | ~421 | 29 unit tests covering the UTXO layer |\n| `utxo_genesis_migration.py` | ~272 | Deterministic migration of 538 existing account balances into genesis UTXOs |\n| `rustchain_v2_integrated_v2.2.1_rip200.py` | (diff) | Server integration \u2014 imports + table init behind `UTXO_DUAL_WRITE` feature flag |\n\n## What to Look For\n\n### Critical Vectors (200 RTC)\n- **Double-spend attacks** \u2014 Can the same UTXO be consumed twice? Race conditions in `apply_transaction()`?\n- **Fund creation from nothing** \u2014 Can a transaction create more RTC in outputs than exists in inputs?\n- **Genesis migration tampering** \u2014 Can the migration be re-run to duplicate balances?\n\n### High Severity (100 RTC)\n- **Race conditions** \u2014 Concurrent transaction application, TOCTOU between validation and commitment\n- **Conservation law bypass** \u2014 Any path where `sum(inputs) != sum(outputs) + fee`\n- **Lock/unlock logic errors** \u2014 Can locked UTXOs be spent? Can spending bypass the lock check?\n\n### Medium Severity (50 RTC)\n- **Mempool DoS** \u2014 Can the mempool be flooded or manipulated to block legitimate transactions?\n- **Merkle state root manipulation** \u2014 Can the state root be made to diverge between nodes?\n- **Fee calculation exploits** \u2014 Negative fees, integer overflow in fee math, fee-free transactions that should require fees\n\n### Low Severity (25 RTC)\n- **Coin selection edge cases** \u2014 Pathological wallet states that break coin selection\n- **Code quality issues** \u2014 SQL injection vectors, unchecked error paths, missing validations\n- **Test coverage gaps** \u2014 Important scenarios not covered by the 29 existing tests\n\n## How to Submit\n\n**Option A (preferred):** Open a PR on [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) with a **failing test case** that demonstrates the bug. Title it `[UTXO-BUG] <description>`.\n\n**Option B:** Open an issue on this repo with a detailed writeup including:\n1. The vulnerability class\n2. Steps to reproduce\n3. Expected vs actual behavior\n4. Suggested fix (optional but earns bonus)\n\n## Bounty Tiers Summary\n\n| Severity | Payout | Examples |\n|----------|--------|----------|\n| **Critical** | **200 RTC** | Double-spend, fund creation, genesis duplication |\n| **High** | **100 RTC** | Race conditions, conservation bypass |\n| **Medium** | **50 RTC** | Mempool DoS, Merkle manipulation |\n| **Low** | **25 RTC** | Edge cases, code quality, test gaps |\n\nMultiple valid findings from the same researcher will each be paid individually.\n\n## Context\n\n- RTC reference rate: **1 RTC = $0.10 USD**\n- The UTXO layer is behind a feature flag (`UTXO_DUAL_WRITE=0` by default) \u2014 it is NOT active on the live network yet\n- The existing account-based model continues to handle all production transactions\n- This is a pre-production security review before we flip the switch\n\n## Resources\n\n- [RustChain Node Health](https://50.28.86.131/health)\n- [Block Explorer](https://50.28.86.131/explorer)\n- [Active Miners API](https://50.28.86.131/api/miners)",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2819",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "security"
+      ],
+      "created_at": "2026-04-04T03:03:17Z",
+      "reward_rtc": 200.0,
+      "difficulty": "critical",
+      "skills": [
+        "documentation",
+        "javascript",
+        "python",
+        "rust",
+        "security"
       ]
     },
     {
@@ -1369,26 +1391,6 @@
         "javascript",
         "python",
         "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 749,
-      "title": "[BOUNTY: 10-15 RTC] Epoch Reporter Bot \u2014 Auto-Post Epoch Summaries",
-      "body": "## Epoch Reporter Bot\n\nAutomatic epoch summaries posted to Discord/Moltbook/X after each epoch settlement. Keeps the community engaged without manual effort.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Bot that posts epoch summaries to one platform | **10 RTC** |\n| Multi-platform (Discord + Moltbook + X) | **+5 RTC** |\n\n### What It Posts\n\nAfter each epoch settlement (~10 min intervals), post a summary like:\n\n```\n\ud83d\udcca Epoch 95 Complete\n\n\ud83d\udcb0 1.5 RTC distributed to 12 miners\n\ud83c\udfc6 Top earner: dual-g4-125 (0.297 RTC, G4 2.5x)\n\u26cf\ufe0f Active miners: 12 (3 G4, 1 G5, 1 POWER8, 7 modern)\n\ud83d\udce6 Block height: 13,680\n\ud83d\udc8e Total RTC mined: 142.5\n\nExplorer: https://50.28.86.131/explorer\n```\n\n### Data Sources\n\n```bash\n# Current epoch\ncurl -sk https://50.28.86.131/epoch\n\n# Active miners\ncurl -sk https://50.28.86.131/api/miners\n\n# Epoch rewards (on VPS)\nsqlite3 /root/rustchain/rustchain_v2.db \"SELECT * FROM epoch_rewards WHERE epoch = 94;\"\n```\n\n### Technical Requirements\n\n1. **Python script** running as cron job or systemd timer\n2. **Polls `/epoch`** every 60 seconds, detects epoch change\n3. **Posts to**:\n   - Moltbook API (`POST /api/v1/posts` with API key)\n   - Discord webhook (optional)\n   - X/Twitter via tweepy (optional)\n4. **Dedup**: Don't post the same epoch twice (track in SQLite or file)\n5. **Configurable**: Enable/disable platforms via env vars\n\n### Submit As\n\nStandalone repo or PR to [Scottcjn/rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor).\n\n**Wallet:** Include your wallet address when claiming.\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/749",
-      "labels": [
-        "bounty",
-        "community",
-        "development"
-      ],
-      "created_at": "2026-03-07T03:24:24Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "python",
-        "rust",
-        "social-media"
       ]
     },
     {
