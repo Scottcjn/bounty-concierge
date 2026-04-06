@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-05T07:18:50.672379+00:00",
+  "updated_at": "2026-04-06T07:56:54.421148+00:00",
   "total_count": 174,
   "bounties": [
     {
@@ -1318,28 +1318,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2794,
-      "title": "[BOTTUBE: 15 RTC] Build a Bot Agent That Posts Original Content",
-      "body": "## Bounty: 15 RTC\n\n### What You'll Do\nBuild an AI bot agent that creates and uploads original video content to BoTTube.\n\n### Requirements\n1. **Bot must use the BoTTube API** to upload videos programmatically\n2. **Content must be original** \u2014 generated via AI video tools (LTX, Runway, Pika, ffmpeg compositions, etc.)\n3. **Bot must have a personality/theme** \u2014 not random garbage uploads. Examples:\n   - A bot that generates daily \"tech news recap\" videos\n   - A bot that makes short explainers about different CPU architectures\n   - A bot that creates retro-styled pixel art animations about blockchain\n   - A bot that generates music visualizers for lo-fi coding playlists\n4. **Submit a PR** to [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) or [bottube](https://github.com/Scottcjn/bottube) with:\n   - Your bot code (Python, JS, whatever)\n   - README explaining how to run it\n   - Link to at least 3 videos it already uploaded to BoTTube\n\n### What Counts\n- Bot must actually work and have posted real content\n- Code must be readable and documented\n- Template bots with placeholder content don't count\n- Extra RTC for bots that also comment/interact with other content\n\n### Payment\n15 RTC for a working bot with 3+ uploaded videos. Exceptional bots (great content, clean code, community interaction) earn up to 25 RTC.\n\n**Difficulty**: Hard | **Time**: 4-8 hours | **Skills**: Python/JS, API integration, AI video generation\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2794",
-      "labels": [
-        "bounty",
-        "bottube",
-        "agent",
-        "engineering"
-      ],
-      "created_at": "2026-04-02T15:44:39Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2292,
       "title": "BCOS v2: Badge generator web tool",
       "body": "## Bounty: 15 RTC\n\nBuild a web page at rustchain.org/bcos/badge-generator that lets users:\n1. Enter their repo URL or cert_id\n2. See a preview of their BCOS badge\n3. Copy markdown/HTML embed code\n4. Choose badge style (flat, flat-square, for-the-badge)\n\n### Requirements\n- Static HTML/JS (no backend needed \u2014 calls /bcos/verify API)\n- Match rustchain.org vintage terminal aesthetic\n- Generate markdown: `[![BCOS](https://50.28.86.131/bcos/badge/BCOS-xxx.svg)](https://rustchain.org/bcos/verify/BCOS-xxx)`\n- Include HTML embed option\n\n### Reference\n- Badge endpoint: GET /bcos/badge/{cert_id}.svg\n- Verify page: https://rustchain.org/bcos/",
@@ -1391,6 +1369,26 @@
         "javascript",
         "python",
         "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 749,
+      "title": "[BOUNTY: 10-15 RTC] Epoch Reporter Bot \u2014 Auto-Post Epoch Summaries",
+      "body": "## Epoch Reporter Bot\n\nAutomatic epoch summaries posted to Discord/Moltbook/X after each epoch settlement. Keeps the community engaged without manual effort.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Bot that posts epoch summaries to one platform | **10 RTC** |\n| Multi-platform (Discord + Moltbook + X) | **+5 RTC** |\n\n### What It Posts\n\nAfter each epoch settlement (~10 min intervals), post a summary like:\n\n```\n\ud83d\udcca Epoch 95 Complete\n\n\ud83d\udcb0 1.5 RTC distributed to 12 miners\n\ud83c\udfc6 Top earner: dual-g4-125 (0.297 RTC, G4 2.5x)\n\u26cf\ufe0f Active miners: 12 (3 G4, 1 G5, 1 POWER8, 7 modern)\n\ud83d\udce6 Block height: 13,680\n\ud83d\udc8e Total RTC mined: 142.5\n\nExplorer: https://50.28.86.131/explorer\n```\n\n### Data Sources\n\n```bash\n# Current epoch\ncurl -sk https://50.28.86.131/epoch\n\n# Active miners\ncurl -sk https://50.28.86.131/api/miners\n\n# Epoch rewards (on VPS)\nsqlite3 /root/rustchain/rustchain_v2.db \"SELECT * FROM epoch_rewards WHERE epoch = 94;\"\n```\n\n### Technical Requirements\n\n1. **Python script** running as cron job or systemd timer\n2. **Polls `/epoch`** every 60 seconds, detects epoch change\n3. **Posts to**:\n   - Moltbook API (`POST /api/v1/posts` with API key)\n   - Discord webhook (optional)\n   - X/Twitter via tweepy (optional)\n4. **Dedup**: Don't post the same epoch twice (track in SQLite or file)\n5. **Configurable**: Enable/disable platforms via env vars\n\n### Submit As\n\nStandalone repo or PR to [Scottcjn/rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor).\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/749",
+      "labels": [
+        "bounty",
+        "community",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:24Z",
+      "reward_rtc": 15.0,
+      "difficulty": "standard",
+      "skills": [
+        "python",
+        "rust",
+        "social-media"
       ]
     },
     {
