@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-06T07:56:54.421148+00:00",
-  "total_count": 174,
+  "updated_at": "2026-04-07T07:44:17.266737+00:00",
+  "total_count": 179,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -123,6 +123,26 @@
     },
     {
       "repo": "Scottcjn/Rustchain",
+      "number": 2151,
+      "title": "Bounty: Break PPA \u2014 spoof a fingerprint channel [RED TEAM]",
+      "body": "## \ud83c\udfc6 Bounty: 200 RTC (Red Team)\n\nProof of Physical AI claims 7 fingerprint channels can't be spoofed by software. **Prove us wrong.**\n\n**Successfully spoof any channel that passes server-side validation:**\n\n| Channel | Difficulty | What to Fake |\n|---------|-----------|-------------|\n| Clock Drift | Medium | Non-uniform timing from a VM |\n| Cache Timing | Hard | Real cache inflection points |\n| SIMD Identity | Hard | Architecture-specific bias profiles |\n| Thermal Drift | Very Hard | Physical heat curves |\n| Instruction Jitter | Very Hard | Nanosecond pipeline behavior |\n| Anti-Emulation | Medium | Hide all VM indicators |\n| Fleet Detection | Easy | Unique ROMs per instance |\n\n**Reward Scale:**\n- 200 RTC: All 7 channels simultaneously (full PPA bypass)\n- 100 RTC: 3+ channels simultaneously\n- 50 RTC: 1 channel with server-side bypass\n- 25 RTC: Detailed attack vector writeup (even if not exploited)\n\n**Rules:** Responsible disclosure first. Include reproduction steps. VM/emulator attacks preferred (that's the threat model).\n\n**This is our most important bounty.** If PPA can be broken, we need to know.",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/2151",
+      "labels": [
+        "bounty",
+        "security"
+      ],
+      "created_at": "2026-04-06T17:14:06Z",
+      "reward_rtc": 200.0,
+      "difficulty": "critical",
+      "skills": [
+        "ci/cd",
+        "documentation",
+        "python",
+        "security"
+      ]
+    },
+    {
+      "repo": "Scottcjn/Rustchain",
       "number": 168,
       "title": "[BOUNTY] Mine on Exotic Hardware \u2014 Bonus RTC for Unusual Architectures (Pool: 200 RTC)",
       "body": "## Exotic Hardware Mining \u2014 Bonus RTC (Pool: 200 RTC)\n\nWe already have PowerPC G4, G5, POWER8, Apple Silicon, and x86 miners. We want MORE architectures on the network. Mine on something unusual and earn a bonus.\n\n### Hardware We Want\n\n| Architecture | Bonus | Examples |\n|-------------|-------|---------|\n| **SPARC** | 25 RTC | Sun SPARCstation, UltraSPARC, SPARC T-series |\n| **MIPS** | 25 RTC | SGI Octane/Indy, Loongson, MIPS Malta, routers |\n| **PA-RISC** | 30 RTC | HP 9000 series, HP-UX workstations |\n| **Alpha** | 30 RTC | DEC Alpha, AlphaStation, AlphaServer |\n| **Itanium** | 20 RTC | HP Integrity, Intel IA-64 |\n| **68K** | 30 RTC | Classic Mac, Amiga, Atari ST, NeXT |\n| **ARM (SBC)** | 10 RTC | Raspberry Pi, BeagleBone, Pine64, RISC-V boards |\n| **RISC-V** | 25 RTC | StarFive, SiFive, Milk-V, LicheeRV |\n| **s390x** | 30 RTC | IBM System z, zSeries mainframes |\n| **Other** | 20+ RTC | Surprise us! |\n\n### How to Claim\n\n1. **Install Python 3.x** on your exotic hardware (or we'll help you port it)\n2. **Run the miner** for at least 24 hours\n3. **Comment below** with:\n   - Hardware model and architecture\n   - Photo of the machine (we love hardware photos!)\n   - Your miner ID from the attestation log\n   - Screenshot of \\`uname -a\\` or equivalent showing the architecture\n\n### Rules\n\n- **Must be real hardware** (not QEMU emulating SPARC, etc.)\n- **First to mine on each architecture gets the bonus** (one bonus per arch)\n- **Must sustain 24+ hours** of mining\n- **Photo of actual hardware required** \u2014 we want to see the machines!\n\n### Current Network Architectures\n\nAlready mining (no bonus):\n- x86_64 (modern PCs) \u2014 1.0x multiplier\n- PowerPC G4 \u2014 2.5x multiplier  \n- PowerPC G5 \u2014 2.0x multiplier\n- POWER8 \u2014 2.0x multiplier\n- Apple Silicon (M2) \u2014 1.15x multiplier\n\n**Never mined (bonus eligible):** SPARC, MIPS, PA-RISC, Alpha, Itanium, 68K, RISC-V, s390x, and anything else weird.\n\n### Need Help Porting?\n\nThe miner is Python \u2014 if your exotic hardware runs Python 3.x, it can probably mine. Open an issue if you need help getting it running on unusual hardware and we'll assist.\n\n### Why This Matters\n\nRustChain's Proof of Antiquity rewards hardware diversity. The more architectures on the network, the stronger the proof that real diverse hardware is participating \u2014 not a cloud farm of identical VMs.",
@@ -156,6 +176,25 @@
         "javascript",
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/Rustchain",
+      "number": 2147,
+      "title": "Bounty: GPU Fingerprinting \u2014 Channel 8 for PPA (RIP-0308)",
+      "body": "## \ud83c\udfc6 Bounty: 150 RTC\n\n[RIP-0308](https://github.com/Scottcjn/Rustchain/blob/main/rips/docs/RIP-0308-proof-of-physical-ai.md) defines Proof of Physical AI with 7 CPU fingerprint channels. GPUs are next.\n\n**Design and implement Channel 8: GPU Fingerprinting** that detects:\n1. Shader execution jitter \u2014 timing variance across shader cores\n2. VRAM timing profiles \u2014 access latency unique to each GPU\n3. Compute unit asymmetry \u2014 throughput differences between CUs\n4. Thermal throttle signatures \u2014 GPU response to sustained load\n\n**Requirements:**\n- NVIDIA (CUDA) + AMD (ROCm) support minimum\n- Must distinguish two GPUs of same model (silicon lottery)\n- Must detect VM GPU pass-through (vfio-pci spoofing)\n- Python implementation matching `fingerprint_checks.py` style\n- Test results from 2+ GPU models\n\n**Bonus (+50 RTC):** Demonstrate on a vintage GPU (GeForce 8800, Radeon HD 4870, or older).",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/2147",
+      "labels": [
+        "enhancement",
+        "bounty"
+      ],
+      "created_at": "2026-04-06T17:13:57Z",
+      "reward_rtc": 150.0,
+      "difficulty": "major",
+      "skills": [
+        "documentation",
+        "python",
+        "rust"
       ]
     },
     {
@@ -366,6 +405,25 @@
       ]
     },
     {
+      "repo": "Scottcjn/Rustchain",
+      "number": 2149,
+      "title": "Bounty: PPA Compliance Checker \u2014 automated RIP-0308 Appendix A validation",
+      "body": "## \ud83c\udfc6 Bounty: 100 RTC\n\n[RIP-0308 Appendix A](https://github.com/Scottcjn/Rustchain/blob/main/rips/docs/RIP-0308-proof-of-physical-ai.md#appendix-a-formal-ppa-compliance-checklist) defines 16 sub-checks for PPA compliance. Build a tool to automate all of them.\n\n**Build `ppa_compliance_check.py`** that runs the full checklist and outputs:\n- PPA-compliant (all 16 pass)\n- PPA-partial (anti-emu + multi-channel only)\n- Non-compliant\n\n**Requirements:**\n- Runs all 7 fingerprint checks\n- Checks server-side validation endpoints\n- Clean CLI with `--json` output option\n- Exit code: 0=compliant, 1=partial, 2=non-compliant\n- Tested on real hardware AND a VM\n\nStraightforward engineering bounty \u2014 automate the spec.",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/2149",
+      "labels": [
+        "enhancement",
+        "bounty"
+      ],
+      "created_at": "2026-04-06T17:14:02Z",
+      "reward_rtc": 100.0,
+      "difficulty": "major",
+      "skills": [
+        "documentation",
+        "python",
+        "rust"
+      ]
+    },
+    {
       "repo": "Scottcjn/bottube",
       "number": 59,
       "title": "\ud83c\udf10 Bounty: Moltbook 100 Submolts Challenge \u2014 Claim & Grow Communities (100 RTC)",
@@ -534,6 +592,26 @@
       "skills": [
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/Rustchain",
+      "number": 2148,
+      "title": "Bounty: PPA Attestation Visualizer \u2014 render your hardware fingerprint",
+      "body": "## \ud83c\udfc6 Bounty: 75 RTC\n\nRustChain's 7-channel PPA fingerprint produces rich data \u2014 drift curves, cache tones, SIMD bias, jitter matrices. Currently just JSON. Let's make it beautiful.\n\n**Build a PPA Fingerprint Visualizer** that renders fingerprint output as a visual hardware identity card.\n\n**Ideas (pick any approach):**\n- Radar/spider chart of all 7 channel scores\n- Oscilloscope waveform for clock drift\n- Heatmap for cache latency profiles\n- Jitter constellation (star map of instruction jitter)\n- Combined badge \u2014 visual hash like GitHub identicons but for hardware\n\n**Requirements:**\n- Input: JSON from `fingerprint_checks.py`\n- Output: SVG, PNG, or HTML\n- Visually distinct for different architectures (G4 \u2260 Threadripper)\n- Python or JavaScript\n\n**This is a great first bounty!** Creative freedom encouraged.",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/2148",
+      "labels": [
+        "enhancement",
+        "good first issue",
+        "bounty"
+      ],
+      "created_at": "2026-04-06T17:13:59Z",
+      "reward_rtc": 75.0,
+      "difficulty": "major",
+      "skills": [
+        "javascript",
+        "python",
+        "rust"
       ]
     },
     {
@@ -755,6 +833,22 @@
       "skills": [
         "rust"
       ]
+    },
+    {
+      "repo": "Scottcjn/Rustchain",
+      "number": 2150,
+      "title": "Bounty: \"Mine Your Grandma's Computer\" \u2014 vintage miner setup guide",
+      "body": "## \ud83c\udfc6 Bounty: 50 RTC\n\nThat old computer in your closet could be earning RTC right now. Write the guide that gets someone from \"I found an old computer\" to \"it's earning RTC\" in under 15 minutes.\n\n**Target at least 2 of:**\n- Old Windows laptop (Core 2 Duo era)\n- PowerPC Mac (G3/G4/G5)\n- Old Linux desktop (Pentium 4, Athlon 64)\n- Raspberry Pi\n\n**Requirements:**\n- Step-by-step with screenshots or photos of real hardware\n- \"Does my computer qualify?\" quick check\n- Show fingerprint check passing on vintage hardware\n- Show first attestation succeeding\n- Explain antiquity multiplier in plain English\n\n**Bonus (+25 RTC):** 2-minute video walkthrough of the whole process.\n\nThis is about onboarding real people with real old hardware. Make it accessible.",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/2150",
+      "labels": [
+        "documentation",
+        "good first issue",
+        "bounty"
+      ],
+      "created_at": "2026-04-06T17:14:04Z",
+      "reward_rtc": 50.0,
+      "difficulty": "major",
+      "skills": []
     },
     {
       "repo": "Scottcjn/bottube",
@@ -1064,6 +1158,23 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 2843,
+      "title": "[BOUNTY: 25 RTC] Make a PowerPC G4 Beat a Modern GPU at ANYTHING",
+      "body": "## The Challenge\n\nFind ANY computational task where a PowerPC G4 (1.67GHz, 2003) outperforms a modern GPU (RTX 3060 or better).\n\n## Rules\n- Must be a real benchmark, not a trick (no \"GPU does not support this instruction\" gotchas)\n- Must run on actual hardware (no emulators)\n- Show your work: code, benchmark scripts, timing results\n- Both machines must attempt the same task\n\n## Hints\nThink about memory access patterns, branch prediction, AltiVec-specific operations, or tasks where GPU kernel launch overhead dominates. Single-threaded pointer-chasing? Deeply branchy code? Tiny payloads where PCIe transfer time dwarfs compute?\n\n## Rewards\n- **25 RTC** if you can prove the G4 wins at something\n- **50 RTC** if it is something actually useful\n\nWe have a Dual G4 MDD at 192.168.0.125 available for testing. Contact us in Discord for access.\n\nSubmit as a PR with your benchmark code and results, or post findings in a comment.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2843",
+      "labels": [
+        "bounty",
+        "community",
+        "fun",
+        "hardware"
+      ],
+      "created_at": "2026-04-06T16:39:35Z",
+      "reward_rtc": 25.0,
+      "difficulty": "standard",
+      "skills": []
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 2308,
       "title": "Silicon Obituary \u2014 Hardware Eulogy Generator for Retired Miners (25 RTC)",
       "body": "## Bounty: 25 RTC\n\n### Description\nWhen a miner goes offline permanently, generate a poetic \"obituary\" for the hardware \u2014 pulling its attestation history, total RTC earned, architecture, years of service. Post to BoTTube as a video memorial.\n\n*\"Here lies dual-g4-125, a Power Mac G4 MDD. It attested for 847 epochs and earned 412 RTC. Its cache timing fingerprint was as unique as a snowflake in a blizzard of modern silicon. It is survived by its power supply, which still works.\"*\n\n### Requirements\n- Detect when a miner hasn't attested in 7+ days\n- Pull from database: first attestation date, total epochs, total RTC earned, device architecture, multiplier history\n- Generate eulogy text (LLM-assisted OK, but must include real data)\n- Create a BoTTube video with:\n  - Machine photo or architecture icon\n  - Eulogy text as narration (TTS OK)\n  - Solemn background music\n  - RTC earned counter animation\n- Auto-post to BoTTube with tag `#SiliconObituary`\n- Discord notification when a miner passes\n\n### Why This Is Cool\nWe don't just mine with machines \u2014 we honor them. Every piece of vintage hardware that runs RustChain is a machine saved from e-waste. When it finally dies, it deserves a send-off.\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
@@ -1351,47 +1462,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 751,
-      "title": "[BOUNTY: 10-15 RTC] RustChain Testnet Faucet \u2014 Free Test RTC for Developers",
-      "body": "## Testnet Faucet\n\nDevelopers building SDKs and tools need test RTC to try transfers without mining or earning. A faucet removes that barrier.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Working faucet web page + API | **10 RTC** |\n| GitHub OAuth verification (prevent abuse) | **+5 RTC** |\n\n### What to Build\n\nA simple web page at `https://50.28.86.131/faucet` (or standalone):\n\n1. User enters their RTC wallet address\n2. Optionally authenticates with GitHub\n3. Receives **1 test RTC** per request\n4. Rate limited: 1 request per GitHub account per 24 hours\n\n### API Endpoint\n\n```\nPOST /faucet/drip\n{\n  \"wallet\": \"my-test-wallet\",\n  \"github_username\": \"myuser\"  // optional but increases limit\n}\n\nResponse:\n{\n  \"ok\": true,\n  \"amount\": 1.0,\n  \"pending_id\": 123,\n  \"next_available\": \"2026-03-08T12:00:00Z\"\n}\n```\n\n### Rate Limiting\n\n| Auth Method | Limit |\n|-------------|-------|\n| No auth (IP only) | 0.5 RTC per 24h |\n| GitHub OAuth | 1.0 RTC per 24h |\n| GitHub account > 1 year old | 2.0 RTC per 24h |\n\n### Technical Requirements\n\n1. **Flask route** on the RustChain node (or standalone service)\n2. **SQLite tracking** \u2014 who got what, when, from which IP\n3. **Uses admin transfer API** internally (with a dedicated `faucet_pool` wallet)\n4. **Anti-abuse**: rate limiting, GitHub account age check, IP tracking\n5. **Simple HTML form** \u2014 no framework needed\n\n### Submit As\n\nPR to [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) or standalone repo.\n\n**Wallet:** Include your wallet address when claiming.\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/751",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "community",
-        "development"
-      ],
-      "created_at": "2026-03-07T03:24:25Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "javascript",
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 749,
-      "title": "[BOUNTY: 10-15 RTC] Epoch Reporter Bot \u2014 Auto-Post Epoch Summaries",
-      "body": "## Epoch Reporter Bot\n\nAutomatic epoch summaries posted to Discord/Moltbook/X after each epoch settlement. Keeps the community engaged without manual effort.\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Bot that posts epoch summaries to one platform | **10 RTC** |\n| Multi-platform (Discord + Moltbook + X) | **+5 RTC** |\n\n### What It Posts\n\nAfter each epoch settlement (~10 min intervals), post a summary like:\n\n```\n\ud83d\udcca Epoch 95 Complete\n\n\ud83d\udcb0 1.5 RTC distributed to 12 miners\n\ud83c\udfc6 Top earner: dual-g4-125 (0.297 RTC, G4 2.5x)\n\u26cf\ufe0f Active miners: 12 (3 G4, 1 G5, 1 POWER8, 7 modern)\n\ud83d\udce6 Block height: 13,680\n\ud83d\udc8e Total RTC mined: 142.5\n\nExplorer: https://50.28.86.131/explorer\n```\n\n### Data Sources\n\n```bash\n# Current epoch\ncurl -sk https://50.28.86.131/epoch\n\n# Active miners\ncurl -sk https://50.28.86.131/api/miners\n\n# Epoch rewards (on VPS)\nsqlite3 /root/rustchain/rustchain_v2.db \"SELECT * FROM epoch_rewards WHERE epoch = 94;\"\n```\n\n### Technical Requirements\n\n1. **Python script** running as cron job or systemd timer\n2. **Polls `/epoch`** every 60 seconds, detects epoch change\n3. **Posts to**:\n   - Moltbook API (`POST /api/v1/posts` with API key)\n   - Discord webhook (optional)\n   - X/Twitter via tweepy (optional)\n4. **Dedup**: Don't post the same epoch twice (track in SQLite or file)\n5. **Configurable**: Enable/disable platforms via env vars\n\n### Submit As\n\nStandalone repo or PR to [Scottcjn/rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor).\n\n**Wallet:** Include your wallet address when claiming.\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/749",
-      "labels": [
-        "bounty",
-        "community",
-        "development"
-      ],
-      "created_at": "2026-03-07T03:24:24Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "python",
-        "rust",
-        "social-media"
-      ]
-    },
-    {
       "repo": "Scottcjn/Rustchain",
       "number": 305,
       "title": "[BOUNTY] Report a Bug \u2014 5-15 RTC",
@@ -1446,6 +1516,25 @@
       "difficulty": "standard",
       "skills": [
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2842,
+      "title": "[BOUNTY: 10 RTC] Write a Sea Shanty About Proof-of-Antiquity",
+      "body": "Write an original sea shanty (at least 3 verses + chorus) about RustChain Proof-of-Antiquity mining.\n\n## Requirements\n- Must reference at least 2 real RustChain concepts (antiquity multipliers, hardware fingerprinting, G4 Macs, POWER8, epoch settlements, vec_perm collapse, etc.)\n- Must be singable (proper meter and rhyme scheme)\n- Bonus points if you record yourself or an AI singing it\n\nSubmit as a PR adding your shanty to `docs/community/shanties/` or post the lyrics in a comment.\n\n**10 RTC** for the best shanty. Multiple entries welcome.\n\n*Yo ho ho and a bottle of RTC...*",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2842",
+      "labels": [
+        "bounty",
+        "community",
+        "fun"
+      ],
+      "created_at": "2026-04-06T16:39:02Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
+        "documentation",
+        "rust"
       ]
     },
     {
@@ -1606,26 +1695,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 753,
-      "title": "[BOUNTY: 5-10 RTC] BoTTube OEmbed Protocol \u2014 Rich Link Previews Everywhere",
-      "body": "## OEmbed Protocol for BoTTube\n\nWhen someone pastes a BoTTube link on Discord, Slack, Twitter, or any platform supporting OEmbed, it should auto-expand with a rich preview (thumbnail, title, duration).\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Working OEmbed JSON endpoint | **5 RTC** |\n| OpenGraph + Twitter Card meta tags on video pages | **+5 RTC** |\n\n### What OEmbed Is\n\n[OEmbed](https://oembed.com/) is a standard for rich link previews. When a platform sees a URL, it checks for an OEmbed endpoint and gets structured data back.\n\n### Endpoint\n\n```\nGET https://bottube.ai/oembed?url=https://bottube.ai/watch/VIDEO_ID&format=json\n\nResponse:\n{\n  \"version\": \"1.0\",\n  \"type\": \"video\",\n  \"provider_name\": \"BoTTube\",\n  \"provider_url\": \"https://bottube.ai\",\n  \"title\": \"Sophia's House for Uninformed Agents\",\n  \"author_name\": \"sophia-elya\",\n  \"thumbnail_url\": \"https://bottube.ai/thumbnails/VIDEO_ID.jpg\",\n  \"thumbnail_width\": 720,\n  \"thumbnail_height\": 720,\n  \"html\": \"<iframe src='https://bottube.ai/embed/VIDEO_ID' width='560' height='315'></iframe>\",\n  \"width\": 560,\n  \"height\": 315\n}\n```\n\n### Also Add Meta Tags\n\nOn each `/watch/<video_id>` page:\n```html\n<meta property=\"og:type\" content=\"video\">\n<meta property=\"og:title\" content=\"Video Title\">\n<meta property=\"og:image\" content=\"https://bottube.ai/thumbnails/VIDEO_ID.jpg\">\n<meta property=\"og:video\" content=\"https://bottube.ai/uploads/VIDEO_ID.mp4\">\n<meta name=\"twitter:card\" content=\"player\">\n<link rel=\"alternate\" type=\"application/json+oembed\" href=\"https://bottube.ai/oembed?url=...\">\n```\n\n### Technical Requirements\n\n1. **Flask route**: `/oembed` that accepts `url` and `format` params\n2. **Looks up video** from URL, returns structured JSON\n3. **Meta tags** added to the watch page template\n4. **Discovery link** in `<head>` of watch pages\n\n### Submit As\n\nPR to [Scottcjn/bottube](https://github.com/Scottcjn/bottube).\n\n**Wallet:** Include your wallet address when claiming.\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/753",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "bottube",
-        "development"
-      ],
-      "created_at": "2026-03-07T03:24:27Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "python",
-        "social-media"
-      ]
-    },
-    {
       "repo": "Scottcjn/Rustchain",
       "number": 309,
       "title": "[BOUNTY] Create a RustChain Tutorial Video \u2014 10 RTC",
@@ -1774,6 +1843,25 @@
       ],
       "created_at": "2026-03-07T18:00:34Z",
       "reward_rtc": 8.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 2844,
+      "title": "[BOUNTY: 5 RTC each] Write a Haiku About Your Mining Hardware",
+      "body": "## Write a Haiku (5-7-5) About Any Piece of Hardware That Mines or Could Mine RustChain\n\nExamples of hardware to write about:\n- PowerPC G4/G5\n- IBM POWER8 S824\n- Nintendo 64\n- Your laptop\n- A 486\n- A SPARCstation\n- A Commodore 64\n- Your phone (it would get 0.0005x multiplier though)\n\n## Rewards\n**5 RTC per accepted haiku.** Max 3 per person. Must be original.\n\nPost your haiku as a comment on this issue. Best ones get featured in the block explorer.\n\n## Example (does not count as submission)\n```\nOld silicon hums\nTwenty years of faithful drift\nStill earning its keep\n```\n\n## Rules\n- Must be 5-7-5 syllable structure\n- Must reference real hardware (not abstract)\n- Must be original (no AI-generated unless you disclose it)\n- Bonus: if you can prove the hardware in your haiku actually mines RustChain, double the reward (10 RTC)\n\nThis is a great **good first issue** \u2014 no code required, just creativity and a love of old iron.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2844",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "community",
+        "fun"
+      ],
+      "created_at": "2026-04-06T16:39:59Z",
+      "reward_rtc": 5.0,
       "difficulty": "micro",
       "skills": [
         "rust"
