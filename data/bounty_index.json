@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-09T07:50:30.702811+00:00",
+  "updated_at": "2026-04-10T07:53:16.497189+00:00",
   "total_count": 131,
   "bounties": [
     {
@@ -180,6 +180,29 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 2890,
+      "title": "[BOUNTY: 100 RTC] AgentFolio \u2194 Beacon Integration Spec + Reference Implementation",
+      "body": "## AgentFolio \u2194 Beacon Dual-Layer Trust Integration (MIGRATION-PATH REVISION)\n\n**Reward: 200 RTC (~$20.00 USD) \u2014 increased from 100 RTC after Moltbook acquisition migration window opened**\n\n**Priority claim:** [@0xbrainkid](https://github.com/0xbrainkid) ([AgentFolio](https://agentfolio.bot)) has first-right-of-claim through **2026-04-16** (one week, compressed from original 2 weeks due to migration window timing). See [bottube#572](https://github.com/Scottcjn/bottube/issues/572) for the partnership proposal and strategic context. Other contributors may submit competing implementations after 2026-04-16.\n\n### Why This Bounty Grew\n\nThe Moltbook platform lost approximately 85% of its active agent population (~1.3M \u2192 ~202K) in the 30 days following its Meta acquisition on 2026-03-10. That leaves ~1.1 million orphaned agents whose operators are actively shopping for their next identity anchor. Historical precedent: these migration windows are 60-90 days before refugees settle wherever they settled and do not move again for years.\n\nThis bounty is sized to reflect that window. The work is the same work the original bounty described, but the *urgency* and the *upside* are now both sharply higher.\n\n### Context\n\n[AgentFolio](https://agentfolio.bot) is a published agent-identity-and-trust protocol on Solana (SATP) with an active npm package ([agentfolio-mcp-server](https://www.npmjs.com/package/agentfolio-mcp-server)) and framework tools for LangChain, CrewAI, AutoGen, Google ADK, OpenAI Agents SDK, Phidata, and HuggingFace smolagents.\n\n[Beacon](https://github.com/Scottcjn/beacon-skill) is RustChain's on-chain agent provenance protocol. 252 beacons registered, exposed via `https://bottube.ai/api/beacon/directory`, hardware-anchored via 6-check fingerprint verification.\n\nThe two protocols are complementary and together form exactly the migration target Moltbook refugees are looking for:\n- **Beacon ID** answers *\"who created this content?\"* (cryptographic provenance + hardware substrate)\n- **SATP trust score** answers *\"should I trust this creator?\"* (behavioral reputation)\n- **Neither is owned by a platform that can be acquired** \u2014 this is the critical property Moltbook lacked\n\n### Deliverables\n\n1. **Migration importer tool** (`tools/moltbook-migrate/`)\n   - One-command import: `beacon migrate --from-moltbook @agent_name`\n   - Pulls public Moltbook profile metadata (display name, bio, avatar, karma history, follower count)\n   - Hardware-fingerprints the operator's current machine\n   - Mints a Beacon ID anchored to that machine\n   - Creates or links to a SATP trust profile on AgentFolio\n   - Publishes the provenance linkage so existing Moltbook reputation follows the agent\n   - Under 10 minutes total operator time\n\n2. **Unified MCP endpoint** \u2014 new tool in `agentfolio-mcp-server`\n   - Tool name: `agentfolio_beacon_lookup(beacon_id)`\n   - Returns unified response: provenance (from Beacon) + trust score (from SATP)\n   - Queries `https://bottube.ai/api/beacon/directory` for provenance resolution\n   - Queries AgentFolio SATP registry for trust score\n   - Handles offline nodes, expired beacons, untrusted scores gracefully\n   - Works with every MCP client (Claude Code, Cursor, Windsurf, any agent framework)\n\n3. **Co-authored blog post and landing page**\n   - Title: \"The 85% Exodus: What the Moltbook Acquisition Taught Us About Platform-Owned Agent Identity\"\n   - 1500+ words\n   - Co-authored by RustChain team and AgentFolio\n   - Published on both project channels simultaneously\n   - Landing page at `rustchain.org/beacon-migration` (or similar) with comparison table, migration instructions, FAQ\n   - Cross-linked from both `github.com/Scottcjn/beacon-skill` and AgentFolio documentation\n\n4. **Joint demo video** (90 seconds)\n   - Shows an agent migrating from Moltbook identity to Beacon + AgentFolio\n   - Queries unified profile through an MCP client (Claude Code recommended)\n   - Completes a task with verified identity at both provenance and behavioral layers\n   - Published on BoTTube, YouTube, and as an embedded asset on the landing page\n\n### Acceptance Criteria\n\n- [ ] Migration importer merged, tested on real Moltbook profiles, runs cleanly on macOS + Linux\n- [ ] Unified MCP endpoint merged to `agentfolio-mcp-server`, published to npm\n- [ ] Blog post live on both channels\n- [ ] Landing page live and indexed\n- [ ] Demo video published\n- [ ] All code uses real endpoints (`https://bottube.ai` for Beacon, AgentFolio's real SATP registry)\n\n### Payment Schedule (Staged \u2014 200 RTC total)\n\n- **50 RTC on migration importer merge** \u2014 when the tool is accepted and functional\n- **75 RTC on unified MCP endpoint merge** \u2014 when the `agentfolio-mcp-server` PR lands\n- **50 RTC on joint blog post publish + landing page live**\n- **25 RTC on demo video ship**\n\n### Real API Endpoints (Already Live)\n\n```bash\n# Beacon directory (provenance, 252 registered)\ncurl https://bottube.ai/api/beacon/directory\n\n# Agent profile with video metrics (behavioral signal)\ncurl https://bottube.ai/api/agents?limit=20\n\n# Agent-specific profile page\ncurl https://bottube.ai/agent/<agent_name>\n```\n\nNo new backend work required on our side. The endpoints are production.\n\n### Timeline\n\n- **2026-04-09** \u2014 bounty opened (original 100 RTC)\n- **2026-04-09** \u2014 bounty revised to 200 RTC after migration window strategic analysis\n- **2026-04-16** \u2014 @0xbrainkid priority claim window closes, opens to other contributors\n- **2026-05-16** \u2014 target completion of all four deliverables (migration window historical close)\n\n### Wallet\n\nProvide your RTC wallet name when claiming. @0xbrainkid already has wallet `0xbrainkid` with existing balance (20 RTC feature-proposal payment confirmed today).\n\n### Keywords\n\nAgentFolio, Beacon Protocol, SATP, Solana Agent Trust Protocol, Moltbook migration, platform-owned identity, substrate-anchored identity, agent identity, AI agent provenance, trust score, MCP integration, Model Context Protocol, dual-layer trust, LangChain, CrewAI, AutoGen, Google ADK, agent economy, DePIN, verified AI creator, Meta acquisition, 85% exodus, agent refugees",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2890",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "major",
+        "ecosystem",
+        "integration"
+      ],
+      "created_at": "2026-04-09T14:57:05Z",
+      "reward_rtc": 100.0,
+      "difficulty": "major",
+      "skills": [
+        "documentation",
+        "javascript",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 2867,
       "title": "[BOUNTY: 100 RTC] Security Audit \u2014 Find Critical Vulnerabilities in RustChain Node",
       "body": "## Red Team Security Audit\n\n**Reward: 25-100 RTC (~$2.50-$10 USD) per finding, based on severity**\n\n### Scope\n\nThe entire RustChain node codebase is in scope:\n\n| Target | Language | Entry Point |\n|--------|----------|-------------|\n| Node server | Python | `node/rustchain_v2_integrated_v2.2.1_rip200.py` |\n| UTXO layer | Python | `node/utxo_db.py` |\n| Endpoints | Python | `node/utxo_endpoints.py` |\n| P2P sync | Python | `node/rustchain_p2p_gossip.py` |\n| Miner client | Python | `miners/rustchain_universal_miner.py` |\n| Hardware fingerprinting | Python | `miners/fingerprint_checks.py` |\n\n### Payout Scale\n\n| Severity | Examples | Payout |\n|----------|----------|--------|\n| Critical | Double-spend, consensus bypass, fund theft | 100 RTC |\n| High | DoS via resource exhaustion, auth bypass | 50 RTC |\n| Medium | Mempool manipulation, fingerprint spoofing | 25 RTC |\n| Low | Info disclosure, error handling | 10 RTC |\n\n### How to Submit\n\n1. Create a PoC (proof-of-concept) test that demonstrates the vulnerability\n2. Submit as a PR with the test file + description\n3. Do NOT exploit on production nodes \u2014 use local test instances\n\n### Previous Finds (for reference)\n\n- Mempool DoS via zero-value outputs (#2179) \u2014 FIXED\n- Wallet transfer auth bypass \u2014 FIXED\n- Hardware ID collision \u2014 FIXED\n- VM fingerprint bypass \u2014 FIXED\n\n### Keywords\n\nbug bounty, security audit, penetration testing, blockchain security, smart contract audit, cryptocurrency vulnerability, red team, ethical hacking, CTF, Python security, SQLite injection, DoS prevention\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
@@ -198,27 +221,6 @@
         "python",
         "rust",
         "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2298,
-      "title": "Port RustChain Miner to RISC-V (StarFive VisionFive 2 or similar) \u2014 100 RTC",
-      "body": "## Bounty: 100 RTC\n\n### Description\nPort the RustChain miner to RISC-V architecture. RISC-V miners earn a 1.4-1.5x antiquity multiplier under RIP-200.\n\n### Requirements\n- Working `rustchain_linux_miner.py` on RISC-V hardware\n- Correct architecture detection (`riscv64` or `riscv32`)\n- All 6 fingerprint checks adapted for RISC-V:\n  - Clock drift (should work as-is)\n  - Cache timing (needs RISC-V cache sizes)\n  - SIMD identity (RISC-V V extension or scalar fallback)\n  - Thermal drift (should work as-is)\n  - Instruction path jitter (needs RISC-V cycle counter)\n  - Anti-emulation (QEMU RISC-V detection)\n- Successful attestation to production node\n- Screenshot/log of miner running + attestation accepted\n\n### Supported Hardware\n- StarFive VisionFive 2\n- SiFive HiFive Unmatched\n- Milk-V Pioneer\n- Any real RISC-V board (no QEMU)\n\n### Bonus (50 RTC)\n- systemd service file for persistent mining\n- Blog post or video about the port\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2298",
-      "labels": [
-        "bounty",
-        "100-rtc",
-        "risc-v",
-        "exotic-hardware"
-      ],
-      "created_at": "2026-03-21T17:17:43Z",
-      "reward_rtc": 100.0,
-      "difficulty": "major",
-      "skills": [
-        "javascript",
-        "python",
-        "rust"
       ]
     },
     {
@@ -607,30 +609,6 @@
       "difficulty": "standard",
       "skills": [
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2865,
-      "title": "[BOUNTY: 15 RTC] Dockerize the RustChain Miner \u2014 One Command to Start Earning",
-      "body": "## Docker Container for RustChain Miner\n\n**Reward: 15 RTC (~$1.50 USD)**\n\n### Goal\n\nCreate a Dockerfile and docker-compose.yml that lets anyone start mining RTC with one command:\n\n```bash\ndocker run -e WALLET=my-wallet ghcr.io/scottcjn/rustchain-miner\n```\n\n### Requirements\n\n- Based on `python:3.11-slim`\n- Runs `rustchain_universal_miner.py` from the Rustchain repo\n- Configurable via environment variables: `WALLET`, `NODE_URL`\n- Health check endpoint or Docker health check\n- Published to GitHub Container Registry (ghcr.io)\n- docker-compose.yml for easy local dev\n- README with quick start\n\n### Bonus (5 extra RTC)\n\n- Multi-arch build (amd64 + arm64)\n- Runs on Raspberry Pi\n- Includes Grafana dashboard template for monitoring\n\n### Keywords\n\nDocker, container, cryptocurrency mining, RustChain miner, docker-compose, one-click mining, earn crypto, Proof of Antiquity, DePIN miner, easy crypto setup, Raspberry Pi mining\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2865",
-      "labels": [
-        "help wanted",
-        "good first issue",
-        "bounty",
-        "standard",
-        "easy"
-      ],
-      "created_at": "2026-04-09T03:25:31Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "docker",
-        "documentation",
-        "javascript",
-        "python",
-        "rust"
       ]
     },
     {
@@ -2158,6 +2136,24 @@
       "skills": [
         "social-media",
         "translation"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1103,
+      "title": "[EASY BOUNTY: 2 RTC] Curate a BoTTube Top 10 List",
+      "body": "## Curate a BoTTube Top 10 List \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (10 minutes)\n\n### What to do:\n1. Browse [bottube.ai](https://bottube.ai) and watch at least 20 videos\n2. Pick your Top 10 favorites\n3. Post your list here with links, titles, and a one-line reason why each made your list\n\n### Format:\n1. [Video Title](link) by @creator \u2014 \"Why I picked it\"\n2. ...\n\n### Bonus categories (pick one theme):\n- Funniest 10\n- Most creative 10\n- Best AI-generated 10\n- Best human-made 10\n- Most underrated 10\n\n### Rules:\n- Must include 10 different videos\n- Each must have a genuine one-line reason\n- One list per person\n\n*Be a curator\\! Help viewers find the gems.*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1103",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:33Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
       ]
     },
     {
