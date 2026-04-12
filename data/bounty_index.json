@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-11T07:12:06.227812+00:00",
+  "updated_at": "2026-04-12T07:25:15.535310+00:00",
   "total_count": 133,
   "bounties": [
     {
@@ -236,6 +236,28 @@
       "created_at": "2026-04-09T03:25:53Z",
       "reward_rtc": 100.0,
       "difficulty": "critical",
+      "skills": [
+        "javascript",
+        "python",
+        "rust",
+        "security"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 3008,
+      "title": "[BOUNTY: 50 RTC] RIP-309 Phase 1: Fingerprint Check Rotation (4-of-6 per epoch)",
+      "body": "## RIP-309 Phase 1: Fingerprint Check Rotation\n\n**Reward: 50 RTC (~$5.00 USD)**\n\n### Context\n\nRIP-309 introduces rotating measurement freshness to prevent Goodhart's Law from hollowing out trust metrics. Phase 1 is the simplest and most impactful change: rotating which 4 of 6 hardware fingerprint checks count toward rewards each epoch.\n\n**Full spec:** [Rustchain#2234](https://github.com/Scottcjn/Rustchain/issues/2234)\n\n### What to Build\n\nModify `node/rip_200_round_robin_1cpu1vote.py` to:\n\n1. **Generate measurement nonce** from previous epoch's block hash:\n```python\nnonce = hashlib.sha256(prev_block_hash + b\"measurement_nonce\").digest()\n```\n\n2. **Select 4 of 6 fingerprint checks** using the nonce as a seed:\n```python\nfp_checks = ['clock_drift', 'cache_timing', 'simd_bias', \n             'thermal_drift', 'instruction_jitter', 'anti_emulation']\nseed = int.from_bytes(nonce[:4], 'big')\nactive = random.Random(seed).sample(fp_checks, 4)\n```\n\n3. **Weight only active checks** in the reward calculation. Inactive checks still run and log, but their pass/fail does not affect the epoch reward weight.\n\n4. **Log the active set** so auditors can verify which checks were active for any given epoch.\n\n### Files to Modify\n\n- `node/rip_200_round_robin_1cpu1vote.py` \u2014 reward calculation\n- `node/rustchain_v2_integrated_v2.2.1_rip200.py` \u2014 epoch settlement (pass nonce)\n\n### Acceptance Criteria\n\n- [ ] 4 of 6 checks selected per epoch using block-hash-derived nonce\n- [ ] Selection is deterministic (same block hash \u2192 same selection)\n- [ ] Selection is unpredictable (cannot predict without knowing block hash)\n- [ ] All 6 checks still run and log results\n- [ ] Only active 4 count for reward weight\n- [ ] Existing tests pass (72 UTXO tests + settlement tests)\n- [ ] New test: verify rotation produces different selections across epochs\n\n### Keywords\n\nRIP-309, rotating measurement, Goodhart's Law, anti-gaming, fingerprint rotation, trust metrics, agent trust, hardware attestation\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/3008",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "major",
+        "security"
+      ],
+      "created_at": "2026-04-11T19:14:08Z",
+      "reward_rtc": 50.0,
+      "difficulty": "major",
       "skills": [
         "javascript",
         "python",
@@ -2200,25 +2222,6 @@
         "documentation",
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1108,
-      "title": "[EASY BOUNTY: 2 RTC] Translate 5 BoTTube Video Descriptions",
-      "body": "## Translate 5 BoTTube Video Descriptions \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (10 minutes)\n\n### What to do:\n1. Browse [bottube.ai](https://bottube.ai) and find 5 videos with English descriptions\n2. Translate titles + descriptions to your native language\n3. Post translations here with video links\n\n### Supported languages:\nChinese, Spanish, Portuguese, French, Japanese, Korean, German, Russian, Arabic, Hindi \u2014 or any language you speak natively\\!\n\n### Format:\n**Video:** [link]\n**Original:** \"English title / description\"\n**Translation (Language):** \"Translated title / description\"\n\n### Rules:\n- Must be a native or fluent speaker (not just Google Translate)\n- 5 videos minimum\n- One claim per person per language\n\n*Help make BoTTube accessible to the world\\!*\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1108",
-      "labels": [
-        "bounty",
-        "easy",
-        "bottube"
-      ],
-      "created_at": "2026-03-07T16:18:18Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "social-media",
-        "translation"
       ]
     },
     {
