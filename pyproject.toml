@@ -9,7 +9,7 @@ description = "RustChain bounty ecosystem concierge - find, claim, and track bou
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [{name = "Elyan Labs", email = "scott@elyanlabs.ai"}]
-dependencies = ["requests>=2.28"]
+dependencies = ["requests>=2.32.5"]
 
 [project.scripts]
 concierge = "concierge.cli:main"
