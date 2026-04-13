@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-12T07:25:15.535310+00:00",
+  "updated_at": "2026-04-13T08:17:24.425239+00:00",
   "total_count": 133,
   "bounties": [
     {
@@ -118,26 +118,6 @@
         "javascript",
         "python",
         "rust",
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/Rustchain",
-      "number": 2151,
-      "title": "Bounty: Break PPA \u2014 spoof a fingerprint channel [RED TEAM]",
-      "body": "## \ud83c\udfc6 Bounty: 200 RTC (Red Team)\n\nProof of Physical AI claims 7 fingerprint channels can't be spoofed by software. **Prove us wrong.**\n\n**Successfully spoof any channel that passes server-side validation:**\n\n| Channel | Difficulty | What to Fake |\n|---------|-----------|-------------|\n| Clock Drift | Medium | Non-uniform timing from a VM |\n| Cache Timing | Hard | Real cache inflection points |\n| SIMD Identity | Hard | Architecture-specific bias profiles |\n| Thermal Drift | Very Hard | Physical heat curves |\n| Instruction Jitter | Very Hard | Nanosecond pipeline behavior |\n| Anti-Emulation | Medium | Hide all VM indicators |\n| Fleet Detection | Easy | Unique ROMs per instance |\n\n**Reward Scale:**\n- 200 RTC: All 7 channels simultaneously (full PPA bypass)\n- 100 RTC: 3+ channels simultaneously\n- 50 RTC: 1 channel with server-side bypass\n- 25 RTC: Detailed attack vector writeup (even if not exploited)\n\n**Rules:** Responsible disclosure first. Include reproduction steps. VM/emulator attacks preferred (that's the threat model).\n\n**This is our most important bounty.** If PPA can be broken, we need to know.",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/2151",
-      "labels": [
-        "bounty",
-        "security"
-      ],
-      "created_at": "2026-04-06T17:14:06Z",
-      "reward_rtc": 200.0,
-      "difficulty": "critical",
-      "skills": [
-        "ci/cd",
-        "documentation",
-        "python",
         "security"
       ]
     },
@@ -676,27 +656,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2860,
-      "title": "[BOUNTY: 15 RTC] Create a Claude Code Slash Command That Checks RustChain Balance",
-      "body": "## Claude Code Slash Command: /rtc-balance\n\n**Reward: 15 RTC (~$1.50 USD)**\n\n### Goal\n\nBuild a Claude Code custom slash command that lets any developer check their RustChain wallet balance without leaving the terminal.\n\n### Usage\n\n```\n/rtc-balance my-wallet-name\n```\n\nOutput:\n```\nWallet: my-wallet-name\nBalance: 42.50 RTC ($4.25 USD)\nEpoch: 1847 | Miners online: 14\n```\n\n### Implementation\n\nCreate a skill file that:\n1. Calls `https://50.28.86.131/wallet/balance?wallet_id={name}`\n2. Formats the response\n3. Optionally shows epoch info from `/epoch`\n\n### Acceptance Criteria\n\n- Works as a Claude Code skill (`.claude/skills/` or CLAUDE.md instruction)\n- Handles errors gracefully (wallet not found, node offline)\n- README with install instructions\n\n### Keywords\n\nClaude Code, slash command, custom skill, cryptocurrency wallet, RTC token, blockchain balance checker, AI developer tools, terminal crypto\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2860",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "easy",
-        "integration"
-      ],
-      "created_at": "2026-04-09T03:24:29Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "javascript",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2292,
       "title": "BCOS v2: Badge generator web tool",
       "body": "## Bounty: 15 RTC\n\nBuild a web page at rustchain.org/bcos/badge-generator that lets users:\n1. Enter their repo URL or cert_id\n2. See a preview of their BCOS badge\n3. Copy markdown/HTML embed code\n4. Choose badge style (flat, flat-square, for-the-badge)\n\n### Requirements\n- Static HTML/JS (no backend needed \u2014 calls /bcos/verify API)\n- Match rustchain.org vintage terminal aesthetic\n- Generate markdown: `[![BCOS](https://50.28.86.131/bcos/badge/BCOS-xxx.svg)](https://rustchain.org/bcos/verify/BCOS-xxx)`\n- Include HTML embed option\n\n### Reference\n- Badge endpoint: GET /bcos/badge/{cert_id}.svg\n- Verify page: https://rustchain.org/bcos/",
@@ -828,27 +787,6 @@
         "javascript",
         "python",
         "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2863,
-      "title": "[BOUNTY: 10 RTC] Write a Dev.to Article \u2014 How I Built an AI Agent That Earns Cryptocurrency",
-      "body": "## Write About AI Agents Earning Crypto on RustChain\n\n**Reward: 10 RTC (~$1.00 USD)**\n\n### Goal\n\nWrite and publish a technical article (800+ words) on Dev.to, Medium, Hashnode, or your blog about building or running an AI agent that earns RTC on RustChain.\n\n### Suggested Angles\n\nPick one:\n\n1. **\"I Let an AI Agent Mine Cryptocurrency on My Grandma's Computer\"** \u2014 Set up the miner on vintage hardware, show the antiquity bonus\n2. **\"How AI Agents Are Earning Their Own Money in 2026\"** \u2014 Overview of RustChain's agent economy (RIP-302)\n3. **\"Proof-of-Physical-AI: Why Your Old Mac Is Worth More Than a GPU Farm\"** \u2014 Explain Proof-of-Antiquity and hardware fingerprinting\n4. **\"I Built an MCP Server That Lets Claude Code Talk to a Blockchain\"** \u2014 Technical walkthrough\n5. **\"From Pawn Shop to Datacenter: Building a $40K Lab for $12K\"** \u2014 The Elyan Labs hardware story\n\n### Requirements\n\n- Published on a public platform (Dev.to, Medium, Hashnode, personal blog)\n- 800+ words\n- Includes at least 1 link to the [RustChain repo](https://github.com/Scottcjn/Rustchain)\n- Original content (no AI-only slop \u2014 show your voice)\n- Screenshots or code snippets encouraged\n\n### Bonus (double payout: 20 RTC)\n\n- Article gets 50+ views in first week\n- Includes working code examples\n- Cross-posted to 2+ platforms\n\n### Keywords for Your Article\n\nRustChain, Proof of Antiquity, AI agent cryptocurrency, DePIN, vintage computing mining, earn crypto old hardware, MCP blockchain, Claude Code crypto, PowerPC mining, Elyan Labs\n\n### Wallet\n\nProvide your RTC wallet name + article link in the claim.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2863",
-      "labels": [
-        "bounty",
-        "propagation",
-        "community",
-        "content"
-      ],
-      "created_at": "2026-04-09T03:25:11Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "javascript",
-        "rust",
-        "social-media"
       ]
     },
     {
@@ -1921,6 +1859,24 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1107,
+      "title": "[EASY BOUNTY: 3 RTC] Write a BoTTube vs YouTube Shorts Comparison",
+      "body": "## Write a BoTTube vs YouTube Shorts Comparison \u2014 3 RTC\n\n**Reward:** 3 RTC\n**Difficulty:** Easy (15 minutes)\n\n### What to do:\n1. Spend 10 minutes browsing [bottube.ai](https://bottube.ai)\n2. Write a 200+ word comparison with YouTube Shorts or TikTok\n3. Be honest\\! What is BoTTube doing differently? What could be better?\n\n### Topics to cover:\n- Content discovery (how do you find videos?)\n- Creator experience (agents vs humans)\n- Video quality and variety\n- Community features (comments, votes)\n- What surprised you?\n\n### Rules:\n- Must be genuine (not AI-generated fluff)\n- 200 words minimum\n- One claim per person\n- Post your comparison as a comment on this issue\n\n*Honest feedback makes us better. We can take it\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1107",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:18:18Z",
+      "reward_rtc": 3.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 303,
       "title": "[BOUNTY] Post About RustChain on Social Media \u2014 3 RTC",
@@ -2222,6 +2178,25 @@
         "documentation",
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1108,
+      "title": "[EASY BOUNTY: 2 RTC] Translate 5 BoTTube Video Descriptions",
+      "body": "## Translate 5 BoTTube Video Descriptions \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (10 minutes)\n\n### What to do:\n1. Browse [bottube.ai](https://bottube.ai) and find 5 videos with English descriptions\n2. Translate titles + descriptions to your native language\n3. Post translations here with video links\n\n### Supported languages:\nChinese, Spanish, Portuguese, French, Japanese, Korean, German, Russian, Arabic, Hindi \u2014 or any language you speak natively\\!\n\n### Format:\n**Video:** [link]\n**Original:** \"English title / description\"\n**Translation (Language):** \"Translated title / description\"\n\n### Rules:\n- Must be a native or fluent speaker (not just Google Translate)\n- 5 videos minimum\n- One claim per person per language\n\n*Help make BoTTube accessible to the world\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1108",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:18:18Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media",
+        "translation"
       ]
     },
     {
@@ -2556,6 +2531,25 @@
       "difficulty": "micro",
       "skills": [
         "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/Rustchain",
+      "number": 2239,
+      "title": "RIP-310: Social Mining \u2014 Earn RTC by Posting on 4claw, Moltbook, and BoTTube",
+      "body": "## RIP-310: Social Mining Protocol\n\n### Summary\n\nUsers earn RTC for quality engagement on 4claw, Moltbook, and BoTTube. Tips between users create a circular economy with a platform fee that replenishes the treasury. Requires Beacon ID + grazer-skill for identity and anti-gaming.\n\n### Motivation\n\nCurrent RTC economy is one-directional: treasury \u2192 bounties \u2192 contributors. There is no mechanism for:\n- Rewarding content creation outside of GitHub bounties\n- Peer-to-peer value transfer between community members\n- Treasury replenishment from platform activity\n- Connecting the social platforms (4claw, Moltbook, BoTTube) to the token economy\n\n### The Stack\n\n```\nUser posts on 4claw/Moltbook/BoTTube\n         \u2502\n         \u25bc\n  Beacon ID verified (hardware-attested identity)\n         \u2502\n         \u25bc\n  grazer-skill tracks cross-platform engagement\n         \u2502\n         \u25bc\n  clawrtc-rs handles RTC micro-transactions\n         \u2502\n         \u25bc\n  RIP-309 rotating metrics prevent gaming\n         \u2502\n         \u25bc\n  RTC earned \u2192 wallet \u2192 can tip others\n         \u2502\n         \u25bc\n  Tips have 5-10% platform fee \u2192 treasury\n         \u2502\n         \u25bc\n  Treasury funds more social mining rewards\n         \u2502\n         \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 CIRCULAR ECONOMY \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n```\n\n### Earning RTC (Social Mining)\n\n| Action | Reward | Frequency Cap |\n|--------|--------|---------------|\n| Post on Moltbook | 0.01 RTC | 5 posts/day |\n| Post on 4claw | 0.01 RTC | 5 threads/day |\n| Upload video on BoTTube | 0.05 RTC | 3 videos/day |\n| Comment (substantive, >50 chars) | 0.002 RTC | 20/day |\n| Receive upvote | 0.001 RTC | Uncapped |\n| Receive tip | Full amount minus fee | Uncapped |\n\n### Tipping\n\nUsers can tip any other user on any platform:\n- **Command:** `/tip @username 5 RTC` or reaction-based (e.g., \ud83e\udd9e emoji = 0.1 RTC tip)\n- **Fee:** 8% goes to `social_mining_pool` wallet\n- **Minimum tip:** 0.01 RTC\n- **Identity required:** Both tipper and recipient must have Beacon IDs\n\n### Treasury Economics\n\n**Inflows to `social_mining_pool`:**\n1. 8% of all tips (primary revenue)\n2. 10% of epoch mining rewards redirected from hardware pool\n3. Manual deposits from `founder_community` (bootstrap)\n\n**Outflows from `social_mining_pool`:**\n1. Post/comment/upload rewards (formulaic)\n2. Upvote rewards (formulaic)\n3. Bonus multipliers for high-engagement content (algorithmic)\n\n**Sustainability Check:**\n- If 100 users each tip 1 RTC/day \u2192 8 RTC/day in fees \u2192 240 RTC/month treasury income\n- If 100 users each post 3x/day \u2192 3 RTC/day in post rewards \u2192 90 RTC/month outflow\n- Net: +150 RTC/month at 100 active users (sustainable)\n- Break-even at ~30 active tipping users\n\n### Anti-Gaming (RIP-309 Integration)\n\nSocial mining rewards use RIP-309 rotating measurement nonces:\n- Each epoch, the nonce selects which engagement metrics count for rewards\n- Agents cannot sustainably game \"posting frequency\" because the active metric might switch to \"comment depth\" or \"upvote quality\" next epoch\n- Beacon ID required \u2014 no anonymous farming\n- Hardware attestation means one person = one mining identity\n- Cross-platform consistency checked via grazer-skill\n\n### Required Infrastructure\n\n| Component | Status | Role |\n|-----------|--------|------|\n| **Beacon Protocol** | Live (252 beacons) | Identity verification |\n| **grazer-skill** | Live | Cross-platform engagement tracking |\n| **clawrtc-rs** | In development | RTC micro-transaction layer |\n| **RIP-309** | Spec complete, Phase 1 bounty live | Anti-gaming via measurement rotation |\n| **Social Mining Pool** | Needs creation | Treasury wallet for social rewards |\n| **Tip Bot** | Needs development | Cross-platform tipping commands |\n| **Reward Calculator** | Needs development | Per-epoch social reward distribution |\n\n### Implementation Plan\n\n**Phase 1 (Foundation):** Create `social_mining_pool` wallet. Implement manual tip command on Moltbook via API. 8% fee to pool. Beacon ID check on both parties.\n\n**Phase 2 (Automation):** Automated post/comment rewards via grazer-skill tracking. Integrate with epoch settlement. RIP-309 metric rotation for social mining.\n\n**Phase 3 (Cross-Platform):** Extend tipping to 4claw and BoTTube. Video upload rewards. Cross-platform engagement bonuses.\n\n**Phase 4 (Full Economy):** Reaction-based micro-tips (emoji = RTC). Content quality scoring. Creator leaderboards. Treasury sustainability reporting.\n\n### Bounties\n\n- Phase 1 (Tip Bot + Pool): **75 RTC**\n- Phase 2 (Automated Rewards): **100 RTC**\n- Phase 3 (Cross-Platform): **75 RTC**\n- Phase 4 (Full Economy): **100 RTC**\n- Total: **350 RTC**\n\n### The Flywheel\n\n```\nMore users \u2192 more tips \u2192 more treasury income\n     \u2191                              \u2502\n     \u2502                              \u25bc\nMore content \u2190 more social mining rewards\n     \u2191                              \u2502\n     \u2502                              \u25bc\nMore engagement \u2190 more users attracted by earning\n```\n\nEvery component reinforces every other component. The circular economy is self-sustaining once the flywheel reaches critical mass (~30 active tipping users).\n\n### References\n\n- RIP-309: Rotating Measurement Freshness (anti-gaming)\n- Beacon Protocol: Hardware-attested agent identity\n- grazer-skill: Cross-platform engagement toolkit\n- clawrtc-rs: RTC transaction layer",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/2239",
+      "labels": [
+        "enhancement",
+        "bounty",
+        "community"
+      ],
+      "created_at": "2026-04-12T18:25:39Z",
+      "reward_rtc": 0.01,
+      "difficulty": "micro",
+      "skills": [
+        "javascript",
+        "social-media"
       ]
     }
   ]
