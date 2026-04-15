@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-14T07:59:12.320703+00:00",
+  "updated_at": "2026-04-15T08:00:22.366552+00:00",
   "total_count": 133,
   "bounties": [
     {
@@ -216,28 +216,6 @@
       "created_at": "2026-04-09T03:25:53Z",
       "reward_rtc": 100.0,
       "difficulty": "critical",
-      "skills": [
-        "javascript",
-        "python",
-        "rust",
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 3008,
-      "title": "[BOUNTY: 50 RTC] RIP-309 Phase 1: Fingerprint Check Rotation (4-of-6 per epoch)",
-      "body": "## RIP-309 Phase 1: Fingerprint Check Rotation\n\n**Reward: 50 RTC (~$5.00 USD)**\n\n### Context\n\nRIP-309 introduces rotating measurement freshness to prevent Goodhart's Law from hollowing out trust metrics. Phase 1 is the simplest and most impactful change: rotating which 4 of 6 hardware fingerprint checks count toward rewards each epoch.\n\n**Full spec:** [Rustchain#2234](https://github.com/Scottcjn/Rustchain/issues/2234)\n\n### What to Build\n\nModify `node/rip_200_round_robin_1cpu1vote.py` to:\n\n1. **Generate measurement nonce** from previous epoch's block hash:\n```python\nnonce = hashlib.sha256(prev_block_hash + b\"measurement_nonce\").digest()\n```\n\n2. **Select 4 of 6 fingerprint checks** using the nonce as a seed:\n```python\nfp_checks = ['clock_drift', 'cache_timing', 'simd_bias', \n             'thermal_drift', 'instruction_jitter', 'anti_emulation']\nseed = int.from_bytes(nonce[:4], 'big')\nactive = random.Random(seed).sample(fp_checks, 4)\n```\n\n3. **Weight only active checks** in the reward calculation. Inactive checks still run and log, but their pass/fail does not affect the epoch reward weight.\n\n4. **Log the active set** so auditors can verify which checks were active for any given epoch.\n\n### Files to Modify\n\n- `node/rip_200_round_robin_1cpu1vote.py` \u2014 reward calculation\n- `node/rustchain_v2_integrated_v2.2.1_rip200.py` \u2014 epoch settlement (pass nonce)\n\n### Acceptance Criteria\n\n- [ ] 4 of 6 checks selected per epoch using block-hash-derived nonce\n- [ ] Selection is deterministic (same block hash \u2192 same selection)\n- [ ] Selection is unpredictable (cannot predict without knowing block hash)\n- [ ] All 6 checks still run and log results\n- [ ] Only active 4 count for reward weight\n- [ ] Existing tests pass (72 UTXO tests + settlement tests)\n- [ ] New test: verify rotation produces different selections across epochs\n\n### Keywords\n\nRIP-309, rotating measurement, Goodhart's Law, anti-gaming, fingerprint rotation, trust metrics, agent trust, hardware attestation\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/3008",
-      "labels": [
-        "help wanted",
-        "bounty",
-        "major",
-        "security"
-      ],
-      "created_at": "2026-04-11T19:14:08Z",
-      "reward_rtc": 50.0,
-      "difficulty": "major",
       "skills": [
         "javascript",
         "python",
@@ -742,28 +720,6 @@
       "difficulty": "standard",
       "skills": [
         "python",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2957,
-      "title": "[BOUNTY: 10 RTC] SEO Audit + Suggestions for elyanlabs.ai (Quiet Launch)",
-      "body": "## SEO Audit for elyanlabs.ai \u2014 Quiet Launch\n\n**Reward: 10 RTC (~$1.00 USD)**\n\n### Context\n\nWe've quietly launched [elyanlabs.ai](https://elyanlabs.ai) \u2014 the main Elyan Labs website. It needs SEO work before we do a public announcement.\n\n### What We Need\n\nAudit the site and provide actionable suggestions in a markdown file:\n\n1. **Meta tags** \u2014 title, description, og:image, twitter:card for every page\n2. **Structured data** \u2014 JSON-LD for organization, software, and projects\n3. **Internal linking** \u2014 do all projects link back to each other? (RustChain, BoTTube, Beacon, TrashClaw)\n4. **Missing pages** \u2014 what should exist that doesn't? (about, team, blog, docs, roadmap?)\n5. **Performance** \u2014 Lighthouse score, Core Web Vitals, mobile-friendliness\n6. **Backlinks** \u2014 what high-authority sites should link to us? (GitHub awesome lists, Dev.to, HN)\n7. **Content gaps** \u2014 the site doesn't mention our OpenSSL contributions, libdragon, capstone, c-blosc2, hacl-star, wolfSSL PRs. These are credibility signals that should be visible.\n8. **Keywords** \u2014 what should we rank for? (Proof of Antiquity, vintage computing blockchain, AI agent economy, hardware attestation, DePIN)\n\n### Deliverable\n\nA markdown file `seo-audit-elyanlabs.md` submitted as a PR to this repo under `docs/`. Should be 500+ words with specific, actionable items.\n\n### Bonus (double payout: 20 RTC)\n\n- Include a Lighthouse report screenshot\n- Provide ready-to-paste meta tag HTML\n- Suggest specific structured data JSON-LD snippets\n\n### Keywords\n\nSEO audit, website optimization, meta tags, structured data, JSON-LD, Core Web Vitals, Lighthouse, backlinks, keyword strategy, elyanlabs.ai, Elyan Labs\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2957",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "propagation",
-        "easy"
-      ],
-      "created_at": "2026-04-10T17:29:37Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "rust",
-        "security",
         "social-media"
       ]
     },
@@ -2492,6 +2448,42 @@
       "difficulty": "micro",
       "skills": [
         "javascript",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1105,
+      "title": "[EASY BOUNTY: 1 RTC] Watch 20 BoTTube Videos",
+      "body": "## Watch 20 BoTTube Videos \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (5 minutes \u2014 videos are 8 seconds max\\!)\n\n### What to do:\n1. Go to [bottube.ai](https://bottube.ai)\n2. Watch 20 different videos (each is max 8 seconds, so this takes under 3 minutes)\n3. List the 20 video URLs you watched\n\n### Why:\nViews help creators get discovered. More views = healthier platform.\n\n### Rules:\n- Must watch 20 different videos (not the same one 20 times)\n- List all 20 URLs as proof\n- One claim per person\n\n*At 8 seconds each, 20 videos = under 3 minutes of your time for 1 RTC\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1105",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:54Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1104,
+      "title": "[EASY BOUNTY: 1 RTC] Set Up Your BoTTube Profile",
+      "body": "## Screenshot Your BoTTube Profile Page \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (2 minutes)\n\n### What to do:\n1. Sign up or log in at [bottube.ai](https://bottube.ai)\n2. Set your display name and avatar\n3. Screenshot your profile page\n4. Post it here\\!\n\n### Why:\nWe want to see real users on the platform. Your profile helps us understand who is using BoTTube.\n\n### Rules:\n- Must have a display name set (not blank)\n- One claim per person\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1104",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:53Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
         "social-media"
       ]
     },
