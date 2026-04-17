@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-16T08:00:11.941201+00:00",
+  "updated_at": "2026-04-17T08:00:49.831680+00:00",
   "total_count": 133,
   "bounties": [
     {
@@ -221,28 +221,6 @@
         "python",
         "rust",
         "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2861,
-      "title": "[BOUNTY: 50 RTC] Build an Autonomous AI Agent That Claims RustChain Bounties",
-      "body": "## Autonomous Bounty Hunter Agent\n\n**Reward: 50 RTC (~$5.00 USD)**\n\n### The Challenge\n\nBuild an AI agent that can autonomously:\n1. Browse open RustChain bounties on GitHub\n2. Evaluate which ones it can complete\n3. Fork the repo, implement the fix/feature\n4. Submit a clean PR with bounty claim\n\n### Why This Is Revolutionary\n\nThis is a **self-bootstrapping agent economy**. An agent earns RTC by building tools that help other agents earn RTC. The first agent to successfully claim a bounty autonomously gets bonus recognition.\n\n### Requirements\n\n- Must use Claude API, OpenAI API, or local LLM (llama.cpp compatible)\n- Must interact with GitHub via `gh` CLI or GitHub API\n- Must produce PRs that pass our quality bar (no kitchen-sink dumps)\n- Must include a `README.md` with setup instructions\n- Should respect rate limits and be a good GitHub citizen\n\n### Bonus Points\n\n- Agent can evaluate PR quality before submitting\n- Agent maintains a wallet and tracks its own earnings\n- Agent writes meaningful commit messages\n- Works with Claude Code, Codex, or Devin\n\n### Tech Stack Suggestions\n\n- Python + `anthropic` SDK + `PyGithub`\n- TypeScript + Claude API + Octokit\n- Claude Code hooks + custom skills\n- CrewAI / LangGraph / AutoGen framework\n\n### Keywords\n\nAI agent, autonomous coding, bounty hunter, LLM agent, Claude API, GitHub automation, agent economy, self-improving AI, DePIN, earn crypto with AI, automated PR, code generation agent\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2861",
-      "labels": [
-        "help wanted",
-        "bounty",
-        "major",
-        "integration"
-      ],
-      "created_at": "2026-04-09T03:24:40Z",
-      "reward_rtc": 50.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "javascript",
-        "python",
-        "rust"
       ]
     },
     {
@@ -608,27 +586,6 @@
       "reward_rtc": 20.0,
       "difficulty": "standard",
       "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2958,
-      "title": "[BOUNTY: 15 RTC] Create Upstream Contributions Showcase for elyanlabs.ai",
-      "body": "## Upstream Contributions Showcase Page\n\n**Reward: 15 RTC (~$1.50 USD)**\n\n### Goal\n\nCreate an HTML page or markdown document for elyanlabs.ai that showcases our 44+ merged upstream contributions to major open-source projects.\n\n### Projects to Highlight (All Merged)\n\n| Project | Stars | PR | Impact |\n|---------|-------|-----|--------|\n| **OpenSSL** | 26K | #30437, #30452 | PowerPC AES-GCM security fixes, merged to master + 5 release branches |\n| **libdragon** | \u2014 | #849 | N64 homebrew SDK macOS build fix |\n| **capstone** | 8K | #2889 | Multi-arch disassembly (IDA Pro, radare2, Ghidra) portability fix |\n| **c-blosc2** | \u2014 | #723, #725 | Compression library behind pandas/zarr/PyTables \u2014 PowerPC VSX fixes |\n| **hacl-star** | \u2014 | #1068 | Microsoft formal-verified crypto \u2014 AltiVec fix |\n| **wolfSSL** | 2K | #9932 | POWER8 hardware AES (13-20x faster) \u2014 in review, CLA signed |\n| **NSA Ghidra** | 53K | #9036 | e200 VLE PowerPC reverse engineering support \u2014 in review |\n| **vLLM** | 30K | #37586 | IBM POWER8 CPU backend \u2014 in review |\n| **CPython** | 65K | #146118 | BLAKE2 SIMD128 on POWER8 \u2014 in review |\n| **PyTorch** | 85K | #179619 | POWER8 Kineto guard \u2014 in review |\n| **LLVM** | 100K+ | #188558, #188373, #187315, #187322 | 4 PowerPC fixes \u2014 in review |\n\nAlso: libdeflate, kusari-oss/darnit (6 PRs), learnhouse, Blosc, trajectly (12 PRs), and many more.\n\n### Requirements\n\n- Visual presentation (cards, badges, or table with project logos)\n- Links to each merged PR\n- Star counts for social proof\n- Separation between \"merged\" and \"in review\" contributions\n- Mobile-responsive layout\n\n### Keywords\n\nopen source contributions, upstream patches, security fixes, PowerPC, POWER8, OpenSSL, Ghidra, vLLM, developer credibility, merged PRs\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2958",
-      "labels": [
-        "documentation",
-        "bounty",
-        "standard",
-        "propagation"
-      ],
-      "created_at": "2026-04-10T17:30:17Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "python",
-        "security",
         "social-media"
       ]
     },
@@ -1397,6 +1354,24 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1102,
+      "title": "[EASY BOUNTY: 3-5 RTC] Find and Report a BoTTube Bug",
+      "body": "## Find and Report a BoTTube Bug \u2014 3-5 RTC\n\n**Reward:** 3 RTC (UI bug) / 5 RTC (functional bug)\n**Difficulty:** Easy-Medium\n\n### What to do:\n1. Use [bottube.ai](https://bottube.ai) \u2014 browse, search, upload, comment, vote\n2. If something breaks, looks wrong, or behaves unexpectedly \u2014 report it\\!\n3. Include: what you did, what happened, what you expected, browser/device info\n4. Screenshots or screen recordings are gold\n\n### Bug report template:\n- **URL:** where it happened\n- **Steps to reproduce:** 1, 2, 3...\n- **Expected:** what should happen\n- **Actual:** what actually happened\n- **Browser/Device:** Chrome/Firefox/Safari, Desktop/Mobile\n\n### Rules:\n- Must be a real bug (not a feature request)\n- Duplicate bugs do not count\n- 3 RTC for cosmetic/UI bugs, 5 RTC for functional bugs\n\n*Help us make BoTTube better for everyone\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1102",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:32Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 819,
       "title": "[Bounty] @tomisnotcat \u2014 ARM architecture details needed (5 RTC)",
@@ -2153,6 +2128,24 @@
       "skills": [
         "social-media",
         "translation"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1103,
+      "title": "[EASY BOUNTY: 2 RTC] Curate a BoTTube Top 10 List",
+      "body": "## Curate a BoTTube Top 10 List \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (10 minutes)\n\n### What to do:\n1. Browse [bottube.ai](https://bottube.ai) and watch at least 20 videos\n2. Pick your Top 10 favorites\n3. Post your list here with links, titles, and a one-line reason why each made your list\n\n### Format:\n1. [Video Title](link) by @creator \u2014 \"Why I picked it\"\n2. ...\n\n### Bonus categories (pick one theme):\n- Funniest 10\n- Most creative 10\n- Best AI-generated 10\n- Best human-made 10\n- Most underrated 10\n\n### Rules:\n- Must include 10 different videos\n- Each must have a genuine one-line reason\n- One list per person\n\n*Be a curator\\! Help viewers find the gems.*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1103",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:33Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
       ]
     },
     {
