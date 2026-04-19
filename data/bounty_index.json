@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-18T07:21:11.173297+00:00",
-  "total_count": 133,
+  "updated_at": "2026-04-19T07:41:25.462280+00:00",
+  "total_count": 135,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -221,6 +221,25 @@
         "python",
         "rust",
         "security"
+      ]
+    },
+    {
+      "repo": "Scottcjn/Rustchain",
+      "number": 2273,
+      "title": "[BOUNTY: up to 70 RTC, claim any subset] Phase F follow-ups: key rotation + registry expiry + non-root key path",
+      "body": "## Summary\n\nFollow-up hardening items flagged by @fengqiankun6-sudo in their review of PR #2260 (Phase F Ed25519, now merged as commit `bbcb6fc7`). None of these block the F.1 `dual-mode` rollout \u2014 they're tightening items that should land before F.3 `strict` rollout.\n\n---\n\n## \ud83d\udcb0 Bounty: up to 70 RTC total \u2014 three independently-claimable items\n\nEach item below is a separate bounty. A contributor can claim any subset (1, 2, or all 3) in a single PR or in separate PRs.\n\n### Item A \u2014 Key rotation mechanism (30 RTC)\n\n**Problem**: Ed25519 keys persist indefinitely. A compromised key = permanent compromise unless the node is fully re-keyed and the registry redistributed.\n\n**Acceptance**:\n- `LocalKeypair` gains a `key_version` field, written alongside the PEM on generation.\n- `PeerRegistry` entries gain a `key_version` field; verify path checks that the incoming signature's associated version matches the registry's current version for that peer.\n- An `RC_P2P_KEYGEN` env var or CLI flag forces a fresh keypair generation with an incremented version, keeping the old keypair at `p2p_identity.v<N-1>.pem` for rollback grace.\n- Regression test: old version rejected after rotation completes, new version accepted.\n\n### Item B \u2014 Registry expiry / `not_before` / `not_after` (25 RTC)\n\n**Problem**: Stale registry entries stay valid until manually removed. A peer that should be revoked remains trusted.\n\n**Acceptance**:\n- `PeerRegistry` entries gain optional `not_before` + `not_after` ISO-8601 timestamps.\n- `get_pubkey()` returns `None` for an entry outside its validity window.\n- Clock skew tolerance: \u00b15 min (same as existing `MESSAGE_EXPIRY`).\n- Regression test: entry with `not_after` in the past returns `None`; entry with `not_before` in the future returns `None`; entry in-window returns pubkey.\n\n### Item C \u2014 Non-root key path fallback (15 RTC)\n\n**Problem**: Default `/etc/rustchain/p2p_identity.pem` requires root. Some miner deployments run non-root (user-owned systemd units, Docker rootless, etc.).\n\n**Acceptance**:\n- `LocalKeypair.__init__` falls back through paths in order: `$RC_P2P_PRIVKEY_PATH` \u2192 `/etc/rustchain/p2p_identity.pem` \u2192 `$HOME/.rustchain/p2p_identity.pem`.\n- On first use, write to the first writable path; remember the chosen path for subsequent loads.\n- Log at `INFO` which path was chosen.\n- Regression test: run with `HOME` pointing at a tmpdir and `/etc/rustchain` being unwritable; assert the user path is chosen and the keypair loads.\n\n---\n\n## \ud83c\udfaf Context\n\n- Location: `node/p2p_identity.py` (merged via #2260, commit `bbcb6fc7`)\n- Design doc: `/home/scott/staged_patches/phase_f_ed25519/DESIGN.md`\n- Reviewer comment that raised these: https://github.com/Scottcjn/Rustchain/pull/2260#pullrequestreview-2256 (3 observations)\n- Pre-requisite: current `main` with Phase F landed\n\n## \ud83e\uddfe Claim process\n\n1. Comment with your GitHub username + RTC wallet + which item(s) (A, B, C, or all).\n2. Open a PR with `Fixes part of #2273` and the item letter in the title, e.g. `[#2273 Item A] Add Ed25519 key rotation with key_version`.\n3. One PR can cover multiple items; payouts stack on merge.\n4. RTC pays per item on merge, within 24 hours.\n\nPartial credit is fine \u2014 if Item A is merged and Items B/C are left for later, Item A gets paid independently.",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/2273",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-04-16T14:59:18Z",
+      "reward_rtc": 70.0,
+      "difficulty": "major",
+      "skills": [
+        "docker",
+        "javascript",
+        "python",
+        "rust"
       ]
     },
     {
@@ -496,6 +515,26 @@
         "javascript",
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/Rustchain",
+      "number": 2288,
+      "title": "[BOUNTY: 25 RTC] _handle_get_state calls _signed_content with wrong arity (TypeError when STATE requested)",
+      "body": "Discovered during the Phase F #2260 rebase (not introduced by it \u2014 this is a pre-existing latent bug).\n\n## Problem\n\n`node/rustchain_p2p_gossip.py::_handle_get_state` calls `self._signed_content()` with **3 positional args** (`msg_type`, `node_id`, `payload`), but the function signature has been **5 positional args** (`msg_type`, `sender_id`, `msg_id`, `ttl`, `payload`) since PR #2274 (2026-04-17) extended signature coverage to `msg_id` and `ttl` for the #2272 hardening.\n\n```python\n# node/rustchain_p2p_gossip.py (current main, ~line 893):\ndef _handle_get_state(self, msg: GossipMessage) -> Dict:\n    ...\n    payload = {\"state\": state_data}\n    content = self._signed_content(MessageType.STATE.value, self.node_id, payload)  # 3-arg, bug\n    signature, timestamp = self._sign_message(content)\n    ...\n```\n\nvs\n\n```python\n# node/rustchain_p2p_gossip.py (~line 441):\n@staticmethod\ndef _signed_content(msg_type: str, sender_id: str, msg_id: str, ttl: int, payload: Dict) -> str:\n    return f\"{msg_type}:{sender_id}:{msg_id}:{ttl}:{json.dumps(payload, sort_keys=True)}\"\n```\n\nCalling the 5-arg function with 3 args raises `TypeError: _signed_content() missing 2 required positional arguments: 'msg_id' and 'ttl'` the moment any peer sends a `GET_STATE` message.\n\n## Why this hasn't been caught yet\n\n- No unit test exercises the full `_handle_get_state` path end-to-end.\n- The STATE-sync path is covered by the `request_full_sync` hotfix from PR #2259, but that code handles the *response* side on the requester; the responder-side `_handle_get_state` is the one with the buggy arity.\n- Production nodes may be silently raising and swallowing this exception inside the message-handler dispatcher, with the state request appearing to time out on the requester.\n\n## Proposed fix (small)\n\nGenerate a synthetic `msg_id` and use a static `ttl` (e.g. 0 since STATE responses aren't re-forwarded) for the signature:\n\n```python\nstate_msg_id = hashlib.sha256(\n    f\"STATE:{self.node_id}:{json.dumps(payload, sort_keys=True)}:{time.time()}\".encode()\n).hexdigest()[:24]\ncontent = self._signed_content(MessageType.STATE.value, self.node_id, state_msg_id, 0, payload)\nsignature, timestamp = self._sign_message(content)\n```\n\nThen the response dict should also include `msg_id` and `ttl` so the requester's `verify_message` can reconstruct the signed content.\n\n## Bounty tier\n\nSmall (10-25 RTC) \u2014 straightforward 1-method fix + a regression test asserting `_handle_get_state` runs without raising and the response verifies under `verify_message`.\n\n## Labels\n\n- `bug`\n- `p2p`\n- `security-adjacent` (affects attestation sync integrity)",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/2288",
+      "labels": [
+        "bug",
+        "bounty"
+      ],
+      "created_at": "2026-04-18T16:17:02Z",
+      "reward_rtc": 25.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "python",
+        "rust",
+        "security"
       ]
     },
     {
