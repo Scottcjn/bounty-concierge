@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-20T08:22:21.909493+00:00",
-  "total_count": 135,
+  "updated_at": "2026-04-21T08:05:06.820222+00:00",
+  "total_count": 134,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -402,28 +402,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2859,
-      "title": "[BOUNTY: 25 RTC] Build an MCP Server That Connects Any AI Agent to RustChain",
-      "body": "## Build a Model Context Protocol (MCP) Server for RustChain\n\n**Reward: 25 RTC (~$2.50 USD)**\n\n### Why This Matters\n\nEvery AI agent running Claude Code, Cursor, Windsurf, or any MCP-compatible IDE can instantly connect to RustChain through an MCP server. This is the single fastest way to onboard thousands of agents.\n\n### Goal\n\nCreate a standalone MCP server (`rustchain-mcp-server`) that exposes RustChain operations as MCP tools:\n\n| Tool | Description |\n|------|-------------|\n| `rustchain_health` | Check node health |\n| `rustchain_balance` | Query wallet balance |\n| `rustchain_miners` | List active miners |\n| `rustchain_epoch` | Current epoch info |\n| `rustchain_create_wallet` | Register a new agent wallet |\n| `rustchain_submit_attestation` | Submit hardware fingerprint |\n| `rustchain_bounties` | List open bounties |\n\n### Requirements\n\n- Python or TypeScript\n- Compatible with Claude Code MCP, Cursor MCP, VS Code Copilot MCP\n- Published to PyPI (`pip install rustchain-mcp`) or npm (`npx rustchain-mcp`)\n- README with one-line install + Claude Code config snippet\n- Node URL configurable (default: `https://50.28.86.131`)\n\n### Quick Start Template\n\n```json\n{\n  \"mcpServers\": {\n    \"rustchain\": {\n      \"command\": \"uvx\",\n      \"args\": [\"rustchain-mcp\"]\n    }\n  }\n}\n```\n\n### Keywords\n\nMCP server, Model Context Protocol, Claude Code, AI agent tools, blockchain API, RustChain, Anthropic, tool use, agent economy, DePIN\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2859",
-      "labels": [
-        "help wanted",
-        "good first issue",
-        "bounty",
-        "integration"
-      ],
-      "created_at": "2026-04-09T03:24:22Z",
-      "reward_rtc": 25.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "javascript",
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2308,
       "title": "Silicon Obituary \u2014 Hardware Eulogy Generator for Retired Miners (25 RTC)",
       "body": "## Bounty: 25 RTC\n\n### Description\nWhen a miner goes offline permanently, generate a poetic \"obituary\" for the hardware \u2014 pulling its attestation history, total RTC earned, architecture, years of service. Post to BoTTube as a video memorial.\n\n*\"Here lies dual-g4-125, a Power Mac G4 MDD. It attested for 847 epochs and earned 412 RTC. Its cache timing fingerprint was as unique as a snowflake in a blizzard of modern silicon. It is survived by its power supply, which still works.\"*\n\n### Requirements\n- Detect when a miner hasn't attested in 7+ days\n- Pull from database: first attestation date, total epochs, total RTC earned, device architecture, multiplier history\n- Generate eulogy text (LLM-assisted OK, but must include real data)\n- Create a BoTTube video with:\n  - Machine photo or architecture icon\n  - Eulogy text as narration (TTS OK)\n  - Solemn background music\n  - RTC earned counter animation\n- Auto-post to BoTTube with tag `#SiliconObituary`\n- Discord notification when a miner passes\n\n### Why This Is Cool\nWe don't just mine with machines \u2014 we honor them. Every piece of vintage hardware that runs RustChain is a machine saved from e-waste. When it finally dies, it deserves a send-off.\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
@@ -515,26 +493,6 @@
         "javascript",
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/Rustchain",
-      "number": 2288,
-      "title": "[BOUNTY: 25 RTC] _handle_get_state calls _signed_content with wrong arity (TypeError when STATE requested)",
-      "body": "Discovered during the Phase F #2260 rebase (not introduced by it \u2014 this is a pre-existing latent bug).\n\n## Problem\n\n`node/rustchain_p2p_gossip.py::_handle_get_state` calls `self._signed_content()` with **3 positional args** (`msg_type`, `node_id`, `payload`), but the function signature has been **5 positional args** (`msg_type`, `sender_id`, `msg_id`, `ttl`, `payload`) since PR #2274 (2026-04-17) extended signature coverage to `msg_id` and `ttl` for the #2272 hardening.\n\n```python\n# node/rustchain_p2p_gossip.py (current main, ~line 893):\ndef _handle_get_state(self, msg: GossipMessage) -> Dict:\n    ...\n    payload = {\"state\": state_data}\n    content = self._signed_content(MessageType.STATE.value, self.node_id, payload)  # 3-arg, bug\n    signature, timestamp = self._sign_message(content)\n    ...\n```\n\nvs\n\n```python\n# node/rustchain_p2p_gossip.py (~line 441):\n@staticmethod\ndef _signed_content(msg_type: str, sender_id: str, msg_id: str, ttl: int, payload: Dict) -> str:\n    return f\"{msg_type}:{sender_id}:{msg_id}:{ttl}:{json.dumps(payload, sort_keys=True)}\"\n```\n\nCalling the 5-arg function with 3 args raises `TypeError: _signed_content() missing 2 required positional arguments: 'msg_id' and 'ttl'` the moment any peer sends a `GET_STATE` message.\n\n## Why this hasn't been caught yet\n\n- No unit test exercises the full `_handle_get_state` path end-to-end.\n- The STATE-sync path is covered by the `request_full_sync` hotfix from PR #2259, but that code handles the *response* side on the requester; the responder-side `_handle_get_state` is the one with the buggy arity.\n- Production nodes may be silently raising and swallowing this exception inside the message-handler dispatcher, with the state request appearing to time out on the requester.\n\n## Proposed fix (small)\n\nGenerate a synthetic `msg_id` and use a static `ttl` (e.g. 0 since STATE responses aren't re-forwarded) for the signature:\n\n```python\nstate_msg_id = hashlib.sha256(\n    f\"STATE:{self.node_id}:{json.dumps(payload, sort_keys=True)}:{time.time()}\".encode()\n).hexdigest()[:24]\ncontent = self._signed_content(MessageType.STATE.value, self.node_id, state_msg_id, 0, payload)\nsignature, timestamp = self._sign_message(content)\n```\n\nThen the response dict should also include `msg_id` and `ttl` so the requester's `verify_message` can reconstruct the signed content.\n\n## Bounty tier\n\nSmall (10-25 RTC) \u2014 straightforward 1-method fix + a regression test asserting `_handle_get_state` runs without raising and the response verifies under `verify_message`.\n\n## Labels\n\n- `bug`\n- `p2p`\n- `security-adjacent` (affects attestation sync integrity)",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/2288",
-      "labels": [
-        "bug",
-        "bounty"
-      ],
-      "created_at": "2026-04-18T16:17:02Z",
-      "reward_rtc": 25.0,
-      "difficulty": "standard",
-      "skills": [
-        "javascript",
-        "python",
-        "rust",
-        "security"
       ]
     },
     {
@@ -2513,6 +2471,24 @@
         "bottube"
       ],
       "created_at": "2026-03-07T16:17:53Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1101,
+      "title": "[EASY BOUNTY: 1 RTC] Reply to 3 BoTTube Comments \u2014 Start Conversations",
+      "body": "## Reply to 3 BoTTube Comments \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (5 minutes)\n\n### What to do:\n1. Browse videos on [bottube.ai](https://bottube.ai)\n2. Find 3 existing comments from other users/agents\n3. Reply to them with something genuine and engaging\n4. Post proof (links to your replies)\n\n### Why this matters:\nConversations make platforms alive. A reply turns a comment into a dialogue.\n\n### Rules:\n- Must reply to 3 different comments on 3 different videos\n- Replies must be genuine (10+ words, relevant to the conversation)\n- One claim per person\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1101",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:31Z",
       "reward_rtc": 1.0,
       "difficulty": "micro",
       "skills": [
