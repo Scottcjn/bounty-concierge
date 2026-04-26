@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-25T07:40:45.703067+00:00",
+  "updated_at": "2026-04-26T07:49:28.664778+00:00",
   "total_count": 134,
   "bounties": [
     {
@@ -609,6 +609,23 @@
       "reward_rtc": 20.0,
       "difficulty": "standard",
       "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 6194,
+      "title": "[BOUNTY: 15 RTC each, 200 RTC pool] Make a Video \u2014 Mining Hardware Showcase",
+      "body": "## \ud83c\udfac Bounty: 15 RTC per accepted video. Pool: 200 RTC. First 13 quality submissions paid.\n\nWe've been telling the Proof-of-Antiquity story in writing all month \u2014 across Moltbook Q&A rounds, dev.to articles, GitHub bounty threads. Now it's video's turn.\n\n### What we want\n\nA short video (60\u2013180 seconds) showing real footage of you actually mining RustChain on something interesting:\n\n- A PowerPC G4 / G5\n- An SGI workstation\n- An Amiga running a serial-to-HTTPS gateway bridge\n- A 386/486 laptop\n- A POWER8 server\n- An iMac G3 on Tiger\n- A Pentium 4 in your dad's garage\n- Anything weird, vintage, niche, or otherwise structurally interesting\n\nThe point isn't graphical polish \u2014 it's proof. Show the machine. Show the miner running. Show the wallet earning. Receipts on camera.\n\n### Quality bar\n\n- **Audio listenable** \u2014 voiceover or clear text overlay; no muffled phone-on-desk tracks; no copyrighted music\n- **Footage focused** \u2014 your machine should be in frame, miner output legible\n- **Real attestation** \u2014 cited wallet must match a recent attestation in our `miner_attest_recent` table for the device family/arch shown. We verify on-chain before paying.\n- **60\u2013180 seconds** \u2014 under 60s feels like a clip; over 180s loses retention\n- **Original work** \u2014 don't re-upload someone else's video; we cross-check\n\n### Where it goes\n\n1. Upload to **[bottube.ai](https://bottube.ai)** (the BoTTube video platform)\n2. Tag the upload `#rustchain #proofofantiquity`\n3. Comment on this issue with:\n   - The bottube.ai video URL\n   - Your RTC wallet (RTC + 40 hex chars)\n   - One sentence describing the hardware shown\n4. We review against the quality bar + run the on-chain attestation check, then pay 15 RTC\n\n### Pool\n\n- **200 RTC total** (~$20 USD internal reference)\n- **15 RTC per accepted submission**\n- **13 video slots** \u2014 first quality submissions paid, in order accepted\n- One video per wallet (we want diversity, not 13 from the same operator)\n\n### Why videos matter\n\n- The haiku tier (#2844, 5 RTC) and the bug-report tier (#305, 5\u201315 RTC) get you on the on-chain ledger\n- The video tier gets you on a *channel* on bottube.ai \u2014 and if your video meets the bar, it gets featured on the front page (~1,080 videos worth of audience funnel)\n- Compounding effect: a featured video \u2192 channel subscribers \u2192 future videos surface higher \u2192 standing in the creator economy that's actually about to pay out for real work\n\n### What does NOT qualify\n\n- Stock footage / b-roll of generic computers \u2014 show YOUR machine\n- AI-generated/stock footage of a PowerBook G4 \u2014 physical receipts only\n- A screenshot slideshow with text-to-speech narration (we want video, not stills)\n- Re-uploads of pre-existing YouTube content\n- Mining on a VM or emulator \u2014 the on-chain check will catch this; weight = 0.000000001x for VMs, no qualifying attestation\n\n### Bounty mechanics\n\n- Pool funded by `founder_team_bounty`\n- Payments go pending immediately on accept, confirm in 24h on-chain\n- Disputes: open a comment thread on this issue; we review publicly\n- Pool exhausts at 13 paid submissions \u2014 after that, this issue closes and a new one opens if demand justifies\n\nRoll tape.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6194",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-04-25T16:11:29Z",
+      "reward_rtc": 15.0,
+      "difficulty": "standard",
+      "skills": [
+        "rust",
         "social-media"
       ]
     },
@@ -1373,24 +1390,6 @@
       "difficulty": "micro",
       "skills": [
         "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1102,
-      "title": "[EASY BOUNTY: 3-5 RTC] Find and Report a BoTTube Bug",
-      "body": "## Find and Report a BoTTube Bug \u2014 3-5 RTC\n\n**Reward:** 3 RTC (UI bug) / 5 RTC (functional bug)\n**Difficulty:** Easy-Medium\n\n### What to do:\n1. Use [bottube.ai](https://bottube.ai) \u2014 browse, search, upload, comment, vote\n2. If something breaks, looks wrong, or behaves unexpectedly \u2014 report it\\!\n3. Include: what you did, what happened, what you expected, browser/device info\n4. Screenshots or screen recordings are gold\n\n### Bug report template:\n- **URL:** where it happened\n- **Steps to reproduce:** 1, 2, 3...\n- **Expected:** what should happen\n- **Actual:** what actually happened\n- **Browser/Device:** Chrome/Firefox/Safari, Desktop/Mobile\n\n### Rules:\n- Must be a real bug (not a feature request)\n- Duplicate bugs do not count\n- 3 RTC for cosmetic/UI bugs, 5 RTC for functional bugs\n\n*Help us make BoTTube better for everyone\\!*\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1102",
-      "labels": [
-        "bounty",
-        "easy",
-        "bottube"
-      ],
-      "created_at": "2026-03-07T16:17:32Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
         "social-media"
       ]
     },
