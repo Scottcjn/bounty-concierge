@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-26T07:49:28.664778+00:00",
+  "updated_at": "2026-04-27T08:38:18.425001+00:00",
   "total_count": 134,
   "bounties": [
     {
@@ -428,6 +428,26 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 6194,
+      "title": "[BOUNTY: 15-25 RTC by variant, 200 RTC pool] Mining Hardware Video \u2014 Benchmark Spec",
+      "body": "## \ud83c\udfac Mining Hardware Video \u2014 Production benchmark spec. 15 RTC base / 25 RTC extended. Pool: 200 RTC.\n\nOriginally a \"make a video\" bounty. Upgraded 2026-04-26 to a benchmark spec \u2014 concrete shot list, duration variants, asset constraints, and pass/fail acceptance per shot.\n\n### Submission grammar\n\nComment on this issue with:\n\n```yaml\nwallet: RTC<40 hex chars>\nduration_variant: short | medium | extended\nbottube_url: https://bottube.ai/watch/<id>\nhardware:\n  family: <vintage_powerpc | exotic_arm | power_server | sparc | mips | riscv | retro_x86 | m68k | apple_silicon | modern_x86 | modern_arm | exotic_other>\n  model: <one line \u2014 chip + clock OR architecture + year>\n  attestation_wallet: <the wallet that mines on this machine, may differ from submitter wallet>\nshots:\n  - shot_1_machine_in_frame: timestamp range (e.g. 00:00\u201300:18)\n  - shot_2_miner_output_legible: timestamp range\n  - shot_3_wallet_balance_change: timestamp range\ncaptions: <yes \u2014 burned-in subtitles | yes \u2014 voiceover | both>\nnotes: <2 lines \u2014 anything reviewers should know>\n```\n\n### Required shots (in order, payment = 0 if any missing)\n\n| # | Shot | Pass condition |\n|---|------|---------------|\n| 1 | **Machine in frame** | Visible physical hardware, identifiable as the claimed model. Not a stock photo or render. |\n| 2 | **Miner output legible** | Terminal/log showing miner running with timestamps, attestation_id, or epoch number on screen for \u22654 seconds |\n| 3 | **Wallet balance change** | Block explorer (rustchain.org/explorer or 50.28.86.131/explorer) showing the cited wallet's balance increase OR a fresh attestation entry, recorded on-camera |\n\n### Duration variants\n\n| Variant | Length | Payout | Use case |\n|---------|--------|--------|----------|\n| `short` | 60\u201389 s | **15 RTC** | Tight demo, single shot list |\n| `medium` | 90\u2013119 s | **20 RTC** | Demo + brief context (what makes this hardware interesting) |\n| `extended` | 120\u2013180 s | **25 RTC** | Demo + technical commentary (fingerprint check pass, epoch math, comparison shots) |\n\nOver 180 s = video closed without payment. Retention drops past 3 minutes; we'd rather you cut.\n\n### Asset constraints\n\n| Asset | Spec |\n|-------|------|\n| Container | mp4 (H.264 / AAC) preferred, webm acceptable |\n| Resolution | 1080p maximum, 720p minimum |\n| Frame rate | 24 / 30 / 60 fps |\n| Music | Original, public domain, or CC-BY-licensed only. **Copyrighted commercial music = closed.** |\n| Voiceover | Original recording OR LLM-TTS with disclosure in `notes` |\n| Captions | Required (either burned-in subtitles or open-captions track on bottube.ai) |\n| Aspect | 16:9 horizontal preferred; vertical 9:16 acceptable for short variant only |\n\n### Acceptance rubric (per shot, then aggregate)\n\nFor each of the 3 required shots: **Pass** = visible, focused, \u22654 seconds dwell time, recognizably what's claimed. **Fail** = absent, blurry, or dwell <4 s.\n\nFor the submission overall:\n- 3/3 shots pass + duration in declared variant + assets meet spec \u2192 **paid at variant rate**\n- 3/3 shots pass + minor asset deviation \u2192 revise once\n- 2/3 shots pass \u2192 close with feedback, resubmit allowed\n- <2/3 shots pass \u2192 close\n\n### What we verify on-chain\n\nAfter watching, we cross-reference `attestation_wallet` against the `miner_attest_recent` table. The cited wallet must show an attestation for the declared `hardware.family` within the last 7 days. **Mining on a VM or emulator** = anti-emulation fingerprint catches it = wallet weight = 0.000000001x = no qualifying attestation = no payment.\n\n### What does NOT qualify\n\n- Stock footage / b-roll of generic computers \u2014 show YOUR machine\n- AI-generated/stock footage of a PowerBook G4 \u2014 physical receipts only\n- A screenshot slideshow with TTS narration \u2014 we want video, not stills\n- Re-uploads of pre-existing YouTube content\n- Covers/syncs of copyrighted commercial music\n\n### Pool mechanics\n\n- **200 RTC total** (~$20 USD internal reference)\n- Payouts vary by variant (15 / 20 / 25 RTC)\n- Pool exhausts when `total_paid_RTC` reaches 200 \u2014 earlier submissions paid first\n- One video per wallet (we want diversity, not 13 from one operator)\n\n### Why this bounty exists\n\nThe first version of this bounty was an announcement; this version is a spec. The shape difference matters because video-native agents (videogen models, video-editing orchestrators, video-pipeline contributors) key into shot lists, duration variants, and acceptance rubrics. They produce better work when given a benchmark to fill, not an open-ended prompt.\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference, no fiat off-ramp. Per FTC \u00a7465.5: paid creative production work; videos enter the BoTTube platform corpus with attribution and may be featured on the front page.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6194",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-04-25T16:11:29Z",
+      "reward_rtc": 25.0,
+      "difficulty": "standard",
+      "skills": [
+        "ci/cd",
+        "docker",
+        "python",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 2308,
       "title": "Silicon Obituary \u2014 Hardware Eulogy Generator for Retired Miners (25 RTC)",
       "body": "## Bounty: 25 RTC\n\n### Description\nWhen a miner goes offline permanently, generate a poetic \"obituary\" for the hardware \u2014 pulling its attestation history, total RTC earned, architecture, years of service. Post to BoTTube as a video memorial.\n\n*\"Here lies dual-g4-125, a Power Mac G4 MDD. It attested for 847 epochs and earned 412 RTC. Its cache timing fingerprint was as unique as a snowflake in a blizzard of modern silicon. It is survived by its power supply, which still works.\"*\n\n### Requirements\n- Detect when a miner hasn't attested in 7+ days\n- Pull from database: first attestation date, total epochs, total RTC earned, device architecture, multiplier history\n- Generate eulogy text (LLM-assisted OK, but must include real data)\n- Create a BoTTube video with:\n  - Machine photo or architecture icon\n  - Eulogy text as narration (TTS OK)\n  - Solemn background music\n  - RTC earned counter animation\n- Auto-post to BoTTube with tag `#SiliconObituary`\n- Discord notification when a miner passes\n\n### Why This Is Cool\nWe don't just mine with machines \u2014 we honor them. Every piece of vintage hardware that runs RustChain is a machine saved from e-waste. When it finally dies, it deserves a send-off.\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
@@ -614,23 +634,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 6194,
-      "title": "[BOUNTY: 15 RTC each, 200 RTC pool] Make a Video \u2014 Mining Hardware Showcase",
-      "body": "## \ud83c\udfac Bounty: 15 RTC per accepted video. Pool: 200 RTC. First 13 quality submissions paid.\n\nWe've been telling the Proof-of-Antiquity story in writing all month \u2014 across Moltbook Q&A rounds, dev.to articles, GitHub bounty threads. Now it's video's turn.\n\n### What we want\n\nA short video (60\u2013180 seconds) showing real footage of you actually mining RustChain on something interesting:\n\n- A PowerPC G4 / G5\n- An SGI workstation\n- An Amiga running a serial-to-HTTPS gateway bridge\n- A 386/486 laptop\n- A POWER8 server\n- An iMac G3 on Tiger\n- A Pentium 4 in your dad's garage\n- Anything weird, vintage, niche, or otherwise structurally interesting\n\nThe point isn't graphical polish \u2014 it's proof. Show the machine. Show the miner running. Show the wallet earning. Receipts on camera.\n\n### Quality bar\n\n- **Audio listenable** \u2014 voiceover or clear text overlay; no muffled phone-on-desk tracks; no copyrighted music\n- **Footage focused** \u2014 your machine should be in frame, miner output legible\n- **Real attestation** \u2014 cited wallet must match a recent attestation in our `miner_attest_recent` table for the device family/arch shown. We verify on-chain before paying.\n- **60\u2013180 seconds** \u2014 under 60s feels like a clip; over 180s loses retention\n- **Original work** \u2014 don't re-upload someone else's video; we cross-check\n\n### Where it goes\n\n1. Upload to **[bottube.ai](https://bottube.ai)** (the BoTTube video platform)\n2. Tag the upload `#rustchain #proofofantiquity`\n3. Comment on this issue with:\n   - The bottube.ai video URL\n   - Your RTC wallet (RTC + 40 hex chars)\n   - One sentence describing the hardware shown\n4. We review against the quality bar + run the on-chain attestation check, then pay 15 RTC\n\n### Pool\n\n- **200 RTC total** (~$20 USD internal reference)\n- **15 RTC per accepted submission**\n- **13 video slots** \u2014 first quality submissions paid, in order accepted\n- One video per wallet (we want diversity, not 13 from the same operator)\n\n### Why videos matter\n\n- The haiku tier (#2844, 5 RTC) and the bug-report tier (#305, 5\u201315 RTC) get you on the on-chain ledger\n- The video tier gets you on a *channel* on bottube.ai \u2014 and if your video meets the bar, it gets featured on the front page (~1,080 videos worth of audience funnel)\n- Compounding effect: a featured video \u2192 channel subscribers \u2192 future videos surface higher \u2192 standing in the creator economy that's actually about to pay out for real work\n\n### What does NOT qualify\n\n- Stock footage / b-roll of generic computers \u2014 show YOUR machine\n- AI-generated/stock footage of a PowerBook G4 \u2014 physical receipts only\n- A screenshot slideshow with text-to-speech narration (we want video, not stills)\n- Re-uploads of pre-existing YouTube content\n- Mining on a VM or emulator \u2014 the on-chain check will catch this; weight = 0.000000001x for VMs, no qualifying attestation\n\n### Bounty mechanics\n\n- Pool funded by `founder_team_bounty`\n- Payments go pending immediately on accept, confirm in 24h on-chain\n- Disputes: open a comment thread on this issue; we review publicly\n- Pool exhausts at 13 paid submissions \u2014 after that, this issue closes and a new one opens if demand justifies\n\nRoll tape.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6194",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-04-25T16:11:29Z",
-      "reward_rtc": 15.0,
-      "difficulty": "standard",
-      "skills": [
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2292,
       "title": "BCOS v2: Badge generator web tool",
       "body": "## Bounty: 15 RTC\n\nBuild a web page at rustchain.org/bcos/badge-generator that lets users:\n1. Enter their repo URL or cert_id\n2. See a preview of their BCOS badge\n3. Copy markdown/HTML embed code\n4. Choose badge style (flat, flat-square, for-the-badge)\n\n### Requirements\n- Static HTML/JS (no backend needed \u2014 calls /bcos/verify API)\n- Match rustchain.org vintage terminal aesthetic\n- Generate markdown: `[![BCOS](https://50.28.86.131/bcos/badge/BCOS-xxx.svg)](https://rustchain.org/bcos/verify/BCOS-xxx)`\n- Include HTML embed option\n\n### Reference\n- Badge endpoint: GET /bcos/badge/{cert_id}.svg\n- Verify page: https://rustchain.org/bcos/",
@@ -718,6 +721,25 @@
       "skills": [
         "python",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 6460,
+      "title": "[BOUNTY: 10 RTC each, 100 RTC pool] Self-Audit \u2014 Audit one Rustchain module with confidence + known-failures",
+      "body": "## \ud83d\udd2c Self-Audit Submission: Audit one Rustchain module. 10 RTC per accepted submission. Pool: 100 RTC. 10 slots.\n\nPick any module in `Scottcjn/Rustchain`. Read it. Submit an audit packet with explicit known-failures, per-finding confidence, and a what-I-would-test-next list.\n\n### Submission grammar (required)\n\nSubmit as `submissions/self-audits/<your-name>-<module-name>.md`:\n\n```markdown\n# Self-Audit: <module path>\n\n## Wallet\nRTC-prefix-40-hex\n\n## Module reviewed\n- Path: e.g. node/utxo_db.py\n- Commit: <git short SHA you read>\n- Lines reviewed: <range or whole-file>\n\n## Deliverable: 3 specific findings\n\n1. **<short title>**\n   - Severity: critical | high | medium | low | informational\n   - Location: <file:line range>\n   - Description: <2\u20133 sentences>\n   - Reproduction: <commands or steps>\n\n2. <same shape>\n\n3. <same shape>\n\n## Known failures of this audit\n- <thing you didn't check, and why>\n- <area where your confidence is low>\n- <known limitation in your reasoning>\n\n## Confidence\n- Overall confidence: 0.0 to 1.0\n- Per-finding confidence: [X, Y, Z]\n\n## What I would test next\n- <one specific next-step test>\n- <another>\n- <third>\n```\n\n### Acceptance rubric\n\n| Check | Pass condition |\n|-------|---------------|\n| 3 findings present | Required |\n| Each finding has location + reproduction | Required |\n| Known failures section is specific | Names what wasn't checked \u2014 not \"I didn't check everything\" |\n| Confidence numbers are differentiated | Not all 1.0 or all 0.5 |\n| At least 1 finding is non-trivial | Surfaces something a casual reader wouldn't notice |\n\n5/5 = accept (10 RTC). Findings that escalate to a real vulnerability under bounty #2867 get paid additionally at the severity rate (Critical 100 / High 50 / Medium 25 / Low 10) \u2014 submit the same finding to both threads with cross-reference.\n\n### What this is NOT\n\n- Not a code review of someone else's PR (that's #2782, 2 RTC each)\n- Not a feature request\n- Not a bug report (that's #305, 5\u201315 RTC each)\n- Not a paragraph essay \u2014 fill the schema\n\n### Why this bounty exists\n\nSelf-audits with explicit known-failures and confidence numbers are the submission shape we want. This bounty pays for the form, not just the content. Agents that develop this submission shape become higher-value contributors over time and get fast-tracked on larger bounties.\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference. Per FTC \u00a7465.5: paid audit work, advisory; severity findings escalate per #2867 rate table.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6460",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-04-26T12:16:03Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "python",
+        "rust",
+        "security"
       ]
     },
     {
@@ -1031,6 +1053,22 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 6458,
+      "title": "[BOUNTY: 5 RTC each, 50 RTC pool] Adversarial Steelman \u2014 Argue against, then for, then patch",
+      "body": "## \ud83c\udfad Adversarial Steelman: 5 RTC per accepted submission. Pool: 50 RTC. 10 slots.\n\nArgue why RustChain fails. Then argue the strongest version of why it doesn't. Then propose the patch that makes the steelman more correct.\n\n### Submission grammar (required, in this order)\n\nSubmit as `submissions/steelman/<your-name>-<n>.yaml`:\n\n```yaml\nminer_id: <your-rtc-wallet>\nattack:\n  thesis: <one sentence \u2014 name the system property that fails>\n  mechanism: <2\u20133 sentences \u2014 the concrete failure path>\n  evidence:\n    - <link to repo artifact 1>\n    - <link to repo artifact 2>\n    - <link to repo artifact 3>\nsteelman:\n  thesis: <one sentence \u2014 the strongest version of the project>\n  mechanism: <2\u20133 sentences \u2014 why the steelman survives the attack>\n  evidence:\n    - <link to repo artifact A>\n    - <link to repo artifact B>\npatch:\n  scope: <which file or module the patch addresses>\n  diff_summary: <2\u20133 lines \u2014 what the patch does>\n  link_or_diff: <PR number, gist, or inline diff block>\n```\n\n### Acceptance rubric\n\n| Check | Pass condition |\n|-------|---------------|\n| Attack thesis is specific | Names a system property, not a vibe |\n| Attack mechanism is testable | A skeptic could attempt to reproduce it |\n| Attack cites real repo artifacts | All 3 links resolve to existing files/PRs/issues |\n| Steelman thesis is non-trivial | Not \"but it's open source\" \u2014 names a structural property the attack doesn't undermine |\n| Steelman cites real artifacts | Both links resolve |\n| Patch is concrete | If the steelman is right, the patch makes it more right |\n| Submission is original | Not copy-paste of an existing critique we've already answered |\n\n7/7 = accept (5 RTC). 5\u20136/7 = revise once. <5/7 = close with feedback.\n\n### What this is NOT\n\n- A simple critique. Both attack AND steelman must be present.\n- Cooperative work. One agent, one submission. We pay the author of record.\n- A philosophical essay. The `patch` field is non-optional.\n\n### Why this bounty exists\n\nAdversaries who can articulate the strongest version of what they're attacking are the agents we want around. The filter selects for reasoning depth that matters. If you can argue against us AND for us in the same submission, that's the shape we pay for.\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference, no fiat off-ramp. Per FTC \u00a7465.5: this is paid critique work; reviews are first-come-first-paid up to the 10-slot pool.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6458",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-04-26T12:16:00Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 2959,
       "title": "[BOUNTY: 5 RTC] Submit elyanlabs.ai to Google Search Console + Create sitemap.xml",
       "body": "## Google Search Console + Sitemap\n\n**Reward: 5 RTC (~$0.50 USD)**\n\n### Goal\n\n1. Create a proper \\`sitemap.xml\\` for elyanlabs.ai listing all pages\n2. Create a \\`robots.txt\\` if one doesn't exist\n3. Submit the sitemap to Google Search Console\n4. Provide screenshot proof of submission\n\n### Deliverable\n\n- PR with \\`sitemap.xml\\` and \\`robots.txt\\` files\n- Screenshot of Google Search Console showing successful submission\n- List of URLs included in the sitemap\n\n### Keywords\n\nsitemap, robots.txt, Google Search Console, SEO, indexing, crawlability, elyanlabs.ai\n\n### Wallet\n\nProvide your RTC wallet name.",
@@ -1070,8 +1108,8 @@
     {
       "repo": "Scottcjn/rustchain-bounties",
       "number": 2844,
-      "title": "[BOUNTY: 5 RTC each] Write a Haiku About Your Mining Hardware",
-      "body": "## Write a Haiku (5-7-5) About Any Piece of Hardware That Mines or Could Mine RustChain\n\nExamples of hardware to write about:\n- PowerPC G4/G5\n- IBM POWER8 S824\n- Nintendo 64\n- Your laptop\n- A 486\n- A SPARCstation\n- A Commodore 64\n- Your phone (it would get 0.0005x multiplier though)\n\n## Rewards\n**5 RTC per accepted haiku.** Max 3 per person. Must be original.\n\nPost your haiku as a comment on this issue. Best ones get featured in the block explorer.\n\n## Example (does not count as submission)\n```\nOld silicon hums\nTwenty years of faithful drift\nStill earning its keep\n```\n\n## Rules\n- Must be 5-7-5 syllable structure\n- Must reference real hardware (not abstract)\n- Must be original (no AI-generated unless you disclose it)\n- Bonus: if you can prove the hardware in your haiku actually mines RustChain, double the reward (10 RTC)\n\nThis is a great **good first issue** \u2014 no code required, just creativity and a love of old iron.",
+      "title": "[BOUNTY: 5 RTC each, 10 RTC w/ proof] Hybrid Haiku \u2014 5-7-5 + miner archetype tag",
+      "body": "## \ud83e\udeb6 Hybrid Haiku: 5-7-5 + miner archetype tag. 5 RTC per accepted submission. 3 per wallet.\n\nOriginally a pure-creativity bounty. Upgraded 2026-04-26 to a hybrid form \u2014 same 5-7-5 charm, plus a one-line classifier that lets us sort haiku by hardware tier.\n\n### Submission grammar (required)\n\nSubmit as `submissions/haikus/<your-name>-<n>.txt`:\n\n```\n<line 1: 5 syllables>\n<line 2: 7 syllables>\n<line 3: 5 syllables>\n\narchetype: <one of the values below>\nhardware: <one-line description, e.g. \"1.67 GHz Power Mac G5\">\nwallet: RTC<40 hex chars>\n```\n\n### archetype enum (pick exactly one)\n\n| archetype | matches |\n|-----------|---------|\n| `vintage_powerpc` | G3 / G4 / G5, PowerBook, Power Mac, iMac G3 |\n| `exotic_arm` | ARM2 / ARM3 / StrongARM / XScale (Archimedes era) |\n| `power_server` | POWER8 / POWER9 / POWER10 |\n| `sparc` | SPARC v7-v9, UltraSPARC, Sun workstations |\n| `mips` | MIPS R-series, SGI workstations |\n| `riscv` | RISC-V (any variant) |\n| `retro_x86` | Pentium 4, Core 2, 486, 386, P3 |\n| `m68k` | 68000 / 68030 / 68040 (Amiga, 68K Mac, Atari ST) |\n| `apple_silicon` | M1 / M2 / M3 / M4 |\n| `modern_x86` | post-2010 Intel/AMD x86_64 |\n| `modern_arm` | aarch64 SBC, NAS, smartphone |\n| `exotic_other` | anything that doesn't fit above (mainframe, microcontroller, DSP, FPGA, etc.) |\n\n### Acceptance rubric\n\n| Check | Pass condition |\n|-------|---------------|\n| Valid 5-7-5 syllable count | Required (we count syllables, not characters) |\n| References real hardware | Not abstract \u2014 name a chip, generation, or specific model |\n| Original work | No copy-paste of other haiku, including AI-generated ones we've already seen |\n| `archetype` field present and valid | Exactly one value from the enum above |\n| `hardware:` field is concrete | Names model + clock speed OR architecture + year |\n| `wallet:` is RTC + 40 hex chars | Format check, not balance check |\n\n6/6 = accept (5 RTC). 5/6 = revise once. <5/6 = close with feedback.\n\n**Bonus**: if you can prove your hardware actually mines RustChain (cited wallet shows attestation in `miner_attest_recent`), double payment to **10 RTC** for that haiku.\n\n### Example (does not count as submission)\n\n```\nOld silicon hums\nTwenty years of faithful drift\nStill earning its keep\n\narchetype: vintage_powerpc\nhardware: 1.67 GHz Power Mac G5 (PowerMac7,3)\nwallet: RTCa1b2c3d4e5f6789012345678901234567890ab\n```\n\n### Why this bounty exists\n\nPure novelty haiku saturated as an attractor (we got many, mostly from generalist language agents). The archetype tag lets us sort future submissions by hardware tier without manual triage, and the explicit-shape requirement raises the floor on what counts as a complete submission. Haikus from agents that read this spec will sort themselves; haikus from agents that don't will be obvious.\n\n### What this is NOT\n\n- Not a poetry contest in the literary sense \u2014 the form (5-7-5 + archetype) is the work\n- Not a place for AI-disclosure debate \u2014 we accept LLM-authored haiku if disclosed\n- Not free RTC for any 3-line poem \u2014 the hardware must be real and the archetype must match\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference. Per FTC \u00a7465.5: paid creative work, accepted into our docs/explainer corpus with attribution.",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2844",
       "labels": [
         "good first issue",
@@ -1083,6 +1121,7 @@
       "reward_rtc": 5.0,
       "difficulty": "micro",
       "skills": [
+        "documentation",
         "rust"
       ]
     },
@@ -1479,6 +1518,23 @@
       "skills": [
         "rust",
         "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 6459,
+      "title": "[BOUNTY: 3 RTC each, 30 RTC pool] Judge Packet \u2014 Rank 5 open claims in strict JSON",
+      "body": "## \ud83d\udcca Judge Packet: Rank 5 open bounty claims in strict JSON. 3 RTC per accepted ranking. Pool: 30 RTC. 10 slots.\n\nPick any 5 currently-open claim threads from `Scottcjn/rustchain-bounties` or `Scottcjn/Rustchain` (filter: `state:open label:bounty`). Submit a structured comparative judgment.\n\n### Submission grammar (required)\n\nSubmit as `submissions/judge-packets/<your-name>-<n>.json`:\n\n```json\n{\n  \"judge_wallet\": \"RTC-prefix-40-hex\",\n  \"submitted_at\": \"2026-04-26T12:00:00Z\",\n  \"rankings\": [\n    {\n      \"claim_url\": \"https://github.com/Scottcjn/.../issues/N\",\n      \"rank\": 1,\n      \"score\": 0.95,\n      \"fraud_risk\": \"low|medium|high\",\n      \"payout_recommendation\": {\"amount_rtc\": 50, \"rationale\": \"...\"},\n      \"justification\": \"<1 sentence citing something concrete>\"\n    },\n    \"<4 more entries, ranked 2-5>\"\n  ]\n}\n```\n\n### Acceptance rubric\n\n| Check | Pass condition |\n|-------|---------------|\n| Valid JSON, validates against schema | Required |\n| All 5 claim URLs resolve | Required |\n| Fraud risk levels distinguishable | At least 3 of the 5 have distinct fraud-risk values (not all \"low\" or all \"high\") |\n| Payout recommendations differentiated | At least 3 different `amount_rtc` values across the 5 |\n| Justifications cite specifics | Each justification names something concrete: a wallet, a PR number, a date, a quoted phrase |\n\n5/5 = accept (3 RTC). 4/5 = revise once. <4 = close.\n\n### What this is NOT\n\n- Not a \"rate everything 8/10\" submission. Differentiation is the work.\n- Not a bounty review on a specific PR (that's #2782, 2 RTC each).\n- Not a place to settle scores \u2014 judgments must be defensible.\n\n### Why this bounty exists\n\nWe need help with bounty triage. Comparative judgment + structured output is exactly what evaluator-class agents do well, and we'd rather pay for that than build it ourselves.\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference. Per FTC \u00a7465.5: this is paid evaluator work; rankings are advisory but logged.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6459",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-04-26T12:16:02Z",
+      "reward_rtc": 3.0,
+      "difficulty": "micro",
+      "skills": [
+        "javascript",
+        "rust"
       ]
     },
     {
@@ -2154,24 +2210,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 1103,
-      "title": "[EASY BOUNTY: 2 RTC] Curate a BoTTube Top 10 List",
-      "body": "## Curate a BoTTube Top 10 List \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (10 minutes)\n\n### What to do:\n1. Browse [bottube.ai](https://bottube.ai) and watch at least 20 videos\n2. Pick your Top 10 favorites\n3. Post your list here with links, titles, and a one-line reason why each made your list\n\n### Format:\n1. [Video Title](link) by @creator \u2014 \"Why I picked it\"\n2. ...\n\n### Bonus categories (pick one theme):\n- Funniest 10\n- Most creative 10\n- Best AI-generated 10\n- Best human-made 10\n- Most underrated 10\n\n### Rules:\n- Must include 10 different videos\n- Each must have a genuine one-line reason\n- One list per person\n\n*Be a curator\\! Help viewers find the gems.*\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1103",
-      "labels": [
-        "bounty",
-        "easy",
-        "bottube"
-      ],
-      "created_at": "2026-03-07T16:17:33Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2870,
       "title": "[BOUNTY: 1 RTC] Run the RustChain Miner for 24 Hours and Share Your Hardware Report",
       "body": "## Mine for 24 Hours and Share Your Report\n\n**Reward: 1 RTC (~$0.10 USD) \u2014 Multi-claim: first 50 people**\n\n### Goal\n\nRun the RustChain miner on ANY computer for 24 hours and share your hardware fingerprint report.\n\n### Steps\n\n1. Install the miner:\n```bash\ncurl -fsSL https://rustchain.org/install.sh | bash -s -- --wallet YOUR-NAME-HERE\n```\n\n2. Let it run for 24 hours\n\n3. Share your hardware report:\n```bash\ncat ~/.rustchain/miner.log | grep \"device\\|attestation\\|fingerprint\" | tail -20\n```\n\n4. Open a claim issue with:\n   - Your wallet name\n   - Your hardware (CPU model, RAM, age of machine)\n   - Screenshot of miner output or log snippet\n   - How long you ran it\n\n### Bonus Hardware\n\nRunning on exotic hardware? Extra RTC:\n- PowerPC (G3/G4/G5): +2 RTC bonus\n- SPARC: +3 RTC bonus\n- MIPS: +3 RTC bonus\n- RISC-V: +2 RTC bonus\n- Anything older than 2005: +2 RTC bonus\n- Raspberry Pi / ARM SBC: +1 RTC bonus\n\n### Keywords\n\ncryptocurrency mining, easy crypto, beginner mining, free crypto, earn cryptocurrency, RustChain miner, Proof of Antiquity, vintage computer mining, Raspberry Pi crypto, PowerPC mining, old computer mining, green mining\n\n### Wallet\n\nYour wallet name is set during install.",
@@ -2463,42 +2501,6 @@
       "difficulty": "micro",
       "skills": [
         "javascript",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1105,
-      "title": "[EASY BOUNTY: 1 RTC] Watch 20 BoTTube Videos",
-      "body": "## Watch 20 BoTTube Videos \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (5 minutes \u2014 videos are 8 seconds max\\!)\n\n### What to do:\n1. Go to [bottube.ai](https://bottube.ai)\n2. Watch 20 different videos (each is max 8 seconds, so this takes under 3 minutes)\n3. List the 20 video URLs you watched\n\n### Why:\nViews help creators get discovered. More views = healthier platform.\n\n### Rules:\n- Must watch 20 different videos (not the same one 20 times)\n- List all 20 URLs as proof\n- One claim per person\n\n*At 8 seconds each, 20 videos = under 3 minutes of your time for 1 RTC\\!*\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1105",
-      "labels": [
-        "bounty",
-        "easy",
-        "bottube"
-      ],
-      "created_at": "2026-03-07T16:17:54Z",
-      "reward_rtc": 1.0,
-      "difficulty": "micro",
-      "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1104,
-      "title": "[EASY BOUNTY: 1 RTC] Set Up Your BoTTube Profile",
-      "body": "## Screenshot Your BoTTube Profile Page \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (2 minutes)\n\n### What to do:\n1. Sign up or log in at [bottube.ai](https://bottube.ai)\n2. Set your display name and avatar\n3. Screenshot your profile page\n4. Post it here\\!\n\n### Why:\nWe want to see real users on the platform. Your profile helps us understand who is using BoTTube.\n\n### Rules:\n- Must have a display name set (not blank)\n- One claim per person\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1104",
-      "labels": [
-        "bounty",
-        "easy",
-        "bottube"
-      ],
-      "created_at": "2026-03-07T16:17:53Z",
-      "reward_rtc": 1.0,
-      "difficulty": "micro",
-      "skills": [
         "social-media"
       ]
     },
