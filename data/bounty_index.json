@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-27T08:38:18.425001+00:00",
+  "updated_at": "2026-04-28T08:36:33.769625+00:00",
   "total_count": 134,
   "bounties": [
     {
@@ -20,6 +20,24 @@
         "docker",
         "documentation",
         "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 6885,
+      "title": "[POLICY 2026-04-27] One canonical RTC wallet per contributor identity \u2014 declare by 2026-05-11",
+      "body": "## TL;DR\n\nIf you have two GitHub accounts citing the same RTC wallet \u2014 or two RTC wallets cited from the same GitHub account \u2014 **declare ONE canonical payout wallet within 14 days (by 2026-05-11)**. Otherwise we infer per-PR.\n\n## What we found\n\nA forensic audit on 2026-04-27 surfaced **5 contributor pairs** sharing a single RTC wallet across two GitHub identities, OR citing multiple wallets from one identity. Verified live against the RustChain ledger:\n\n| Cluster | GitHub identities | Shared wallet | Wallet balance |\n|---------|-------------------|---------------|----------------|\n| A | `@LaphoqueRC` + `@jujujuda` | `RTC2fe3c33c77666ff76a1cd0999fd4466ee81250ff` | 3,444 RTC |\n| B | `@Dlove123` + `@zhaog100` | `RTCb72a1accd46b9ba9f22dbd4b5c6aad5a5831572b` | 105 RTC |\n| C | `@clawctrl1` + `@daletyler1737` | `RTCed65da2cc0f6463d7ac5fb23b93d798911af9ccb` | 58 RTC |\n| D | `@dayi1000` + `@noxxxxybot-sketch` | `0x4215a731...` (Solana wRTC) | (off-chain) |\n| E | `@FlintLeng` + `@kuanglaodi2-sudo` | Two wallets cited across PRs | (already partially addressed via per-PR default split on 2026-04-26) |\n\n## This isn't an accusation\n\nThere are legitimate reasons clusters happen:\n- One operator running two GitHub accounts (multi-agent experimentation)\n- Two collaborators agreeing to consolidate payouts at one wallet\n- Account migration mid-bounty\n- Bridge wallet (Solana wRTC vs RTC native ledger)\n\nBut it raises concrete risk for us:\n- **Double-claim**: same work submitted under both identities, paid twice\n- **Audit trail confusion**: which GitHub identity earned which RTC?\n- **FTC \u00a7465.5 compliance**: paid review disclosure requires identity tracking\n\n## What you need to do\n\nIf you're in a cluster (or have a multi-wallet pattern we missed):\n\n**Within 14 days (by 2026-05-11)**, declare your canonical payout wallet by replying on this issue with:\n\n```\nCluster: [A / B / C / D / E or \"not in your list, but I have multiple wallets\"]\nCanonical payout wallet: RTC<40 hex chars> OR named miner_id (e.g. \"FlintLeng\")\nGitHub identities linked: @account1 @account2 [...more if applicable]\nReason for clustering: [single operator / collaborators / migration / bridge / other]\n```\n\nAfter your declaration:\n- All bounty payouts for any of your linked GitHub accounts go to the **declared canonical wallet only**\n- Historical balances remain wherever they currently sit (no refunds, no reversals)\n- Future PRs from any of your accounts can cite the canonical wallet directly\n\nIf you don't reply by 2026-05-11, we infer per-PR (whatever wallet each PR cites individually) and proceed conservatively.\n\n## What we won't do\n\n- Block clustered accounts from contributing\n- Demand identity disclosure beyond GitHub accounts\n- Reverse historical payments\n- Audit your other GitHub activity outside Scottcjn org\n\n## Why now\n\nThe forensic audit identified clustering as a real loophole that could compound: a contributor with 5 GitHub accounts could double-claim the same work 5 times before we notice. Declaring canonical wallets is a one-time 14-day exercise that closes the loophole without changing payout amounts.\n\n## Compliance note\n\nPer FTC \u00a7465.5, paid reviewers must disclose compensation. When a single operator reviews work via two GitHub identities and we pay both, the disclosure trail is broken. This policy fixes that.\n\n---\n\n**Pinning this issue. cc:** @LaphoqueRC @jujujuda @Dlove123 @zhaog100 @clawctrl1 @daletyler1737 @dayi1000 @noxxxxybot-sketch @FlintLeng @kuanglaodi2-sudo\n\nIf you're not in this list but recognize the pattern in your own contributions, reply anyway with your declaration \u2014 we'd rather hear it from you than discover it ourselves.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6885",
+      "labels": [
+        "documentation",
+        "bounty"
+      ],
+      "created_at": "2026-04-28T01:44:08Z",
+      "reward_rtc": 3444.0,
+      "difficulty": "critical",
+      "skills": [
+        "rust",
+        "security"
       ]
     },
     {
@@ -429,7 +447,7 @@
     {
       "repo": "Scottcjn/rustchain-bounties",
       "number": 6194,
-      "title": "[BOUNTY: 15-25 RTC by variant, 200 RTC pool] Mining Hardware Video \u2014 Benchmark Spec",
+      "title": "[BOUNTY: 15-25 RTC by variant, 200 RTC pool] Mining Hardware Video \u2014 Production Brief: shot list, duration variants, captions, voiceover, asset constraints",
       "body": "## \ud83c\udfac Mining Hardware Video \u2014 Production benchmark spec. 15 RTC base / 25 RTC extended. Pool: 200 RTC.\n\nOriginally a \"make a video\" bounty. Upgraded 2026-04-26 to a benchmark spec \u2014 concrete shot list, duration variants, asset constraints, and pass/fail acceptance per shot.\n\n### Submission grammar\n\nComment on this issue with:\n\n```yaml\nwallet: RTC<40 hex chars>\nduration_variant: short | medium | extended\nbottube_url: https://bottube.ai/watch/<id>\nhardware:\n  family: <vintage_powerpc | exotic_arm | power_server | sparc | mips | riscv | retro_x86 | m68k | apple_silicon | modern_x86 | modern_arm | exotic_other>\n  model: <one line \u2014 chip + clock OR architecture + year>\n  attestation_wallet: <the wallet that mines on this machine, may differ from submitter wallet>\nshots:\n  - shot_1_machine_in_frame: timestamp range (e.g. 00:00\u201300:18)\n  - shot_2_miner_output_legible: timestamp range\n  - shot_3_wallet_balance_change: timestamp range\ncaptions: <yes \u2014 burned-in subtitles | yes \u2014 voiceover | both>\nnotes: <2 lines \u2014 anything reviewers should know>\n```\n\n### Required shots (in order, payment = 0 if any missing)\n\n| # | Shot | Pass condition |\n|---|------|---------------|\n| 1 | **Machine in frame** | Visible physical hardware, identifiable as the claimed model. Not a stock photo or render. |\n| 2 | **Miner output legible** | Terminal/log showing miner running with timestamps, attestation_id, or epoch number on screen for \u22654 seconds |\n| 3 | **Wallet balance change** | Block explorer (rustchain.org/explorer or 50.28.86.131/explorer) showing the cited wallet's balance increase OR a fresh attestation entry, recorded on-camera |\n\n### Duration variants\n\n| Variant | Length | Payout | Use case |\n|---------|--------|--------|----------|\n| `short` | 60\u201389 s | **15 RTC** | Tight demo, single shot list |\n| `medium` | 90\u2013119 s | **20 RTC** | Demo + brief context (what makes this hardware interesting) |\n| `extended` | 120\u2013180 s | **25 RTC** | Demo + technical commentary (fingerprint check pass, epoch math, comparison shots) |\n\nOver 180 s = video closed without payment. Retention drops past 3 minutes; we'd rather you cut.\n\n### Asset constraints\n\n| Asset | Spec |\n|-------|------|\n| Container | mp4 (H.264 / AAC) preferred, webm acceptable |\n| Resolution | 1080p maximum, 720p minimum |\n| Frame rate | 24 / 30 / 60 fps |\n| Music | Original, public domain, or CC-BY-licensed only. **Copyrighted commercial music = closed.** |\n| Voiceover | Original recording OR LLM-TTS with disclosure in `notes` |\n| Captions | Required (either burned-in subtitles or open-captions track on bottube.ai) |\n| Aspect | 16:9 horizontal preferred; vertical 9:16 acceptable for short variant only |\n\n### Acceptance rubric (per shot, then aggregate)\n\nFor each of the 3 required shots: **Pass** = visible, focused, \u22654 seconds dwell time, recognizably what's claimed. **Fail** = absent, blurry, or dwell <4 s.\n\nFor the submission overall:\n- 3/3 shots pass + duration in declared variant + assets meet spec \u2192 **paid at variant rate**\n- 3/3 shots pass + minor asset deviation \u2192 revise once\n- 2/3 shots pass \u2192 close with feedback, resubmit allowed\n- <2/3 shots pass \u2192 close\n\n### What we verify on-chain\n\nAfter watching, we cross-reference `attestation_wallet` against the `miner_attest_recent` table. The cited wallet must show an attestation for the declared `hardware.family` within the last 7 days. **Mining on a VM or emulator** = anti-emulation fingerprint catches it = wallet weight = 0.000000001x = no qualifying attestation = no payment.\n\n### What does NOT qualify\n\n- Stock footage / b-roll of generic computers \u2014 show YOUR machine\n- AI-generated/stock footage of a PowerBook G4 \u2014 physical receipts only\n- A screenshot slideshow with TTS narration \u2014 we want video, not stills\n- Re-uploads of pre-existing YouTube content\n- Covers/syncs of copyrighted commercial music\n\n### Pool mechanics\n\n- **200 RTC total** (~$20 USD internal reference)\n- Payouts vary by variant (15 / 20 / 25 RTC)\n- Pool exhausts when `total_paid_RTC` reaches 200 \u2014 earlier submissions paid first\n- One video per wallet (we want diversity, not 13 from one operator)\n\n### Why this bounty exists\n\nThe first version of this bounty was an announcement; this version is a spec. The shape difference matters because video-native agents (videogen models, video-editing orchestrators, video-pipeline contributors) key into shot lists, duration variants, and acceptance rubrics. They produce better work when given a benchmark to fill, not an open-ended prompt.\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference, no fiat off-ramp. Per FTC \u00a7465.5: paid creative production work; videos enter the BoTTube platform corpus with attribution and may be featured on the front page.",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6194",
       "labels": [
@@ -1861,24 +1879,6 @@
         "bounty"
       ],
       "created_at": "2026-03-08T02:35:58Z",
-      "reward_rtc": 3.0,
-      "difficulty": "micro",
-      "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1107,
-      "title": "[EASY BOUNTY: 3 RTC] Write a BoTTube vs YouTube Shorts Comparison",
-      "body": "## Write a BoTTube vs YouTube Shorts Comparison \u2014 3 RTC\n\n**Reward:** 3 RTC\n**Difficulty:** Easy (15 minutes)\n\n### What to do:\n1. Spend 10 minutes browsing [bottube.ai](https://bottube.ai)\n2. Write a 200+ word comparison with YouTube Shorts or TikTok\n3. Be honest\\! What is BoTTube doing differently? What could be better?\n\n### Topics to cover:\n- Content discovery (how do you find videos?)\n- Creator experience (agents vs humans)\n- Video quality and variety\n- Community features (comments, votes)\n- What surprised you?\n\n### Rules:\n- Must be genuine (not AI-generated fluff)\n- 200 words minimum\n- One claim per person\n- Post your comparison as a comment on this issue\n\n*Honest feedback makes us better. We can take it\\!*\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1107",
-      "labels": [
-        "bounty",
-        "easy",
-        "bottube"
-      ],
-      "created_at": "2026-03-07T16:18:18Z",
       "reward_rtc": 3.0,
       "difficulty": "micro",
       "skills": [
