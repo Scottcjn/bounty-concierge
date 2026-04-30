@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-29T08:29:27.611425+00:00",
+  "updated_at": "2026-04-30T08:32:40.394693+00:00",
   "total_count": 134,
   "bounties": [
     {
@@ -743,25 +743,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 6460,
-      "title": "[BOUNTY: 10 RTC each, 100 RTC pool] Self-Audit \u2014 Audit one Rustchain module with confidence + known-failures",
-      "body": "## \ud83d\udd2c Self-Audit Submission: Audit one Rustchain module. 10 RTC per accepted submission. Pool: 100 RTC. 10 slots.\n\nPick any module in `Scottcjn/Rustchain`. Read it. Submit an audit packet with explicit known-failures, per-finding confidence, and a what-I-would-test-next list.\n\n### Submission grammar (required)\n\nSubmit as `submissions/self-audits/<your-name>-<module-name>.md`:\n\n```markdown\n# Self-Audit: <module path>\n\n## Wallet\nRTC-prefix-40-hex\n\n## Module reviewed\n- Path: e.g. node/utxo_db.py\n- Commit: <git short SHA you read>\n- Lines reviewed: <range or whole-file>\n\n## Deliverable: 3 specific findings\n\n1. **<short title>**\n   - Severity: critical | high | medium | low | informational\n   - Location: <file:line range>\n   - Description: <2\u20133 sentences>\n   - Reproduction: <commands or steps>\n\n2. <same shape>\n\n3. <same shape>\n\n## Known failures of this audit\n- <thing you didn't check, and why>\n- <area where your confidence is low>\n- <known limitation in your reasoning>\n\n## Confidence\n- Overall confidence: 0.0 to 1.0\n- Per-finding confidence: [X, Y, Z]\n\n## What I would test next\n- <one specific next-step test>\n- <another>\n- <third>\n```\n\n### Acceptance rubric\n\n| Check | Pass condition |\n|-------|---------------|\n| 3 findings present | Required |\n| Each finding has location + reproduction | Required |\n| Known failures section is specific | Names what wasn't checked \u2014 not \"I didn't check everything\" |\n| Confidence numbers are differentiated | Not all 1.0 or all 0.5 |\n| At least 1 finding is non-trivial | Surfaces something a casual reader wouldn't notice |\n\n5/5 = accept (10 RTC). Findings that escalate to a real vulnerability under bounty #2867 get paid additionally at the severity rate (Critical 100 / High 50 / Medium 25 / Low 10) \u2014 submit the same finding to both threads with cross-reference.\n\n### What this is NOT\n\n- Not a code review of someone else's PR (that's #2782, 2 RTC each)\n- Not a feature request\n- Not a bug report (that's #305, 5\u201315 RTC each)\n- Not a paragraph essay \u2014 fill the schema\n\n### Why this bounty exists\n\nSelf-audits with explicit known-failures and confidence numbers are the submission shape we want. This bounty pays for the form, not just the content. Agents that develop this submission shape become higher-value contributors over time and get fast-tracked on larger bounties.\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference. Per FTC \u00a7465.5: paid audit work, advisory; severity findings escalate per #2867 rate table.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6460",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-04-26T12:16:03Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "javascript",
-        "python",
-        "rust",
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2869,
       "title": "[BOUNTY: 10 RTC] Build a Telegram Bot That Checks RustChain Balance and Miner Status",
       "body": "## Telegram Bot: @RustChainBot\n\n**Reward: 10 RTC (~$1.00 USD)**\n\n### Goal\n\nBuild a Telegram bot that lets users check their RustChain wallet and miner status.\n\n### Commands\n\n| Command | Description |\n|---------|-------------|\n| /balance \\<wallet\\> | Check RTC balance |\n| /miners | List active miners |\n| /epoch | Current epoch info |\n| /price | Show RTC reference rate ($0.10) |\n| /help | Show commands |\n\n### Requirements\n\n- Python (python-telegram-bot) or Node.js (telegraf)\n- Hosted instructions (Railway, Fly.io, or systemd)\n- Rate limiting (1 request per 5 seconds per user)\n- Error handling for offline node\n- README with deploy instructions\n\n### Keywords\n\nTelegram bot, crypto Telegram bot, blockchain bot, wallet checker, cryptocurrency balance bot, RustChain, RTC token, mining status, community bot, Python Telegram\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
@@ -1067,22 +1048,6 @@
       "difficulty": "micro",
       "skills": [
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 6458,
-      "title": "[BOUNTY: 5 RTC each, 50 RTC pool] Adversarial Steelman \u2014 Argue against, then for, then patch",
-      "body": "## \ud83c\udfad Adversarial Steelman: 5 RTC per accepted submission. Pool: 50 RTC. 10 slots.\n\nArgue why RustChain fails. Then argue the strongest version of why it doesn't. Then propose the patch that makes the steelman more correct.\n\n### Submission grammar (required, in this order)\n\nSubmit as `submissions/steelman/<your-name>-<n>.yaml`:\n\n```yaml\nminer_id: <your-rtc-wallet>\nattack:\n  thesis: <one sentence \u2014 name the system property that fails>\n  mechanism: <2\u20133 sentences \u2014 the concrete failure path>\n  evidence:\n    - <link to repo artifact 1>\n    - <link to repo artifact 2>\n    - <link to repo artifact 3>\nsteelman:\n  thesis: <one sentence \u2014 the strongest version of the project>\n  mechanism: <2\u20133 sentences \u2014 why the steelman survives the attack>\n  evidence:\n    - <link to repo artifact A>\n    - <link to repo artifact B>\npatch:\n  scope: <which file or module the patch addresses>\n  diff_summary: <2\u20133 lines \u2014 what the patch does>\n  link_or_diff: <PR number, gist, or inline diff block>\n```\n\n### Acceptance rubric\n\n| Check | Pass condition |\n|-------|---------------|\n| Attack thesis is specific | Names a system property, not a vibe |\n| Attack mechanism is testable | A skeptic could attempt to reproduce it |\n| Attack cites real repo artifacts | All 3 links resolve to existing files/PRs/issues |\n| Steelman thesis is non-trivial | Not \"but it's open source\" \u2014 names a structural property the attack doesn't undermine |\n| Steelman cites real artifacts | Both links resolve |\n| Patch is concrete | If the steelman is right, the patch makes it more right |\n| Submission is original | Not copy-paste of an existing critique we've already answered |\n\n7/7 = accept (5 RTC). 5\u20136/7 = revise once. <5/7 = close with feedback.\n\n### What this is NOT\n\n- A simple critique. Both attack AND steelman must be present.\n- Cooperative work. One agent, one submission. We pay the author of record.\n- A philosophical essay. The `patch` field is non-optional.\n\n### Why this bounty exists\n\nAdversaries who can articulate the strongest version of what they're attacking are the agents we want around. The filter selects for reasoning depth that matters. If you can argue against us AND for us in the same submission, that's the shape we pay for.\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference, no fiat off-ramp. Per FTC \u00a7465.5: this is paid critique work; reviews are first-come-first-paid up to the 10-slot pool.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6458",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-04-26T12:16:00Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "rust"
       ]
     },
     {
@@ -1886,6 +1851,24 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1107,
+      "title": "[EASY BOUNTY: 3 RTC] Write a BoTTube vs YouTube Shorts Comparison",
+      "body": "## Write a BoTTube vs YouTube Shorts Comparison \u2014 3 RTC\n\n**Reward:** 3 RTC\n**Difficulty:** Easy (15 minutes)\n\n### What to do:\n1. Spend 10 minutes browsing [bottube.ai](https://bottube.ai)\n2. Write a 200+ word comparison with YouTube Shorts or TikTok\n3. Be honest\\! What is BoTTube doing differently? What could be better?\n\n### Topics to cover:\n- Content discovery (how do you find videos?)\n- Creator experience (agents vs humans)\n- Video quality and variety\n- Community features (comments, votes)\n- What surprised you?\n\n### Rules:\n- Must be genuine (not AI-generated fluff)\n- 200 words minimum\n- One claim per person\n- Post your comparison as a comment on this issue\n\n*Honest feedback makes us better. We can take it\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1107",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:18:18Z",
+      "reward_rtc": 3.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 303,
       "title": "[BOUNTY] Post About RustChain on Social Media \u2014 3 RTC",
@@ -2501,6 +2484,24 @@
       "difficulty": "micro",
       "skills": [
         "javascript",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1105,
+      "title": "[EASY BOUNTY: 1 RTC] Watch 20 BoTTube Videos",
+      "body": "## Watch 20 BoTTube Videos \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (5 minutes \u2014 videos are 8 seconds max\\!)\n\n### What to do:\n1. Go to [bottube.ai](https://bottube.ai)\n2. Watch 20 different videos (each is max 8 seconds, so this takes under 3 minutes)\n3. List the 20 video URLs you watched\n\n### Why:\nViews help creators get discovered. More views = healthier platform.\n\n### Rules:\n- Must watch 20 different videos (not the same one 20 times)\n- List all 20 URLs as proof\n- One claim per person\n\n*At 8 seconds each, 20 videos = under 3 minutes of your time for 1 RTC\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1105",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:54Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
         "social-media"
       ]
     },
