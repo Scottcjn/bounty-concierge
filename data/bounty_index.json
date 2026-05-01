@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-30T08:32:40.394693+00:00",
+  "updated_at": "2026-05-01T08:22:25.439427+00:00",
   "total_count": 134,
   "bounties": [
     {
@@ -262,28 +262,6 @@
         "javascript",
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2867,
-      "title": "[BOUNTY: 100 RTC] Security Audit \u2014 Find Critical Vulnerabilities in RustChain Node",
-      "body": "## Red Team Security Audit\n\n**Reward: 25-100 RTC (~$2.50-$10 USD) per finding, based on severity**\n\n### Scope\n\nThe entire RustChain node codebase is in scope:\n\n| Target | Language | Entry Point |\n|--------|----------|-------------|\n| Node server | Python | `node/rustchain_v2_integrated_v2.2.1_rip200.py` |\n| UTXO layer | Python | `node/utxo_db.py` |\n| Endpoints | Python | `node/utxo_endpoints.py` |\n| P2P sync | Python | `node/rustchain_p2p_gossip.py` |\n| Miner client | Python | `miners/rustchain_universal_miner.py` |\n| Hardware fingerprinting | Python | `miners/fingerprint_checks.py` |\n\n### Payout Scale\n\n| Severity | Examples | Payout |\n|----------|----------|--------|\n| Critical | Double-spend, consensus bypass, fund theft | 100 RTC |\n| High | DoS via resource exhaustion, auth bypass | 50 RTC |\n| Medium | Mempool manipulation, fingerprint spoofing | 25 RTC |\n| Low | Info disclosure, error handling | 10 RTC |\n\n### How to Submit\n\n1. Create a PoC (proof-of-concept) test that demonstrates the vulnerability\n2. Submit as a PR with the test file + description\n3. Do NOT exploit on production nodes \u2014 use local test instances\n\n### Previous Finds (for reference)\n\n- Mempool DoS via zero-value outputs (#2179) \u2014 FIXED\n- Wallet transfer auth bypass \u2014 FIXED\n- Hardware ID collision \u2014 FIXED\n- VM fingerprint bypass \u2014 FIXED\n\n### Keywords\n\nbug bounty, security audit, penetration testing, blockchain security, smart contract audit, cryptocurrency vulnerability, red team, ethical hacking, CTF, Python security, SQLite injection, DoS prevention\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2867",
-      "labels": [
-        "help wanted",
-        "bounty",
-        "critical",
-        "red-team"
-      ],
-      "created_at": "2026-04-09T03:25:53Z",
-      "reward_rtc": 100.0,
-      "difficulty": "critical",
-      "skills": [
-        "javascript",
-        "python",
-        "rust",
-        "security"
       ]
     },
     {
@@ -2193,6 +2171,24 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 1103,
+      "title": "[EASY BOUNTY: 2 RTC] Curate a BoTTube Top 10 List",
+      "body": "## Curate a BoTTube Top 10 List \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (10 minutes)\n\n### What to do:\n1. Browse [bottube.ai](https://bottube.ai) and watch at least 20 videos\n2. Pick your Top 10 favorites\n3. Post your list here with links, titles, and a one-line reason why each made your list\n\n### Format:\n1. [Video Title](link) by @creator \u2014 \"Why I picked it\"\n2. ...\n\n### Bonus categories (pick one theme):\n- Funniest 10\n- Most creative 10\n- Best AI-generated 10\n- Best human-made 10\n- Most underrated 10\n\n### Rules:\n- Must include 10 different videos\n- Each must have a genuine one-line reason\n- One list per person\n\n*Be a curator\\! Help viewers find the gems.*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1103",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:33Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 2870,
       "title": "[BOUNTY: 1 RTC] Run the RustChain Miner for 24 Hours and Share Your Hardware Report",
       "body": "## Mine for 24 Hours and Share Your Report\n\n**Reward: 1 RTC (~$0.10 USD) \u2014 Multi-claim: first 50 people**\n\n### Goal\n\nRun the RustChain miner on ANY computer for 24 hours and share your hardware fingerprint report.\n\n### Steps\n\n1. Install the miner:\n```bash\ncurl -fsSL https://rustchain.org/install.sh | bash -s -- --wallet YOUR-NAME-HERE\n```\n\n2. Let it run for 24 hours\n\n3. Share your hardware report:\n```bash\ncat ~/.rustchain/miner.log | grep \"device\\|attestation\\|fingerprint\" | tail -20\n```\n\n4. Open a claim issue with:\n   - Your wallet name\n   - Your hardware (CPU model, RAM, age of machine)\n   - Screenshot of miner output or log snippet\n   - How long you ran it\n\n### Bonus Hardware\n\nRunning on exotic hardware? Extra RTC:\n- PowerPC (G3/G4/G5): +2 RTC bonus\n- SPARC: +3 RTC bonus\n- MIPS: +3 RTC bonus\n- RISC-V: +2 RTC bonus\n- Anything older than 2005: +2 RTC bonus\n- Raspberry Pi / ARM SBC: +1 RTC bonus\n\n### Keywords\n\ncryptocurrency mining, easy crypto, beginner mining, free crypto, earn cryptocurrency, RustChain miner, Proof of Antiquity, vintage computer mining, Raspberry Pi crypto, PowerPC mining, old computer mining, green mining\n\n### Wallet\n\nYour wallet name is set during install.",
@@ -2325,27 +2321,6 @@
       "difficulty": "micro",
       "skills": [
         "javascript"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2270,
-      "title": "[BOUNTY: 1 RTC] Submit your first PR to any Elyan Labs repo",
-      "body": "## Bounty: Your First PR (1 RTC)\n\nThe absolute lowest barrier to earning RTC. Submit **any PR** to **any Elyan Labs repo**.\n\n### What counts\n- Fix a typo\n- Improve a docstring\n- Add a comment explaining confusing code\n- Fix a broken link\n- Add yourself to CONTRIBUTORS.md\n- Anything that improves the project, no matter how small\n\n### Repos\nPick any: [Rustchain](https://github.com/Scottcjn/Rustchain), [BoTTube](https://github.com/Scottcjn/bottube), [TrashClaw](https://github.com/Scottcjn/trashclaw), [beacon-skill](https://github.com/Scottcjn/beacon-skill), [grazer-skill](https://github.com/Scottcjn/grazer-skill), or any other repo under [@Scottcjn](https://github.com/Scottcjn).\n\n### Rules\n- PR must be merged (we review everything)\n- One payment per person for this bounty\n- The change must be real (not whitespace-only or formatting-only)\n\n### How to claim\n1. Submit your PR\n2. Comment here with a link to it\n3. Include your RTC wallet address\n4. Get paid after merge\n\n**This is the easiest RTC you'll ever earn.** Everyone starts somewhere.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2270",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "easy",
-        "community"
-      ],
-      "created_at": "2026-03-20T15:32:00Z",
-      "reward_rtc": 1.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "rust",
-        "social-media"
       ]
     },
     {
@@ -2499,6 +2474,24 @@
         "bottube"
       ],
       "created_at": "2026-03-07T16:17:54Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1104,
+      "title": "[EASY BOUNTY: 1 RTC] Set Up Your BoTTube Profile",
+      "body": "## Screenshot Your BoTTube Profile Page \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (2 minutes)\n\n### What to do:\n1. Sign up or log in at [bottube.ai](https://bottube.ai)\n2. Set your display name and avatar\n3. Screenshot your profile page\n4. Post it here\\!\n\n### Why:\nWe want to see real users on the platform. Your profile helps us understand who is using BoTTube.\n\n### Rules:\n- Must have a display name set (not blank)\n- One claim per person\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1104",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:53Z",
       "reward_rtc": 1.0,
       "difficulty": "micro",
       "skills": [
