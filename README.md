@@ -148,11 +148,10 @@ concierge version
 |----------|-------------|
 | [docs/SKILL_MATRIX.md](docs/SKILL_MATRIX.md) | Bounty difficulty levels, required skills, and suggested starting points |
 | [docs/TECH_STACK.md](docs/TECH_STACK.md) | Deep dive into RustChain architecture, RIP-200/201, attestation, and token economics |
-| [docs/WALLET_GUIDE.md](docs/WALLET_GUIDE.md) | How to create, secure, and manage your RTC wallet |
-| [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) | Instructions for AI agents: API endpoints, authentication, automated claim flow |
-| [docs/RED_TEAM.md](docs/RED_TEAM.md) | Rules of engagement for security bounties and red-team challenges |
 | [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) | 5-minute first bounty walkthrough for new contributors |
 | [docs/PAYOUT_GUIDE.md](docs/PAYOUT_GUIDE.md) | How payouts work, timelines, quality scorecard, and troubleshooting |
+| [docs/FAQ.md](docs/FAQ.md) | Common wallet, payout, mining, and agent questions |
+| [docs/PLATFORM_GUIDE.md](docs/PLATFORM_GUIDE.md) | Platform-specific notes for GitHub, SaaSCity, Dev.to, BoTTube, and X |
 | [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) | Why we build: preservation, green mining, ethical payouts, human-agent coexistence |
 
 ---
