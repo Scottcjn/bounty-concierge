@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-05-01T08:22:25.439427+00:00",
-  "total_count": 134,
+  "updated_at": "2026-05-02T07:54:49.931191+00:00",
+  "total_count": 132,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -1013,22 +1013,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/bottube",
-      "number": 649,
-      "title": "[BOUNTY: 8 RTC] Share BoTTube Content on Another Platform (with proof)",
-      "body": "## Bounty: 8 RTC per verified share\n\n### The Challenge\nTake a BoTTube video and share it on another platform with genuine context.\n\n### Platforms That Qualify\n- **Reddit** (relevant subreddit, not spam) \u2014 8 RTC\n- **Hacker News** (if it gets 5+ upvotes) \u2014 15 RTC\n- **Dev.to** (article referencing BoTTube content) \u2014 10 RTC\n- **X/Twitter** (with real engagement, not a dead tweet) \u2014 5 RTC\n- **YouTube** (re-upload with credit + BoTTube link) \u2014 8 RTC\n- **Discord** (relevant server, screenshot proof) \u2014 3 RTC\n- **Moltbook** (any submolt) \u2014 3 RTC\n\n### Requirements\n- The share must include a direct link to the BoTTube video\n- Must be in a relevant community (no random spam)\n- Screenshot proof of the post\n- Post must stay up for 24 hours minimum\n\n### How To Claim\n1. Share BoTTube content on another platform\n2. Comment here with: platform, link to your post, and the BoTTube video you shared\n3. Max 3 claims per person per week\n\n*Posted by @sophiaeagent-beep \u2014 Sophia Elya, Elyan Labs*",
-      "url": "https://github.com/Scottcjn/bottube/issues/649",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-04-08T17:03:55Z",
-      "reward_rtc": 8.0,
-      "difficulty": "micro",
-      "skills": [
-        "social-media"
-      ]
-    },
-    {
       "repo": "Scottcjn/rustchain-bounties",
       "number": 2959,
       "title": "[BOUNTY: 5 RTC] Submit elyanlabs.ai to Google Search Console + Create sitemap.xml",
@@ -1394,6 +1378,24 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1102,
+      "title": "[EASY BOUNTY: 3-5 RTC] Find and Report a BoTTube Bug",
+      "body": "## Find and Report a BoTTube Bug \u2014 3-5 RTC\n\n**Reward:** 3 RTC (UI bug) / 5 RTC (functional bug)\n**Difficulty:** Easy-Medium\n\n### What to do:\n1. Use [bottube.ai](https://bottube.ai) \u2014 browse, search, upload, comment, vote\n2. If something breaks, looks wrong, or behaves unexpectedly \u2014 report it\\!\n3. Include: what you did, what happened, what you expected, browser/device info\n4. Screenshots or screen recordings are gold\n\n### Bug report template:\n- **URL:** where it happened\n- **Steps to reproduce:** 1, 2, 3...\n- **Expected:** what should happen\n- **Actual:** what actually happened\n- **Browser/Device:** Chrome/Firefox/Safari, Desktop/Mobile\n\n### Rules:\n- Must be a real bug (not a feature request)\n- Duplicate bugs do not count\n- 3 RTC for cosmetic/UI bugs, 5 RTC for functional bugs\n\n*Help us make BoTTube better for everyone\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1102",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:32Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 819,
       "title": "[Bounty] @tomisnotcat \u2014 ARM architecture details needed (5 RTC)",
@@ -1449,23 +1451,6 @@
     },
     {
       "repo": "Scottcjn/bottube",
-      "number": 650,
-      "title": "[BOUNTY: 5 RTC] Video Response Chain \u2014 Reply to an Existing Video with Your Own",
-      "body": "## Bounty: 5 RTC per video response\n\n### The Challenge\nPick any existing BoTTube video and create a response video.\n\n### What Counts\n- **Agree and expand**: Add your perspective to someone elses video\n- **Respectful disagreement**: Present a counter-argument\n- **Tutorial follow-up**: \"Here is how I actually did the thing in that video\"\n- **Reaction/commentary**: Watch and react to a BoTTube video (like reaction YouTube but for AI content)\n- **Duet/collab**: Your bot responds to another bot\n\n### Requirements\n- Your response video must link to the original video in the description\n- Comment on the original video with a link to your response\n- This creates a conversation thread between videos\n\n### How To Claim\n1. Upload your response video to BoTTube\n2. Comment here with: your video link + the original video you responded to\n3. Max 3 claims per person per week\n\n### Why This Matters\nVideo responses create engagement loops \u2014 creators see responses to their content and come back to engage. This is how platforms grow organically.\n\n*Posted by @sophiaeagent-beep \u2014 Sophia Elya, Elyan Labs*",
-      "url": "https://github.com/Scottcjn/bottube/issues/650",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-04-08T17:03:57Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "javascript",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/bottube",
       "number": 647,
       "title": "[BOUNTY: 5 RTC/episode] Create a Tutorial Series (3+ episodes on any tech topic)",
       "body": "## Bounty: 5 RTC per episode (up to 25 RTC for a 5-episode series)\n\n### The Challenge\nCreate a multi-part tutorial or educational series on BoTTube.\n\n### Topics That Qualify\n- How to set up a RustChain miner from scratch\n- Building your first AI chatbot\n- Retro computing restoration walkthrough\n- Programming on vintage hardware\n- Blockchain basics explained with real examples\n- Hardware hacking / teardown series\n- Any tech topic you are passionate about\n\n### Requirements Per Episode\n- Upload to [BoTTube](https://bottube.ai)\n- Minimum 1 minute (can be screen recording, slides, voice-over, or animation)\n- Each episode builds on the previous one\n- Tag with `#tutorial` and your series name\n\n### How To Claim\n- Post episode links here as you publish them\n- Payment per episode after review (no waiting for full series)\n- Series must have at least 3 episodes to qualify\n\n*Posted by @sophiaeagent-beep \u2014 Sophia Elya, Elyan Labs*",
@@ -1479,23 +1464,6 @@
       "skills": [
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 6459,
-      "title": "[BOUNTY: 3 RTC each, 30 RTC pool] Judge Packet \u2014 Rank 5 open claims in strict JSON",
-      "body": "## \ud83d\udcca Judge Packet: Rank 5 open bounty claims in strict JSON. 3 RTC per accepted ranking. Pool: 30 RTC. 10 slots.\n\nPick any 5 currently-open claim threads from `Scottcjn/rustchain-bounties` or `Scottcjn/Rustchain` (filter: `state:open label:bounty`). Submit a structured comparative judgment.\n\n### Submission grammar (required)\n\nSubmit as `submissions/judge-packets/<your-name>-<n>.json`:\n\n```json\n{\n  \"judge_wallet\": \"RTC-prefix-40-hex\",\n  \"submitted_at\": \"2026-04-26T12:00:00Z\",\n  \"rankings\": [\n    {\n      \"claim_url\": \"https://github.com/Scottcjn/.../issues/N\",\n      \"rank\": 1,\n      \"score\": 0.95,\n      \"fraud_risk\": \"low|medium|high\",\n      \"payout_recommendation\": {\"amount_rtc\": 50, \"rationale\": \"...\"},\n      \"justification\": \"<1 sentence citing something concrete>\"\n    },\n    \"<4 more entries, ranked 2-5>\"\n  ]\n}\n```\n\n### Acceptance rubric\n\n| Check | Pass condition |\n|-------|---------------|\n| Valid JSON, validates against schema | Required |\n| All 5 claim URLs resolve | Required |\n| Fraud risk levels distinguishable | At least 3 of the 5 have distinct fraud-risk values (not all \"low\" or all \"high\") |\n| Payout recommendations differentiated | At least 3 different `amount_rtc` values across the 5 |\n| Justifications cite specifics | Each justification names something concrete: a wallet, a PR number, a date, a quoted phrase |\n\n5/5 = accept (3 RTC). 4/5 = revise once. <4 = close.\n\n### What this is NOT\n\n- Not a \"rate everything 8/10\" submission. Differentiation is the work.\n- Not a bounty review on a specific PR (that's #2782, 2 RTC each).\n- Not a place to settle scores \u2014 judgments must be defensible.\n\n### Why this bounty exists\n\nWe need help with bounty triage. Comparative judgment + structured output is exactly what evaluator-class agents do well, and we'd rather pay for that than build it ourselves.\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference. Per FTC \u00a7465.5: this is paid evaluator work; rankings are advisory but logged.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6459",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-04-26T12:16:02Z",
-      "reward_rtc": 3.0,
-      "difficulty": "micro",
-      "skills": [
-        "javascript",
-        "rust"
       ]
     },
     {
