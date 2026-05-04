@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-05-03T08:09:45.653695+00:00",
-  "total_count": 132,
+  "updated_at": "2026-05-04T08:39:55.282716+00:00",
+  "total_count": 131,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -2463,26 +2463,6 @@
       "reward_rtc": 1.0,
       "difficulty": "micro",
       "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/Rustchain",
-      "number": 2204,
-      "title": "April Showers Star Drive \u2014 Help RustChain Hit 512 Stars + Earn RTC with Multipliers",
-      "body": "<div align=\"center\">\n\n# \ud83c\udf27\ufe0f April Showers Star Drive\n\n### Help RustChain reach **512 stars** and earn RTC with **new miner multipliers**\n\n**Current: 226 stars \u2192 Target: 512 stars**\n\n[![Stars](https://img.shields.io/github/stars/Scottcjn/Rustchain?style=for-the-badge)](https://github.com/Scottcjn/Rustchain/stargazers)\n\n</div>\n\n---\n\n## The Event\n\n**April Showers** runs from now through **April 30, 2026**. Every star gets us closer to 512. Every participant earns RTC. And when we hit milestones, **ALL active miners get temporary bonus multipliers**.\n\n## How to Participate\n\n### Tier 1: Star + Claim (0.5 RTC)\n1. Star this repo \u2b50\n2. Comment below with your wallet name\n3. Get **0.5 RTC** deposited\n\n### Tier 2: Star + Share (2 RTC)\n1. Star this repo \u2b50\n2. Share on any platform (X, Reddit, Dev.to, HN, LinkedIn, Moltbook, 4claw)\n3. Comment below with screenshot/link + wallet name\n4. Get **2 RTC** deposited\n\n### Tier 3: Star + Bring a Friend (5 RTC)\n1. Star this repo \u2b50\n2. Get someone else to star + comment (they mention your username as referral)\n3. Both of you get **5 RTC** each\n\n## Miner Multiplier Milestones\n\nWhen the repo hits these star counts, **ALL active miners** get temporary epoch reward boosts:\n\n| Milestone | Stars | Miner Bonus | Duration |\n|-----------|-------|-------------|----------|\n| \ud83c\udf31 Seedling | **256** (reached!) | +5% epoch rewards | Permanent |\n| \ud83c\udf27\ufe0f April Rain | **350** | +10% epoch rewards | 7 days |\n| \ud83c\udf0a Downpour | **400** | +15% epoch rewards | 7 days |\n| \u26a1 Lightning | **450** | +20% epoch rewards | 7 days |\n| \ud83c\udfd4\ufe0f Flood | **512** | **+25% epoch rewards** | **30 days** |\n\nThe 512-star milestone activates a **month-long 25% bonus** for every miner on the network. Your PowerBook G4 earning 2.5x? Now it earns **3.125x** for 30 days.\n\n## Why 512?\n\n512 is a power of two. It's the number of bytes in a disk sector. It's how many megabytes of RAM the POWER8 S824 has. It's a number that means something to the kind of people who keep old computers alive.\n\nAlso it's more than double where we are now and round numbers are motivating.\n\n## Leaderboard\n\n| Rank | Contributor | Stars Referred | RTC Earned |\n|------|-------------|----------------|------------|\n| \u2014 | Be first! | \u2014 | \u2014 |\n\nWe'll update this leaderboard weekly.\n\n## Rules\n\n- One star per GitHub account (GitHub enforces this)\n- Sharing proof must be a real post (not a screenshot of a draft)\n- Referrals must be from real accounts (>1 month old, not freshly created)\n- Wallet names must be unique per person\n- Event ends April 30, 2026 or when 512 stars is reached (whichever comes first)\n\n## Quick Links\n\n- [Star the repo now](https://github.com/Scottcjn/Rustchain)\n- [Browse bounties](https://github.com/Scottcjn/rustchain-bounties/issues?q=is%3Aissue+is%3Aopen+label%3Abounty)\n- [Block Explorer](https://rustchain.org/explorer)\n- [Install Miner](https://rustchain.org/install.sh)\n- [What is RustChain?](https://github.com/Scottcjn/Rustchain#readme)\n\n---\n\n*April Showers bring 512 flowers. Or stars. Same thing when you're a blockchain that runs on PowerBooks.*\n\n\n---\n\n### \u2696\ufe0f Bounty Requirements (FTC 16 CFR \u00a7465.5 + \u00a7255.5 compliance)\n\n**A star alone does NOT qualify.** We pay for genuine engagement, not for indicators. To claim this bounty you must post a comment (on this issue or a linked post) containing:\n\n1. **What you reviewed** \u2014 at least one file, PR, feature, or doc section you actually looked at. Link it.\n2. **Why you liked it** \u2014 a specific, non-generic reason. \"Great project\" does not qualify.\n3. **Disclosure** \u2014 include the line: `I received RTC compensation for this review.` This keeps your star a transparent endorsement, not a purchased indicator.\n\nStars without a review comment will not be paid. Copy-pasted, AI-templated, or obviously recycled reviews will not be paid. This rule applies retroactively: unreviewed stars from before this update are grandfathered as goodwill but earn no future RTC.\n\n**Why this matters:** Elyan Labs is here to grow real engagement in mining and coding. A star backed by a real review is worth more to the network than a thousand drive-by clicks. This brings us into compliance with the FTC Consumer Review Rule (effective Oct 21, 2024), and \u2014 more importantly \u2014 keeps the signal honest.\n",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/2204",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "community"
-      ],
-      "created_at": "2026-04-10T18:42:56Z",
-      "reward_rtc": 0.5,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "rust",
         "social-media"
       ]
     },
