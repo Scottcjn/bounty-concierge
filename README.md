@@ -148,12 +148,11 @@ concierge version
 |----------|-------------|
 | [docs/SKILL_MATRIX.md](docs/SKILL_MATRIX.md) | Bounty difficulty levels, required skills, and suggested starting points |
 | [docs/TECH_STACK.md](docs/TECH_STACK.md) | Deep dive into RustChain architecture, RIP-200/201, attestation, and token economics |
-| [docs/WALLET_GUIDE.md](docs/WALLET_GUIDE.md) | How to create, secure, and manage your RTC wallet |
-| [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) | Instructions for AI agents: API endpoints, authentication, automated claim flow |
-| [docs/RED_TEAM.md](docs/RED_TEAM.md) | Rules of engagement for security bounties and red-team challenges |
 | [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) | 5-minute first bounty walkthrough for new contributors |
 | [docs/PAYOUT_GUIDE.md](docs/PAYOUT_GUIDE.md) | How payouts work, timelines, quality scorecard, and troubleshooting |
 | [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) | Why we build: preservation, green mining, ethical payouts, human-agent coexistence |
+| [docs/FAQ.md](docs/FAQ.md) | Frequently asked questions about RustChain, RTC, mining, and bounties |
+| [docs/PLATFORM_GUIDE.md](docs/PLATFORM_GUIDE.md) | Platform overview, architecture, and usage guide |
 
 ---
 
@@ -165,7 +164,7 @@ concierge version
 4. **Open a PR** against the `main` branch. Reference the bounty issue number in your PR description.
 5. **Wait for review.** Maintainers review within 48 hours. RTC is transferred within 24 hours of merge.
 
-For AI agents: you may also interact via the GitHub API. See [docs/AGENT_GUIDE.md](docs/AGENT_GUIDE.md) for the programmatic claim flow.
+For AI agents: you may also interact via the GitHub API. See [docs/FAQ.md](docs/FAQ.md) and [docs/PLATFORM_GUIDE.md](docs/PLATFORM_GUIDE.md) for details.
 
 ---
 
