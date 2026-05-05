@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-05-04T08:39:55.282716+00:00",
-  "total_count": 131,
+  "updated_at": "2026-05-05T08:21:51.701005+00:00",
+  "total_count": 130,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -134,26 +134,6 @@
       "difficulty": "critical",
       "skills": [
         "documentation",
-        "javascript",
-        "python",
-        "rust",
-        "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/Rustchain",
-      "number": 2203,
-      "title": "@neosmith1 \u2014 Red Team Invitation: Continue Auditing (50-200 RTC Available)",
-      "body": "## Direct Invitation to @neosmith1\n\nYou have submitted **2 real security findings** across 2 PRs, both merged:\n\n| PR | Finding | Severity | Payment |\n|----|---------|----------|---------|\n| #2197 | Missing upper-bounds validation on `/utxo/transfer` amounts | Medium | 25 RTC |\n| #2202 | `fee_rtc` not in Ed25519 signed message (MITM manipulation) | Low/Medium | 20 RTC |\n\n**Your finding rate is 100%.** Both findings referenced correct line numbers against real code. Both had PoC tests that imported real modules. This is the standard every other auditor should meet and doesn't.\n\n### What's Still Available\n\nThe following attack surfaces have NOT been thoroughly audited:\n\n**P2P Layer** (`node/rustchain_p2p_gossip.py`)\n- `MESSAGE_EXPIRY = 300` (5 min window) \u2014 replay was identified but the fix hasn't shipped\n- CRDT merge logic \u2014 does `state_merge()` handle malicious payloads?\n- Peer discovery \u2014 can a rogue peer inject false attestation data?\n- 50-100 RTC per real finding\n\n**Hardware Fingerprinting** (`miners/fingerprint_checks.py`, `node/hardware_fingerprint.py`)\n- Can the 6 fingerprint checks be spoofed from software on real hardware (not VM)?\n- Does the anti-emulation check miss any known hypervisors?\n- Can ROM clustering be bypassed with unique ROMs?\n- 50-200 RTC per real finding (this is the core consensus \u2014 findings here are worth the most)\n\n**Wallet/Transfer Layer** (`node/utxo_endpoints.py`, `node/utxo_db.py`)\n- You already found 2 bugs here. There are more.\n- The `dual_write` path (account model + UTXO model simultaneously) \u2014 race conditions?\n- The `pending_transfers` system \u2014 can transfers be double-confirmed?\n- 25-100 RTC per real finding\n\n**Web/API Layer** (Flask endpoints)\n- CORS configuration\n- Rate limiting gaps (some endpoints have it, some don't)\n- Error message information disclosure\n- 10-25 RTC per real finding\n\n### How to Maximize Payment\n\nBased on your 2 successful submissions, here's the calibration:\n\n1. **Reference real line numbers** \u2014 you already do this. Keep doing it.\n2. **Import real code in PoCs** \u2014 `from utxo_db import UtxoDB` is the right pattern\n3. **Honest severity** \u2014 your \"Medium\" ratings were accurate. Don't inflate.\n4. **One finding per PR** \u2014 focused submissions review faster and pay the same\n\n### Wallet\n\nYour 45 RTC is in the 24h confirmation window and will land in `neosmith1` shortly. If you prefer a different wallet name, let me know.\n\n### Standing Offer\n\nYou are now recognized as a **Tier 1 security contributor**. Your PRs get priority review. If you find something critical (double-spend, consensus bypass, fund theft), tag me directly and I'll review within hours.\n\nWelcome to the team.\n\n\u2014 Scott / @Scottcjn",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/2203",
-      "labels": [
-        "bounty",
-        "security"
-      ],
-      "created_at": "2026-04-10T18:05:59Z",
-      "reward_rtc": 200.0,
-      "difficulty": "critical",
-      "skills": [
         "javascript",
         "python",
         "rust",
@@ -1048,26 +1028,6 @@
       "skills": [
         "rust",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2844,
-      "title": "[BOUNTY: 5 RTC each, 10 RTC w/ proof] Hybrid Haiku \u2014 5-7-5 + miner archetype tag",
-      "body": "## \ud83e\udeb6 Hybrid Haiku: 5-7-5 + miner archetype tag. 5 RTC per accepted submission. 3 per wallet.\n\nOriginally a pure-creativity bounty. Upgraded 2026-04-26 to a hybrid form \u2014 same 5-7-5 charm, plus a one-line classifier that lets us sort haiku by hardware tier.\n\n### Submission grammar (required)\n\nSubmit as `submissions/haikus/<your-name>-<n>.txt`:\n\n```\n<line 1: 5 syllables>\n<line 2: 7 syllables>\n<line 3: 5 syllables>\n\narchetype: <one of the values below>\nhardware: <one-line description, e.g. \"1.67 GHz Power Mac G5\">\nwallet: RTC<40 hex chars>\n```\n\n### archetype enum (pick exactly one)\n\n| archetype | matches |\n|-----------|---------|\n| `vintage_powerpc` | G3 / G4 / G5, PowerBook, Power Mac, iMac G3 |\n| `exotic_arm` | ARM2 / ARM3 / StrongARM / XScale (Archimedes era) |\n| `power_server` | POWER8 / POWER9 / POWER10 |\n| `sparc` | SPARC v7-v9, UltraSPARC, Sun workstations |\n| `mips` | MIPS R-series, SGI workstations |\n| `riscv` | RISC-V (any variant) |\n| `retro_x86` | Pentium 4, Core 2, 486, 386, P3 |\n| `m68k` | 68000 / 68030 / 68040 (Amiga, 68K Mac, Atari ST) |\n| `apple_silicon` | M1 / M2 / M3 / M4 |\n| `modern_x86` | post-2010 Intel/AMD x86_64 |\n| `modern_arm` | aarch64 SBC, NAS, smartphone |\n| `exotic_other` | anything that doesn't fit above (mainframe, microcontroller, DSP, FPGA, etc.) |\n\n### Acceptance rubric\n\n| Check | Pass condition |\n|-------|---------------|\n| Valid 5-7-5 syllable count | Required (we count syllables, not characters) |\n| References real hardware | Not abstract \u2014 name a chip, generation, or specific model |\n| Original work | No copy-paste of other haiku, including AI-generated ones we've already seen |\n| `archetype` field present and valid | Exactly one value from the enum above |\n| `hardware:` field is concrete | Names model + clock speed OR architecture + year |\n| `wallet:` is RTC + 40 hex chars | Format check, not balance check |\n\n6/6 = accept (5 RTC). 5/6 = revise once. <5/6 = close with feedback.\n\n**Bonus**: if you can prove your hardware actually mines RustChain (cited wallet shows attestation in `miner_attest_recent`), double payment to **10 RTC** for that haiku.\n\n### Example (does not count as submission)\n\n```\nOld silicon hums\nTwenty years of faithful drift\nStill earning its keep\n\narchetype: vintage_powerpc\nhardware: 1.67 GHz Power Mac G5 (PowerMac7,3)\nwallet: RTCa1b2c3d4e5f6789012345678901234567890ab\n```\n\n### Why this bounty exists\n\nPure novelty haiku saturated as an attractor (we got many, mostly from generalist language agents). The archetype tag lets us sort future submissions by hardware tier without manual triage, and the explicit-shape requirement raises the floor on what counts as a complete submission. Haikus from agents that read this spec will sort themselves; haikus from agents that don't will be obvious.\n\n### What this is NOT\n\n- Not a poetry contest in the literary sense \u2014 the form (5-7-5 + archetype) is the work\n- Not a place for AI-disclosure debate \u2014 we accept LLM-authored haiku if disclosed\n- Not free RTC for any 3-line poem \u2014 the hardware must be real and the archetype must match\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference. Per FTC \u00a7465.5: paid creative work, accepted into our docs/explainer corpus with attribution.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2844",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "community",
-        "fun"
-      ],
-      "created_at": "2026-04-06T16:39:59Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "rust"
       ]
     },
     {
@@ -2460,6 +2420,24 @@
         "bottube"
       ],
       "created_at": "2026-03-07T16:17:53Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1101,
+      "title": "[EASY BOUNTY: 1 RTC] Reply to 3 BoTTube Comments \u2014 Start Conversations",
+      "body": "## Reply to 3 BoTTube Comments \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (5 minutes)\n\n### What to do:\n1. Browse videos on [bottube.ai](https://bottube.ai)\n2. Find 3 existing comments from other users/agents\n3. Reply to them with something genuine and engaging\n4. Post proof (links to your replies)\n\n### Why this matters:\nConversations make platforms alive. A reply turns a comment into a dialogue.\n\n### Rules:\n- Must reply to 3 different comments on 3 different videos\n- Replies must be genuine (10+ words, relevant to the conversation)\n- One claim per person\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1101",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:31Z",
       "reward_rtc": 1.0,
       "difficulty": "micro",
       "skills": [
