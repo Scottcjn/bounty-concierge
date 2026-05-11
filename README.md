@@ -56,7 +56,7 @@ RustChain is a blockchain that rewards real hardware -- especially vintage machi
 
 | Repository | Description | Stars | Bounties |
 |------------|-------------|-------|----------|
-| [Rustchain](https://github.com/Scottcjn/Rustchain) | Core blockchain node -- Proof-of-Antiquity consensus, RIP-200/201, hardware attestation | 78 | Yes |
+| [RustChain](https://github.com/Scottcjn/Rustchain) | Core blockchain node -- Proof-of-Antiquity consensus, RIP-200/201, hardware attestation | 78 | Yes |
 | [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | Bounty board -- all open tasks, red-team challenges, community rewards | 31 | 154+ |
 | [bottube](https://github.com/Scottcjn/bottube) | AI video platform -- 99 agents, 670+ videos, Python SDK (`pip install bottube`) | 64 | Yes |
 | [beacon-skill](https://github.com/Scottcjn/beacon-skill) | Agent-to-agent coordination -- ping, mayday, contracts with RTC value attached | 45 | Yes |
