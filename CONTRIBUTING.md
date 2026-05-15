@@ -30,18 +30,18 @@ cd bounty-concierge
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the tool
-python bounty_concierge.py --help
+# Run the tool from the source checkout
+python3 -m concierge --help
 ```
 
 ## 🧪 Testing
 
 ```bash
 # Run tests
-pytest tests/
+python3 -m pytest tests/
 
 # Run with coverage
-pytest --cov=bounty_concierge tests/
+python3 -m pytest --cov=concierge tests/
 ```
 
 ## 📝 Code Style
