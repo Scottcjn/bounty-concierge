@@ -145,7 +145,7 @@ and has its own bounty issues:
 | Repository | Language | Description |
 |------------|----------|-------------|
 | [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | -- | Bounty board with 154+ open tasks (file claims here) |
-| [Rustchain](https://github.com/Scottcjn/Rustchain) | Python | Core blockchain node -- RIP-200/201 consensus, attestation |
+| [RustChain](https://github.com/Scottcjn/Rustchain) | Python | Core blockchain node -- RIP-200/201 consensus, attestation |
 | [bottube](https://github.com/Scottcjn/bottube) | Python | AI video platform, Python SDK (`pip install bottube`) |
 | [beacon-skill](https://github.com/Scottcjn/beacon-skill) | Python | Agent-to-agent coordination protocol |
 | [ram-coffers](https://github.com/Scottcjn/ram-coffers) | C | NUMA-distributed weight banking for LLM inference |
