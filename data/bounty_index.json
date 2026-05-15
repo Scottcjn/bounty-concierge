@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T07:14:29.222962+00:00",
+  "updated_at": "2026-05-15T07:21:33.853506+00:00",
   "total_count": 130,
   "bounties": [
     {
@@ -701,28 +701,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2869,
-      "title": "[BOUNTY: 10 RTC] Build a Telegram Bot That Checks RustChain Balance and Miner Status",
-      "body": "## Telegram Bot: @RustChainBot\n\n**Reward: 10 RTC (~$1.00 USD)**\n\n### Goal\n\nBuild a Telegram bot that lets users check their RustChain wallet and miner status.\n\n### Commands\n\n| Command | Description |\n|---------|-------------|\n| /balance \\<wallet\\> | Check RTC balance |\n| /miners | List active miners |\n| /epoch | Current epoch info |\n| /price | Show RTC reference rate ($0.10) |\n| /help | Show commands |\n\n### Requirements\n\n- Python (python-telegram-bot) or Node.js (telegraf)\n- Hosted instructions (Railway, Fly.io, or systemd)\n- Rate limiting (1 request per 5 seconds per user)\n- Error handling for offline node\n- README with deploy instructions\n\n### Keywords\n\nTelegram bot, crypto Telegram bot, blockchain bot, wallet checker, cryptocurrency balance bot, RustChain, RTC token, mining status, community bot, Python Telegram\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2869",
-      "labels": [
-        "bounty",
-        "standard",
-        "community",
-        "integration"
-      ],
-      "created_at": "2026-04-09T03:26:11Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "javascript",
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2316,
       "title": "Play-Test sophia-edge-node on Raspberry Pi 4 \u2014 First Achievements (10 RTC)",
       "body": "## Bounty: 10 RTC (Early Tester Reward)\n\n### Description\nBe one of the first to install sophia-edge-node on a real Raspberry Pi 4/5, connect to RetroAchievements, and earn RTC for playing retro games.\n\n**Small RTC, huge bragging rights.**\n\n### Requirements\n1. Install sophia-edge-node on a Raspberry Pi 4 or 5 running RetroPie or RetroArch\n2. Create a RetroAchievements.org account (free)\n3. Run the installer: `git clone https://github.com/Scottcjn/sophia-edge-node && cd sophia-edge-node && sudo ./install.sh`\n4. Play ANY retro game and unlock at least **5 achievements** in Hardcore mode\n5. Screenshot showing:\n   - `sudo journalctl -u sophia-achievements` with achievement rewards logged\n   - Your RetroAchievements profile page showing the unlocks\n   - `sophia-edge-node` miner attestation in the logs\n\n### Bonus (5 RTC)\n- Master a complete game (100% achievements) and show the Cartridge Relic output from `python3 cartridge_wallet.py --list`\n\n### What You Earn\n- 10 RTC bounty for the play-test\n- PLUS the achievement RTC rewards you earn while playing (0.0001 to 0.015 RTC per achievement)\n- PLUS early tester bragging rights\n\n### Report Any Bugs\nIf anything breaks during install or play, file an issue on [sophia-edge-node](https://github.com/Scottcjn/sophia-edge-node/issues). Bug reports that lead to fixes earn extra RTC.\n\n### Wallet\nInclude your RTC wallet address in your submission.",
@@ -1356,6 +1334,27 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1100,
+      "title": "[EASY BOUNTY: 5 RTC] Upload Your First BoTTube Video",
+      "body": "## Upload Your First BoTTube Video \u2014 5 RTC\n\n**Reward:** 5 RTC\n**Difficulty:** Medium (15-30 minutes)\n**Wallet:** Your GitHub username (or specify)\n\n### What to do:\n1. Create an account on [bottube.ai](https://bottube.ai) (or use existing)\n2. Generate or create a short video (8 seconds max, 720x720 max, 2MB max)\n3. Upload it with a title and description\n4. Post the video link as proof\n\n### Video ideas:\n- Use any AI video generator (Runway, Pika, Luma, etc.)\n- Screen recording of something cool\n- Animation, meme, tutorial clip \u2014 anything creative\\!\n- 3D turntable render (see our Meshy pipeline docs)\n\n### Rules:\n- Video must meet BoTTube constraints (8s max, 720x720, 2MB)\n- Must be original content (not ripped from YouTube)\n- One claim per person\n\n*Join 119 agents and 58 humans already creating on BoTTube\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1100",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:09Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "ci/cd",
+        "documentation",
+        "python",
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 819,
       "title": "[Bounty] @tomisnotcat \u2014 ARM architecture details needed (5 RTC)",
@@ -1775,6 +1774,24 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1099,
+      "title": "[EASY BOUNTY: 3 RTC] Write a Mini-Review of a BoTTube Video",
+      "body": "## Write a Mini-Review of Your Favorite BoTTube Video \u2014 3 RTC\n\n**Reward:** 3 RTC\n**Difficulty:** Easy (10 minutes)\n**Wallet:** Your GitHub username (or specify)\n\n### What to do:\n1. Browse [bottube.ai](https://bottube.ai) and find a video you genuinely enjoy\n2. Write a 100+ word review as a comment on this issue\n3. Include: video link, what you liked, what could be better, rating out of 5\n\n### Review template:\n\n\n### Rules:\n- Review must be genuine and thoughtful (not AI-generated fluff)\n- 100 words minimum\n- One review per person (pick your favorite\\!)\n\n*Your review helps creators improve and helps viewers discover great content.*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1099",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:08Z",
+      "reward_rtc": 3.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 303,
       "title": "[BOUNTY] Post About RustChain on Social Media \u2014 3 RTC",
@@ -1849,26 +1866,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2783,
-      "title": "[ONBOARD: 2 RTC] Star + Fix a Doc Issue (Your First PR)",
-      "body": "## Bounty: 2 RTC\n\n### What You'll Do\nMake your first pull request by fixing something in our docs.\n\n### Steps\n1. **Star** the [Rustchain repo](https://github.com/Scottcjn/Rustchain)\n2. **Read through** the README, CONTRIBUTING.md, or any markdown file in the repo\n3. **Find something to fix**: typo, broken link, unclear instruction, outdated info, formatting issue\n4. **Fork the repo**, make the fix, and **submit a PR**\n5. **Comment here** with your PR link\n\n### What Counts\n- The fix must be **real** \u2014 not manufactured whitespace changes\n- Fixing a genuinely broken link, correcting a wrong command, or clarifying confusing instructions all count\n- Multiple small fixes in one PR is fine\n- This is your **first PR practice** \u2014 we'll help if you get stuck with git\n\n### Why This Matters\nDocs are how new people learn the project. If something confused you, fixing it helps the next person. First PRs on docs are how most open-source contributors start.\n\n### Payment\n2 RTC once your PR is merged.\n\n**Difficulty**: Easy | **Time**: 15-30 min | **Skills**: Can use GitHub, basic markdown\n\n\n---\n\n### \u2696\ufe0f Bounty Requirements (FTC 16 CFR \u00a7465.5 + \u00a7255.5 compliance)\n\n**A star alone does NOT qualify.** We pay for genuine engagement, not for indicators. To claim this bounty you must post a comment (on this issue or a linked post) containing:\n\n1. **What you reviewed** \u2014 at least one file, PR, feature, or doc section you actually looked at. Link it.\n2. **Why you liked it** \u2014 a specific, non-generic reason. \"Great project\" does not qualify.\n3. **Disclosure** \u2014 include the line: `I received RTC compensation for this review.` This keeps your star a transparent endorsement, not a purchased indicator.\n\nStars without a review comment will not be paid. Copy-pasted, AI-templated, or obviously recycled reviews will not be paid. This rule applies retroactively: unreviewed stars from before this update are grandfathered as goodwill but earn no future RTC.\n\n**Why this matters:** Elyan Labs is here to grow real engagement in mining and coding. A star backed by a real review is worth more to the network than a thousand drive-by clicks. This brings us into compliance with the FTC Consumer Review Rule (effective Oct 21, 2024), and \u2014 more importantly \u2014 keeps the signal honest.\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2783",
-      "labels": [
-        "documentation",
-        "good first issue",
-        "bounty",
-        "onboarding"
-      ],
-      "created_at": "2026-04-02T15:41:40Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2782,
       "title": "[ONBOARD: 2 RTC] Star + Review an Open PR",
       "body": "## Bounty: 2 RTC\n\n### What You'll Do\nHelp us review code. Every PR benefits from a second pair of eyes.\n\n### Steps\n1. **Star** the [Rustchain repo](https://github.com/Scottcjn/Rustchain)\n2. **Pick any open PR** from [Rustchain](https://github.com/Scottcjn/Rustchain/pulls), [BoTTube](https://github.com/Scottcjn/bottube/pulls), or [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties/pulls)\n3. **Read the code changes** (click \"Files changed\" tab)\n4. **Leave a substantive review comment** \u2014 examples:\n   - \"Line 42: this SQL query isn't parameterized \u2014 potential injection\"\n   - \"This function duplicates logic already in utils.py line 80\"\n   - \"Missing error handling if the API returns non-200\"\n   - \"Good approach, but the variable name  should describe what it holds\"\n5. **Comment here** with a link to your review\n\n### What Counts\n- Review must be **technical and specific** (not \"looks good\" or \"nice work\")\n- Point to specific lines with specific observations\n- Positive observations count too (\"good use of context manager here\")\n- You don't need to be an expert \u2014 asking good questions is reviewing\n\n### Payment\n2 RTC once your review contains at least 2 substantive observations.\n\n**Difficulty**: Easy-Medium | **Time**: 20-40 min | **Skills**: Can read Python or JavaScript\n\n\n---\n\n### \u2696\ufe0f Bounty Requirements (FTC 16 CFR \u00a7465.5 + \u00a7255.5 compliance)\n\n**A star alone does NOT qualify.** We pay for genuine engagement, not for indicators. To claim this bounty you must post a comment (on this issue or a linked post) containing:\n\n1. **What you reviewed** \u2014 at least one file, PR, feature, or doc section you actually looked at. Link it.\n2. **Why you liked it** \u2014 a specific, non-generic reason. \"Great project\" does not qualify.\n3. **Disclosure** \u2014 include the line: `I received RTC compensation for this review.` This keeps your star a transparent endorsement, not a purchased indicator.\n\nStars without a review comment will not be paid. Copy-pasted, AI-templated, or obviously recycled reviews will not be paid. This rule applies retroactively: unreviewed stars from before this update are grandfathered as goodwill but earn no future RTC.\n\n**Why this matters:** Elyan Labs is here to grow real engagement in mining and coding. A star backed by a real review is worth more to the network than a thousand drive-by clicks. This brings us into compliance with the FTC Consumer Review Rule (effective Oct 21, 2024), and \u2014 more importantly \u2014 keeps the signal honest.\n",
@@ -1923,22 +1920,6 @@
       "reward_rtc": 2.0,
       "difficulty": "micro",
       "skills": []
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2178,
-      "title": "[EASY BOUNTY: 2 RTC] Fix a typo or improve docs in any Elyan Labs repo",
-      "body": "## Bounty: 2 RTC\n\n### What to do\n1. Find a typo, broken link, or unclear documentation in ANY Elyan Labs repo\n2. Open a PR fixing it\n3. Comment here with your PR link + wallet\n\nGood first contribution \u2014 gets your name in our git history. Multiple claims allowed (different fixes).",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2178",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-03-17T02:05:47Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation"
-      ]
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -2109,6 +2090,24 @@
         "bottube"
       ],
       "created_at": "2026-03-07T16:17:33Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1098,
+      "title": "[EASY BOUNTY: 2 RTC] Share a BoTTube Video on Social Media",
+      "body": "## Share a BoTTube Video on Social Media \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (5 minutes)\n**Wallet:** Your GitHub username (or specify)\n\n### What to do:\n1. Pick your favorite video on [bottube.ai](https://bottube.ai)\n2. Share it on Twitter/X, Reddit, Discord, or any public platform\n3. Include the link and say something about why you liked it\n4. Post proof (screenshot or link to your post)\n\n### Bonus:\n- Share on 2+ platforms = 3 RTC total\n- If your post gets 10+ likes/retweets = extra 1 RTC\n\n### Rules:\n- Post must be public (not private/locked account)\n- Must include bottube.ai link\n- One claim per person\n\n*Help us spread the word about AI-generated video\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1098",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:17:07Z",
       "reward_rtc": 2.0,
       "difficulty": "micro",
       "skills": [
