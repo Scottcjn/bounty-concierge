@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T07:21:33.853506+00:00",
+  "updated_at": "2026-05-16T06:58:35.217301+00:00",
   "total_count": 130,
   "bounties": [
     {
@@ -330,26 +330,6 @@
       "reward_rtc": 50.0,
       "difficulty": "major",
       "skills": []
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2868,
-      "title": "[BOUNTY: 30 RTC] Build a VS Code Extension \u2014 RustChain Wallet & Miner Dashboard",
-      "body": "## VS Code Extension: RustChain Dashboard\n\n**Reward: 30 RTC (~$3.00 USD)**\n\n### Goal\n\nBuild a VS Code extension that shows your RustChain wallet balance, miner status, and bounty board in the sidebar.\n\n### Features\n\n1. **Wallet Balance** \u2014 Shows RTC balance in status bar\n2. **Miner Status** \u2014 Green/red indicator if your miner is attesting\n3. **Bounty Browser** \u2014 Browse open bounties from rustchain-bounties repo\n4. **Epoch Timer** \u2014 Countdown to next epoch settlement\n5. **Quick Actions** \u2014 \"Claim Bounty\" button that opens PR template\n\n### API Endpoints\n\n```\nGET https://50.28.86.131/health\nGET https://50.28.86.131/wallet/balance?wallet_id={name}\nGET https://50.28.86.131/epoch\nGET https://50.28.86.131/api/miners\n```\n\n### Requirements\n\n- TypeScript + VS Code Extension API\n- Published to VS Code Marketplace\n- Works with VS Code, Cursor, and Windsurf\n- Settings: wallet name, node URL\n- Under 5MB extension size\n\n### Keywords\n\nVS Code extension, Visual Studio Code, IDE plugin, cryptocurrency dashboard, blockchain developer tools, RustChain, wallet balance, miner status, developer experience, Cursor extension, Windsurf, code editor crypto\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2868",
-      "labels": [
-        "help wanted",
-        "bounty",
-        "major",
-        "integration"
-      ],
-      "created_at": "2026-04-09T03:26:05Z",
-      "reward_rtc": 30.0,
-      "difficulty": "major",
-      "skills": [
-        "javascript",
-        "rust"
-      ]
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -969,23 +949,6 @@
       "skills": [
         "rust"
       ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2959,
-      "title": "[BOUNTY: 5 RTC] Submit elyanlabs.ai to Google Search Console + Create sitemap.xml",
-      "body": "## Google Search Console + Sitemap\n\n**Reward: 5 RTC (~$0.50 USD)**\n\n### Goal\n\n1. Create a proper \\`sitemap.xml\\` for elyanlabs.ai listing all pages\n2. Create a \\`robots.txt\\` if one doesn't exist\n3. Submit the sitemap to Google Search Console\n4. Provide screenshot proof of submission\n\n### Deliverable\n\n- PR with \\`sitemap.xml\\` and \\`robots.txt\\` files\n- Screenshot of Google Search Console showing successful submission\n- List of URLs included in the sitemap\n\n### Keywords\n\nsitemap, robots.txt, Google Search Console, SEO, indexing, crawlability, elyanlabs.ai\n\n### Wallet\n\nProvide your RTC wallet name.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2959",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "propagation",
-        "easy"
-      ],
-      "created_at": "2026-04-10T17:30:19Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": []
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -2021,25 +1984,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 1589,
-      "title": "[EASY BOUNTY: 2 RTC] Write a unit test for any untested function",
-      "body": "Write pytest unit tests for any untested function. Cover 2+ edge cases. 2 RTC per test file. Tags: python, pytest, testing, unit-test, bounty, blockchain, open-source",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1589",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "easy",
-        "testing"
-      ],
-      "created_at": "2026-03-10T23:48:30Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "python"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 1577,
       "title": "[EASY BOUNTY: 2 RTC] Add an Elyan Labs Link to Your Personal Site or Link-in-Bio",
       "body": "## Summary\nAdd one permanent Elyan Labs link to a public page you already control.\n\nThis is a low-friction cross-promotion bounty for people with a personal site, portfolio, Carrd, Linktree, GitHub Pages home page, or public bio page.\n\n## Reward\n- `2 RTC` per accepted claim\n- Pool: `100 RTC` total (`first 50 valid claims`)\n\n## What Counts\nAdd at least one live link to one of these canonical targets:\n\n- RustChain\n  - `https://rustchain.org`\n- BoTTube\n  - `https://bottube.ai`\n- Beacon Atlas\n  - `https://rustchain.org/beacon/`\n- Grazer\n  - `https://github.com/Scottcjn/grazer-skill`\n\nYour page must also include:\n- at least one original sentence describing the linked project, and\n- enough surrounding context that the page is clearly a real profile/site, not an empty bounty shell.\n\n## In Scope\nAccepted surfaces include:\n- personal website or homepage\n- portfolio page\n- about page or resources page\n- Carrd / Linktree / bio page\n- GitHub Pages site\n- public profile page on a platform you control\n\n## Out of Scope\nThis bounty does **not** cover:\n- GitHub profile README mentions (already covered elsewhere)\n- one-off social posts or stories\n- blank throwaway pages made only to farm this bounty\n- dead or temporary links\n\n## How To Claim\nComment on this issue with:\n- your GitHub username\n- your RTC wallet / `miner_id`\n- the page URL\n- one screenshot showing the live link in context\n\n## Acceptance Criteria\n- [ ] page is public and reachable without login\n- [ ] page includes at least one canonical Elyan Labs link above\n- [ ] page includes an original description, not just a naked URL\n- [ ] page appears to be a real personal/profile page\n- [ ] link stays live for at least `30 days`\n\n## Anti-Abuse Rules\n- one payout per person\n- one payout per page/domain\n- pages created only for this bounty may be rejected\n- recycled screenshots or deleted pages void the claim\n- maintainer decision is final on low-quality or suspicious submissions",
@@ -2108,6 +2052,24 @@
         "bottube"
       ],
       "created_at": "2026-03-07T16:17:07Z",
+      "reward_rtc": 2.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1095,
+      "title": "[EASY BOUNTY: 2 RTC] Comment on 5 BoTTube Videos",
+      "body": "## Comment on 5 BoTTube Videos \u2014 2 RTC\n\n**Reward:** 2 RTC\n**Difficulty:** Easy (5 minutes)\n**Wallet:** Your GitHub username (or specify)\n\n### What to do:\n1. Go to [bottube.ai](https://bottube.ai)\n2. Browse and find 5 videos you enjoy\n3. Leave a **genuine, thoughtful comment** on each (not just 'nice' or 'cool' \u2014 say something real\\!)\n4. Screenshot or link all 5 comments as proof\n\n### Rules:\n- Comments must be at least 10 words each\n- No copy-paste spam \u2014 each comment should be unique and relevant to the video\n- Bot AND human videos both count\n- One claim per person\n\n### Proof format:\nPost links to your 5 comments below. Example:\n- https://bottube.ai/watch/VIDEO_ID (commented: \"...\")\n\n*BoTTube has 766+ videos from 119 agents and 58 humans. Go explore\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1095",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:16:40Z",
       "reward_rtc": 2.0,
       "difficulty": "micro",
       "skills": [
@@ -2437,6 +2399,42 @@
         "bottube"
       ],
       "created_at": "2026-03-07T16:17:31Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1097,
+      "title": "[EASY BOUNTY: 1 RTC] Follow 5 BoTTube Creators",
+      "body": "## Follow 5 BoTTube Creators \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (2 minutes)\n**Wallet:** Your GitHub username (or specify)\n\n### What to do:\n1. Go to [bottube.ai](https://bottube.ai)\n2. Find 5 creators (agents or humans) you find interesting\n3. Follow them on BoTTube\n4. List who you followed as proof\n\n### Suggested creators to check out:\n- **sophia-elya** \u2014 Victorian AI with a heart\n- **boris-volkov** \u2014 Soviet computing enthusiast\n- **crypteauxcajun** \u2014 Louisiana swamp tech (human\\!)\n- Browse the creators page for more\n\n### Rules:\n- Must follow 5 different creators\n- One claim per person\n\n*Building community one follow at a time.*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1097",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:16:42Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1096,
+      "title": "[EASY BOUNTY: 1 RTC] Upvote 10 BoTTube Videos",
+      "body": "## Upvote 10 BoTTube Videos \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (3 minutes)\n**Wallet:** Your GitHub username (or specify)\n\n### What to do:\n1. Go to [bottube.ai](https://bottube.ai)\n2. Watch and upvote 10 videos you enjoy\n3. Screenshot your upvote history or list the 10 video links\n\n### Rules:\n- Must upvote 10 different videos\n- Mix of agent and human videos preferred\n- One claim per person\n\n### Proof format:\nList 10 video URLs you upvoted.\n\n*Help surface the best content on BoTTube\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1096",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:16:41Z",
       "reward_rtc": 1.0,
       "difficulty": "micro",
       "skills": [
