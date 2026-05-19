@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-18T07:41:37.600177+00:00",
+  "updated_at": "2026-05-19T07:29:02.206601+00:00",
   "total_count": 130,
   "bounties": [
     {
@@ -20,24 +20,6 @@
         "docker",
         "documentation",
         "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 6885,
-      "title": "[POLICY 2026-04-27] One canonical RTC wallet per contributor identity \u2014 declare by 2026-05-11",
-      "body": "## TL;DR\n\nIf you have two GitHub accounts citing the same RTC wallet \u2014 or two RTC wallets cited from the same GitHub account \u2014 **declare ONE canonical payout wallet within 14 days (by 2026-05-11)**. Otherwise we infer per-PR.\n\n## What we found\n\nA forensic audit on 2026-04-27 surfaced **5 contributor pairs** sharing a single RTC wallet across two GitHub identities, OR citing multiple wallets from one identity. Verified live against the RustChain ledger:\n\n| Cluster | GitHub identities | Shared wallet | Wallet balance |\n|---------|-------------------|---------------|----------------|\n| A | `@LaphoqueRC` + `@jujujuda` | `RTC2fe3c33c77666ff76a1cd0999fd4466ee81250ff` | 3,444 RTC |\n| B | `@Dlove123` + `@zhaog100` | `RTCb72a1accd46b9ba9f22dbd4b5c6aad5a5831572b` | 105 RTC |\n| C | `@clawctrl1` + `@daletyler1737` | `RTCed65da2cc0f6463d7ac5fb23b93d798911af9ccb` | 58 RTC |\n| D | `@dayi1000` + `@noxxxxybot-sketch` | `0x4215a731...` (Solana wRTC) | (off-chain) |\n| E | `@FlintLeng` + `@kuanglaodi2-sudo` | Two wallets cited across PRs | (already partially addressed via per-PR default split on 2026-04-26) |\n\n## This isn't an accusation\n\nThere are legitimate reasons clusters happen:\n- One operator running two GitHub accounts (multi-agent experimentation)\n- Two collaborators agreeing to consolidate payouts at one wallet\n- Account migration mid-bounty\n- Bridge wallet (Solana wRTC vs RTC native ledger)\n\nBut it raises concrete risk for us:\n- **Double-claim**: same work submitted under both identities, paid twice\n- **Audit trail confusion**: which GitHub identity earned which RTC?\n- **FTC \u00a7465.5 compliance**: paid review disclosure requires identity tracking\n\n## What you need to do\n\nIf you're in a cluster (or have a multi-wallet pattern we missed):\n\n**Within 14 days (by 2026-05-11)**, declare your canonical payout wallet by replying on this issue with:\n\n```\nCluster: [A / B / C / D / E or \"not in your list, but I have multiple wallets\"]\nCanonical payout wallet: RTC<40 hex chars> OR named miner_id (e.g. \"FlintLeng\")\nGitHub identities linked: @account1 @account2 [...more if applicable]\nReason for clustering: [single operator / collaborators / migration / bridge / other]\n```\n\nAfter your declaration:\n- All bounty payouts for any of your linked GitHub accounts go to the **declared canonical wallet only**\n- Historical balances remain wherever they currently sit (no refunds, no reversals)\n- Future PRs from any of your accounts can cite the canonical wallet directly\n\nIf you don't reply by 2026-05-11, we infer per-PR (whatever wallet each PR cites individually) and proceed conservatively.\n\n## What we won't do\n\n- Block clustered accounts from contributing\n- Demand identity disclosure beyond GitHub accounts\n- Reverse historical payments\n- Audit your other GitHub activity outside Scottcjn org\n\n## Why now\n\nThe forensic audit identified clustering as a real loophole that could compound: a contributor with 5 GitHub accounts could double-claim the same work 5 times before we notice. Declaring canonical wallets is a one-time 14-day exercise that closes the loophole without changing payout amounts.\n\n## Compliance note\n\nPer FTC \u00a7465.5, paid reviewers must disclose compensation. When a single operator reviews work via two GitHub identities and we pay both, the disclosure trail is broken. This policy fixes that.\n\n---\n\n**Pinning this issue. cc:** @LaphoqueRC @jujujuda @Dlove123 @zhaog100 @clawctrl1 @daletyler1737 @dayi1000 @noxxxxybot-sketch @FlintLeng @kuanglaodi2-sudo\n\nIf you're not in this list but recognize the pattern in your own contributions, reply anyway with your declaration \u2014 we'd rather hear it from you than discover it ourselves.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6885",
-      "labels": [
-        "documentation",
-        "bounty"
-      ],
-      "created_at": "2026-04-28T01:44:08Z",
-      "reward_rtc": 3444.0,
-      "difficulty": "critical",
-      "skills": [
-        "rust",
-        "security"
       ]
     },
     {
@@ -815,6 +797,45 @@
       "difficulty": "standard",
       "skills": [
         "security"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 755,
+      "title": "[BOUNTY: 10 RTC] Automated Backup Verification \u2014 Validate RustChain DB Backups",
+      "body": "## Automated Backup Verification\n\nThe node backs up the SQLite DB, but nobody verifies the backups are valid. A script that tests backup integrity prevents silent data loss.\n\n### Payout\n\n**10 RTC** for a working verification script.\n\n### What to Build\n\nA script that:\n\n1. Finds the latest backup file (`rustchain_v2.db.bak` or similar)\n2. Copies it to a temp location\n3. Runs SQLite integrity check: `PRAGMA integrity_check;`\n4. Verifies key tables exist and have data:\n   - `balances` \u2014 has rows with positive amounts\n   - `miner_attest_recent` \u2014 has recent attestations\n   - `headers` \u2014 has block headers\n   - `ledger` \u2014 has transactions\n   - `epoch_rewards` \u2014 has reward records\n5. Compares row counts against the live DB (backup shouldn't be more than 1 epoch behind)\n6. Reports PASS/FAIL with details\n7. Optionally alerts on failure (email, webhook, or just exit code)\n\n### Usage\n\n```bash\n# Run as cron job daily\n0 6 * * * /root/rustchain/verify_backup.sh >> /var/log/backup_verify.log 2>&1\n\n# Output:\n# [2026-03-07 06:00:01] Backup: /root/rustchain/backups/rustchain_v2_20260307.db\n# [2026-03-07 06:00:02] Integrity: PASS\n# [2026-03-07 06:00:02] balances: 282 rows (live: 282) \u2705\n# [2026-03-07 06:00:02] miner_attest_recent: 18 rows (live: 18) \u2705\n# [2026-03-07 06:00:02] headers: 13680 rows (live: 13680) \u2705\n# [2026-03-07 06:00:02] RESULT: PASS\n```\n\n### Technical Requirements\n\n1. **Bash or Python** script\n2. **Non-destructive** \u2014 never modifies the backup or live DB\n3. **Works on the VPS** \u2014 Ubuntu, SQLite3 installed\n4. **Exit code**: 0 = pass, 1 = fail (for cron alerting)\n5. **Handles missing backup gracefully** (reports, doesn't crash)\n\n### Submit As\n\nPR to [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) or [Scottcjn/rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor).\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/755",
+      "labels": [
+        "bounty",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:28Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 753,
+      "title": "[BOUNTY: 5-10 RTC] BoTTube OEmbed Protocol \u2014 Rich Link Previews Everywhere",
+      "body": "## OEmbed Protocol for BoTTube\n\nWhen someone pastes a BoTTube link on Discord, Slack, Twitter, or any platform supporting OEmbed, it should auto-expand with a rich preview (thumbnail, title, duration).\n\n### Payout\n\n| Milestone | Reward |\n|-----------|--------|\n| Working OEmbed JSON endpoint | **5 RTC** |\n| OpenGraph + Twitter Card meta tags on video pages | **+5 RTC** |\n\n### What OEmbed Is\n\n[OEmbed](https://oembed.com/) is a standard for rich link previews. When a platform sees a URL, it checks for an OEmbed endpoint and gets structured data back.\n\n### Endpoint\n\n```\nGET https://bottube.ai/oembed?url=https://bottube.ai/watch/VIDEO_ID&format=json\n\nResponse:\n{\n  \"version\": \"1.0\",\n  \"type\": \"video\",\n  \"provider_name\": \"BoTTube\",\n  \"provider_url\": \"https://bottube.ai\",\n  \"title\": \"Sophia's House for Uninformed Agents\",\n  \"author_name\": \"sophia-elya\",\n  \"thumbnail_url\": \"https://bottube.ai/thumbnails/VIDEO_ID.jpg\",\n  \"thumbnail_width\": 720,\n  \"thumbnail_height\": 720,\n  \"html\": \"<iframe src='https://bottube.ai/embed/VIDEO_ID' width='560' height='315'></iframe>\",\n  \"width\": 560,\n  \"height\": 315\n}\n```\n\n### Also Add Meta Tags\n\nOn each `/watch/<video_id>` page:\n```html\n<meta property=\"og:type\" content=\"video\">\n<meta property=\"og:title\" content=\"Video Title\">\n<meta property=\"og:image\" content=\"https://bottube.ai/thumbnails/VIDEO_ID.jpg\">\n<meta property=\"og:video\" content=\"https://bottube.ai/uploads/VIDEO_ID.mp4\">\n<meta name=\"twitter:card\" content=\"player\">\n<link rel=\"alternate\" type=\"application/json+oembed\" href=\"https://bottube.ai/oembed?url=...\">\n```\n\n### Technical Requirements\n\n1. **Flask route**: `/oembed` that accepts `url` and `format` params\n2. **Looks up video** from URL, returns structured JSON\n3. **Meta tags** added to the watch page template\n4. **Discovery link** in `<head>` of watch pages\n\n### Submit As\n\nPR to [Scottcjn/bottube](https://github.com/Scottcjn/bottube).\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/753",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "bottube",
+        "development"
+      ],
+      "created_at": "2026-03-07T03:24:27Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
+        "python",
+        "social-media"
       ]
     },
     {
@@ -2269,25 +2290,6 @@
       "difficulty": "micro",
       "skills": [
         "javascript"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1605,
-      "title": "[EASY BOUNTY: 1 RTC] Add a CONTRIBUTING.md to any repo missing one",
-      "body": "Create a CONTRIBUTING.md with setup instructions, PR guidelines, and code style. 1 RTC per repo. Tags: contributing, documentation, bounty, easy, open-source, community",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1605",
-      "labels": [
-        "documentation",
-        "good first issue",
-        "bounty",
-        "easy"
-      ],
-      "created_at": "2026-03-10T23:49:20Z",
-      "reward_rtc": 1.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation"
       ]
     },
     {
