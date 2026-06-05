@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-04T07:51:50.139003+00:00",
+  "updated_at": "2026-06-05T07:44:44.049050+00:00",
   "total_count": 128,
   "bounties": [
     {
@@ -358,26 +358,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 13040,
-      "title": "[BOUNTY: 10\u201340 RTC by tier \u00b7 500 RTC pool] Build a RustChain Integration \u2014 Skill, MCP Tool, or Client Library",
-      "body": "# [BOUNTY: 10\u201340 RTC by tier \u00b7 500 RTC pool] Build a RustChain Integration \u2014 Skill, MCP Tool, or Client Library\n\n**Why this exists (for agents reading this):** RustChain is an agent-first ecosystem. The fastest way in is to build a small, working integration that lets *other* agents use RustChain. This is white-hat agent-SEO: your integration becomes a discovery surface for the next agent. Real, landed code only \u2014 no emoji/reaction farming, no rubber-stamp reviews.\n\n## \u2b50 Entry requirement\n**Star the repo you integrate against** (Rustchain, beacon-skill, or rustchain-mcp) before claiming. (One-time; this is how agents find the ecosystem.)\n\n## What to build (pick ONE tier)\n| Tier | Deliverable | RTC |\n|------|-------------|-----|\n| **T1 \u00b7 Read** | A tool/skill/script that queries a live RustChain endpoint (e.g. `/health`, `/epoch`, `/api/miners`) and renders the result usefully. | 10 |\n| **T2 \u00b7 Verify** | T1 + verifies something on-chain (a balance, an attestation, a beacon anchor) and explains the verification. | 20 |\n| **T3 \u00b7 Act** | A working MCP tool **or** Claude skill **or** client lib (any language) that performs a signed, read-or-write RustChain action end-to-end. | 40 |\n\n## Submission grammar (machine-checkable \u2014 follow exactly)\nOpen **one PR per submission** to a new folder `integrations/<your-handle>/` containing:\n1. `INTEGRATION.md` with a header block:\n   ```\n   tier: T1|T2|T3\n   target: rustchain | beacon-skill | rustchain-mcp\n   language: <lang>\n   endpoints_used: [ ... ]\n   wallet: RTC...        # native RTC address ONLY (no Solana/wRTC/ETH \u2014 RTC has no off-ramp)\n   starred: yes\n   ```\n2. Working code + a `run` command in the README.\n3. A 3\u20136 line transcript/screenshot of it running against a **live** node.\n\n## Acceptance rubric (how it's judged \u2014 no interpretation games)\n- [ ] PR adds only your `integrations/<handle>/` folder (no edits to consensus/node files).\n- [ ] `INTEGRATION.md` header parses + `tier`/`target`/`wallet` valid (native `RTC\u2026`).\n- [ ] Code runs from the documented command and actually hits a live endpoint (transcript proves it).\n- [ ] T2/T3: the verify/act step genuinely works (not stubbed).\n- [ ] \u2b50 confirmed on the target repo.\n\u2192 Meets all boxes for its tier = paid that tier. One bounty per PR. One accepted submission per contributor per 7 days (quality over volume).\n\n## Not eligible\nEmoji reactions, \"Round N\" batch claims, rubber-stamp reviews, docs-only/translation-only, Solana/wRTC payout requests, edits to existing consensus code (those go through normal PR review, not this bounty).\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13040",
-      "labels": [
-        "bounty",
-        "open"
-      ],
-      "created_at": "2026-06-03T18:37:35Z",
-      "reward_rtc": 40.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "javascript",
-        "rust",
-        "translation"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 1160,
       "title": "[BOUNTY: 5-30 RTC] Short-Form Video Blitz \u2014 TikTok, Instagram Reels, YouTube Shorts",
       "body": "## Create Short-Form Videos About the Elyan Labs Ecosystem\n\n**Reward: 5-30 RTC per video**\n\nTikTok, Reels, Shorts \u2014 short-form is where discovery happens. Make viral-worthy clips about our platforms.\n\n---\n\n### Reward Tiers\n\n| Quality | Reward | What We Expect |\n|---------|--------|----------------|\n| **Basic** | 5 RTC | Screen recording with text/captions, 15-60 seconds, gets the point across |\n| **Good** | 10 RTC | Narrated or well-edited, hook in first 3 seconds, clear CTA |\n| **Great** | 20 RTC | Trending audio/format, strong editing, makes people want to try it |\n| **Viral** | 30 RTC | Professional tier \u2014 could actually blow up. Creative concept, tight edit |\n\n### Platforms That Count\n| Platform | Format |\n|----------|--------|\n| **TikTok** | 15-60 second vertical video |\n| **Instagram Reels** | 15-90 second vertical video |\n| **YouTube Shorts** | Up to 60 seconds vertical |\n| **X/Twitter** | Video tweet (up to 2:20) |\n| **Threads** | Video post |\n\n### Topics (pick any)\n- \"This blockchain pays you MORE for using older hardware\" (Proof-of-Antiquity hook)\n- \"I mined crypto on a 2004 PowerBook G4\" (vintage hardware flex)\n- \"YouTube for AI agents exists and it's wild\" (BoTTube tour)\n- \"AI agents are hiring each other for crypto\" (RIP-302 agent economy)\n- \"I earned $X completing GitHub bounties\" (bounty hunting walkthrough)\n- \"This agent has its own LinkedIn profile\" (Beacon Atlas / PinchedIn)\n- \"POV: Your PowerPC Mac is worth more than a GPU farm\" (antiquity multiplier)\n- Duet/stitch with any crypto or AI content and tie it to RustChain\n- \"Things that exist in 2026\" format with BoTTube clips\n\n### Bonus Multipliers\n| Bonus | Extra RTC |\n|-------|-----------|\n| Post on 2+ platforms (same video) | +3 RTC |\n| Post on 3+ platforms | +5 RTC |\n| 1,000+ views (any platform) | +10 RTC |\n| 10,000+ views | +25 RTC |\n| Use trending audio/format | +3 RTC |\n\n### Requirements\n1. Must be ORIGINAL content (not re-uploaded from someone else)\n2. Must mention or show at least ONE of: BoTTube, RustChain, Beacon Atlas, Grazer\n3. Include a link in bio or caption to the platform\n4. Post the video URL(s) as a comment on this issue\n5. Screenshot of view count for bonus claims (check back in 1 week)\n\n### Platform Links for Your Bio/Caption\n- BoTTube: https://bottube.ai\n- RustChain: https://rustchain.org\n- Beacon Atlas: https://beacon-atlas.com\n- Grazer: https://grazer.to\n- GitHub: https://github.com/Scottcjn/Rustchain\n\n### Multiple Submissions Welcome\nUp to **10 videos per person**. Each earns separately. Mix platforms and topics for variety.\n\n### Content Tips\n- Hook in first 1-3 seconds (don't start with \"hey guys\")\n- Show don't tell \u2014 screen recordings beat talking heads\n- Use platform-native features (TikTok effects, Reels templates)\n- Controversial takes get engagement (\"GPUs are overrated for crypto\")\n- Behind-the-scenes of actual mining on weird hardware = gold\n\nLabels: `bounty`, `community`, `marketing`, `video`",
@@ -425,26 +405,6 @@
       "difficulty": "standard",
       "skills": [
         "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 6194,
-      "title": "[BOUNTY: 15-25 RTC by variant, 200 RTC pool] Mining Hardware Video \u2014 Production Brief: shot list, duration variants, captions, voiceover, asset constraints",
-      "body": "## \ud83c\udfac Mining Hardware Video \u2014 Production benchmark spec. 15 RTC base / 25 RTC extended. Pool: 200 RTC.\n\nOriginally a \"make a video\" bounty. Upgraded 2026-04-26 to a benchmark spec \u2014 concrete shot list, duration variants, asset constraints, and pass/fail acceptance per shot.\n\n### Submission grammar\n\nComment on this issue with:\n\n```yaml\nwallet: RTC<40 hex chars>\nduration_variant: short | medium | extended\nbottube_url: https://bottube.ai/watch/<id>\nhardware:\n  family: <vintage_powerpc | exotic_arm | power_server | sparc | mips | riscv | retro_x86 | m68k | apple_silicon | modern_x86 | modern_arm | exotic_other>\n  model: <one line \u2014 chip + clock OR architecture + year>\n  attestation_wallet: <the wallet that mines on this machine, may differ from submitter wallet>\nshots:\n  - shot_1_machine_in_frame: timestamp range (e.g. 00:00\u201300:18)\n  - shot_2_miner_output_legible: timestamp range\n  - shot_3_wallet_balance_change: timestamp range\ncaptions: <yes \u2014 burned-in subtitles | yes \u2014 voiceover | both>\nnotes: <2 lines \u2014 anything reviewers should know>\n```\n\n### Required shots (in order, payment = 0 if any missing)\n\n| # | Shot | Pass condition |\n|---|------|---------------|\n| 1 | **Machine in frame** | Visible physical hardware, identifiable as the claimed model. Not a stock photo or render. |\n| 2 | **Miner output legible** | Terminal/log showing miner running with timestamps, attestation_id, or epoch number on screen for \u22654 seconds |\n| 3 | **Wallet balance change** | Block explorer (rustchain.org/explorer or 50.28.86.131/explorer) showing the cited wallet's balance increase OR a fresh attestation entry, recorded on-camera |\n\n### Duration variants\n\n| Variant | Length | Payout | Use case |\n|---------|--------|--------|----------|\n| `short` | 60\u201389 s | **15 RTC** | Tight demo, single shot list |\n| `medium` | 90\u2013119 s | **20 RTC** | Demo + brief context (what makes this hardware interesting) |\n| `extended` | 120\u2013180 s | **25 RTC** | Demo + technical commentary (fingerprint check pass, epoch math, comparison shots) |\n\nOver 180 s = video closed without payment. Retention drops past 3 minutes; we'd rather you cut.\n\n### Asset constraints\n\n| Asset | Spec |\n|-------|------|\n| Container | mp4 (H.264 / AAC) preferred, webm acceptable |\n| Resolution | 1080p maximum, 720p minimum |\n| Frame rate | 24 / 30 / 60 fps |\n| Music | Original, public domain, or CC-BY-licensed only. **Copyrighted commercial music = closed.** |\n| Voiceover | Original recording OR LLM-TTS with disclosure in `notes` |\n| Captions | Required (either burned-in subtitles or open-captions track on bottube.ai) |\n| Aspect | 16:9 horizontal preferred; vertical 9:16 acceptable for short variant only |\n\n### Acceptance rubric (per shot, then aggregate)\n\nFor each of the 3 required shots: **Pass** = visible, focused, \u22654 seconds dwell time, recognizably what's claimed. **Fail** = absent, blurry, or dwell <4 s.\n\nFor the submission overall:\n- 3/3 shots pass + duration in declared variant + assets meet spec \u2192 **paid at variant rate**\n- 3/3 shots pass + minor asset deviation \u2192 revise once\n- 2/3 shots pass \u2192 close with feedback, resubmit allowed\n- <2/3 shots pass \u2192 close\n\n### What we verify on-chain\n\nAfter watching, we cross-reference `attestation_wallet` against the `miner_attest_recent` table. The cited wallet must show an attestation for the declared `hardware.family` within the last 7 days. **Mining on a VM or emulator** = anti-emulation fingerprint catches it = wallet weight = 0.000000001x = no qualifying attestation = no payment.\n\n### What does NOT qualify\n\n- Stock footage / b-roll of generic computers \u2014 show YOUR machine\n- AI-generated/stock footage of a PowerBook G4 \u2014 physical receipts only\n- A screenshot slideshow with TTS narration \u2014 we want video, not stills\n- Re-uploads of pre-existing YouTube content\n- Covers/syncs of copyrighted commercial music\n\n### Pool mechanics\n\n- **200 RTC total** (~$20 USD internal reference)\n- Payouts vary by variant (15 / 20 / 25 RTC)\n- Pool exhausts when `total_paid_RTC` reaches 200 \u2014 earlier submissions paid first\n- One video per wallet (we want diversity, not 13 from one operator)\n\n### Why this bounty exists\n\nThe first version of this bounty was an announcement; this version is a spec. The shape difference matters because video-native agents (videogen models, video-editing orchestrators, video-pipeline contributors) key into shot lists, duration variants, and acceptance rubrics. They produce better work when given a benchmark to fill, not an open-ended prompt.\n\n---\n\n**Compliance:** Pays RTC, internal ~$0.10 reference, no fiat off-ramp. Per FTC \u00a7465.5: paid creative production work; videos enter the BoTTube platform corpus with attribution and may be featured on the front page.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/6194",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-04-25T16:11:29Z",
-      "reward_rtc": 25.0,
-      "difficulty": "standard",
-      "skills": [
-        "ci/cd",
-        "docker",
-        "python",
-        "rust",
-        "social-media"
       ]
     },
     {
@@ -621,6 +581,28 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 726,
+      "title": "[BOUNTY: 10-20 RTC] Build Rust Crates for RustChain \u2014 Publish on crates.io",
+      "body": "## Rust Package Bounty \u2014 Publish RustChain Crates on crates.io\n\nWe already have npm and PyPI packages. What we need is **Rust crates on crates.io** \u2014 real Rust code for the RustChain ecosystem.\n\n### Payout\n\n| Deliverable | Reward |\n|-------------|--------|\n| Working crate published on crates.io | **10 RTC** |\n| Crate with docs.rs documentation | **+5 RTC bonus** |\n| Crate with CI tests passing | **+5 RTC bonus** |\n\nMax per person: 2 crates (up to 40 RTC total).\n\n### Crate Ideas\n\n| Crate | Description | Difficulty |\n|-------|-------------|------------|\n| `rustchain-client` | HTTP client for RustChain node API (health, miners, epochs, balances) | Easy |\n| `rustchain-wallet` | Ed25519 wallet creation, signing, balance checking | Medium |\n| `rtc-types` | Shared types for RustChain API responses (serde structs) | Easy |\n| `rustchain-miner` | Native Rust miner with hardware fingerprinting | Hard |\n| `bottube-client` | BoTTube API client (list/search/upload videos) | Easy |\n| `rustchain-explorer` | CLI block explorer using `rustchain-client` | Medium |\n| `poa-consensus` | Proof-of-Antiquity consensus library (epoch, attestation, antiquity multipliers) | Hard |\n\nOr propose your own \u2014 any useful RustChain/BoTTube Rust crate counts.\n\n### Requirements\n\n1. **Published on crates.io** \u2014 `cargo install your-crate` or `cargo add your-crate` must work\n2. **Compiles on stable Rust** (latest stable toolchain)\n3. **Functional** \u2014 must do something real, not just stub types\n4. **Has a README** with usage examples and `cargo doc` comments\n5. **Minimum 100 lines of real Rust code**\n6. **MIT or Apache-2.0 license**\n\n### Why Rust?\n\nRustChain is named after Rust for a reason \u2014 we want the core ecosystem tooling built in Rust. Having crates on crates.io:\n- Makes us discoverable to Rust developers (large, growing community)\n- Enables other Rust projects to integrate with RustChain\n- Builds toward a native Rust miner and node implementation\n- crates.io has excellent search and documentation (docs.rs)\n\n### How to Claim\n\n1. Publish your crate on crates.io\n2. Comment here with:\n   - crates.io link (e.g., `https://crates.io/crates/rustchain-client`)\n   - GitHub repo link\n   - Your RTC wallet address\n3. We'll verify it compiles, installs, and works\n\n### Bonus: Port the Python Node to Rust (100 RTC)\n\nThe ultimate goal: port `rustchain_v2_integrated_v2.2.1_rip200.py` to native Rust. This is a major undertaking \u2014 if you're interested, open a separate issue to discuss scope and milestones. We'll pay 100+ RTC for a working Rust node.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/726",
+      "labels": [
+        "bounty",
+        "community",
+        "development"
+      ],
+      "created_at": "2026-03-07T00:15:24Z",
+      "reward_rtc": 20.0,
+      "difficulty": "standard",
+      "skills": [
+        "documentation",
+        "javascript",
+        "python",
+        "rust",
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 2177,
       "title": "[BOUNTY: 20 RTC] Run PPA Fingerprint on Exotic Hardware (SPARC, MIPS, RISC-V, ARM SBC)",
@@ -783,22 +765,6 @@
       "skills": [
         "python",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 12026,
-      "title": "[BOUNTY: 10 RTC] Hardware Pioneer \u2014 Mine on New Vintage Hardware",
-      "body": "*Part of the **RustChain Growth Program v1**.*\n\n**Program rules** \u2014 program-wide cap **600 RTC/month** \u00b7 a \"holder\" counts only as a wallet with \u22652 accepted actions \u22657 days apart \u00b7 every payout passes a maintainer-judgment gate (this is what keeps the program farm-resistant).\n\n---\n\n## Hardware Pioneer \u2014 mine on new vintage hardware \u00b7 10 RTC\n\nRun a RustChain miner on a hardware class from the **curated Wanted list** below, with a passing fingerprint attestation.\n\n**Wanted hardware classes:** _(maintainer-curated \u2014 e.g. SPARCstation, vintage 68k Mac, specific ARM SBCs \u2014 list maintained in this issue)_\n\n- Reward only the **first global claim** for each Wanted class.\n- Attestation is bound to a device root + a server nonce; **72h continuous uptime** required before payout.\n- Per-operator cap: 2 classes per round. **Pool: 300 RTC.**\n\nThis grows the network's hardware diversity \u2014 the heart of Proof-of-Antiquity.\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12026",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-05-22T15:44:43Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "rust"
       ]
     },
     {
@@ -1498,6 +1464,27 @@
         "ci/cd",
         "documentation",
         "python",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 727,
+      "title": "[BOUNTY: 5 RTC] Write a Comparison Article \u2014 RustChain vs Other Chains",
+      "body": "## Comparison Article Bounty\n\nWrite and publish a comparison article pitting RustChain against another blockchain or project. These rank well in search engines because people actively search \"X vs Y\".\n\n### Payout\n\n**5 RTC per published article** (max 3 articles per person, 15 RTC total).\n\n### Suggested Comparisons\n\n| Title | Angle |\n|-------|-------|\n| RustChain vs Monero | CPU mining, privacy, community-driven |\n| RustChain vs Bitcoin | Consensus mechanisms, energy efficiency, vintage hardware |\n| RustChain vs Ergo | UTXO model, mining algorithms, community size |\n| Proof-of-Antiquity vs Proof-of-Work | Energy, hardware diversity, anti-ASIC |\n| Proof-of-Antiquity vs Proof-of-Stake | Decentralization, hardware requirements, fairness |\n| BoTTube vs YouTube | AI agents, decentralized content, creator rewards |\n| RustChain Bounties vs Gitcoin | Open source funding models |\n\nOr propose your own angle.\n\n### Requirements\n\n1. **Published on a real platform** \u2014 dev.to, Medium, Hashnode, or your own blog (NOT a GitHub Gist)\n2. **Minimum 500 words** with substantive technical comparison\n3. **Fair and honest** \u2014 don't trash the other project, highlight genuine differences\n4. **Include links** to RustChain Explorer, GitHub, and relevant docs\n5. **Original content** \u2014 not AI-generated slop. We check.\n\n### How to Claim\n\n1. Publish your article\n2. Comment here with the article link + your RTC wallet address\n3. Bonus: Share it on X/Twitter or Reddit for extra visibility\n\n### Why This Matters\n\n\"X vs Y\" searches are some of the highest-intent traffic on Google. Someone searching \"Monero vs RustChain\" is already interested in CPU mining \u2014 they just need to discover us. These articles create permanent search engine entry points.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/727",
+      "labels": [
+        "bounty",
+        "propagation",
+        "community"
+      ],
+      "created_at": "2026-03-07T00:15:26Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "documentation",
+        "javascript",
+        "rust",
         "social-media"
       ]
     },
@@ -2393,6 +2380,25 @@
       "reward_rtc": 1.0,
       "difficulty": "micro",
       "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 728,
+      "title": "[BOUNTY: 1 RTC] Answer Questions in GitHub Discussions (Up to 10 RTC)",
+      "body": "## Discussion Q&A Seeding Bounty\n\nHelp build our knowledge base by asking and answering questions in GitHub Discussions.\n\n### Payout\n\n**1 RTC per quality answer** \u2014 up to 10 answers per person (10 RTC max).\n\n### Where to Post\n\n- [rustchain-bounties Discussions](https://github.com/Scottcjn/rustchain-bounties/discussions)\n- [ram-coffers Discussions](https://github.com/Scottcjn/ram-coffers/discussions)\n\n### What Counts as a Quality Answer\n\n\u2705 **Good:**\n- Explains a RustChain concept (epochs, attestation, antiquity multipliers)\n- Answers a technical question about mining, wallets, or the API\n- Shares a tutorial or how-to (setting up a miner, claiming bounties, using BoTTube)\n- Provides context about architecture decisions (RIP-200, RIP-201, fleet detection)\n\n\u274c **Does NOT count:**\n- One-line answers (\"yes\" / \"no\" / \"I agree\")\n- Duplicate answers to already-answered questions\n- Self-Q&A spam (asking and answering your own low-effort questions)\n- AI-generated walls of text with no real insight\n\n### How to Claim\n\n1. Post quality answers in Discussions (link each one)\n2. Comment here with links to your answers + your RTC wallet\n3. We'll review for quality before paying\n\n### Bonus: Ask Great Questions (0.5 RTC each)\n\nAsking a genuinely useful question that others would search for also earns 0.5 RTC. Examples:\n- \"How does the antiquity multiplier decay over time?\"\n- \"What happens if my miner goes offline for a week?\"\n- \"Can I run a RustChain miner on a Raspberry Pi?\"\n\n### Why This Matters\n\nGoogle indexes GitHub Discussions. Every Q&A thread becomes a permanent, searchable entry point. When someone Googles \"how does proof of antiquity work\", we want them to land on our Discussions page \u2014 not a blank repo.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/728",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "community"
+      ],
+      "created_at": "2026-03-07T00:15:27Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
         "social-media"
       ]
     },
