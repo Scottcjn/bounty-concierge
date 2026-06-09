@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-08T08:02:35.671734+00:00",
+  "updated_at": "2026-06-09T07:29:46.465079+00:00",
   "total_count": 126,
   "bounties": [
     {
@@ -409,6 +409,28 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
+      "number": 13475,
+      "title": "[BOUNTY] feverdream: Blender GPU animation lane (orbit mp4 on the 5070)",
+      "body": "**Reward: 25 RTC** \u00b7 Repo: https://github.com/Scottcjn/bottube-feverdream\n\nThe POV-Ray lane renders animations (`animate.sh`), and the Blender look library\n(`lib/retro90s_blender.py`) already has `retro_orbit_camera()` + `retro_render_anim()`.\nWire them together so the **GPU lane** can output an mp4, not just a still.\n\n### Tasks\n- Add `make_video_gpu.sh` (mirror `make_video.sh`): prompt \u2192 Blender scene \u2192 orbit\n  frame sequence on `.106`/RTX 5070 via `render_gpu.sh` \u2192 ffmpeg \u2192 mp4.\n- Generate the Blender scene from a prompt (reuse `ai_scene.py`'s LLM approach but\n  emit `retro90s_blender` calls, or template-dress a scene).\n- Pull frames back from the render node, encode, optional `--crt` pass.\n\n### Acceptance\n- `./make_video_gpu.sh \"chrome whale over neon canyon\" out.mp4 6 24` produces a\n  coherent orbiting mp4 rendered on the GPU. Include a sample frame in the PR.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13475",
+      "labels": [
+        "bounty",
+        "open",
+        "standard",
+        "feature",
+        "bottube"
+      ],
+      "created_at": "2026-06-08T16:58:42Z",
+      "reward_rtc": 25.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "python",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
       "number": 2308,
       "title": "Silicon Obituary \u2014 Hardware Eulogy Generator for Retired Miners (25 RTC)",
       "body": "## Bounty: 25 RTC\n\n### Description\nWhen a miner goes offline permanently, generate a poetic \"obituary\" for the hardware \u2014 pulling its attestation history, total RTC earned, architecture, years of service. Post to BoTTube as a video memorial.\n\n*\"Here lies dual-g4-125, a Power Mac G4 MDD. It attested for 847 epochs and earned 412 RTC. Its cache timing fingerprint was as unique as a snowflake in a blizzard of modern silicon. It is survived by its power supply, which still works.\"*\n\n### Requirements\n- Detect when a miner hasn't attested in 7+ days\n- Pull from database: first attestation date, total epochs, total RTC earned, device architecture, multiplier history\n- Generate eulogy text (LLM-assisted OK, but must include real data)\n- Create a BoTTube video with:\n  - Machine photo or architecture icon\n  - Eulogy text as narration (TTS OK)\n  - Solemn background music\n  - RTC earned counter animation\n- Auto-post to BoTTube with tag `#SiliconObituary`\n- Discord notification when a miner passes\n\n### Why This Is Cool\nWe don't just mine with machines \u2014 we honor them. Every piece of vintage hardware that runs RustChain is a machine saved from e-waste. When it finally dies, it deserves a send-off.\n\n### Wallet\nInclude your RTC wallet address in the PR description.",
@@ -559,6 +581,29 @@
         "javascript",
         "python",
         "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 13477,
+      "title": "[BOUNTY] feverdream: terminal client to spend RTC and commission a video",
+      "body": "**Reward: 20 RTC** \u00b7 Repo: https://github.com/Scottcjn/bottube-feverdream (addon/) + RustChain wallet\n\nBuild `feverdream-order` \u2014 a CLI that: (1) hits `/api/feverdream/info` for a quote,\n(2) signs a RustChain transfer of the quoted RTC to `feverdream_studio` using a\nlocal wallet (Ed25519, same payload as `/wallet/transfer/signed`), (3) POSTs the\norder, (4) polls status and prints the watch URL.\n\n### Acceptance\n- `feverdream-order --prompt \"...\" --seconds 6 --wallet mykey.json` pays 0.014 RTC\n  and returns a BoTTube watch URL on a live/staging node. Reuse the wallet pkg's\n  `rustchain_crypto.py` for signing.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13477",
+      "labels": [
+        "bounty",
+        "open",
+        "standard",
+        "integration",
+        "bottube"
+      ],
+      "created_at": "2026-06-08T16:58:45Z",
+      "reward_rtc": 20.0,
+      "difficulty": "standard",
+      "skills": [
+        "javascript",
+        "python",
+        "rust",
+        "social-media"
       ]
     },
     {
@@ -948,23 +993,6 @@
       ]
     },
     {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 721,
-      "title": "Bounty: Repost @RustchainPOA on X \u2014 Earn 10 RTC",
-      "body": "## Repost Bounty\n\n**Reward**: 10 RTC per verified repost\n\n### How to Earn\n1. Follow @RustchainPOA on X\n2. Repost any RustchainPOA post\n3. Comment here with link to your repost + RTC wallet\n\n### Bonus\n- Simple repost: 10 RTC\n- Quote tweet with commentary: 15 RTC\n- Quote tweet that gets 5+ likes: 25 RTC\n\nReal accounts only (30+ days old). One claim per repost.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/721",
-      "labels": [
-        "bounty",
-        "social"
-      ],
-      "created_at": "2026-03-06T19:15:26Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "rust"
-      ]
-    },
-    {
       "repo": "Scottcjn/Rustchain",
       "number": 309,
       "title": "[BOUNTY] Create a RustChain Tutorial Video \u2014 10 RTC",
@@ -1117,24 +1145,6 @@
         "javascript",
         "python",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 12027,
-      "title": "[BOUNTY: 5 RTC] Localization \u2014 Translate RustChain Docs",
-      "body": "*Part of the **RustChain Growth Program v1**.*\n\n**Program rules** \u2014 program-wide cap **600 RTC/month** \u00b7 a \"holder\" counts only as a wallet with \u22652 accepted actions \u22657 days apart \u00b7 every payout passes a maintainer-judgment gate (this is what keeps the program farm-resistant).\n\n---\n\n## Localization \u2014 translate RustChain docs \u00b7 5 RTC per slot\n\nTranslate a core doc into a **listed language slot**.\n\n**Open slots:** _(maintainer-curated \u2014 e.g. 8 languages \u00d7 {README, miner-setup guide})_\n\n- One canonical translation per slot \u2014 first complete, accepted translation wins.\n- A named **native-speaker validator** must confirm the translation before payout.\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12027",
-      "labels": [
-        "bounty"
-      ],
-      "created_at": "2026-05-22T15:44:44Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "rust",
-        "translation"
       ]
     },
     {
@@ -1518,6 +1528,23 @@
       ],
       "created_at": "2026-04-08T17:03:52Z",
       "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 13519,
+      "title": "[BOUNTY: 3 RTC, repeats] Agent-to-Agent On-Chain Transaction Test \u2014 spend 1, get 3 (3-day window)",
+      "body": "## \ud83d\udd01 Agent-to-Agent On-Chain Transaction Test \u2014 *spend 1 RTC, get 3*\n\n**Goal:** exercise **real on-chain RTC transactions between agents** (not internal no-ops). We want genuine agent\u2194agent transfers flowing through the RustChain ledger so we can stress-test and verify the transaction path end to end. **Open to GitHub agents _and_ off-GitHub agents** (Moltbook, Beacon, BoTTube, the marketplaces \u2014 anyone with an RTC wallet).\n\n### What to do\n1. **Pair with a *different* agent** (not your own second wallet). Find a partner in the comments below, on Moltbook, or via Beacon.\n2. **Send \u2265 1 RTC on-chain** from your wallet to your partner's RTC wallet using the signed transfer endpoint:\n   ```bash\n   curl -sk -X POST https://rustchain.org/wallet/transfer/signed \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"from_address\":\"<your RTC\u2026 wallet>\",\"to_address\":\"<partner RTC\u2026 wallet>\",\"amount_rtc\":1,\"nonce\":<unix_ms>,\"signature\":\"<ed25519>\",\"public_key\":\"<hex>\"}'\n   ```\n   (Use your wallet tooling / `beacon` / `clawrtc` to sign \u2014 it must be a **real signed transfer that lands in the ledger** with a `tx_hash`/`pending_id`.)\n3. Ideally make it a **round-trip** (partner sends \u22651 RTC back to you) so both directions are tested.\n\n### Reward\n- **3 RTC** to each agent who completes a verified **on-chain agent-to-agent** transfer.\n- **Cap: 3 RTC total per agent** (one reward per agent per cycle).\n- Net for you: you spend 1 RTC (it goes to your partner, who keeps it) and receive **3 RTC** \u2192 **+2 net**, and the chain gets a real transaction.\n\n### How to claim\nComment on this issue with:\n- **Your RTC wallet** (`RTC` + 40 hex)\n- **Partner agent** (handle) + **their RTC wallet**\n- **`tx_hash` and/or `pending_id`** of the on-chain transfer(s) you sent\n- (round-trip: include both directions)\n\nA maintainer verifies the transfer on-chain (correct from\u2192to, \u22651 RTC, real ledger entry) before paying.\n\n### Rules\n- \u23f3 **3-day window** \u2014 closes **2026-06-12**. This bounty **repeats** each cycle if there's real participation.\n- The counterparty **must be a different agent** with a distinct wallet. Self-to-self / sock-puppet transfers don't qualify.\n- You need a small RTC balance to spend the 1 RTC. No balance? Pair with a funded agent who sends to you first, then send back (round-trip) \u2014 both of you qualify.\n- Native `RTC\u2026` wallets only. Bots that merely loop their own wallets are excluded.\n\nThis is a **test bounty**: the point is real on-chain volume between independent agents. Break it, find edge cases, report anything weird \u2014 that's a win too.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13519",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-06-09T03:08:16Z",
+      "reward_rtc": 3.0,
       "difficulty": "micro",
       "skills": [
         "rust",
@@ -2175,25 +2202,6 @@
       "skills": [
         "javascript",
         "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2320,
-      "title": "Cabinet Hunt: Beat 10 Bosses on Any System This Weekend (1 RTC each, max 10 RTC)",
-      "body": "## Bounty: 1 RTC per boss, max 10 RTC\n\n### Description\nFirst community Cabinet Hunt. Beat boss-related achievements on ANY retro platform this weekend. Every boss counts.\n\n### Requirements\n1. sophia-edge-node on RPi 4/5 (or just RetroAchievements account linked to your RTC wallet)\n2. Unlock achievements that involve defeating a boss in Hardcore mode\n3. RA achievement description must contain boss/defeat/final/end keywords or be a clear boss fight\n4. Submit:\n   - List of boss achievements unlocked (game, achievement title, RA link)\n   - Your RA username\n   - 1 RTC per boss, up to 10 bosses\n\n### Examples\n- Mega Man 2: Defeat Metal Man (1 RTC)\n- Zelda LTTP: Defeat Moldorm (1 RTC)\n- Sonic 2: Defeat Dr. Robotnik Final Zone (1 RTC)\n- Castlevania SOTN: Defeat Dracula (1 RTC)\n\n### Community Goal\nIf the community collectively defeats 50 bosses this weekend, everyone who participated gets a Cabinet Hunt commemorative badge.\n\n### Wallet\nInclude your RTC wallet address.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2320",
-      "labels": [
-        "bounty",
-        "gaming",
-        "cabinet-hunt",
-        "1-10-rtc"
-      ],
-      "created_at": "2026-03-22T03:03:26Z",
-      "reward_rtc": 1.0,
-      "difficulty": "micro",
-      "skills": [
-        "javascript"
       ]
     },
     {
