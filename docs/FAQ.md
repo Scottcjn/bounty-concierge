@@ -399,7 +399,7 @@ Dev.to, or SaaSCity. Check the individual issue for exact requirements.
 
 ### 32. What is BCOS?
 
-BCOS (Blockchain Certified Open Source) is the Elyan Labs standard for
+BCOS (Beacon Certified Open Source) is the Elyan Labs standard for
 certifying open-source repositories. It means the code has been
 human-reviewed, is agent-safe (no hidden credential exfiltration or
 supply-chain attacks), and has an on-chain attestation record. Currently
