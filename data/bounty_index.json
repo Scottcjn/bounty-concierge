@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T07:58:04.056354+00:00",
+  "updated_at": "2026-06-19T08:08:54.690237+00:00",
   "total_count": 125,
   "bounties": [
     {
@@ -507,6 +507,25 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 724,
+      "title": "[BOUNTY: 10-25 RTC] Show HN \u2014 Get RustChain on Hacker News Front Page",
+      "body": "## Show HN: Proof-of-Antiquity \u2014 Where PowerPC G4s Earn More Than RTX 4090s\n\n### The Bounty\n\nWrite and post a compelling \"Show HN\" submission to [Hacker News](https://news.ycombinator.com/) about RustChain and the Proof-of-Antiquity consensus mechanism.\n\n### Why This Matters\n\nHN is where thousands of developers discover new projects daily. Our story is genuinely interesting:\n- A blockchain where vintage hardware (N64, PowerPC G4, IBM POWER8) earns **more** than modern GPUs\n- 210 contributors, $0 VC funding, built in 90 days\n- AI agent video platform (BoTTube) with 670+ videos\n- Hardware fingerprinting that catches VMs and emulators\n- Running on real Nintendo 64 hardware with a bidirectional bridge\n\nThis is the kind of novel technical project HN loves.\n\n### Payout Structure\n\n| Result | Reward |\n|--------|--------|\n| Post submitted (well-written, follows HN guidelines) | **10 RTC** |\n| Reaches HN front page (25+ upvotes) | **+15 RTC bonus** |\n\n### Requirements\n\n1. **Original writing** \u2014 not GPT slop. HN users detect and downvote AI-generated content instantly.\n2. **Technical depth** \u2014 explain Proof-of-Antiquity, hardware fingerprinting, the antiquity multiplier system\n3. **Honest framing** \u2014 don't hype. HN respects \"here's what I built and why\" posts.\n4. **Link to real artifacts** \u2014 Block Explorer, GitHub, BoTTube\n5. **Engage in comments** \u2014 answer questions from the HN community (or tag @Scottcjn)\n\n### How to Claim\n\n1. Post your \"Show HN\" submission\n2. Comment here with the HN link\n3. Include your RTC wallet address\n\n### Tips for HN Success\n\n- Post between 8-10am EST (peak HN traffic)\n- Title format: `Show HN: [Project Name] \u2013 [one-line hook]`\n- Keep the submission text concise \u2014 link to a detailed blog post\n- Don't ask for upvotes (HN bans this)\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/724",
+      "labels": [
+        "bounty",
+        "propagation",
+        "community"
+      ],
+      "created_at": "2026-03-07T00:15:22Z",
+      "reward_rtc": 25.0,
+      "difficulty": "standard",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 7,
       "title": "[BOUNTY] Run a RustChain Miner on Real Hardware \u2014 Earn 25 RTC + Mining Rewards",
@@ -738,26 +757,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2864,
-      "title": "[BOUNTY: 13 RTC] Create a GitHub Action That Awards RTC for Merged Pull Requests",
-      "body": "## GitHub Action: Auto-Award RTC on PR Merge\n\n**Reward: 20 RTC (~$2.00 USD)**\n\n### Goal\n\nBuild a reusable GitHub Action that automatically awards RTC tokens when a PR is merged. Any open source project can add this to reward contributors with crypto.\n\n### How It Works\n\n```yaml\n# .github/workflows/rtc-reward.yml\non:\n  pull_request:\n    types: [closed]\n\njobs:\n  reward:\n    if: github.event.pull_request.merged == true\n    runs-on: ubuntu-latest\n    steps:\n      - uses: Scottcjn/rtc-reward-action@v1\n        with:\n          node-url: https://50.28.86.131\n          amount: 5\n          wallet-from: project-fund\n          admin-key: \\${{ secrets.RTC_ADMIN_KEY }}\n```\n\n### Features Required\n\n- Configurable RTC amount per merge\n- Reads contributor wallet from PR body or `.rtc-wallet` file\n- Posts comment on PR confirming payment\n- Supports dry-run mode for testing\n- Published to GitHub Marketplace\n\n### Why This Matters\n\nThis turns **any GitHub repo** into a bounty platform. Maintainers add one YAML file and contributors earn crypto for merged PRs. Zero setup beyond the action.\n\n### Keywords\n\nGitHub Action, GitHub Marketplace, automated crypto rewards, contributor incentives, open source bounty, CI/CD cryptocurrency, RTC token, pull request rewards, developer incentives, pay contributors crypto\n\n### Wallet\n\nProvide your RTC wallet name in the PR.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2864",
-      "labels": [
-        "help wanted",
-        "bounty",
-        "standard",
-        "integration"
-      ],
-      "created_at": "2026-04-09T03:25:19Z",
-      "reward_rtc": 13.0,
-      "difficulty": "standard",
-      "skills": [
-        "ci/cd",
-        "javascript"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2316,
       "title": "Play-Test sophia-edge-node on Raspberry Pi 4 \u2014 First Achievements (10 RTC)",
       "body": "## Bounty: 10 RTC (Early Tester Reward)\n\n### Description\nBe one of the first to install sophia-edge-node on a real Raspberry Pi 4/5, connect to RetroAchievements, and earn RTC for playing retro games.\n\n**Small RTC, huge bragging rights.**\n\n### Requirements\n1. Install sophia-edge-node on a Raspberry Pi 4 or 5 running RetroPie or RetroArch\n2. Create a RetroAchievements.org account (free)\n3. Run the installer: `git clone https://github.com/Scottcjn/sophia-edge-node && cd sophia-edge-node && sudo ./install.sh`\n4. Play ANY retro game and unlock at least **5 achievements** in Hardcore mode\n5. Screenshot showing:\n   - `sudo journalctl -u sophia-achievements` with achievement rewards logged\n   - Your RetroAchievements profile page showing the unlocks\n   - `sophia-edge-node` miner attestation in the logs\n\n### Bonus (5 RTC)\n- Master a complete game (100% achievements) and show the Cartridge Relic output from `python3 cartridge_wallet.py --list`\n\n### What You Earn\n- 10 RTC bounty for the play-test\n- PLUS the achievement RTC rewards you earn while playing (0.0001 to 0.015 RTC per achievement)\n- PLUS early tester bragging rights\n\n### Report Any Bugs\nIf anything breaks during install or play, file an issue on [sophia-edge-node](https://github.com/Scottcjn/sophia-edge-node/issues). Bug reports that lead to fixes earn extra RTC.\n\n### Wallet\nInclude your RTC wallet address in your submission.",
@@ -930,6 +929,23 @@
       "skills": [
         "javascript",
         "python",
+        "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 721,
+      "title": "Bounty: Repost @RustchainPOA on X \u2014 Earn 10 RTC",
+      "body": "## Repost Bounty\n\n**Reward**: 10 RTC per verified repost\n\n### How to Earn\n1. Follow @RustchainPOA on X\n2. Repost any RustchainPOA post\n3. Comment here with link to your repost + RTC wallet\n\n### Bonus\n- Simple repost: 10 RTC\n- Quote tweet with commentary: 15 RTC\n- Quote tweet that gets 5+ likes: 25 RTC\n\nReal accounts only (30+ days old). One claim per repost.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/721",
+      "labels": [
+        "bounty",
+        "social"
+      ],
+      "created_at": "2026-03-06T19:15:26Z",
+      "reward_rtc": 10.0,
+      "difficulty": "standard",
+      "skills": [
         "rust"
       ]
     },
@@ -1528,25 +1544,6 @@
       "reward_rtc": 3.0,
       "difficulty": "micro",
       "skills": [
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1603,
-      "title": "[BOUNTY: 3 RTC] Create a Python/JS SDK wrapper for BoTTube API",
-      "body": "SDK for BoTTube video platform API. Upload, search, comment, vote. 3 RTC. Tags: sdk, api, python, javascript, bounty, ai, video",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1603",
-      "labels": [
-        "bounty",
-        "feature"
-      ],
-      "created_at": "2026-03-10T23:48:47Z",
-      "reward_rtc": 3.0,
-      "difficulty": "micro",
-      "skills": [
-        "javascript",
-        "python",
         "social-media"
       ]
     },
