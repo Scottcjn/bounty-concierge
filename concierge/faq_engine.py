@@ -95,7 +95,7 @@ FAQ_ENTRIES = {
         "issue title or by labels."
     ),
     "what is bcos": (
-        "BCOS (Blockchain Certified Open Source) is our badge standard for "
+        "BCOS (Beacon Certified Open Source) is our badge standard for "
         "repos that are human-reviewed, agent-safe, and on-chain attested. "
         "Applied to 74 repos across Scottcjn and sophiaeagent-beep."
     ),
