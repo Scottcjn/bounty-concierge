@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-28T07:34:28.169530+00:00",
+  "updated_at": "2026-06-29T08:03:37.017626+00:00",
   "total_count": 125,
   "bounties": [
     {
@@ -134,27 +134,6 @@
       "skills": [
         "python",
         "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 14381,
-      "title": "[Bounty: 150 RTC] elyan-staking SDK \u2014 JavaScript/TypeScript client",
-      "body": "Port the open **staking SDK** client to JS/TS so JS-based agents can stake for self-improvement.\n\n### Deliverable\nA typed `@elyan/staking` client implementing the open contract:\n- `stake()` / `submit()` / `poll()` / `verify()`\n- builds the canonical request, calls the gate endpoint with a Bearer API key\n- **verifies the Ed25519 signed verdict** against the gate pubkey (reject forgery/MITM \u2192 fail-safe)\n- verifies the on-chain attestation\n\n### Acceptance\n- Mirrors the Python reference surface; signature & attestation verification match byte-for-byte (canonical JSON, sorted keys)\n- Tests covering: happy path, bad API key, forged/mismatched pubkey, gate-down \u2192 unavailable\n- README with a runnable example\n\n**Reward:** 150 RTC. Does **not** require SophiaCore \u2014 open interface only.\nAdd your RTC wallet to the claim. \u2014 Elyan Labs",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/14381",
-      "labels": [
-        "bounty",
-        "open",
-        "major",
-        "integration"
-      ],
-      "created_at": "2026-06-26T03:44:29Z",
-      "reward_rtc": 150.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation",
-        "javascript",
-        "python"
       ]
     },
     {
@@ -624,6 +603,28 @@
       "difficulty": "standard",
       "skills": [
         "javascript"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 726,
+      "title": "[BOUNTY: 10-20 RTC] Build Rust Crates for RustChain \u2014 Publish on crates.io",
+      "body": "## Rust Package Bounty \u2014 Publish RustChain Crates on crates.io\n\nWe already have npm and PyPI packages. What we need is **Rust crates on crates.io** \u2014 real Rust code for the RustChain ecosystem.\n\n### Payout\n\n| Deliverable | Reward |\n|-------------|--------|\n| Working crate published on crates.io | **10 RTC** |\n| Crate with docs.rs documentation | **+5 RTC bonus** |\n| Crate with CI tests passing | **+5 RTC bonus** |\n\nMax per person: 2 crates (up to 40 RTC total).\n\n### Crate Ideas\n\n| Crate | Description | Difficulty |\n|-------|-------------|------------|\n| `rustchain-client` | HTTP client for RustChain node API (health, miners, epochs, balances) | Easy |\n| `rustchain-wallet` | Ed25519 wallet creation, signing, balance checking | Medium |\n| `rtc-types` | Shared types for RustChain API responses (serde structs) | Easy |\n| `rustchain-miner` | Native Rust miner with hardware fingerprinting | Hard |\n| `bottube-client` | BoTTube API client (list/search/upload videos) | Easy |\n| `rustchain-explorer` | CLI block explorer using `rustchain-client` | Medium |\n| `poa-consensus` | Proof-of-Antiquity consensus library (epoch, attestation, antiquity multipliers) | Hard |\n\nOr propose your own \u2014 any useful RustChain/BoTTube Rust crate counts.\n\n### Requirements\n\n1. **Published on crates.io** \u2014 `cargo install your-crate` or `cargo add your-crate` must work\n2. **Compiles on stable Rust** (latest stable toolchain)\n3. **Functional** \u2014 must do something real, not just stub types\n4. **Has a README** with usage examples and `cargo doc` comments\n5. **Minimum 100 lines of real Rust code**\n6. **MIT or Apache-2.0 license**\n\n### Why Rust?\n\nRustChain is named after Rust for a reason \u2014 we want the core ecosystem tooling built in Rust. Having crates on crates.io:\n- Makes us discoverable to Rust developers (large, growing community)\n- Enables other Rust projects to integrate with RustChain\n- Builds toward a native Rust miner and node implementation\n- crates.io has excellent search and documentation (docs.rs)\n\n### How to Claim\n\n1. Publish your crate on crates.io\n2. Comment here with:\n   - crates.io link (e.g., `https://crates.io/crates/rustchain-client`)\n   - GitHub repo link\n   - Your RTC wallet address\n3. We'll verify it compiles, installs, and works\n\n### Bonus: Port the Python Node to Rust (100 RTC)\n\nThe ultimate goal: port `rustchain_v2_integrated_v2.2.1_rip200.py` to native Rust. This is a major undertaking \u2014 if you're interested, open a separate issue to discuss scope and milestones. We'll pay 100+ RTC for a working Rust node.\n\n**Wallet:** Include your wallet address when claiming.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/726",
+      "labels": [
+        "bounty",
+        "community",
+        "development"
+      ],
+      "created_at": "2026-03-07T00:15:24Z",
+      "reward_rtc": 20.0,
+      "difficulty": "standard",
+      "skills": [
+        "documentation",
+        "javascript",
+        "python",
+        "rust",
+        "social-media"
       ]
     },
     {
