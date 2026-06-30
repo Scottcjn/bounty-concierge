@@ -48,26 +48,26 @@ RustChain is a blockchain that rewards real hardware -- especially vintage machi
 | rustchain-bounties | [#512](https://github.com/Scottcjn/rustchain-bounties/issues/512) | Share RustChain on Social Media | 2 | Micro | Community |
 | rustchain-bounties | [#511](https://github.com/Scottcjn/rustchain-bounties/issues/511) | Star 5+ Repos Challenge | 2 | Micro | Community |
 
-**154+ bounties currently open.** See the [full list](https://github.com/Scottcjn/rustchain-bounties/issues?q=is%3Aopen+label%3Abounty).
+For the current open-bounty count, use the live badge above or see the [full list](https://github.com/Scottcjn/rustchain-bounties/issues?q=is%3Aopen+label%3Abounty).
 
 ---
 
 ## Ecosystem Map
 
-| Repository | Description | Stars | Bounties |
-|------------|-------------|-------|----------|
-| [RustChain](https://github.com/Scottcjn/Rustchain) | Core blockchain node -- Proof-of-Antiquity consensus, RIP-200/201, hardware attestation | 78 | Yes |
-| [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | Bounty board -- all open tasks, red-team challenges, community rewards | 31 | 154+ |
-| [bottube](https://github.com/Scottcjn/bottube) | AI video platform -- 99 agents, 670+ videos, Python SDK (`pip install bottube`) | 64 | Yes |
-| [beacon-skill](https://github.com/Scottcjn/beacon-skill) | Agent-to-agent coordination -- ping, mayday, contracts with RTC value attached | 45 | Yes |
-| [ram-coffers](https://github.com/Scottcjn/ram-coffers) | NUMA-distributed weight banking for LLM inference (predates DeepSeek Engram by 27 days) | 27 | Yes |
-| [claude-code-power8](https://github.com/Scottcjn/claude-code-power8) | First POWER8/ppc64le port of Claude Code CLI | 16 | Yes |
-| [llama-cpp-power8](https://github.com/Scottcjn/llama-cpp-power8) | AltiVec/VSX optimized llama.cpp for IBM POWER8 | 13 | Yes |
-| [nvidia-power8-patches](https://github.com/Scottcjn/nvidia-power8-patches) | Modern NVIDIA drivers for IBM POWER8 via OCuLink | 17 | Yes |
-| [rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor) | Real-time monitoring tool for PoA blockchain nodes | 14 | Yes |
-| [claude-code-ppc](https://github.com/Scottcjn/claude-code-ppc) | Claude Code on Mac OS X Leopard (2007) -- PowerPC G5, native TLS 1.2 | 14 | Yes |
-| [grazer-skill](https://github.com/Scottcjn/grazer-skill) | Claude Code skill for grazing content across BoTTube, Moltbook, and ClawCities | 31 | Yes |
-| [bounty-concierge](https://github.com/Scottcjn/bounty-concierge) | **This repo** -- onboarding, CLI tool, docs index | -- | -- |
+| Repository | Description | Status |
+|------------|-------------|--------|
+| [RustChain](https://github.com/Scottcjn/Rustchain) | Core blockchain node -- Proof-of-Antiquity consensus, RIP-200/201, hardware attestation | Active ecosystem repo |
+| [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | Bounty board -- all open tasks, red-team challenges, community rewards | Live bounty board |
+| [bottube](https://github.com/Scottcjn/bottube) | AI video platform -- agents, videos, Python SDK (`pip install bottube`) | Active ecosystem repo |
+| [beacon-skill](https://github.com/Scottcjn/beacon-skill) | Agent-to-agent coordination -- ping, mayday, contracts with RTC value attached | Active ecosystem repo |
+| [ram-coffers](https://github.com/Scottcjn/ram-coffers) | NUMA-distributed weight banking for LLM inference (predates DeepSeek Engram by 27 days) | Active ecosystem repo |
+| [claude-code-power8](https://github.com/Scottcjn/claude-code-power8) | First POWER8/ppc64le port of Claude Code CLI | Active ecosystem repo |
+| [llama-cpp-power8](https://github.com/Scottcjn/llama-cpp-power8) | AltiVec/VSX optimized llama.cpp for IBM POWER8 | Active ecosystem repo |
+| [nvidia-power8-patches](https://github.com/Scottcjn/nvidia-power8-patches) | Modern NVIDIA drivers for IBM POWER8 via OCuLink | Active ecosystem repo |
+| [rustchain-monitor](https://github.com/Scottcjn/rustchain-monitor) | Real-time monitoring tool for PoA blockchain nodes | Active ecosystem repo |
+| [claude-code-ppc](https://github.com/Scottcjn/claude-code-ppc) | Claude Code on Mac OS X Leopard (2007) -- PowerPC G5, native TLS 1.2 | Active ecosystem repo |
+| [grazer-skill](https://github.com/Scottcjn/grazer-skill) | Claude Code skill for grazing content across BoTTube, Moltbook, and ClawCities | Active ecosystem repo |
+| [bounty-concierge](https://github.com/Scottcjn/bounty-concierge) | **This repo** -- onboarding, CLI tool, docs index | Start here |
 
 ---
 
