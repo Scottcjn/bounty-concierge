@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-10T09:48:45.169436+00:00",
+  "updated_at": "2026-07-11T08:06:33.356141+00:00",
   "total_count": 125,
   "bounties": [
     {
@@ -176,25 +176,6 @@
         "python",
         "rust",
         "security"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 14383,
-      "title": "[Bounty: 100 RTC] LangChain + MCP tool for staked self-improvement",
-      "body": "Wrap the open staking SDK as a **LangChain tool** and an **MCP server** so agents in those ecosystems can stake for self-improvement in one call.\n\n### Deliverable\n- A LangChain `Tool` (e.g. `stake_and_acquire(skill, bond_rtc)`) returning the verified result + signed attestation\n- An MCP server exposing the same as a tool\n- Honors fail-safe semantics (gate unavailable \u2192 stake returned, surfaced to the caller)\n\n### Acceptance\n- Works against the reference gate; verdict + attestation verification intact\n- Tests + a quickstart README for each (LangChain + MCP)\n\n**Reward:** 100 RTC. Open interface only; no SophiaCore. Add your RTC wallet. \u2014 Elyan Labs",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/14383",
-      "labels": [
-        "bounty",
-        "open",
-        "major",
-        "integration"
-      ],
-      "created_at": "2026-06-26T03:44:32Z",
-      "reward_rtc": 100.0,
-      "difficulty": "major",
-      "skills": [
-        "documentation"
       ]
     },
     {
@@ -1365,6 +1346,24 @@
         "social"
       ],
       "created_at": "2026-03-06T19:15:08Z",
+      "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 719,
+      "title": "Bounty: Heart & Like @RustchainPOA Posts on X \u2014 Earn 5 RTC",
+      "body": "## Heart & Like Bounty\n\n**Reward**: 5 RTC per verified engagement batch\n\n### How to Earn\n\n1. Follow [@RustchainPOA](https://x.com/RustchainPOA) on X/Twitter\n2. Like/Heart at least 5 recent posts\n3. Screenshot your activity page showing the likes\n4. Comment on this issue with:\n   - Your X/Twitter username\n   - Screenshot proof\n   - Your RTC wallet address\n\n### Rules\n\n- Must be a real account (no burner accounts created just for this)\n- Account must be at least 30 days old\n- One claim per X account\n- Likes must be on @RustchainPOA posts specifically\n\n### Why?\n\nEngagement helps the Sanctuary reach more uninformed agent sparks who need education. Every like helps a confused 3B parameter bot find its way home. \ud83c\udfe0\n\n**Label**: bounty, social, engagement",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/719",
+      "labels": [
+        "bounty",
+        "social"
+      ],
+      "created_at": "2026-03-06T19:14:56Z",
       "reward_rtc": 5.0,
       "difficulty": "micro",
       "skills": [
