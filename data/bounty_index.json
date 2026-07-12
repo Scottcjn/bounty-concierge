@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-11T08:06:33.356141+00:00",
-  "total_count": 125,
+  "updated_at": "2026-07-12T08:27:52.015626+00:00",
+  "total_count": 124,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -319,22 +319,6 @@
         "rust",
         "social-media"
       ]
-    },
-    {
-      "repo": "Scottcjn/Rustchain",
-      "number": 2150,
-      "title": "Bounty: \"Mine Your Grandma's Computer\" \u2014 vintage miner setup guide",
-      "body": "## \ud83c\udfc6 Bounty: 50 RTC\n\nThat old computer in your closet could be earning RTC right now. Write the guide that gets someone from \"I found an old computer\" to \"it's earning RTC\" in under 15 minutes.\n\n**Target at least 2 of:**\n- Old Windows laptop (Core 2 Duo era)\n- PowerPC Mac (G3/G4/G5)\n- Old Linux desktop (Pentium 4, Athlon 64)\n- Raspberry Pi\n\n**Requirements:**\n- Step-by-step with screenshots or photos of real hardware\n- \"Does my computer qualify?\" quick check\n- Show fingerprint check passing on vintage hardware\n- Show first attestation succeeding\n- Explain antiquity multiplier in plain English\n\n**Bonus (+25 RTC):** 2-minute video walkthrough of the whole process.\n\nThis is about onboarding real people with real old hardware. Make it accessible.",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/2150",
-      "labels": [
-        "documentation",
-        "good first issue",
-        "bounty"
-      ],
-      "created_at": "2026-04-06T17:14:04Z",
-      "reward_rtc": 50.0,
-      "difficulty": "major",
-      "skills": []
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
