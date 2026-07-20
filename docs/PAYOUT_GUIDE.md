@@ -321,7 +321,7 @@ All external requests use HTTPS with a self-signed certificate. Append
 ### The transfer is still pending after 24 hours
 
 - Contact the maintainer via the bounty issue comments or Discord
-  (`discord.gg/VqVVS2CW9Q`).
+  (`discord.gg/XnRp7M5gBW`).
 
 ---
 
