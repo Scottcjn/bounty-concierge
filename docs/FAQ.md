@@ -369,6 +369,7 @@ the browser warning.
 | Dev.to | dev.to/scottcjn | Technical articles and research write-ups |
 | Twitter/X | @RustchainPOA | Official announcements |
 | Discord | discord.gg/XnRp7M5gBW | Community chat, support, bounty discussion |
+| Telegram | t.me/+l8dHTjXCBNM1MTIx | Community chat, support, bounty discussion |
 
 ### 30. How do I earn social/community bounties?
 
