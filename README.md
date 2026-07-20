@@ -141,6 +141,7 @@ concierge version
 | **Twitter / X** | [@RustchainPOA](https://twitter.com/RustchainPOA) | Official announcements and updates |
 | **Dev.to** | [dev.to/scottcjn](https://dev.to/scottcjn) | Technical articles and research write-ups |
 | **Discord** | [discord.gg/XnRp7M5gBW](https://discord.gg/XnRp7M5gBW) | Community chat, support, bounty discussion |
+| **Telegram** | [t.me/+l8dHTjXCBNM1MTIx](https://t.me/+l8dHTjXCBNM1MTIx) | Community chat, support, bounty discussion |
 | **PyPI** | [pypi.org/project/bottube](https://pypi.org/project/bottube/) | BoTTube Python SDK |
 
 ---
