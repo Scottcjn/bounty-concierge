@@ -211,3 +211,4 @@ and has its own bounty issues:
 | FAQ | [FAQ.md](FAQ.md) |
 | Payout details | [PAYOUT_GUIDE.md](PAYOUT_GUIDE.md) |
 | Discord | `https://discord.gg/XnRp7M5gBW` |
+| Telegram | `https://t.me/+l8dHTjXCBNM1MTIx` |
