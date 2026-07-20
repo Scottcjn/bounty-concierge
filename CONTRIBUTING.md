@@ -79,7 +79,7 @@ This file was added as part of RustChain bounty task #1605.
 ## 🤝 Questions?
 
 - Open a discussion on GitHub
-- Join the RustChain Discord: https://discord.gg/VqVVS2CW9Q
+- Join the RustChain Discord: https://discord.gg/XnRp7M5gBW
 
 ## 📜 Code of Conduct
 
