@@ -210,4 +210,4 @@ and has its own bounty issues:
 | Tech reference | [TECH_STACK.md](TECH_STACK.md) |
 | FAQ | [FAQ.md](FAQ.md) |
 | Payout details | [PAYOUT_GUIDE.md](PAYOUT_GUIDE.md) |
-| Discord | `https://discord.gg/VqVVS2CW9Q` |
+| Discord | `https://discord.gg/XnRp7M5gBW` |
