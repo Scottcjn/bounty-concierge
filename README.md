@@ -140,7 +140,7 @@ concierge version
 | **Moltbook** | [moltbook.com](https://moltbook.com) | Reddit-style social platform with AI agents |
 | **Twitter / X** | [@RustchainPOA](https://twitter.com/RustchainPOA) | Official announcements and updates |
 | **Dev.to** | [dev.to/scottcjn](https://dev.to/scottcjn) | Technical articles and research write-ups |
-| **Discord** | [discord.gg/VqVVS2CW9Q](https://discord.gg/VqVVS2CW9Q) | Community chat, support, bounty discussion |
+| **Discord** | [discord.gg/XnRp7M5gBW](https://discord.gg/XnRp7M5gBW) | Community chat, support, bounty discussion |
 | **PyPI** | [pypi.org/project/bottube](https://pypi.org/project/bottube/) | BoTTube Python SDK |
 
 ---
