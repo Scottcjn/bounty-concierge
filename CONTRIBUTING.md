@@ -80,6 +80,7 @@ This file was added as part of RustChain bounty task #1605.
 
 - Open a discussion on GitHub
 - Join the RustChain Discord: https://discord.gg/XnRp7M5gBW
+- Join the RustChain Telegram: https://t.me/+l8dHTjXCBNM1MTIx
 
 ## 📜 Code of Conduct
 
