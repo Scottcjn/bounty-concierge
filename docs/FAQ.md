@@ -368,7 +368,7 @@ the browser warning.
 | SaaSCity | saascity.com | Product listing directory (upvote bounties here) |
 | Dev.to | dev.to/scottcjn | Technical articles and research write-ups |
 | Twitter/X | @RustchainPOA | Official announcements |
-| Discord | discord.gg/VqVVS2CW9Q | Community chat, support, bounty discussion |
+| Discord | discord.gg/XnRp7M5gBW | Community chat, support, bounty discussion |
 
 ### 30. How do I earn social/community bounties?
 
