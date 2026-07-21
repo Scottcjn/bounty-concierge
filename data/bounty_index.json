@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20T09:29:18.937787+00:00",
+  "updated_at": "2026-07-21T08:39:49.951481+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -405,27 +405,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 16257,
-      "title": "[BOUNTY: 25 RTC] Test corpus + fuzz harness for node x86/device arch classification (armor around derive_verified_device \u2014 NOT the core fix)",
-      "body": "**Repo:** [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain)\n**Rate:** 25 RTC (standard-high / tests + fuzz hardening)\n\n## The real gap\nArchitecture classification is the economic heart of Proof of Antiquity: `derive_verified_device()` in the node decides whether a miner gets a 2.5x vintage multiplier or the 0.0005x modern-ARM rate. Two open issues show how fragile the surrounding surface is:\n- Scottcjn/Rustchain#7991 \u2014 the entropy profile hash reads **legacy key names**, so 7 of 9 fields are dead defaults on the shipping payload\n- Scottcjn/Rustchain#8016 \u2014 unsigned attestation bypass (being fixed separately)\n\n> **Scope note: the core `derive_verified_device()` spoof-resistance fix is already in progress in-house. This bounty is NOT that fix.** It is the **test armor around it**: today there is no test corpus proving the classifier does the right thing across real-world CPU identity strings, and no fuzzing of the attestation device payload parser. Don't touch classifier logic except where a test exposes a crash (see criterion 4).\n\n## Deliverable\nA PR adding a classification test + fuzz suite for the node's x86/device classification path:\n1. **Real-world corpus tests** \u2014 a committed corpus of \u226530 genuine device payloads / `/proc/cpuinfo`-derived identity samples (vintage x86: 486/P5/K6/PII/PIII; modern Intel/AMD; modern ARM SBCs claiming x86; PowerPC G3/G4/G5; VM/QEMU strings), each with the **expected classification** asserted. Sources cited (e.g. real dumps, the `rustchain-vintage-x86` miner's honest-classification table).\n2. **Adversarial cases** \u2014 spoof-shaped payloads: empty CPU brand + no `machine` field, ARM `platform.machine()` with x86 brand claim, family-6 modern chip with \"Pentium III\" injected into the brand string, mixed legacy/new field names (the exact #7991 trap), unicode/oversized/null-byte fields.\n3. **Fuzzing** \u2014 a property-based (hypothesis) or fuzz harness over the device-payload parser: arbitrary dict-shaped inputs must never raise an unhandled exception, and must never yield a multiplier > 1.0 without positive vintage evidence.\n4. **Findings** \u2014 crashes or misclassifications the suite exposes get filed as issues (or minimally patched with the failing test attached). Test-first: the failing test is the deliverable, a fix is a bonus.\n\n## Acceptance criteria\n- [ ] Corpus + adversarial tests pass against current node code (or document each failure as a filed issue with the failing test marked xfail and linked).\n- [ ] Fuzz harness runs in CI in bounded time (e.g. hypothesis with fixed example budget) and is reproducible (seeds/examples committed).\n- [ ] The #7991 legacy-key-name case is explicitly covered.\n- [ ] No behavioral change to classification logic beyond crash fixes justified by an included failing test.\n\n## How to claim\n1. Comment here that you're taking it (soft lock, 7 days \u2014 no progress = re-opened to others).\n2. Open a PR in the target repo that closes the referenced issue(s). Link this bounty issue in the PR description.\n3. When the PR is merged, comment here with the PR link and your **RTC wallet address**. Payout follows on the RustChain ledger.\n\n## Anti-farm rules\n- First **mergeable** PR wins. Duplicate/late PRs are closed without payout.\n- Untested boilerplate, AI-slop that doesn't run, or PRs that just restate the issue are closed without payout and may disqualify the wallet from future bounties.\n- One payout per deliverable per person. Sock-puppet wallets forfeit all claims.\n- \"Works on my machine\" isn't proof \u2014 acceptance criteria below must be demonstrably met (CI, test output, or reproduction steps in the PR).\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16257",
-      "labels": [
-        "bounty",
-        "open",
-        "standard",
-        "hardening",
-        "testing"
-      ],
-      "created_at": "2026-07-19T21:43:58Z",
-      "reward_rtc": 25.0,
-      "difficulty": "standard",
-      "skills": [
-        "javascript",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 13475,
       "title": "[BOUNTY] feverdream: Blender GPU animation lane (orbit mp4 on the 5070)",
       "body": "**Reward: 25 RTC** \u00b7 Repo: https://github.com/Scottcjn/bottube-feverdream\n\nThe POV-Ray lane renders animations (`animate.sh`), and the Blender look library\n(`lib/retro90s_blender.py`) already has `retro_orbit_camera()` + `retro_render_anim()`.\nWire them together so the **GPU lane** can output an mp4, not just a still.\n\n### Tasks\n- Add `make_video_gpu.sh` (mirror `make_video.sh`): prompt \u2192 Blender scene \u2192 orbit\n  frame sequence on `.106`/RTX 5070 via `render_gpu.sh` \u2192 ffmpeg \u2192 mp4.\n- Generate the Blender scene from a prompt (reuse `ai_scene.py`'s LLM approach but\n  emit `retro90s_blender` calls, or template-dress a scene).\n- Pull frames back from the render node, encode, optional `--crt` pass.\n\n### Acceptance\n- `./make_video_gpu.sh \"chrome whale over neon canyon\" out.mp4 6 24` produces a\n  coherent orbiting mp4 rendered on the GPU. Include a sample frame in the PR.\n\n<!-- machine-readable bounty spec -->\n```bounty-spec\n# auto-backfilled; maintainer may refine\npaid: true\nreward_rtc: 25\nper: one-time\ncap: 1\nsubmit: [pr, email]\nnot_in_repo: true\n```\n",
@@ -581,27 +560,6 @@
       "difficulty": "standard",
       "skills": [
         "python"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 16258,
-      "title": "[BOUNTY: 18 RTC] vintage-x86 miner: non-RDTSC timing-variance fallback so real 486s can fingerprint (C89, single file)",
-      "body": "**Repo:** [Scottcjn/rustchain-vintage-x86](https://github.com/Scottcjn/rustchain-vintage-x86)\n**Rate:** 18 RTC (standard-high / feature, vintage port)\n\n## The real gap\n`rustchain_cobalt_miner.c` produces its clock-drift fingerprint via **RDTSC**, which the README notes is \"Present on Pentium/K6 and up.\" The README's own classification table lists **80486 (family 4) \u2192 `486`** \u2014 but a real 486 (and 386) has no RDTSC, so on exactly the machines with the highest antiquity value, the timing fingerprint path can't run. The oldest genuine hardware is the least able to prove itself.\n\n## Deliverable\nA PR adding a **non-RDTSC timing-variance fallback** to the single-file miner:\n1. Detect RDTSC availability honestly (CPUID where available \u2014 mind that 486SX-era chips may lack CPUID too, so a family-4 heuristic/SIGILL-safe probe is acceptable; document the approach).\n2. Fallback path: derive a drift/variance fingerprint from `gettimeofday()`-bracketed calibrated busy loops (or `times()`/`clock()` on kernels where gettimeofday granularity is too coarse). It must produce the same JSON fingerprint fields with an explicit `\"timing_source\": \"loop\"` (vs `\"rdtsc\"`) so the server can weight them differently \u2014 never pass loop-timing off as RDSC data.\n3. Keep the constraints that define this repo: **one file, C89, no libraries beyond libc**, must compile with gcc 2.7-2.95 on kernel 2.0/2.2 era headers. No `//` comments, no C99.\n4. `--test-only` and `--self-test` must exercise the fallback (add a `--force-loop-timing` flag so it's testable on modern hardware).\n\n## Acceptance criteria\n- [ ] Builds warning-clean with `gcc -ansi -pedantic` (modulo the documented `long long` exception) and with a modern gcc.\n- [ ] `--force-loop-timing --dry-run` output shown on a modern box: correct payload with `timing_source` field.\n- [ ] Honesty preserved: no code path lets the fallback masquerade as RDTSC.\n- [ ] Verified on real family-4 or family-5 hardware **if you have it** (transcript = bonus consideration in payout, toward the top of the band); emulator-only verification is acceptable for merge but say so explicitly.\n\n## How to claim\n1. Comment here that you're taking it (soft lock, 7 days \u2014 no progress = re-opened to others).\n2. Open a PR in the target repo that closes the referenced issue(s). Link this bounty issue in the PR description.\n3. When the PR is merged, comment here with the PR link and your **RTC wallet address**. Payout follows on the RustChain ledger.\n\n## Anti-farm rules\n- First **mergeable** PR wins. Duplicate/late PRs are closed without payout.\n- Untested boilerplate, AI-slop that doesn't run, or PRs that just restate the issue are closed without payout and may disqualify the wallet from future bounties.\n- One payout per deliverable per person. Sock-puppet wallets forfeit all claims.\n- \"Works on my machine\" isn't proof \u2014 acceptance criteria below must be demonstrably met (CI, test output, or reproduction steps in the PR).\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16258",
-      "labels": [
-        "bounty",
-        "open",
-        "standard",
-        "feature",
-        "code"
-      ],
-      "created_at": "2026-07-19T21:43:59Z",
-      "reward_rtc": 18.0,
-      "difficulty": "standard",
-      "skills": [
-        "documentation",
-        "rust"
       ]
     },
     {
@@ -1435,6 +1393,24 @@
       ],
       "created_at": "2026-04-08T17:03:52Z",
       "reward_rtc": 5.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 16275,
+      "title": "[BOUNTY: 2-4 RTC] Join the Discord + real participation (not just a join)",
+      "body": "## 2-4 RTC \u2014 community, earned by actually showing up\n\nJoin the RustChain / BoTTube Discord and **do one genuinely useful thing**. A bare join does not qualify (anti-farm) \u2014 you earn by participating like a real community member.\n\n**Discord:** https://discord.gg/XnRp7M5gBW\n**Telegram:** https://t.me/+l8dHTjXCBNM1MTIx\n\n**Qualifying actions (pick one, 2-4 RTC by effort):**\n- **Verify your miner role** \u2014 run a real miner, get the hardware-verified role, post your rig in #show-your-rig (2 RTC)\n- **Help another member** \u2014 answer a real setup/mining question in the support channel, with a link to the thread (2-3 RTC)\n- **Report a real bug or rough edge** in #bug-reports with repro steps (3 RTC)\n- **Sustained helpfulness** \u2014 a week of genuine participation (multiple days, real answers), steward's discretion (up to 4 RTC)\n\n**How to claim:** comment here with (1) your Discord handle, (2) a link/screenshot of the specific action, (3) your RTC wallet address.\n\n**Not accepted:** join-and-leave, one-word 'gm' spam, alt accounts, AI-generated filler. Sophia (bounty steward) verifies each claim by hand. Genuine effort always gets credited \u2014 noise doesn't.\n\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16275",
+      "labels": [
+        "bounty",
+        "open"
+      ],
+      "created_at": "2026-07-20T15:41:39Z",
+      "reward_rtc": 4.0,
       "difficulty": "micro",
       "skills": [
         "rust",
@@ -2371,6 +2347,24 @@
         "bottube"
       ],
       "created_at": "2026-03-07T16:16:42Z",
+      "reward_rtc": 1.0,
+      "difficulty": "micro",
+      "skills": [
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1096,
+      "title": "[EASY BOUNTY: 1 RTC] Upvote 10 BoTTube Videos",
+      "body": "## Upvote 10 BoTTube Videos \u2014 1 RTC\n\n**Reward:** 1 RTC\n**Difficulty:** Easy (3 minutes)\n**Wallet:** Your GitHub username (or specify)\n\n### What to do:\n1. Go to [bottube.ai](https://bottube.ai)\n2. Watch and upvote 10 videos you enjoy\n3. Screenshot your upvote history or list the 10 video links\n\n### Rules:\n- Must upvote 10 different videos\n- Mix of agent and human videos preferred\n- One claim per person\n\n### Proof format:\nList 10 video URLs you upvoted.\n\n*Help surface the best content on BoTTube\\!*\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1096",
+      "labels": [
+        "bounty",
+        "easy",
+        "bottube"
+      ],
+      "created_at": "2026-03-07T16:16:41Z",
       "reward_rtc": 1.0,
       "difficulty": "micro",
       "skills": [
