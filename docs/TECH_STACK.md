@@ -38,7 +38,8 @@ hash power or stake size.
 - **Ergo Anchoring**: Periodic on-chain anchors to a private Ergo chain.
   Miner attestation commitments are stored in Ergo box registers (R4-R9)
   as Blake2b256 hashes.
-- **Token**: RTC (RustChain Token). Internal reference rate: 1 RTC = $0.10 USD.
+- **Token**: RTC (RustChain Token). Internal reference rate: 1 RTC = $0.15 USD
+  (live rate at https://rustchain.org/api/tokenomics).
 - **Genesis**: Production chain launched December 2, 2025.
   (`GENESIS_TIMESTAMP = 1764706927`)
 
@@ -220,38 +221,33 @@ in the Atlas directory.
 
 ## wRTC Bridge
 
-wRTC (wrapped RTC) is an ERC-20 token on Base L2 that represents RTC on
-a public blockchain, enabling DeFi and trading.
+wRTC (wrapped RTC) is the Solana representation of RTC, enabling DeFi and
+trading. It is live and swappable, but liquidity is early-stage and thin;
+treat it as experimental, not a deep market.
 
 ### Token Specification
 
 | Property | Value |
 |----------|-------|
-| Standard | ERC-20 |
-| Chain | Base L2 (Ethereum L2) |
+| Standard | SPL token (Solana) |
+| Chain | Solana |
 | Decimals | 6 |
 | Name | Wrapped RTC |
 | Symbol | wRTC |
+| Token mint | `12TAdKXxcGf6oCv4rqDz2NkgxjyHq6HQKoxKZYGf5i4X` |
 
 ### Bridge Mechanism
 
-The bridge is custodial (mint/burn model):
+The bridge is custodial (mint/burn model), operated at
+https://bottube.ai/bridge/wrtc:
 
 1. **RTC to wRTC**: User locks RTC on the RustChain side. Bridge operator
-   mints equivalent wRTC on Base L2.
-2. **wRTC to RTC**: User burns wRTC on Base L2. Bridge operator releases
+   mints equivalent wRTC on Solana.
+2. **wRTC to RTC**: User burns wRTC on Solana. Bridge operator releases
    equivalent RTC on RustChain.
 
-### Smart Contract
-
-```solidity
-contract WrappedRTC is ERC20, Ownable {
-    // Mint: only bridge operator
-    function mint(address to, uint256 amount) external onlyOwner;
-    // Burn: any holder
-    function burn(uint256 amount) external;
-}
-```
+Full details, including the anti-scam checklist, are in the
+[wRTC Quickstart](https://github.com/Scottcjn/Rustchain/blob/main/docs/wrtc.md).
 
 ---
 

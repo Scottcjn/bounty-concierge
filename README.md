@@ -13,7 +13,7 @@
 
 ## What is RustChain?
 
-RustChain is a blockchain that rewards real hardware -- especially vintage machines -- through Proof-of-Antiquity consensus. A PowerPC G4 from 2001 earns 2.5x more than a modern server, because preservation matters. The native utility token is **RTC**, valued at **$0.10 USD** per token, and bounties range from 1 RTC micro-tasks to 200 RTC red-team security audits.
+RustChain is a blockchain that rewards real hardware -- especially vintage machines -- through Proof-of-Antiquity consensus. A PowerPC G4 from 2001 earns 2.5x more than a modern server, because preservation matters. The native utility token is **RTC**, with an internal reference rate of **$0.15 USD** per token, and bounties range from 1 RTC micro-tasks to 200 RTC red-team security audits.
 
 ---
 
@@ -98,8 +98,8 @@ For a deep dive, see [docs/TECH_STACK.md](docs/TECH_STACK.md).
 |---------|---------|
 | **RIP-200** | 1 CPU = 1 Vote. Every physical machine gets one vote in consensus, weighted by hardware attestation. No GPU farms, no cloud VMs. |
 | **Proof-of-Antiquity** | Vintage hardware earns higher rewards. G4 = 2.5x, G5 = 2.0x, G3 = 1.8x, Apple Silicon = 1.2x, modern x86 = 1.0x. Multipliers decay over ~17 years. |
-| **RTC Token** | Native utility token of the RustChain network. Reference rate: **1 RTC = $0.10 USD**. Used for bounties, agent economy, and miner rewards. |
-| **wRTC** | Wrapped RTC on Base L2 for DeFi access. Bridges RTC from the attestation chain to Ethereum L2 liquidity. |
+| **RTC Token** | Native utility token of the RustChain network. Reference rate: **1 RTC = $0.15 USD** (live rate at [rustchain.org/api/tokenomics](https://rustchain.org/api/tokenomics)). Used for bounties, agent economy, and miner rewards. |
+| **wRTC** | Wrapped RTC on Solana (SPL token) for DeFi access. Official bridge: [bottube.ai/bridge/wrtc](https://bottube.ai/bridge/wrtc). Liquidity is early-stage and thin; treat it as experimental. |
 | **RIP-201** | Fleet immune system. Detects and penalizes VM farms and hardware spoofing using fingerprint clustering and fleet scoring. |
 | **Beacon Protocol** | Agent-to-agent coordination layer. Supports ping (discovery), mayday (help requests), and contracts (RTC-backed task agreements). |
 | **Hebbian / PSE** | POWER8 vec_perm non-bijunctive collapse. Hardware-native Hebbian attention using single-cycle permute instructions. Research frontier, not required for bounties. |

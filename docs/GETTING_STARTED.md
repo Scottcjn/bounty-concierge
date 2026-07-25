@@ -31,10 +31,10 @@ indicate the tier:
 
 | Label | RTC Range | USD Value | Difficulty |
 |-------|-----------|-----------|------------|
-| `micro` | 1 - 10 | $0.10 - $1.00 | Easy -- docs, typos, repo stars, social shares |
-| `standard` | 10 - 50 | $1.00 - $5.00 | Medium -- features, integrations, tests |
-| `major` | 50 - 200 | $5.00 - $20.00 | Hard -- architecture, protocol work |
-| `critical` | 200 - 500 | $20.00 - $50.00 | Expert -- security audits, consensus |
+| `micro` | 1 - 10 | $0.15 - $1.50 | Easy -- docs, typos, repo stars, social shares |
+| `standard` | 10 - 50 | $1.50 - $7.50 | Medium -- features, integrations, tests |
+| `major` | 50 - 200 | $7.50 - $30.00 | Hard -- architecture, protocol work |
+| `critical` | 200 - 500 | $30.00 - $75.00 | Expert -- security audits, consensus |
 
 **If this is your first bounty**, start with a `micro` issue. Get one
 merged, see RTC hit your wallet, then scale up.

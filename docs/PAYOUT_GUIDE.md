@@ -7,7 +7,8 @@ Step-by-step instructions for earning and receiving RTC bounty payouts.
 ## Overview
 
 RustChain bounties are paid in RTC (RustChain Token). The internal
-reference rate is **1 RTC = $0.10 USD**. Payouts are transferred from the
+reference rate is **1 RTC = $0.15 USD** (live rate at
+https://rustchain.org/api/tokenomics). Payouts are transferred from the
 `founder_team_bounty` wallet to your personal wallet after your
 contribution is reviewed and merged.
 
@@ -144,10 +145,10 @@ or use `-k` with curl.
 
 | Tier | RTC Range | USD Equivalent | Typical Scope |
 |------|-----------|----------------|---------------|
-| Micro | 1 - 10 RTC | $0.10 - $1.00 | Docs fixes, repo stars, social media shares, typo corrections |
-| Standard | 10 - 50 RTC | $1.00 - $5.00 | Feature additions, integrations, test suites, API docs |
-| Major | 50 - 200 RTC | $5.00 - $20.00 | Architecture work, protocol implementations, dashboards |
-| Critical | 200 - 500 RTC | $20.00 - $50.00 | Security audits, consensus attacks, red-team challenges |
+| Micro | 1 - 10 RTC | $0.15 - $1.50 | Docs fixes, repo stars, social media shares, typo corrections |
+| Standard | 10 - 50 RTC | $1.50 - $7.50 | Feature additions, integrations, test suites, API docs |
+| Major | 50 - 200 RTC | $7.50 - $30.00 | Architecture work, protocol implementations, dashboards |
+| Critical | 200 - 500 RTC | $30.00 - $75.00 | Security audits, consensus attacks, red-team challenges |
 
 ---
 
@@ -209,29 +210,31 @@ The following will cause a submission to be rejected regardless of score:
 
 ---
 
-## wRTC Bridge (Coming Soon)
+## wRTC Bridge
 
-wRTC is an ERC-20 token on Base L2 that wraps RTC for use on public
-Ethereum infrastructure.
+wRTC is an SPL token on Solana that wraps RTC for use on public
+infrastructure. It is live and swappable, but liquidity is early-stage
+and thin; treat it as experimental.
 
 | Property | Value |
 |----------|-------|
-| Standard | ERC-20 |
-| Chain | Base L2 (Ethereum layer-2) |
+| Standard | SPL token (Solana) |
+| Chain | Solana |
 | Decimals | 6 |
 | Name | Wrapped RTC |
 | Symbol | wRTC |
 | Bridge type | Custodial (mint/burn) |
+| Token mint | `12TAdKXxcGf6oCv4rqDz2NkgxjyHq6HQKoxKZYGf5i4X` |
 
-**How the bridge will work:**
+**How the bridge works** (official bridge: https://bottube.ai/bridge/wrtc):
 
 1. **RTC to wRTC**: Lock RTC on the RustChain side. Bridge operator mints
-   equivalent wRTC on Base L2.
-2. **wRTC to RTC**: Burn wRTC on Base L2. Bridge operator releases
+   equivalent wRTC on Solana.
+2. **wRTC to RTC**: Burn wRTC on Solana. Bridge operator releases
    equivalent RTC on RustChain.
 
-The bridge is under active development. Until it launches, RTC lives
-entirely on the RustChain attestation chain.
+See the [wRTC Quickstart](https://github.com/Scottcjn/Rustchain/blob/main/docs/wrtc.md)
+for the anti-scam checklist and step-by-step instructions.
 
 ---
 
