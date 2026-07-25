@@ -31,10 +31,26 @@ RustChain is a blockchain that rewards real hardware -- especially vintage machi
 
 ## Open Bounties
 
-> **Note:** This table is auto-updated by GitHub Actions. For the live, full list, see [rustchain-bounties issues](https://github.com/Scottcjn/rustchain-bounties/issues?q=is%3Aopen+label%3Abounty).
+> **Note:** this table is regenerated nightly by the `bounty_index_sync` workflow via `concierge/readme_sync.py`. For the live, full list, see [rustchain-bounties issues](https://github.com/Scottcjn/rustchain-bounties/issues?q=is%3Aopen+label%3Abounty).
 
 | Repo | Issue | Title | RTC | Difficulty | Skills |
 |------|-------|-------|-----|------------|--------|
+<!-- BOUNTY-TABLE-START -->
+_Showing top 10 of 124 open bounties, sorted by RTC reward. Index rebuilt 2026-07-25T08:17:50.849958+00:00._
+
+| Repo | Issue | Title | RTC | Difficulty | Skills |
+|------|-------|-------|-----|------------|--------|
+| rustchain-bounties | [#2451](https://github.com/Scottcjn/rustchain-bounties/issues/2451) | Founding 100 Antiquity Miners — 3,333 RTC Program | 3333 | critical | docker, documentation, rust |
+| Rustchain | [#130](https://github.com/Scottcjn/Rustchain/issues/130) | [BOUNTY] wRTC Liquidity Provider Incentive — 500 RTC/mont... | 500 | critical | social-media |
+| Rustchain | [#2634](https://github.com/Scottcjn/Rustchain/issues/2634) | [BOUNTY CAMPAIGN] Bring Your Human to Work Day — Match Ag... | 500 | critical | javascript, rust, social-media |
+| Rustchain | [#425](https://github.com/Scottcjn/Rustchain/issues/425) | [CAMPAIGN] 5,000 Stars Drive — Earn Up to 430 RTC (5,000 ... | 430 | critical | python, rust, social-media |
+| Rustchain | [#1876](https://github.com/Scottcjn/Rustchain/issues/1876) | [BOUNTY] N64 LLM Speedrun — 5 tok/s on Real N64 Hardware ... | 300 | critical | ci/cd, documentation, python, rust |
+| Rustchain | [#168](https://github.com/Scottcjn/Rustchain/issues/168) | [BOUNTY] Mine on Exotic Hardware — Bonus RTC for Unusual ... | 200 | critical | python, rust |
+| rustchain-bounties | [#14089](https://github.com/Scottcjn/rustchain-bounties/issues/14089) | [BOUNTY: 50-200 RTC] YouTube video about RustChain + BoTT... | 200 | critical | documentation, rust, social-media |
+| Rustchain | [#32](https://github.com/Scottcjn/Rustchain/issues/32) | ⚡ Bounty: RTC/ERG Trading Pair on Spectrum DEX (150 RTC) | 150 | major | documentation, python, rust |
+| rustchain-bounties | [#2819](https://github.com/Scottcjn/rustchain-bounties/issues/2819) | [BOUNTY] Red Team UTXO Implementation — Find Bugs, Earn R... | 133 | major | documentation, javascript, python, rust, security |
+| rustchain-bounties | [#3418](https://github.com/Scottcjn/rustchain-bounties/issues/3418) | [BOUNTY] Register on Beacon Atlas + Prove Commerce (Pool:... | 100 | major | documentation, javascript, python, rust, security, social-media |
+<!-- BOUNTY-TABLE-END -->
 | rustchain-bounties | [#491](https://github.com/Scottcjn/rustchain-bounties/issues/491) | RIP-201 Fleet Detection Bypass | 200 | Major | Security, Python, Consensus |
 | rustchain-bounties | [#492](https://github.com/Scottcjn/rustchain-bounties/issues/492) | RIP-201 Bucket Normalization Gaming | 150 | Standard | Security, Math |
 | rustchain-bounties | [#475](https://github.com/Scottcjn/rustchain-bounties/issues/475) | Attestation Fuzz Harness + Crash Regression | 98 | Standard | Fuzzing, Python |
