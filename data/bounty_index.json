@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28T08:46:16.569703+00:00",
+  "updated_at": "2026-07-29T08:51:03.184301+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -733,7 +733,8 @@
         "open",
         "standard",
         "rust",
-        "testing"
+        "testing",
+        "needs-human"
       ],
       "created_at": "2026-07-19T21:43:56Z",
       "reward_rtc": 10.0,
