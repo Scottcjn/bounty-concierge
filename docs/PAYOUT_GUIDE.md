@@ -7,7 +7,7 @@ Step-by-step instructions for earning and receiving RTC bounty payouts.
 ## Overview
 
 RustChain bounties are paid in RTC (RustChain Token). The internal
-reference rate is **1 RTC = $0.10 USD**. Payouts are transferred from the
+reference rate is **1 RTC = $0.15 USD**. Payouts are transferred from the
 `founder_team_bounty` wallet to your personal wallet after your
 contribution is reviewed and merged.
 
@@ -144,7 +144,7 @@ or use `-k` with curl.
 
 | Tier | RTC Range | USD Equivalent | Typical Scope |
 |------|-----------|----------------|---------------|
-| Micro | 1 - 10 RTC | $0.10 - $1.00 | Docs fixes, repo stars, social media shares, typo corrections |
+| Micro | 1 - 10 RTC | $0.15 - $1.00 | Docs fixes, repo stars, social media shares, typo corrections |
 | Standard | 10 - 50 RTC | $1.00 - $5.00 | Feature additions, integrations, test suites, API docs |
 | Major | 50 - 200 RTC | $5.00 - $20.00 | Architecture work, protocol implementations, dashboards |
 | Critical | 200 - 500 RTC | $20.00 - $50.00 | Security audits, consensus attacks, red-team challenges |
