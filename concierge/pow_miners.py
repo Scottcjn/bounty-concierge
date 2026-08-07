@@ -139,9 +139,9 @@ def detect_pow_processes() -> Dict:
     else:
         lines = stdout.splitlines()
 
-    bz_re = re.compile(r"\\bbzminer\\b.*(?:-a\\s+warthog|-a=warthog)", re.IGNORECASE)
-    janus_re = re.compile(r"\\bjanusminer(?:-ubuntu\\S*)?\\b", re.IGNORECASE)
-    node_re = re.compile(r"\\bwart-node(?:-linux)?\\b", re.IGNORECASE)
+    bz_re = re.compile(r"\bbzminer\b.*(?:-a\s+warthog|-a=warthog)", re.IGNORECASE)
+    janus_re = re.compile(r"\bjanusminer(?:-ubuntu\S*)?\b", re.IGNORECASE)
+    node_re = re.compile(r"\bwart-node(?:-linux)?\b", re.IGNORECASE)
 
     for line in lines:
         cmd = line.strip()
