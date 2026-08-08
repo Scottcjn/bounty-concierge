@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=82.0.1"]
-build-backend = "setuptools.backends._legacy:_Backend"
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "bounty-concierge"
@@ -13,4 +13,6 @@ dependencies = ["requests>=2.32.5"]
 
 [project.scripts]
 concierge = "concierge.cli:main"
-clawrtc = "concierge.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["concierge*"]
