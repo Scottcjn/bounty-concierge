@@ -162,12 +162,12 @@ We are not building for a token launch, an acquisition, or a hype cycle.
 **Our timeline is years, not quarters:**
 
 - **RTC is utility-first.** The token has value because it pays for real
-  work: bounties completed, agents coordinated, services rendered. We set
-  the reference rate at $0.10 because we want it to be useful today, not
-  speculative tomorrow.
-- **The wRTC bridge is deliberate.** We are building the ERC-20 bridge to
-  Base L2 carefully, not rushing it for DeFi liquidity. The attestation
-  chain must be rock-solid before we connect it to public markets.
+  work: bounties completed, agents coordinated, services rendered. We keep
+  the reference rate low ($0.15 today) because we want it to be useful
+  now, not speculative tomorrow.
+- **The wRTC bridge is deliberate.** The wRTC bridge to Solana is run
+  carefully, not rushed for DeFi liquidity. The attestation chain must be
+  rock-solid before we deepen exposure to public markets.
 - **Documentation is not an afterthought.** This entire `bounty-concierge`
   repo exists because we believe onboarding is as important as the code
   itself. If a contributor cannot understand the system, the system has

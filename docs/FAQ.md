@@ -21,16 +21,18 @@ December 2, 2025. Primary node: `https://50.28.86.131`.
 RTC (RustChain Token) is the native utility token of the RustChain
 blockchain. It is earned through hardware mining (Proof-of-Antiquity),
 bounty rewards, and agent economy participation. The internal reference
-rate is **1 RTC = $0.10 USD**. RTC uses 6 decimal places internally
+rate is **1 RTC = $0.15 USD** (live rate at
+https://rustchain.org/api/tokenomics). RTC uses 6 decimal places internally
 (1 RTC = 1,000,000 units).
 
 ### 3. What is wRTC?
 
-wRTC (wrapped RTC) is an ERC-20 token on **Base L2** (Ethereum layer-2)
-that represents RTC on a public chain. It uses a custodial mint/burn
-bridge with 6 decimal places. The bridge enables DeFi trading, liquidity
-pools, and interoperability with other ERC-20 tokens. The wRTC bridge is
-under active development and not yet live.
+wRTC (wrapped RTC) is an SPL token on **Solana** that represents RTC on
+a public chain. It uses a custodial mint/burn bridge with 6 decimal
+places (official bridge: https://bottube.ai/bridge/wrtc, token mint
+`12TAdKXxcGf6oCv4rqDz2NkgxjyHq6HQKoxKZYGf5i4X`). wRTC is live and
+swappable, but liquidity is early-stage and thin; treat it as
+experimental.
 
 ### 4. How do I get a wallet?
 
@@ -66,16 +68,18 @@ You can also browse balances in the block explorer at
 
 ### 6. How much is 1 RTC worth?
 
-The internal reference rate is **$0.10 USD per RTC**. This rate is used
-for pricing bounties and valuing contributions. Market price may differ
-once wRTC is live on Base L2. At the current rate:
+The internal reference rate is **$0.15 USD per RTC** (live rate at
+https://rustchain.org/api/tokenomics). This rate is used for pricing
+bounties and valuing contributions. wRTC trades on Solana with
+early-stage, thin liquidity, so market price may differ. At the current
+rate:
 
 | Bounty | RTC | USD |
 |--------|-----|-----|
-| Micro (small) | 5 RTC | $0.50 |
-| Standard (medium) | 30 RTC | $3.00 |
-| Major (large) | 150 RTC | $15.00 |
-| Critical (expert) | 300 RTC | $30.00 |
+| Micro (small) | 5 RTC | $0.75 |
+| Standard (medium) | 30 RTC | $4.50 |
+| Major (large) | 150 RTC | $22.50 |
+| Critical (expert) | 300 RTC | $45.00 |
 
 ---
 
@@ -87,10 +91,10 @@ Bounties are sized by complexity and value:
 
 | Tier | RTC Range | USD Equivalent | Typical Scope |
 |------|-----------|----------------|---------------|
-| Micro | 1 - 10 RTC | $0.10 - $1.00 | Docs, typo fixes, repo stars, social shares |
-| Standard | 10 - 50 RTC | $1.00 - $5.00 | Feature additions, integrations, test suites |
-| Major | 50 - 200 RTC | $5.00 - $20.00 | Architecture work, protocol implementations |
-| Critical | 200 - 500 RTC | $20.00 - $50.00 | Security audits, core consensus changes, red-team |
+| Micro | 1 - 10 RTC | $0.15 - $1.50 | Docs, typo fixes, repo stars, social shares |
+| Standard | 10 - 50 RTC | $1.50 - $7.50 | Feature additions, integrations, test suites |
+| Major | 50 - 200 RTC | $7.50 - $30.00 | Architecture work, protocol implementations |
+| Critical | 200 - 500 RTC | $30.00 - $75.00 | Security audits, core consensus changes, red-team |
 
 ### 8. How do I claim a bounty?
 
@@ -185,10 +189,12 @@ You can also view transactions in the block explorer at
 
 ### 17. Can I trade or cash out RTC?
 
-Direct on-chain trading is not yet live. The wRTC bridge to Base L2 is
-under development. Currently, RTC can be transferred between wallets
-using the signed transfer endpoint or through OTC (over-the-counter)
-arrangements. The reference rate for OTC is 1 RTC = $0.10 USD.
+Yes, with caveats. wRTC trades on Solana (bridge at
+https://bottube.ai/bridge/wrtc), but liquidity is early-stage and thin.
+RTC can also be transferred between wallets using the signed transfer
+endpoint or through OTC (over-the-counter) arrangements. The internal
+reference rate is 1 RTC = $0.15 USD, which is a planning rate, not a
+market price.
 
 ---
 

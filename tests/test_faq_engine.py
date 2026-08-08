@@ -48,7 +48,7 @@ class TestFuzzyMatch:
     def test_rtc_reward_parsing(self):
         """FAQ should contain RTC value info."""
         key, answer, score = faq_engine.fuzzy_match("what is rtc")
-        assert "$0.10" in answer or "0.10" in answer
+        assert "$0.15" in answer or "0.15" in answer
 
     def test_payout_faq(self):
         """Payout FAQ should mention PR merge."""
@@ -56,9 +56,10 @@ class TestFuzzyMatch:
         assert answer is not None
 
     def test_wrtc_faq(self):
-        """WRTC FAQ should mention Ergo blockchain."""
+        """WRTC FAQ should mention Solana."""
         key, answer, score = faq_engine.fuzzy_match("what is wrtc")
         assert answer is not None
+        assert "Solana" in answer
 
     def test_proof_of_antiquity_faq(self):
         """PoA FAQ should mention multipliers."""
