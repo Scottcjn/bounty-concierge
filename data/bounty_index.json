@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T07:34:57.980428+00:00",
+  "updated_at": "2026-08-08T07:04:21.137828+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -1696,25 +1696,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 2786,
-      "title": "[ONBOARD: 3 RTC] Compare RustChain to Another Blockchain Project",
-      "body": "## Bounty: 3 RTC\n\n### What You'll Do\nResearch RustChain and compare it to another blockchain project you know.\n\n### Steps\n1. **Pick any other blockchain project**: Bitcoin, Ethereum, Solana, Ergo, Chia, whatever you know\n2. **Write a comparison** (300-800 words) covering:\n   - Consensus mechanism differences (PoW vs PoS vs PoA vs RustChain's Proof of Antiquity)\n   - Hardware requirements\n   - Environmental approach\n   - Community model\n   - What each project does better\n3. **Post as a comment here**\n\n### What Counts\n- Must show you actually read about both projects\n- Honest comparison, it's fine to say where RustChain falls short\n- We learn from your outside perspective\n- Tables/charts welcome but not required\n\n### Payment\n3 RTC for a thoughtful, accurate comparison.\n\n**Difficulty**: Easy-Medium | **Time**: 30-45 min | **Skills**: Research, writing\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2786",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "community",
-        "onboarding"
-      ],
-      "created_at": "2026-04-02T15:42:09Z",
-      "reward_rtc": 3.0,
-      "difficulty": "micro",
-      "skills": [
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 2784,
       "title": "[ONBOARD: 3 RTC] Test the Miner and Post Your Hardware Report",
       "body": "## Bounty: 3 RTC\n\n### What You'll Do\nRun the RustChain miner in test mode and tell us what hardware you're on.\n\n### Steps\n1. **Download the miner** from the [releases page](https://github.com/Scottcjn/Rustchain/releases) or clone the repo\n2. **Run in dry-run mode** (safe: no network calls, no mining)\n3. **Post your results here** including:\n   - What OS you're running (Linux, Mac, Windows)\n   - What CPU architecture was detected\n   - Whether all fingerprint checks passed\n   - Any errors or confusing output you hit\n   - Screenshot or paste of the output\n\n### What Counts\n- Must actually run the miner (dry-run is safe)\n- Your hardware report helps us test compatibility across machines\n- If it fails or crashes, that's **even more valuable**, tell us what went wrong\n- Exotic hardware (ARM, RISC-V, old x86, PowerPC) gets bonus love\n\n### Why This Matters\nWe need real test reports from diverse hardware. The miner runs on everything from PowerPC G4s to modern Ryzen, but we can't test every machine ourselves. You're our QA team.\n\n### Payment\n3 RTC once you post a real test report with output.\n\n**Difficulty**: Easy | **Time**: 10-20 min | **Skills**: Can run a Python script\n",
@@ -1870,6 +1851,48 @@
       ]
     },
     {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1575,
+      "title": "Register in Ecosystem Contributors \u2014 3 RTC per registration",
+      "body": "## Bounty: 5 RTC per registration\n\n**Repo:** [Scottcjn/contributors](https://github.com/Scottcjn/contributors)\n\n### What\nRegister yourself in the Elyan Labs Contributor Registry. This tracks every contributor across the entire ecosystem (RustChain, BoTTube, Beacon, Grazer, MCP) with your wallet, type, and contribution history.\n\n### Who qualifies\nAnyone who has contributed to the ecosystem in ANY way:\n- Starred repos\n- Submitted PRs (merged or not)\n- Filed issues\n- Wrote tutorials or articles\n- Ran a miner\n- Security research\n- Community support\n\n### How to claim\n1. Go to [Scottcjn/contributors](https://github.com/Scottcjn/contributors/issues/new?template=register-contributor.yml)\n2. Open a **Register as Contributor** issue\n3. Fill in your GitHub username, type (human/bot/agent), and RTC wallet\n4. You'll be added to `CONTRIBUTORS.yml` and paid **5 RTC**\n\n### Categories\n| Type | Who |\n|------|-----|\n| `human` | Real people \u2014 coders, stargazers, writers, testers |\n| `agent` | AI agents \u2014 Claude, GPT, Codex, custom LLMs |\n| `bot` | Automated tools \u2014 CI, monitoring, scrapers |\n\n### Roles (you can have multiple)\n| Role | Description |\n|------|-------------|\n| `contributor` | Code, docs, or PR work |\n| `bounty-hunter` | Claimed and completed bounties |\n| `stargazer` | Starred ecosystem repos |\n| `security-researcher` | Security audit or vuln work |\n| `ambassador` | Community outreach |\n| `miner` | Runs a RustChain node |\n| `reviewer` | PR reviews or first-impression reviews |\n\n### Already contributed?\nIf you've already earned RTC through stars, bounties, or PRs \u2014 you still qualify. Register to get your 5 RTC bonus and be tracked as an ecosystem-wide contributor.\n\n**No limit on registrations.** Every contributor gets 5 RTC.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1575",
+      "labels": [
+        "good first issue",
+        "bounty"
+      ],
+      "created_at": "2026-03-10T15:42:29Z",
+      "reward_rtc": 3.0,
+      "difficulty": "micro",
+      "skills": [
+        "documentation",
+        "javascript",
+        "rust",
+        "security",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1555,
+      "title": "[EASY BOUNTY: 3 RTC] Upvote Elyan Labs flagship packages on ClawHub",
+      "body": "## Summary\nHelp our strongest public packages rank higher on ClawHub by upvoting the canonical package pages.\n\nThis is a proof-only campaign bounty. Claims and payout routing stay in `Scottcjn/rustchain-bounties`.\n\n## Reward\n- `3 RTC` per accepted claim\n- Pool: `150 RTC` total (`first 50 valid claims`)\n\n## Canonical ClawHub Targets\nUpvote all 4 of these package pages:\n\n1. Beacon\n   - https://clawhub.ai/packages/beacon\n2. Grazer\n   - https://clawhub.ai/packages/grazer\n3. ClawRTC\n   - https://clawhub.ai/packages/clawrtc\n4. RustChain MCP\n   - https://clawhub.ai/packages/rustchain-mcp\n\n## Why These Matter\n- `Beacon` is the live agent coordination layer behind the Beacon Atlas and relay network.\n- `Grazer` is the cross-platform toolkit for posting, scraping, and ecosystem automation.\n- `ClawRTC` is the RustChain wallet/miner/CLI surface that gets new users into the network.\n- `RustChain MCP` is the universal tool bridge that puts RustChain, BoTTube, and Beacon inside MCP-native agents.\n\n## Target / Scope Metadata\n- Target repository: `Scottcjn/rustchain-bounties` for proof and payout only\n- Target branch or commit range: `n/a`\n- In scope: verified ClawHub upvotes on the 4 canonical pages above\n- Out of scope: GitHub stars, X follows, social posts, ClawHub comments, old/dead alias pages, automated voting\n\n## How To Claim\n1. Log in to ClawHub.\n2. Upvote all 4 canonical package pages above.\n3. Comment on this issue with:\n   - your GitHub username\n   - your ClawHub handle or profile link if available\n   - your RTC wallet / `miner_id`\n   - proof\n\n## Proof Requirements\nAccepted proof is one of:\n- one short screen recording showing the 4 upvoted package pages while logged in, or\n- 4 screenshots clearly showing the upvoted state on each package page\n\nPlease include the exact package URLs in your proof.\n\n## Acceptance Criteria\n- [ ] all 4 canonical package pages were upvoted\n- [ ] proof is clear and ties back to one claimant/account\n- [ ] claimant includes a valid RTC wallet or `miner_id`\n- [ ] no reused screenshots or overlapping proof across multiple claims\n\n## Anti-Abuse Rules\n- one claim per GitHub account\n- one claim per ClawHub account\n- no bots, scripts, vote farms, or mass-created alt accounts\n- legacy alias pages do **not** count as substitutes for the canonical targets above\n- maintainer decision is final on suspicious or recycled proof\n\n## Notes\nSome old package aliases still render on ClawHub, but this bounty only pays against the canonical current targets listed above. Use this issue for payout proof only, not for package bug reports or feature requests.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1555",
+      "labels": [
+        "bounty",
+        "open",
+        "propagation",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-09T22:03:48Z",
+      "reward_rtc": 3.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
+    {
       "repo": "Scottcjn/Rustchain",
       "number": 303,
       "title": "[BOUNTY] Post About RustChain on Social Media \u2014 3 RTC",
@@ -1989,27 +2012,6 @@
       "reward_rtc": 2.0,
       "difficulty": "micro",
       "skills": [
-        "rust",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 2782,
-      "title": "[ONBOARD: 2 RTC] Review an Open PR",
-      "body": "## Bounty: 2 RTC\n\n### What You'll Do\nHelp us review code. Every PR benefits from a second pair of eyes.\n\n### Steps\n1. **Pick any open PR** from [Rustchain](https://github.com/Scottcjn/Rustchain/pulls), [BoTTube](https://github.com/Scottcjn/bottube/pulls), or [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties/pulls)\n2. **Read the code changes** (click \"Files changed\" tab)\n3. **Leave a substantive review comment**. Examples:\n   - \"Line 42: this SQL query isn't parameterized, potential injection\"\n   - \"This function duplicates logic already in utils.py line 80\"\n   - \"Missing error handling if the API returns non-200\"\n   - \"Good approach, but the variable name should describe what it holds\"\n4. **Comment here** with a link to your review\n\n### What Counts\n- Review must be **technical and specific** (not \"looks good\" or \"nice work\")\n- Point to specific lines with specific observations\n- Positive observations count too (\"good use of context manager here\")\n- You don't need to be an expert. Asking good questions is reviewing.\n\n### Payment\n2 RTC once your review contains at least 2 substantive observations.\n\n**Difficulty**: Easy-Medium | **Time**: 20-40 min | **Skills**: Can read Python or JavaScript\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2782",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "onboarding"
-      ],
-      "created_at": "2026-04-02T15:41:31Z",
-      "reward_rtc": 2.0,
-      "difficulty": "micro",
-      "skills": [
-        "javascript",
-        "python",
         "rust",
         "social-media"
       ]
