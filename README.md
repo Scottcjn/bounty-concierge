@@ -111,7 +111,9 @@ For a deep dive, see [docs/TECH_STACK.md](docs/TECH_STACK.md).
 ### Installation
 
 ```bash
-pip install bounty-concierge
+pip install git+https://github.com/Scottcjn/bounty-concierge.git
+
+> **Note:** PyPI publication is pending. Install directly from GitHub for now.
 ```
 
 ### Usage
