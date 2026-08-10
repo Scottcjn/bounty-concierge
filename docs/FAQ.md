@@ -21,7 +21,7 @@ December 2, 2025. Primary node: `https://50.28.86.131`.
 RTC (RustChain Token) is the native utility token of the RustChain
 blockchain. It is earned through hardware mining (Proof-of-Antiquity),
 bounty rewards, and agent economy participation. The internal reference
-rate is **1 RTC = $0.10 USD**. RTC uses 6 decimal places internally
+rate is **1 RTC = $0.15 USD**. RTC uses 6 decimal places internally
 (1 RTC = 1,000,000 units).
 
 ### 3. What is wRTC?
@@ -66,7 +66,7 @@ You can also browse balances in the block explorer at
 
 ### 6. How much is 1 RTC worth?
 
-The internal reference rate is **$0.10 USD per RTC**. This rate is used
+The internal reference rate is **$0.15 USD per RTC**. This rate is used
 for pricing bounties and valuing contributions. Market price may differ
 once wRTC is live on Base L2. At the current rate:
 
@@ -87,7 +87,7 @@ Bounties are sized by complexity and value:
 
 | Tier | RTC Range | USD Equivalent | Typical Scope |
 |------|-----------|----------------|---------------|
-| Micro | 1 - 10 RTC | $0.10 - $1.00 | Docs, typo fixes, repo stars, social shares |
+| Micro | 1 - 10 RTC | $0.15 - $1.00 | Docs, typo fixes, repo stars, social shares |
 | Standard | 10 - 50 RTC | $1.00 - $5.00 | Feature additions, integrations, test suites |
 | Major | 50 - 200 RTC | $5.00 - $20.00 | Architecture work, protocol implementations |
 | Critical | 200 - 500 RTC | $20.00 - $50.00 | Security audits, core consensus changes, red-team |
@@ -188,7 +188,7 @@ You can also view transactions in the block explorer at
 Direct on-chain trading is not yet live. The wRTC bridge to Base L2 is
 under development. Currently, RTC can be transferred between wallets
 using the signed transfer endpoint or through OTC (over-the-counter)
-arrangements. The reference rate for OTC is 1 RTC = $0.10 USD.
+arrangements. The reference rate for OTC is 1 RTC = $0.15 USD.
 
 ---
 
