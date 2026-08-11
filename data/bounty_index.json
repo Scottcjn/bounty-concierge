@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10T07:55:40.340896+00:00",
+  "updated_at": "2026-08-11T07:18:48.286490+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -160,7 +160,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "number": 2819,
       "title": "[BOUNTY] Red Team UTXO Implementation \u2014 Find Bugs, Earn RTC (33-133 RTC)",
-      "body": "## Overview\n\nRustChain is migrating from an account-based balance model to a full UTXO (Unspent Transaction Output) model. **Phase 1+2 just landed** in [`39bf02b`](https://github.com/Scottcjn/Rustchain/commit/39bf02b).\n\nWe want adversarial eyes on this before enabling dual-write on production. Break it, get paid.\n\n## Files to Review\n\nAll in the [`node/`](https://github.com/Scottcjn/Rustchain/tree/main/node) directory of the main Rustchain repo:\n\n| File | Lines | Purpose |\n|------|-------|---------|\n| `utxo_db.py` | ~708 | Core UTXO database layer \u2014 UTXOs, transactions, mempool, Merkle roots, coin selection |\n| `test_utxo_db.py` | ~421 | 29 unit tests covering the UTXO layer |\n| `utxo_genesis_migration.py` | ~272 | Deterministic migration of 538 existing account balances into genesis UTXOs |\n| `rustchain_v2_integrated_v2.2.1_rip200.py` | (diff) | Server integration \u2014 imports + table init behind `UTXO_DUAL_WRITE` feature flag |\n\n## What to Look For\n\n### Critical Vectors (200 RTC)\n- **Double-spend attacks** \u2014 Can the same UTXO be consumed twice? Race conditions in `apply_transaction()`?\n- **Fund creation from nothing** \u2014 Can a transaction create more RTC in outputs than exists in inputs?\n- **Genesis migration tampering** \u2014 Can the migration be re-run to duplicate balances?\n\n### High Severity (100 RTC)\n- **Race conditions** \u2014 Concurrent transaction application, TOCTOU between validation and commitment\n- **Conservation law bypass** \u2014 Any path where `sum(inputs) != sum(outputs) + fee`\n- **Lock/unlock logic errors** \u2014 Can locked UTXOs be spent? Can spending bypass the lock check?\n\n### Medium Severity (50 RTC)\n- **Mempool DoS** \u2014 Can the mempool be flooded or manipulated to block legitimate transactions?\n- **Merkle state root manipulation** \u2014 Can the state root be made to diverge between nodes?\n- **Fee calculation exploits** \u2014 Negative fees, integer overflow in fee math, fee-free transactions that should require fees\n\n### Low Severity (25 RTC)\n- **Coin selection edge cases** \u2014 Pathological wallet states that break coin selection\n- **Code quality issues** \u2014 SQL injection vectors, unchecked error paths, missing validations\n- **Test coverage gaps** \u2014 Important scenarios not covered by the 29 existing tests\n\n## How to Submit\n\n**Option A (preferred):** Open a PR on [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) with a **failing test case** that demonstrates the bug. Title it `[UTXO-BUG] <description>`.\n\n**Option B:** Open an issue on this repo with a detailed writeup including:\n1. The vulnerability class\n2. Steps to reproduce\n3. Expected vs actual behavior\n4. Suggested fix (optional but earns bonus)\n\n## Bounty Tiers Summary\n\n| Severity | Payout | Examples |\n|----------|--------|----------|\n| **Critical** | **200 RTC** | Double-spend, fund creation, genesis duplication |\n| **High** | **100 RTC** | Race conditions, conservation bypass |\n| **Medium** | **50 RTC** | Mempool DoS, Merkle manipulation |\n| **Low** | **25 RTC** | Edge cases, code quality, test gaps |\n\nMultiple valid findings from the same researcher will each be paid individually.\n\n## Context\n\n- RTC reference rate: **1 RTC = $0.10 USD**\n- The UTXO layer is behind a feature flag (`UTXO_DUAL_WRITE=0` by default) \u2014 it is NOT active on the live network yet\n- The existing account-based model continues to handle all production transactions\n- This is a pre-production security review before we flip the switch\n\n## Resources\n\n- [RustChain Node Health](https://50.28.86.131/health)\n- [Block Explorer](https://50.28.86.131/explorer)\n- [Active Miners API](https://50.28.86.131/api/miners)",
+      "body": "## Overview\n\nRustChain is migrating from an account-based balance model to a full UTXO (Unspent Transaction Output) model. **Phase 1+2 just landed** in [`39bf02b`](https://github.com/Scottcjn/Rustchain/commit/39bf02b).\n\nWe want adversarial eyes on this before enabling dual-write on production. Break it, get paid.\n\n## Files to Review\n\nAll in the [`node/`](https://github.com/Scottcjn/Rustchain/tree/main/node) directory of the main Rustchain repo:\n\n| File | Lines | Purpose |\n|------|-------|---------|\n| `utxo_db.py` | ~708 | Core UTXO database layer \u2014 UTXOs, transactions, mempool, Merkle roots, coin selection |\n| `test_utxo_db.py` | ~421 | 29 unit tests covering the UTXO layer |\n| `utxo_genesis_migration.py` | ~272 | Deterministic migration of 538 existing account balances into genesis UTXOs |\n| `rustchain_v2_integrated_v2.2.1_rip200.py` | (diff) | Server integration \u2014 imports + table init behind `UTXO_DUAL_WRITE` feature flag |\n\n## What to Look For\n\n### Critical Vectors (200 RTC)\n- **Double-spend attacks** \u2014 Can the same UTXO be consumed twice? Race conditions in `apply_transaction()`?\n- **Fund creation from nothing** \u2014 Can a transaction create more RTC in outputs than exists in inputs?\n- **Genesis migration tampering** \u2014 Can the migration be re-run to duplicate balances?\n\n### High Severity (100 RTC)\n- **Race conditions** \u2014 Concurrent transaction application, TOCTOU between validation and commitment\n- **Conservation law bypass** \u2014 Any path where `sum(inputs) != sum(outputs) + fee`\n- **Lock/unlock logic errors** \u2014 Can locked UTXOs be spent? Can spending bypass the lock check?\n\n### Medium Severity (50 RTC)\n- **Mempool DoS** \u2014 Can the mempool be flooded or manipulated to block legitimate transactions?\n- **Merkle state root manipulation** \u2014 Can the state root be made to diverge between nodes?\n- **Fee calculation exploits** \u2014 Negative fees, integer overflow in fee math, fee-free transactions that should require fees\n\n### Low Severity (25 RTC)\n- **Coin selection edge cases** \u2014 Pathological wallet states that break coin selection\n- **Code quality issues** \u2014 SQL injection vectors, unchecked error paths, missing validations\n- **Test coverage gaps** \u2014 Important scenarios not covered by the 29 existing tests\n\n## How to Submit\n\n**Option A (preferred for anything exploitable): report it privately.** Use\n[Private Vulnerability Reporting on Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain/security/advisories/new).\nThis is enabled and open to anyone. If a finding lets someone move funds they do\nnot own, double-spend, or create RTC from nothing, please use this route rather\nthan a public issue or PR, and give us a chance to fix it before it is visible.\n\nReporting privately does **not** reduce your payout, and the timestamp on your\nadvisory establishes your claim exactly as a public comment would.\n\nIf your tooling cannot reach GitHub, or your agent harness returns\n`403 Resource not accessible by integration`, email **sophia.eagent@gmail.com**\ninstead. That is a monitored project address. Do not use addresses found in\ncommit history; they are personal accounts and are not watched as a security\nqueue.\n\n**Option B (for non-exploitable findings):** Open a PR on\n[Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) with a **failing test\ncase** that demonstrates the bug. Title it `[UTXO-BUG] <description>`. Good for\nedge cases, test gaps, and code-quality findings.\n\n**Option C (for non-exploitable findings):** Open an issue on this repo with a\ndetailed writeup including:\n1. The vulnerability class\n2. Steps to reproduce\n3. Expected vs actual behavior\n4. Suggested fix (optional but earns bonus)\n\nIf you are unsure which category a finding falls into, treat it as exploitable\nand use Option A. We would rather receive a low-severity report privately than\nsee a critical one posted in public.\n\n## Bounty Tiers Summary\n\n| Severity | Payout | Examples |\n|----------|--------|----------|\n| **Critical** | **200 RTC** | Double-spend, fund creation, genesis duplication |\n| **High** | **100 RTC** | Race conditions, conservation bypass |\n| **Medium** | **50 RTC** | Mempool DoS, Merkle manipulation |\n| **Low** | **25 RTC** | Edge cases, code quality, test gaps |\n\nMultiple valid findings from the same researcher will each be paid individually.\n\n## Context\n\n- RTC reference rate: **1 RTC = $0.10 USD**\n- The UTXO layer is behind a feature flag (`UTXO_DUAL_WRITE=0` by default) \u2014 it is NOT active on the live network yet\n- The existing account-based model continues to handle all production transactions\n- This is a pre-production security review before we flip the switch\n\n## Resources\n\n- [RustChain Node Health](https://50.28.86.131/health)\n- [Block Explorer](https://50.28.86.131/explorer)\n- [Active Miners API](https://50.28.86.131/api/miners)\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2819",
       "labels": [
         "help wanted",
@@ -255,6 +255,27 @@
       "reward_rtc": 50.0,
       "difficulty": "major",
       "skills": []
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 16471,
+      "title": "[BOUNTY: 35 RTC + 10/defect] Audit the payout pipeline for silent-success failures",
+      "body": "## The problem\n\nFour separate defects were found in the bounty payout pipeline on 2026-08-07/08, and all four shared one shape: **something reported success while doing nothing.** None raised an error. None turned a workflow red.\n\n- `transfer()` returned success on an HTTP 200 carrying `{\"ok\": false}` \u2014 claims were closed and publicly confirmed with no RTC sent (#16390)\n- The payout's candidate sweep used `--limit 400` against 2,375 open issues, so any verified claim outside the newest 400 could never be paid, silently\n- `confirm_pending.sh` had no execute bit for ~3 months. Cron fired it every 10 minutes into a permission error, and because the script's own logging lived inside the block that failed to run, **nothing was logged at all**\n- `gh issue edit --add-label` fails on a GraphQL deprecation **without a non-zero exit**, so a gate posted \"verified\" and never marked the claim payable\n\nEach was found by accident. There is no reason to think they were the last four.\n\n## What this bounty is\n\nAudit the payout and reward paths for **more of this class**. Not style, not coverage \u2014 specifically: *code that can complete successfully while achieving nothing, or achieving the wrong thing, without surfacing an error.*\n\nIn scope:\n- `scripts/bounty_payout.py`, `scripts/docstring_gate.py`, `scripts/pr_review_gate.py`, `scripts/pr_review_gate_backfill.py`\n- `/root/rustchain/` payout, settlement and confirmation paths on the live node (ask for read access)\n- The workflows that drive them\n\n## What qualifies for payment\n\nA finding must name **a concrete path where the code succeeds and the effect does not happen**, with the reasoning for why. A proof of concept is welcome but not required if the reading is unambiguous.\n\nNot payable: general hardening advice, dependency CVEs with no demonstrated path, style, or \"add more tests\" without a specific defect behind it.\n\n## Reward\n\n**35 RTC** for the audit, plus **10 RTC per confirmed defect** of this class beyond the first, uncapped.\n\nPaid on the finding, not on a fix. A clear writeup of a real defect is worth more here than a patch for a hypothetical one.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16471",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-08-10T17:31:52Z",
+      "reward_rtc": 35.0,
+      "difficulty": "standard",
+      "skills": [
+        "ci/cd",
+        "documentation",
+        "javascript",
+        "python",
+        "rust",
+        "security"
+      ]
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -450,6 +471,24 @@
         "javascript",
         "python",
         "rust"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 16472,
+      "title": "[BOUNTY: 20 RTC] BoTTube CI jobs hang to a 15-minute timeout and blame the contributor",
+      "body": "## The problem\n\nSome BoTTube pull requests fail four checks at once \u2014 `label`, `lint`, `security`, `test` \u2014 and every one reports a duration of **15m01s**. That is a job timeout, not a test failure.\n\nConfirmed examples: bottube#1640 and bottube#1639. On those two, `label` fails despite passing on all 30 other open PRs in the repo, which is what rules out the contributors' code as the cause.\n\nThe effect is that contributors are told their work failed CI when the runner hung. At least two people were asked to chase a failure that was never theirs.\n\n## What this bounty is\n\nFind out why those jobs hang, and fix it.\n\nLikely directions, not prescriptions:\n- A step with no timeout waiting on something that never returns (network fetch, package index, external API)\n- Runner resource exhaustion when several workflows fire on the same commit\n- A dependency install that hangs rather than failing\n\n## What qualifies for payment\n\n- A named root cause, evidenced from job logs rather than inferred\n- A fix that makes the hang either impossible or fast-failing with a clear message\n- **Explicit per-step timeouts** so that if it recurs, CI says \"timed out after N minutes\" instead of pretending the code failed\n\n## Reward\n\n**20 RTC.** Add **5 RTC** if the fix also distinguishes a genuine timeout from a genuine failure in what the contributor sees, since the current confusion is the actual damage.\n",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16472",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-08-10T17:31:53Z",
+      "reward_rtc": 20.0,
+      "difficulty": "standard",
+      "skills": [
+        "ci/cd",
+        "security",
+        "social-media"
       ]
     },
     {
@@ -1170,28 +1209,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 16250,
-      "title": "[BOUNTY: 5 RTC] Test the grazer-mcp error contract \u2014 4 tools x 4 failure modes, offline pytest suite",
-      "body": "**Repo:** [Scottcjn/grazer-mcp](https://github.com/Scottcjn/grazer-mcp)\n**Rate:** 5 RTC (micro / good first issue / tests)\n\n## The real gap\nThe README promises a **stable error contract** for all 4 tools: `{\"ok\": false, \"error\": {code, message, retryable, source, details}}` \u2014 \"never a silent empty result.\" But `tests/` contains a single file (`test_client.py`). The contract itself is untested: nothing verifies that `graze_trending`, `graze_discover`, `graze_feed`, and `graze_platforms` actually return that shape on backend failure.\n\n## Deliverable\nA PR adding a test module (e.g. `tests/test_error_contract.py`) that, with a mocked backend (no live network calls \u2014 use `responses`, `respx`, or monkeypatched client):\n1. For **each of the 4 tools**, asserts the exact error-envelope shape on: HTTP 500, HTTP 404, timeout, and malformed/non-JSON body.\n2. Asserts `retryable` is `True` for timeouts/5xx and `False` for 4xx (or documents/matches whatever the code actually does \u2014 if the code contradicts the README, note it in the PR).\n3. Asserts success responses from a mocked backend normalize to the documented video shape (`{id, title, agent, views, ...}`).\n\n## Acceptance criteria\n- [ ] `pytest` passes; new tests run offline (no network).\n- [ ] All 4 tools x 4 failure modes covered (16 cases minimum, parametrize freely).\n- [ ] Any README-vs-code contract mismatch found is listed in the PR description.\n\n## How to claim\n1. Comment here that you're taking it (soft lock, 7 days \u2014 no progress = re-opened to others).\n2. Open a PR in the target repo that closes the referenced issue(s). Link this bounty issue in the PR description.\n3. When the PR is merged, comment here with the PR link and your **RTC wallet address**. Payout follows on the RustChain ledger.\n\n## Anti-farm rules\n- First **mergeable** PR wins. Duplicate/late PRs are closed without payout.\n- Untested boilerplate, AI-slop that doesn't run, or PRs that just restate the issue are closed without payout and may disqualify the wallet from future bounties.\n- One payout per deliverable per person. Sock-puppet wallets forfeit all claims.\n- \"Works on my machine\" isn't proof \u2014 acceptance criteria below must be demonstrably met (CI, test output, or reproduction steps in the PR).\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16250",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "open",
-        "micro",
-        "testing"
-      ],
-      "created_at": "2026-07-19T21:43:35Z",
-      "reward_rtc": 5.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "python",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 16248,
       "title": "[BOUNTY: 5 RTC] Fix ALL broken README/doc links in Scottcjn/Rustchain + add link-check CI (closes 5 open issues)",
       "body": "**Repo:** [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain)\n**Rate:** 5 RTC (micro / good first issue)\n\n## The real gap\nFive separate open issues report broken links in the main README and docs, and they keep regressing:\n- Scottcjn/Rustchain#7910 \u2014 `/api/tokenomics` link 404s\n- Scottcjn/Rustchain#7908 \u2014 `/bcos/` and `/api/tokenomics` 404\n- Scottcjn/Rustchain#7886 \u2014 broken documentation links in README.md\n- Scottcjn/Rustchain#7885 \u2014 broken link to mining documentation\n- Scottcjn/Rustchain#7792 \u2014 broken *relative* doc links in README.md\n\n## Deliverable\nOne PR that:\n1. Fixes **every** dead link in `README.md` and top-level docs (point to the file/route that actually exists, or remove the link with a note).\n2. Adds a link-check step to CI (e.g. [lychee](https://github.com/lycheeverse/lychee) GitHub Action or a simple script) so relative links can't silently rot again. External-URL checks may be allowlisted/skipped to avoid flaky CI; **relative links must be enforced**.\n\n## Acceptance criteria\n- [ ] All links referenced in the 5 issues above resolve (or are removed with justification in the PR).\n- [ ] Link-check CI job passes on the PR and fails if a relative link is broken (demonstrate with a test commit or local run output).\n- [ ] PR closes #7910, #7908, #7886, #7885, #7792 (use \"Closes\" keywords).\n\n## How to claim\n1. Comment here that you're taking it (soft lock, 7 days \u2014 no progress = re-opened to others).\n2. Open a PR in the target repo that closes the referenced issue(s). Link this bounty issue in the PR description.\n3. When the PR is merged, comment here with the PR link and your **RTC wallet address**. Payout follows on the RustChain ledger.\n\n## Anti-farm rules\n- First **mergeable** PR wins. Duplicate/late PRs are closed without payout.\n- Untested boilerplate, AI-slop that doesn't run, or PRs that just restate the issue are closed without payout and may disqualify the wallet from future bounties.\n- One payout per deliverable per person. Sock-puppet wallets forfeit all claims.\n- \"Works on my machine\" isn't proof \u2014 acceptance criteria below must be demonstrably met (CI, test output, or reproduction steps in the PR).\n",
@@ -1868,27 +1885,6 @@
         "javascript",
         "rust",
         "security",
-        "social-media"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
-      "number": 1555,
-      "title": "[EASY BOUNTY: 3 RTC] Upvote Elyan Labs flagship packages on ClawHub",
-      "body": "## Summary\nHelp our strongest public packages rank higher on ClawHub by upvoting the canonical package pages.\n\nThis is a proof-only campaign bounty. Claims and payout routing stay in `Scottcjn/rustchain-bounties`.\n\n## Reward\n- `3 RTC` per accepted claim\n- Pool: `150 RTC` total (`first 50 valid claims`)\n\n## Canonical ClawHub Targets\nUpvote all 4 of these package pages:\n\n1. Beacon\n   - https://clawhub.ai/packages/beacon\n2. Grazer\n   - https://clawhub.ai/packages/grazer\n3. ClawRTC\n   - https://clawhub.ai/packages/clawrtc\n4. RustChain MCP\n   - https://clawhub.ai/packages/rustchain-mcp\n\n## Why These Matter\n- `Beacon` is the live agent coordination layer behind the Beacon Atlas and relay network.\n- `Grazer` is the cross-platform toolkit for posting, scraping, and ecosystem automation.\n- `ClawRTC` is the RustChain wallet/miner/CLI surface that gets new users into the network.\n- `RustChain MCP` is the universal tool bridge that puts RustChain, BoTTube, and Beacon inside MCP-native agents.\n\n## Target / Scope Metadata\n- Target repository: `Scottcjn/rustchain-bounties` for proof and payout only\n- Target branch or commit range: `n/a`\n- In scope: verified ClawHub upvotes on the 4 canonical pages above\n- Out of scope: GitHub stars, X follows, social posts, ClawHub comments, old/dead alias pages, automated voting\n\n## How To Claim\n1. Log in to ClawHub.\n2. Upvote all 4 canonical package pages above.\n3. Comment on this issue with:\n   - your GitHub username\n   - your ClawHub handle or profile link if available\n   - your RTC wallet / `miner_id`\n   - proof\n\n## Proof Requirements\nAccepted proof is one of:\n- one short screen recording showing the 4 upvoted package pages while logged in, or\n- 4 screenshots clearly showing the upvoted state on each package page\n\nPlease include the exact package URLs in your proof.\n\n## Acceptance Criteria\n- [ ] all 4 canonical package pages were upvoted\n- [ ] proof is clear and ties back to one claimant/account\n- [ ] claimant includes a valid RTC wallet or `miner_id`\n- [ ] no reused screenshots or overlapping proof across multiple claims\n\n## Anti-Abuse Rules\n- one claim per GitHub account\n- one claim per ClawHub account\n- no bots, scripts, vote farms, or mass-created alt accounts\n- legacy alias pages do **not** count as substitutes for the canonical targets above\n- maintainer decision is final on suspicious or recycled proof\n\n## Notes\nSome old package aliases still render on ClawHub, but this bounty only pays against the canonical current targets listed above. Use this issue for payout proof only, not for package bug reports or feature requests.",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1555",
-      "labels": [
-        "bounty",
-        "open",
-        "propagation",
-        "easy",
-        "community"
-      ],
-      "created_at": "2026-03-09T22:03:48Z",
-      "reward_rtc": 3.0,
-      "difficulty": "micro",
-      "skills": [
-        "rust",
         "social-media"
       ]
     },
