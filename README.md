@@ -22,10 +22,11 @@ RustChain is a blockchain that rewards real hardware -- especially vintage machi
 | Step | Action | Details |
 |------|--------|---------|
 | 1 | **Pick your skill level** | See [docs/SKILL_MATRIX.md](docs/SKILL_MATRIX.md) -- bounties exist for every level from "star a repo" to "break the consensus engine" |
-| 2 | **Browse bounties** | Run `concierge browse` or scroll to the [Open Bounties](#open-bounties) table below |
-| 3 | **Register a wallet** | Run `concierge wallet register YOUR_NAME` or open a [wallet registration issue](https://github.com/Scottcjn/rustchain-bounties/issues/new?template=wallet_registration.md) |
-| 4 | **Claim a bounty** | Comment on the GitHub issue with your wallet name and a brief approach description |
-| 5 | **Get paid** | RTC is transferred to your wallet within 24 hours after your PR is merged |
+| 2 | **Install the CLI** | Run `pip install git+https://github.com/Scottcjn/bounty-concierge.git` (see [Installation](#installation)) |
+| 3 | **Browse bounties** | Run `concierge browse` or scroll to the [Open Bounties](#open-bounties) table below |
+| 4 | **Register a wallet** | Run `concierge wallet register YOUR_NAME` or open a [wallet registration issue](https://github.com/Scottcjn/rustchain-bounties/issues/new?template=wallet_registration.md) |
+| 5 | **Claim a bounty** | Comment on the GitHub issue with your wallet name and a brief approach description |
+| 6 | **Get paid** | RTC is transferred to your wallet within 24 hours after your PR is merged |
 
 ---
 
@@ -110,9 +111,13 @@ For a deep dive, see [docs/TECH_STACK.md](docs/TECH_STACK.md).
 
 ### Installation
 
+Install straight from GitHub:
+
 ```bash
-pip install bounty-concierge
+pip install git+https://github.com/Scottcjn/bounty-concierge.git
 ```
+
+> PyPI publication is pending, so `pip install bounty-concierge` does not work yet. The GitHub install above is the supported path for now.
 
 ### Usage
 
