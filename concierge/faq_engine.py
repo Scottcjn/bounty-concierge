@@ -22,7 +22,8 @@ FAQ_ENTRIES = {
     "what is rtc": (
         "RTC (RustChain Token) is the native token of the RustChain network. "
         "It rewards miners for hardware attestation under the RIP-200 consensus "
-        "protocol.  Internal reference rate: 1 RTC = $0.10 USD."
+        "protocol.  Internal reference rate: 1 RTC = $0.15 USD (live rate "
+        "at https://rustchain.org/api/tokenomics)."
     ),
     "how do i set up a wallet": (
         "Install the RustChain wallet package (Standard, Founder, or Secure "
@@ -37,9 +38,11 @@ FAQ_ENTRIES = {
         "wallet balance within one epoch (~10 minutes)."
     ),
     "what is wrtc": (
-        "wRTC (Wrapped RTC) is a planned representation of RTC on the Ergo "
-        "blockchain, enabling DEX trading.  The RTC/ERG DEX bounty (Issue #32) "
-        "offers 150 RTC for building this bridge."
+        "wRTC (Wrapped RTC) is the Solana representation of RTC (SPL token, "
+        "6 decimals), live and swappable with early-stage, thin liquidity.  "
+        "Official bridge: https://bottube.ai/bridge/wrtc.  Always verify the "
+        "token mint 12TAdKXxcGf6oCv4rqDz2NkgxjyHq6HQKoxKZYGf5i4X before "
+        "trading."
     ),
     "what is proof of antiquity": (
         "Proof of Antiquity (PoA) is RustChain's unique consensus mechanism "
@@ -120,9 +123,10 @@ FAQ_ENTRIES = {
         "personalities."
     ),
     "rtc value": (
-        "Internal reference rate: 1 RTC = $0.10 USD.  This is a planning "
-        "rate for bounty pricing, not a market price.  RTC is not yet traded "
-        "on any exchange."
+        "Internal reference rate: 1 RTC = $0.15 USD (live rate at "
+        "https://rustchain.org/api/tokenomics).  This is a planning rate for "
+        "bounty pricing, not a market price.  wRTC trades on Solana with "
+        "early-stage, thin liquidity."
     ),
     "how do i claim a bounty": (
         "Comment on the GitHub issue saying you want to work on it, and "
