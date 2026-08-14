@@ -36,7 +36,7 @@ RustChain is a blockchain that rewards real hardware -- especially vintage machi
 | Repo | Issue | Title | RTC | Difficulty | Skills |
 |------|-------|-------|-----|------------|--------|
 <!-- BOUNTY-TABLE-START -->
-_Showing top 10 of 124 open bounties, sorted by RTC reward. Index rebuilt 2026-07-25T08:17:50.849958+00:00._
+_Showing top 10 open bounties, sorted by RTC reward. Index rebuilt 2026-08-13T07:44:21.043315+00:00. For the live total, use the full bounty board link above._
 
 | Repo | Issue | Title | RTC | Difficulty | Skills |
 |------|-------|-------|-----|------------|--------|
@@ -51,18 +51,6 @@ _Showing top 10 of 124 open bounties, sorted by RTC reward. Index rebuilt 2026-0
 | rustchain-bounties | [#2819](https://github.com/Scottcjn/rustchain-bounties/issues/2819) | [BOUNTY] Red Team UTXO Implementation — Find Bugs, Earn R... | 133 | major | documentation, javascript, python, rust, security |
 | rustchain-bounties | [#3418](https://github.com/Scottcjn/rustchain-bounties/issues/3418) | [BOUNTY] Register on Beacon Atlas + Prove Commerce (Pool:... | 100 | major | documentation, javascript, python, rust, security, social-media |
 <!-- BOUNTY-TABLE-END -->
-| rustchain-bounties | [#491](https://github.com/Scottcjn/rustchain-bounties/issues/491) | RIP-201 Fleet Detection Bypass | 200 | Major | Security, Python, Consensus |
-| rustchain-bounties | [#492](https://github.com/Scottcjn/rustchain-bounties/issues/492) | RIP-201 Bucket Normalization Gaming | 150 | Standard | Security, Math |
-| rustchain-bounties | [#475](https://github.com/Scottcjn/rustchain-bounties/issues/475) | Attestation Fuzz Harness + Crash Regression | 98 | Standard | Fuzzing, Python |
-| rustchain-bounties | [#501](https://github.com/Scottcjn/rustchain-bounties/issues/501) | Miner Dashboard -- Personal Stats & History | 75 | Standard | Frontend, API |
-| rustchain-bounties | [#505](https://github.com/Scottcjn/rustchain-bounties/issues/505) | Hall of Fame Machine Detail Pages | 50 | Standard | Frontend, HTML/CSS |
-| rustchain-bounties | [#504](https://github.com/Scottcjn/rustchain-bounties/issues/504) | Prometheus Metrics Exporter + Grafana | 40 | Standard | DevOps, Monitoring |
-| rustchain-bounties | [#502](https://github.com/Scottcjn/rustchain-bounties/issues/502) | OpenAPI/Swagger Documentation | 30 | Standard | API, Documentation |
-| rustchain-bounties | [#473](https://github.com/Scottcjn/rustchain-bounties/issues/473) | Dual-Mining: Scala (RandomX) Integration | 10 | Standard | Cryptography, Python |
-| rustchain-bounties | [#507](https://github.com/Scottcjn/rustchain-bounties/issues/507) | Upvote RustChain on SaaSCity | 10 | Micro | Community |
-| rustchain-bounties | [#518](https://github.com/Scottcjn/rustchain-bounties/issues/518) | First Blood -- First Merged PR | 3 | Micro | Any |
-| rustchain-bounties | [#512](https://github.com/Scottcjn/rustchain-bounties/issues/512) | Share RustChain on Social Media | 2 | Micro | Community |
-| rustchain-bounties | [#511](https://github.com/Scottcjn/rustchain-bounties/issues/511) | Star 5+ Repos Challenge | 2 | Micro | Community |
 
 Open bounty totals change frequently. See the [live full list](https://github.com/Scottcjn/rustchain-bounties/issues?q=is%3Aopen+label%3Abounty) for the current count.
 

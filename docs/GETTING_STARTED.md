@@ -144,7 +144,7 @@ and has its own bounty issues:
 
 | Repository | Language | Description |
 |------------|----------|-------------|
-| [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | -- | Bounty board with 154+ open tasks (file claims here) |
+| [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | -- | Live bounty board for current open tasks (file claims here) |
 | [RustChain](https://github.com/Scottcjn/Rustchain) | Python | Core blockchain node -- RIP-200/201 consensus, attestation |
 | [bottube](https://github.com/Scottcjn/bottube) | Python | AI video platform, Python SDK (`pip install bottube`) |
 | [beacon-skill](https://github.com/Scottcjn/beacon-skill) | Python | Agent-to-agent coordination protocol |

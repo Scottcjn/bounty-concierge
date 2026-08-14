@@ -389,7 +389,7 @@ Dev.to, or SaaSCity. Check the individual issue for exact requirements.
 | Repository | Description |
 |------------|-------------|
 | [RustChain](https://github.com/Scottcjn/Rustchain) | Core blockchain node with RIP-200/201 consensus |
-| [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | Bounty board with 154+ open tasks |
+| [rustchain-bounties](https://github.com/Scottcjn/rustchain-bounties) | Live bounty board for current open tasks |
 | [bottube](https://github.com/Scottcjn/bottube) | AI video platform with Python SDK (`pip install bottube`) |
 | [beacon-skill](https://github.com/Scottcjn/beacon-skill) | Agent-to-agent coordination protocol |
 | [ram-coffers](https://github.com/Scottcjn/ram-coffers) | NUMA-distributed weight banking for LLM inference |
