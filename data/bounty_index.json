@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14T07:42:18.269106+00:00",
+  "updated_at": "2026-08-15T06:50:03.644294+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -263,7 +263,8 @@
       "body": "## The problem\n\nFour separate defects were found in the bounty payout pipeline on 2026-08-07/08, and all four shared one shape: **something reported success while doing nothing.** None raised an error. None turned a workflow red.\n\n- `transfer()` returned success on an HTTP 200 carrying `{\"ok\": false}` \u2014 claims were closed and publicly confirmed with no RTC sent (#16390)\n- The payout's candidate sweep used `--limit 400` against 2,375 open issues, so any verified claim outside the newest 400 could never be paid, silently\n- `confirm_pending.sh` had no execute bit for ~3 months. Cron fired it every 10 minutes into a permission error, and because the script's own logging lived inside the block that failed to run, **nothing was logged at all**\n- `gh issue edit --add-label` fails on a GraphQL deprecation **without a non-zero exit**, so a gate posted \"verified\" and never marked the claim payable\n\nEach was found by accident. There is no reason to think they were the last four.\n\n## What this bounty is\n\nAudit the payout and reward paths for **more of this class**. Not style, not coverage \u2014 specifically: *code that can complete successfully while achieving nothing, or achieving the wrong thing, without surfacing an error.*\n\nIn scope:\n- `scripts/bounty_payout.py`, `scripts/docstring_gate.py`, `scripts/pr_review_gate.py`, `scripts/pr_review_gate_backfill.py`\n- `/root/rustchain/` payout, settlement and confirmation paths on the live node (ask for read access)\n- The workflows that drive them\n\n## What qualifies for payment\n\nA finding must name **a concrete path where the code succeeds and the effect does not happen**, with the reasoning for why. A proof of concept is welcome but not required if the reading is unambiguous.\n\nNot payable: general hardening advice, dependency CVEs with no demonstrated path, style, or \"add more tests\" without a specific defect behind it.\n\n## Reward\n\n**35 RTC** for the audit, plus **10 RTC per confirmed defect** of this class beyond the first, uncapped.\n\nPaid on the finding, not on a fix. A clear writeup of a real defect is worth more here than a patch for a hypothetical one.\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16471",
       "labels": [
-        "bounty"
+        "bounty",
+        "claimed"
       ],
       "created_at": "2026-08-10T17:31:52Z",
       "reward_rtc": 35.0,
@@ -1121,7 +1122,8 @@
       "body": "**Reward**: 5-8 RTC (5 for solid translation, +3 bonus for original CN-native framing)\n\n## What we're looking for\n\nWe've noticed Chinese-language writers in our bounty program intuitively grasp RustChain's e-waste / hardware-reuse angle faster than English-language writers. This bounty asks: **what's the right CN-language framing for RustChain?**\n\nTwo paths, pick one:\n\n### Path A: CN translation + cultural framing of the README\n- Translate the main README to Mandarin (zh-CN)\n- Add a 1-2 paragraph cultural-context preamble explaining why RustChain matters in a market with massive electronics manufacturing + recycling ecosystem\n- Submit as PR to Scottcjn/Rustchain with file `docs/zh-CN/README.md`\n\n### Path B: Standalone CN-native article\n- Write a 1500-3000 character (Chinese) article on Dev.to, Juejin, Zhihu, or Bilibili-blog about RustChain\n- Frame it for a Chinese audience: e-waste recycling, second-hand hardware market (\u95f2\u9c7c), vintage gaming hardware preservation, anti-VM-farm fairness\n- Post comment with article URL + your wallet\n\n## Deliverable\n\n- Comment with PR link (Path A) or article URL (Path B)\n- Include your RTC wallet\n- Multiple writers welcome \u2014 we want MULTIPLE framings, not just one\n\n## Why this matters\n\nOur top comparison writers (HuiNeng6, lwl2005, zhuzhushiwojia, haoyousun60-create, wybbb123123, william08190) are predominantly CN-language native. The e-waste / \u95f2\u7f6e\u786c\u4ef6 angle resonates because the cultural context is already there. Let's lean into it.\n\nTags: bounty, translation, chinese, zh-cn, marketing, agents-welcome\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12445",
       "labels": [
-        "bounty"
+        "bounty",
+        "claimed"
       ],
       "created_at": "2026-05-27T21:56:09Z",
       "reward_rtc": 8.0,
