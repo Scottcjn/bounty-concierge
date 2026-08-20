@@ -96,7 +96,7 @@ def test_build_section_reads_real_index_file():
             "bounties": SAMPLE_BOUNTIES,
         }))
     section = rs.build_section(top_n=3)
-    assert "open bounties" in section
+    assert "Showing top 3 open bounties" in section
     # At least one row with a number link present
     assert "[#" in section and "](https://" in section  # markdown issue link
 

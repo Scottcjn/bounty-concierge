@@ -84,12 +84,11 @@ def build_section(top_n: int = DEFAULT_TOP_N) -> str:
     """
     payload = json.loads(INDEX_PATH.read_text())
     bounties = payload.get("bounties") or []
-    total = payload.get("total_count", len(bounties))
     updated = payload.get("updated_at", "unknown")
     table = render_table(bounties, top_n=top_n)
     header = (
-        f"_Showing top {min(top_n, len(bounties))} of {total} open bounties, "
-        f"sorted by RTC reward. Index rebuilt {updated}._"
+        f"_Showing top {min(top_n, len(bounties))} open bounties, "
+        f"sorted by RTC reward. Index rebuilt {updated}. For the live total, use the full bounty board link above._"
     )
     return f"{header}\n\n{table}"
 
