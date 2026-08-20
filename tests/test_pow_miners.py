@@ -103,6 +103,59 @@ class TestMinerCommands:
         assert command == ["janus", "-a", "RTCwallet", "-h", "10.0.0.5", "-p", "4444"]
 
 
+class TestDetectPowProcesses:
+    """A running warthog miner must actually be detected from `ps` output.
+
+    Regression guard for the double-escaped regexes: with ``r"\\bbzminer\\b"``
+    the pattern required a literal backslash before the process name, so a real
+    ``ps -eo args`` line never matched and every miner went undetected.
+    """
+
+    def _fake_run(self, ps_output):
+        def _runner(command, timeout=5):
+            if command[:1] == ["ps"]:
+                return 0, ps_output, ""
+            # systemctl / screen: report nothing running
+            return 1, "", "unavailable"
+        return _runner
+
+    @patch("concierge.pow_miners._run_command")
+    def test_detects_bzminer_from_ps(self, mock_run):
+        mock_run.side_effect = self._fake_run(
+            "bzminer -a warthog -w RTCwallet -p stratum+tcp://pool.woolypooly.com:3140\n"
+        )
+
+        result = pow_miners.detect_pow_processes()
+
+        assert result["detected"] is True
+        assert result["external_miner_detected"] is True
+        assert any(p["type"] == "bzminer" for p in result["processes"])
+
+    @patch("concierge.pow_miners._run_command")
+    def test_detects_janusminer_and_wart_node_from_ps(self, mock_run):
+        mock_run.side_effect = self._fake_run(
+            "/usr/local/bin/janusminer-ubuntu22 -a RTCwallet -h 127.0.0.1 -p 3000\n"
+            "wart-node-linux --rpc\n"
+        )
+
+        result = pow_miners.detect_pow_processes()
+
+        types = {p["type"] for p in result["processes"]}
+        assert {"janusminer", "wart-node"} <= types
+        assert result["detected"] is True
+
+    @patch("concierge.pow_miners._run_command")
+    def test_unrelated_processes_are_not_detected(self, mock_run):
+        mock_run.side_effect = self._fake_run(
+            "python3 concierge/cli.py status\nbash -lc echo warthog\n"
+        )
+
+        result = pow_miners.detect_pow_processes()
+
+        assert result["processes"] == []
+        assert result["detected"] is False
+
+
 class TestNodeRpc:
     def _response(self, ok=True, status_code=200, payload=None):
         resp = MagicMock()
