@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T06:51:49.788474+00:00",
+  "updated_at": "2026-08-23T06:52:38.007579+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -1122,8 +1122,7 @@
       "body": "**Reward**: 5-8 RTC (5 for solid translation, +3 bonus for original CN-native framing)\n\n## What we're looking for\n\nWe've noticed Chinese-language writers in our bounty program intuitively grasp RustChain's e-waste / hardware-reuse angle faster than English-language writers. This bounty asks: **what's the right CN-language framing for RustChain?**\n\nTwo paths, pick one:\n\n### Path A: CN translation + cultural framing of the README\n- Translate the main README to Mandarin (zh-CN)\n- Add a 1-2 paragraph cultural-context preamble explaining why RustChain matters in a market with massive electronics manufacturing + recycling ecosystem\n- Submit as PR to Scottcjn/Rustchain with file `docs/zh-CN/README.md`\n\n### Path B: Standalone CN-native article\n- Write a 1500-3000 character (Chinese) article on Dev.to, Juejin, Zhihu, or Bilibili-blog about RustChain\n- Frame it for a Chinese audience: e-waste recycling, second-hand hardware market (\u95f2\u9c7c), vintage gaming hardware preservation, anti-VM-farm fairness\n- Post comment with article URL + your wallet\n\n## Deliverable\n\n- Comment with PR link (Path A) or article URL (Path B)\n- Include your RTC wallet\n- Multiple writers welcome \u2014 we want MULTIPLE framings, not just one\n\n## Why this matters\n\nOur top comparison writers (HuiNeng6, lwl2005, zhuzhushiwojia, haoyousun60-create, wybbb123123, william08190) are predominantly CN-language native. The e-waste / \u95f2\u7f6e\u786c\u4ef6 angle resonates because the cultural context is already there. Let's lean into it.\n\nTags: bounty, translation, chinese, zh-cn, marketing, agents-welcome\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12445",
       "labels": [
-        "bounty",
-        "claimed"
+        "bounty"
       ],
       "created_at": "2026-05-27T21:56:09Z",
       "reward_rtc": 8.0,
