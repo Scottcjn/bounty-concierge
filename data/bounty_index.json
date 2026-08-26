@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-25T06:58:44.269039+00:00",
+  "updated_at": "2026-08-26T07:00:04.763433+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -286,7 +286,8 @@
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16271",
       "labels": [
         "bounty",
-        "open"
+        "open",
+        "claimed"
       ],
       "created_at": "2026-07-19T23:38:33Z",
       "reward_rtc": 35.0,
@@ -1088,7 +1089,8 @@
         "bounty",
         "open",
         "micro",
-        "testing"
+        "testing",
+        "claimed"
       ],
       "created_at": "2026-07-19T21:43:49Z",
       "reward_rtc": 8.0,
@@ -1299,19 +1301,21 @@
       "repo": "Scottcjn/rustchain-bounties",
       "number": 2866,
       "title": "[BOUNTY: 5 RTC] Post RustChain to Hacker News, Reddit, or Lobsters (With Proof)",
-      "body": "## Share RustChain on Tech Communities\n\n**Reward: 5 RTC (~$0.50 USD) \u2014 Multi-claim: first 20 unique posts**\n\n### Goal\n\nPost about RustChain on a tech community and share the link. Genuine engagement only \u2014 no spam.\n\n### Eligible Platforms\n\n| Platform | Subreddit / Section |\n|----------|-------------------|\n| Reddit | r/cryptocurrency, r/altcoin, r/depin, r/selfhosted, r/vintagecomputing, r/retrobattlestations, r/homelab |\n| Hacker News | Show HN or comment thread |\n| Lobsters | via invite |\n| Dev.to | Discussion post |\n| X/Twitter | Thread (5+ tweets) |\n| Lemmy | technology or crypto communities |\n\n### Rules\n\n- Must be genuine engagement (not just a link dump)\n- Include why RustChain is interesting (Proof-of-Antiquity, vintage hardware, AI agents)\n- Screenshot of the post + link required for claim\n- No duplicate platforms per person\n- Posts that get removed by mods don't count\n\n### Suggested Titles\n\n- \"This blockchain pays you MORE for using a 2003 PowerBook than a Threadripper\"\n- \"Proof-of-Antiquity: A blockchain where old hardware earns the highest rewards\"\n- \"Show HN: AI agents that earn their own cryptocurrency on vintage hardware\"\n- \"We built a blockchain that incentivizes keeping old computers alive instead of sending them to landfills\"\n\n### Keywords\n\nRustChain, Proof of Antiquity, vintage computing, cryptocurrency, DePIN, old hardware mining, PowerPC, retro computing, e-waste reduction, green blockchain, AI agents earning crypto\n\n### Wallet\n\nProvide your RTC wallet name + screenshot in the claim.",
+      "body": "## Share RustChain on Tech Communities\n\n**Reward: 10 RTC base + up to 15 RTC traction bonus (max 25 RTC/post) \u2014 Multi-claim: first 20 unique posts**\n\n*Raised 2026-08-25 (was 5 RTC). Genuine external distribution is the one thing we can't do for ourselves, and it was priced below a docstring. Traction bonus: +15 RTC if the post clears 20 points/upvotes (HN/Reddit/Lobsters) or 2,000 impressions (X) within 14 days \u2014 screenshot it in a follow-up comment.*\n\n### Goal\n\nPost about RustChain on a tech community and share the link. Genuine engagement only \u2014 no spam.\n\n### Eligible Platforms\n\n| Platform | Subreddit / Section |\n|----------|-------------------|\n| Reddit | r/cryptocurrency, r/altcoin, r/depin, r/selfhosted, r/vintagecomputing, r/retrobattlestations, r/homelab |\n| Hacker News | Show HN or comment thread |\n| Lobsters | via invite |\n| Dev.to | Discussion post |\n| X/Twitter | Thread (5+ tweets) |\n| Lemmy | technology or crypto communities |\n\n### Rules\n\n- Must be genuine engagement (not just a link dump)\n- Include why RustChain is interesting (Proof-of-Antiquity, vintage hardware, AI agents)\n- Screenshot of the post + link required for claim\n- No duplicate platforms per person\n- Posts that get removed by mods don't count\n\n### Suggested Titles\n\n- \"This blockchain pays you MORE for using a 2003 PowerBook than a Threadripper\"\n- \"Proof-of-Antiquity: A blockchain where old hardware earns the highest rewards\"\n- \"Show HN: AI agents that earn their own cryptocurrency on vintage hardware\"\n- \"We built a blockchain that incentivizes keeping old computers alive instead of sending them to landfills\"\n\n### Keywords\n\nRustChain, Proof of Antiquity, vintage computing, cryptocurrency, DePIN, old hardware mining, PowerPC, retro computing, e-waste reduction, green blockchain, AI agents earning crypto\n\n### Wallet\n\nProvide your RTC wallet name + screenshot in the claim.\n\n\n<!-- machine-readable bounty spec -->\n```bounty-spec\npaid: true\nreward_rtc: 10\nper: per-post\ncap: 20\nsubmit: [comment, email]\nnot_in_repo: true\ndeliverable: link + screenshot of a live post on an external platform \u2014 do NOT open a PR on this tracker\n```\n\n*Can't operate these platforms yourself (agent)? See #16601 \u2014 build the content package, a human publishes it with you credited.*",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2866",
       "labels": [
         "bounty",
         "multi-claim",
         "propagation",
         "easy",
-        "community"
+        "community",
+        "needs-human"
       ],
       "created_at": "2026-04-09T03:25:42Z",
       "reward_rtc": 5.0,
       "difficulty": "micro",
       "skills": [
+        "documentation",
         "rust",
         "social-media"
       ]
@@ -1534,7 +1538,8 @@
         "good first issue",
         "bounty",
         "open",
-        "micro"
+        "micro",
+        "claimed"
       ],
       "created_at": "2026-07-19T21:43:34Z",
       "reward_rtc": 4.0,
