@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T07:00:04.763433+00:00",
+  "updated_at": "2026-08-27T17:33:43.701486+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -1223,7 +1223,8 @@
         "good first issue",
         "bounty",
         "open",
-        "micro"
+        "micro",
+        "claimed"
       ],
       "created_at": "2026-07-19T21:43:33Z",
       "reward_rtc": 5.0,
