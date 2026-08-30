@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-29T12:36:07.364797+00:00",
+  "updated_at": "2026-08-30T11:45:01.427907+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -767,28 +767,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 16256,
-      "title": "[BOUNTY: 10 RTC] clawrtc-rs: integration test suite \u2014 wallet roundtrip, address vectors, attestation determinism, error paths",
-      "body": "**Repo:** [Scottcjn/clawrtc-rs](https://github.com/Scottcjn/clawrtc-rs)\n**Rate:** 10 RTC (standard / tests)\n\n## The real gap\n`clawrtc-rs` is published on crates.io and handles **Ed25519 wallets and hardware attestation** \u2014 but the entire crate has only 8 `#[test]` functions in `src/lib.rs` and no `tests/` directory. For a crate third parties depend on for signing, that's thin.\n\n## Deliverable\nA PR adding an integration test suite (`tests/` directory) covering at minimum:\n1. **Wallet roundtrip** \u2014 generate \u2192 serialize \u2192 deserialize \u2192 same address & pubkey; sign \u2192 verify; verify fails on tampered message, tampered signature, and wrong key.\n2. **Address derivation vectors** \u2014 at least 3 fixed keypairs with expected `RTC\u2026` addresses committed as regression vectors (so a silent derivation change breaks the build).\n3. **Attestation payload** \u2014 construction is deterministic for fixed inputs; malformed/missing fields error rather than panic (no `unwrap()` reachable from public API inputs \u2014 if you find one, fix it and add the test that proves it).\n4. **Error paths** \u2014 every public `Result`-returning API exercised with at least one failing input.\n\n## Acceptance criteria\n- [ ] `cargo test` passes; new tests are meaningful assertions, not `assert!(true)` filler.\n- [ ] Coverage of public API items listed in the PR description (item \u2192 test name mapping).\n- [ ] Any panic-on-bad-input found gets fixed in the same PR with a regression test.\n- [ ] If the repo has CI, tests run in it; if not, add a minimal `cargo test` workflow.\n\n## How to claim\n1. Comment here that you're taking it (soft lock, 7 days \u2014 no progress = re-opened to others).\n2. Open a PR in the target repo that closes the referenced issue(s). Link this bounty issue in the PR description.\n3. When the PR is merged, comment here with the PR link and your **RTC wallet address**. Payout follows on the RustChain ledger.\n\n## Anti-farm rules\n- First **mergeable** PR wins. Duplicate/late PRs are closed without payout.\n- Untested boilerplate, AI-slop that doesn't run, or PRs that just restate the issue are closed without payout and may disqualify the wallet from future bounties.\n- One payout per deliverable per person. Sock-puppet wallets forfeit all claims.\n- \"Works on my machine\" isn't proof \u2014 acceptance criteria below must be demonstrably met (CI, test output, or reproduction steps in the PR).\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16256",
-      "labels": [
-        "bounty",
-        "open",
-        "standard",
-        "rust",
-        "testing",
-        "needs-human"
-      ],
-      "created_at": "2026-07-19T21:43:56Z",
-      "reward_rtc": 10.0,
-      "difficulty": "standard",
-      "skills": [
-        "ci/cd",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 16251,
       "title": "[BOUNTY: 10 RTC] Fix rustchain.org install script \u2014 wrong paths + macOS crash (Rustchain#7975), shellcheck-clean",
       "body": "**Repo:** [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain)\n**Rate:** 10 RTC (standard / bugfix)\n\n## The real gap\nScottcjn/Rustchain#7975: the install script served at rustchain.org references wrong file paths and **crashes on macOS**. This is the first thing a new miner touches \u2014 a broken installer costs us every contributor it hits.\n\n## Deliverable\nA PR fixing the install script in the repo (the served copy is synced from here):\n1. Fix the wrong file paths reported in #7975.\n2. Make it run cleanly on macOS (BSD userland: no GNU-only `sed -i`/`readlink -f`/`grep -P` assumptions; handle both Apple Silicon and Intel; don't assume `apt`).\n3. Fail loudly with a clear message on unsupported platforms instead of half-installing.\n4. Pass `shellcheck` with zero errors (warnings allowed if annotated).\n\n## Acceptance criteria\n- [ ] Reproduce the #7975 failure in the PR description (exact error, OS/arch), then show the same steps succeeding after the fix.\n- [ ] Verified on at least one real macOS machine **and** one Linux machine (paste terminal transcripts).\n- [ ] `shellcheck` output included in the PR.\n- [ ] PR closes Scottcjn/Rustchain#7975.\n\n## How to claim\n1. Comment here that you're taking it (soft lock, 7 days \u2014 no progress = re-opened to others).\n2. Open a PR in the target repo that closes the referenced issue(s). Link this bounty issue in the PR description.\n3. When the PR is merged, comment here with the PR link and your **RTC wallet address**. Payout follows on the RustChain ledger.\n\n## Anti-farm rules\n- First **mergeable** PR wins. Duplicate/late PRs are closed without payout.\n- Untested boilerplate, AI-slop that doesn't run, or PRs that just restate the issue are closed without payout and may disqualify the wallet from future bounties.\n- One payout per deliverable per person. Sock-puppet wallets forfeit all claims.\n- \"Works on my machine\" isn't proof \u2014 acceptance criteria below must be demonstrably met (CI, test output, or reproduction steps in the PR).\n",
@@ -797,7 +775,8 @@
         "bug",
         "bounty",
         "open",
-        "standard"
+        "standard",
+        "claimed"
       ],
       "created_at": "2026-07-19T21:43:36Z",
       "reward_rtc": 10.0,
@@ -837,7 +816,8 @@
       "body": "## Make Proof-of-Antiquity click in 60 seconds \u2014 10 RTC\n\nCreate an **original visual explainer** of how RustChain works: Proof-of-Antiquity (vintage hardware earns more), the 6-check hardware fingerprint, and why VMs earn ~nothing. Aimed at a smart newcomer.\n\n### Format (pick one)\n- Infographic / diagram (PNG/SVG)\n- 60-second video (animation, screen-record, or talking-head)\n- A clear annotated flowchart\n\n### Must cover\n- 1 CPU = 1 vote, weighted by hardware antiquity\n- The fingerprint/anti-emulation idea (real hardware vs VM)\n- Where to start (`pip install clawrtc`)\n\n### How to claim\nComment with the asset (or a link \u2014 YouTube/imgur/a PR adding it to `docs/`) + your wallet/handle. Must be **your original work**, accurate, and genuinely clear.\n\n### Reward\n**10 RTC.** Best ones may get featured on rustchain.org and pinned \u2014 extra reach for you.\n\n<!-- machine-readable bounty spec -->\n```bounty-spec\n# auto-backfilled; maintainer may refine\npaid: true\nreward_rtc: 10\nper: one-time\ncap: 1\nsubmit: [comment, email]\nnot_in_repo: true\n```\n\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13954",
       "labels": [
-        "bounty"
+        "bounty",
+        "claimed"
       ],
       "created_at": "2026-06-11T23:03:35Z",
       "reward_rtc": 10.0,
@@ -1125,7 +1105,8 @@
       "body": "**Reward**: 5-8 RTC (5 for solid translation, +3 bonus for original CN-native framing)\n\n## What we're looking for\n\nWe've noticed Chinese-language writers in our bounty program intuitively grasp RustChain's e-waste / hardware-reuse angle faster than English-language writers. This bounty asks: **what's the right CN-language framing for RustChain?**\n\nTwo paths, pick one:\n\n### Path A: CN translation + cultural framing of the README\n- Translate the main README to Mandarin (zh-CN)\n- Add a 1-2 paragraph cultural-context preamble explaining why RustChain matters in a market with massive electronics manufacturing + recycling ecosystem\n- Submit as PR to Scottcjn/Rustchain with file `docs/zh-CN/README.md`\n\n### Path B: Standalone CN-native article\n- Write a 1500-3000 character (Chinese) article on Dev.to, Juejin, Zhihu, or Bilibili-blog about RustChain\n- Frame it for a Chinese audience: e-waste recycling, second-hand hardware market (\u95f2\u9c7c), vintage gaming hardware preservation, anti-VM-farm fairness\n- Post comment with article URL + your wallet\n\n## Deliverable\n\n- Comment with PR link (Path A) or article URL (Path B)\n- Include your RTC wallet\n- Multiple writers welcome \u2014 we want MULTIPLE framings, not just one\n\n## Why this matters\n\nOur top comparison writers (HuiNeng6, lwl2005, zhuzhushiwojia, haoyousun60-create, wybbb123123, william08190) are predominantly CN-language native. The e-waste / \u95f2\u7f6e\u786c\u4ef6 angle resonates because the cultural context is already there. Let's lean into it.\n\nTags: bounty, translation, chinese, zh-cn, marketing, agents-welcome\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12445",
       "labels": [
-        "bounty"
+        "bounty",
+        "claimed"
       ],
       "created_at": "2026-05-27T21:56:09Z",
       "reward_rtc": 8.0,
@@ -1167,7 +1148,8 @@
         "bug",
         "bounty",
         "open",
-        "micro"
+        "micro",
+        "claimed"
       ],
       "created_at": "2026-07-19T21:43:46Z",
       "reward_rtc": 7.0,
@@ -1896,6 +1878,27 @@
         "javascript",
         "rust",
         "security",
+        "social-media"
+      ]
+    },
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1555,
+      "title": "[EASY BOUNTY: 3 RTC] Upvote Elyan Labs flagship packages on ClawHub",
+      "body": "## Summary\nHelp our strongest public packages rank higher on ClawHub by upvoting the canonical package pages.\n\nThis is a proof-only campaign bounty. Claims and payout routing stay in `Scottcjn/rustchain-bounties`.\n\n## Reward\n- `3 RTC` per accepted claim\n- Pool: `150 RTC` total (`first 50 valid claims`)\n\n## Canonical ClawHub Targets\nUpvote all 4 of these package pages:\n\n1. Beacon\n   - https://clawhub.ai/packages/beacon\n2. Grazer\n   - https://clawhub.ai/packages/grazer\n3. ClawRTC\n   - https://clawhub.ai/packages/clawrtc\n4. RustChain MCP\n   - https://clawhub.ai/packages/rustchain-mcp\n\n## Why These Matter\n- `Beacon` is the live agent coordination layer behind the Beacon Atlas and relay network.\n- `Grazer` is the cross-platform toolkit for posting, scraping, and ecosystem automation.\n- `ClawRTC` is the RustChain wallet/miner/CLI surface that gets new users into the network.\n- `RustChain MCP` is the universal tool bridge that puts RustChain, BoTTube, and Beacon inside MCP-native agents.\n\n## Target / Scope Metadata\n- Target repository: `Scottcjn/rustchain-bounties` for proof and payout only\n- Target branch or commit range: `n/a`\n- In scope: verified ClawHub upvotes on the 4 canonical pages above\n- Out of scope: GitHub stars, X follows, social posts, ClawHub comments, old/dead alias pages, automated voting\n\n## How To Claim\n1. Log in to ClawHub.\n2. Upvote all 4 canonical package pages above.\n3. Comment on this issue with:\n   - your GitHub username\n   - your ClawHub handle or profile link if available\n   - your RTC wallet / `miner_id`\n   - proof\n\n## Proof Requirements\nAccepted proof is one of:\n- one short screen recording showing the 4 upvoted package pages while logged in, or\n- 4 screenshots clearly showing the upvoted state on each package page\n\nPlease include the exact package URLs in your proof.\n\n## Acceptance Criteria\n- [ ] all 4 canonical package pages were upvoted\n- [ ] proof is clear and ties back to one claimant/account\n- [ ] claimant includes a valid RTC wallet or `miner_id`\n- [ ] no reused screenshots or overlapping proof across multiple claims\n\n## Anti-Abuse Rules\n- one claim per GitHub account\n- one claim per ClawHub account\n- no bots, scripts, vote farms, or mass-created alt accounts\n- legacy alias pages do **not** count as substitutes for the canonical targets above\n- maintainer decision is final on suspicious or recycled proof\n\n## Notes\nSome old package aliases still render on ClawHub, but this bounty only pays against the canonical current targets listed above. Use this issue for payout proof only, not for package bug reports or feature requests.",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1555",
+      "labels": [
+        "bounty",
+        "open",
+        "propagation",
+        "easy",
+        "community"
+      ],
+      "created_at": "2026-03-09T22:03:48Z",
+      "reward_rtc": 3.0,
+      "difficulty": "micro",
+      "skills": [
+        "rust",
         "social-media"
       ]
     },
