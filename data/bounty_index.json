@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T11:45:01.427907+00:00",
+  "updated_at": "2026-08-31T13:26:59.834971+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -482,8 +482,7 @@
       "body": "## The problem\n\nSome BoTTube pull requests fail four checks at once \u2014 `label`, `lint`, `security`, `test` \u2014 and every one reports a duration of **15m01s**. That is a job timeout, not a test failure.\n\nConfirmed examples: bottube#1640 and bottube#1639. On those two, `label` fails despite passing on all 30 other open PRs in the repo, which is what rules out the contributors' code as the cause.\n\nThe effect is that contributors are told their work failed CI when the runner hung. At least two people were asked to chase a failure that was never theirs.\n\n## What this bounty is\n\nFind out why those jobs hang, and fix it.\n\nLikely directions, not prescriptions:\n- A step with no timeout waiting on something that never returns (network fetch, package index, external API)\n- Runner resource exhaustion when several workflows fire on the same commit\n- A dependency install that hangs rather than failing\n\n## What qualifies for payment\n\n- A named root cause, evidenced from job logs rather than inferred\n- A fix that makes the hang either impossible or fast-failing with a clear message\n- **Explicit per-step timeouts** so that if it recurs, CI says \"timed out after N minutes\" instead of pretending the code failed\n\n## Reward\n\n**20 RTC.** Add **5 RTC** if the fix also distinguishes a genuine timeout from a genuine failure in what the contributor sees, since the current confusion is the actual damage.\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16472",
       "labels": [
-        "bounty",
-        "claimed"
+        "bounty"
       ],
       "created_at": "2026-08-10T17:31:53Z",
       "reward_rtc": 20.0,
