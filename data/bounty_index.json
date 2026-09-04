@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T11:03:16.483415+00:00",
+  "updated_at": "2026-09-04T11:04:18.466381+00:00",
   "total_count": 124,
   "bounties": [
     {
@@ -166,7 +166,8 @@
       "labels": [
         "help wanted",
         "bounty",
-        "security"
+        "security",
+        "claimed"
       ],
       "created_at": "2026-04-04T03:03:17Z",
       "reward_rtc": 133.0,
@@ -506,7 +507,8 @@
       "body": "## Build an arena \u2014 20 RTC per accepted map\n\nThe [Xonotic RustChain Arena](https://github.com/Scottcjn/xonotic-rustchain) needs **original maps** to play the blood-economy mode on. Design and submit a Xonotic-compatible level.\n\n### Deliverable (one PR per map to `Scottcjn/xonotic-rustchain`)\n- A compiled **`.bsp`** + source **`.map`** under `pk3_build/maps/`\n- A **mapinfo** (`maps/<name>.mapinfo`) with arena/DM gametype, item placement, spawn points\n- A **levelshot** preview (`maps/<name>.tga` or .jpg, 512\u00d7384+)\n- LICENSE (CC-BY-SA-4.0 / GPL-compatible) + a short README\n- Loads in DarkPlaces/Xonotic without errors\n\n### Theme (on-brand bonus, not required)\nRustChain/blockchain motifs \u2014 server-room arenas, circuit-trace floors, 'mempool' chokepoints, a vintage-hardware 'antiquity vault'. Tight, vertical, flow-friendly DM/arena layouts play best with the blood economy (shields from damage \u2192 reward aggression + movement).\n\n### How to claim\nPR the map, comment here with the PR link + your RTC wallet (or GitHub handle \u2014 we can pay to that). First clean, loadable map per distinct layout. **20 RTC** on merge.\n\n(Rate is post-$0.15 adjustment. A polished standout may earn a bonus + featured rotation on the live server.)\n\n<!-- machine-readable bounty spec -->\n```bounty-spec\n# auto-backfilled; maintainer may refine\npaid: true\nreward_rtc: 20\nper: per-item\ncap: 5\nsubmit: [pr, email]\nnot_in_repo: true\n```\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/14014",
       "labels": [
-        "bounty"
+        "bounty",
+        "claimed"
       ],
       "created_at": "2026-06-12T18:17:39Z",
       "reward_rtc": 20.0,
