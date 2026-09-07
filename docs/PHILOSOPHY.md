@@ -163,7 +163,7 @@ We are not building for a token launch, an acquisition, or a hype cycle.
 
 - **RTC is utility-first.** The token has value because it pays for real
   work: bounties completed, agents coordinated, services rendered. We set
-  the reference rate at $0.10 because we want it to be useful today, not
+  the reference rate at $0.15 because we want it to be useful today, not
   speculative tomorrow.
 - **The wRTC bridge is deliberate.** We are building the ERC-20 bridge to
   Base L2 carefully, not rushing it for DeFi liquidity. The attestation

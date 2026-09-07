@@ -65,7 +65,7 @@ class TestFormatAnnouncement:
 
         assert "| Title | RTC | Difficulty | Link |" in result["long"]
         assert "| Python tests | 2 | standard | [link](https://example.test/2) |" in result["long"]
-        assert "1 RTC = $0.10 USD" in result["long"]
+        assert "1 RTC = $0.15 USD" in result["long"]
 
     def test_missing_optional_fields_use_placeholders(self):
         result = announcer.format_announcement([{"title": "No metadata"}])

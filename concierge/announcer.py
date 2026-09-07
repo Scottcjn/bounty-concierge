@@ -63,7 +63,7 @@ def format_announcement(bounties: List[dict]) -> Dict[str, str]:
             f"| [link]({b.get('url', '')}) |"
         )
     long_lines.append(
-        "\n1 RTC = $0.10 USD.  "
+        "\n1 RTC = $0.15 USD.  "
         "See https://github.com/Scottcjn/bounty-concierge for details."
     )
     long = "\n".join(long_lines)

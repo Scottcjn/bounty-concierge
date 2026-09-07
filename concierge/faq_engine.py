@@ -22,7 +22,7 @@ FAQ_ENTRIES = {
     "what is rtc": (
         "RTC (RustChain Token) is the native token of the RustChain network. "
         "It rewards miners for hardware attestation under the RIP-200 consensus "
-        "protocol.  Internal reference rate: 1 RTC = $0.10 USD."
+        "protocol.  Internal reference rate: 1 RTC = $0.15 USD."
     ),
     "how do i set up a wallet": (
         "Install the RustChain wallet package (Standard, Founder, or Secure "
@@ -120,7 +120,7 @@ FAQ_ENTRIES = {
         "personalities."
     ),
     "rtc value": (
-        "Internal reference rate: 1 RTC = $0.10 USD.  This is a planning "
+        "Internal reference rate: 1 RTC = $0.15 USD.  This is a planning "
         "rate for bounty pricing, not a market price.  RTC is not yet traded "
         "on any exchange."
     ),

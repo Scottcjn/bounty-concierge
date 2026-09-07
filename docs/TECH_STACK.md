@@ -38,7 +38,7 @@ hash power or stake size.
 - **Ergo Anchoring**: Periodic on-chain anchors to a private Ergo chain.
   Miner attestation commitments are stored in Ergo box registers (R4-R9)
   as Blake2b256 hashes.
-- **Token**: RTC (RustChain Token). Internal reference rate: 1 RTC = $0.10 USD.
+- **Token**: RTC (RustChain Token). Internal reference rate: 1 RTC = $0.15 USD.
 - **Genesis**: Production chain launched December 2, 2025.
   (`GENESIS_TIMESTAMP = 1764706927`)
 
