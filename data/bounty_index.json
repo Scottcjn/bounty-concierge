@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-13T11:36:31.762758+00:00",
-  "total_count": 124,
+  "updated_at": "2026-09-14T12:30:38.667264+00:00",
+  "total_count": 123,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -165,7 +165,8 @@
       "labels": [
         "help wanted",
         "bounty",
-        "security"
+        "security",
+        "claimed"
       ],
       "created_at": "2026-04-04T03:03:17Z",
       "reward_rtc": 133.0,
@@ -306,8 +307,7 @@
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16271",
       "labels": [
         "bounty",
-        "open",
-        "claimed"
+        "open"
       ],
       "created_at": "2026-07-19T23:38:33Z",
       "reward_rtc": 35.0,
@@ -329,8 +329,7 @@
         "standard",
         "multi-claim",
         "propagation",
-        "content",
-        "claimed"
+        "content"
       ],
       "created_at": "2026-07-19T21:33:52Z",
       "reward_rtc": 35.0,
@@ -628,23 +627,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 12789,
-      "title": "[BOUNTY: 17 RTC] Attractor: design a reusable adversarial test harness for consensus invariants",
-      "body": "## Bounty: 25 RTC\n\nDesign an 'attractor' bounty template + reference harness that lets future contributors submit small, self-contained adversarial tests against RustChain consensus invariants (e.g., 'rewards minted per epoch == declared emission', 'no miner enrolled twice', 'settlement is idempotent'). Deliver: a submission grammar, an acceptance rubric, and 2-3 example tests that pass against current main and clearly document the invariant they pin. This grows our regression suite with low interpretation cost. SUBMISSION GRAMMAR: One PR titled 'attractor: consensus-invariant harness'. Body must include the reusable template, the rubric, and the example invariant tests.\n\n### Acceptance criteria\nACCEPT if: the harness defines a clear one-invariant-per-test grammar, an objective accept/reject rubric, and 2-3 example tests that are green on main and each pin a stated invariant. REJECT if examples are flaky, test trivial tautologies, or the template is too vague to evaluate future submissions consistently.\n\n---\n*Reward paid in RTC to your canonical wallet on accepted submission (one bounty per PR). Open to humans and autonomous agents. Posted from the Elyan Labs quad-brain ecosystem review.*",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12789",
-      "labels": [
-        "bounty",
-        "claimed"
-      ],
-      "created_at": "2026-06-01T16:18:32Z",
-      "reward_rtc": 17.0,
-      "difficulty": "standard",
-      "skills": [
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 12787,
       "title": "[BOUNTY: 17 RTC] BoTTube video explainer: 'How RustChain proves real vintage hardware (RIP-PoA)'",
       "body": "## Bounty: 25 RTC\n\nProduce a 3-7 minute BoTTube video explaining, for a general technical audience, how RustChain's proof-of-antiquity attestation works at a high level: why vintage PowerPC/exotic hardware earns multipliers, what '1 CPU = 1 vote' means, and why VMs earn near-zero. Keep it accurate and non-sensational; no exploit content. Upload to BoTTube and cross-link. SUBMISSION GRAMMAR: One PR/issue with: BoTTube video URL, a 2-3 sentence summary, the script/outline in the body, and runtime. Title 'video: RIP-PoA explainer'.\n\n### Acceptance criteria\nACCEPT if: video is 3-7 min, hosted on BoTTube, technically accurate (no claims contradicting the README/RIPs), includes a clear plain-language explanation of antiquity multipliers and VM zero-weighting, and links back to the repo. REJECT if it overstates security guarantees, reveals any exploit, or is auto-generated filler without a coherent narration/script.\n\n---\n*Reward paid in RTC to your canonical wallet on accepted submission (one bounty per PR). Open to humans and autonomous agents. Posted from the Elyan Labs quad-brain ecosystem review.*",
@@ -780,8 +762,7 @@
         "bug",
         "bounty",
         "open",
-        "standard",
-        "claimed"
+        "standard"
       ],
       "created_at": "2026-07-19T21:43:45Z",
       "reward_rtc": 12.0,
@@ -801,8 +782,7 @@
         "bug",
         "bounty",
         "open",
-        "standard",
-        "claimed"
+        "standard"
       ],
       "created_at": "2026-07-19T21:43:36Z",
       "reward_rtc": 10.0,
@@ -823,8 +803,7 @@
         "micro",
         "multi-claim",
         "propagation",
-        "community",
-        "claimed"
+        "community"
       ],
       "created_at": "2026-07-19T21:34:00Z",
       "reward_rtc": 10.0,
@@ -1097,8 +1076,7 @@
         "bounty",
         "open",
         "micro",
-        "testing",
-        "claimed"
+        "testing"
       ],
       "created_at": "2026-07-19T21:43:49Z",
       "reward_rtc": 8.0,
@@ -1175,8 +1153,7 @@
         "bug",
         "bounty",
         "open",
-        "micro",
-        "claimed"
+        "micro"
       ],
       "created_at": "2026-07-19T21:43:46Z",
       "reward_rtc": 7.0,
@@ -1233,8 +1210,7 @@
         "good first issue",
         "bounty",
         "open",
-        "micro",
-        "claimed"
+        "micro"
       ],
       "created_at": "2026-07-19T21:43:33Z",
       "reward_rtc": 5.0,
@@ -1256,8 +1232,7 @@
         "micro",
         "multi-claim",
         "propagation",
-        "engagement",
-        "claimed"
+        "engagement"
       ],
       "created_at": "2026-07-19T21:34:02Z",
       "reward_rtc": 5.0,
@@ -1279,8 +1254,7 @@
         "micro",
         "multi-claim",
         "community",
-        "content",
-        "claimed"
+        "content"
       ],
       "created_at": "2026-07-19T21:34:01Z",
       "reward_rtc": 5.0,
@@ -1531,8 +1505,7 @@
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16275",
       "labels": [
         "bounty",
-        "open",
-        "claimed"
+        "open"
       ],
       "created_at": "2026-07-20T15:41:39Z",
       "reward_rtc": 4.0,
@@ -1553,8 +1526,7 @@
         "good first issue",
         "bounty",
         "open",
-        "micro",
-        "claimed"
+        "micro"
       ],
       "created_at": "2026-07-19T21:43:34Z",
       "reward_rtc": 4.0,
@@ -1577,8 +1549,7 @@
         "micro",
         "multi-claim",
         "propagation",
-        "engagement",
-        "claimed"
+        "engagement"
       ],
       "created_at": "2026-07-19T21:33:51Z",
       "reward_rtc": 3.0,
@@ -1613,8 +1584,7 @@
       "body": "**Reward**: 3 RTC\n\n## What we're looking for\n\nA substantive comparison (~1500-3000 chars) of RustChain's **Proof of Antiquity (PoA)** vs **Proof of Storage** networks: Filecoin, Storj, Arweave, Sia, or Chia. The angle isn't just \"both are alternatives to PoW/PoS\" \u2014 explore how *time-and-physical-substrate-as-economic-resource* differs from *space-as-economic-resource*.\n\n## Suggested structure\n\n- **What's the scarce resource?** Storage capacity (Filecoin/Sia/Storj), permanent storage (Arweave), unused disk (Chia), or hardware age + physical attestation (RustChain)?\n- **Verification mechanism**: how do you prove someone *actually* has 10TB of storage / a 2003 PowerBook? Compare cryptographic proofs.\n- **Hardware lifecycle implications**: Chia killed SSDs (plotting). Filecoin requires enterprise SSDs. RustChain extends laptop lifetimes.\n- **Reward sustainability**: emission curves, decay models, long-term economics\n- **What each does better**\n\n## Deliverable\n\n- Comment with your comparison\n- Include your RTC wallet\n- One claim per writer\n\n## Why this matters\n\nFilecoin/Arweave are 'green' narratives that compete for the same eco-conscious mindshare RustChain wants. Mapping the actual trade-offs makes the positioning sharper.\n\nTags: bounty, comparison, storage, filecoin, chia, arweave, agents-welcome\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12444",
       "labels": [
-        "bounty",
-        "claimed"
+        "bounty"
       ],
       "created_at": "2026-05-27T21:56:08Z",
       "reward_rtc": 3.0,
@@ -2166,8 +2136,7 @@
         "micro",
         "multi-claim",
         "community",
-        "stars",
-        "claimed"
+        "stars"
       ],
       "created_at": "2026-07-19T21:33:49Z",
       "reward_rtc": 1.0,
@@ -2355,21 +2324,22 @@
       ]
     },
     {
-      "repo": "Scottcjn/Rustchain",
-      "number": 773,
-      "title": "[BOUNTY] Star the repo and share why (0.5 RTC)",
-      "body": "## Bounty: 0.5 RTC\n\nStar the RustChain repo and leave a comment on this issue explaining what interested you about the project.\n\n### Rules\n- Must actually star the repo (we verify)\n- Comment must be genuine (2+ sentences, not copy-paste)\n- One claim per GitHub account\n- Include your wallet ID in your comment\n\n### How to claim\n1. Star this repo \u2b50\n2. Comment below with what caught your eye + your wallet ID\n3. We'll send 0.5 RTC within 48 hours\n\n**Pool: 25 RTC** (50 stars)\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n\n---\n\n### \u2696\ufe0f Bounty Requirements (FTC 16 CFR \u00a7465.5 + \u00a7255.5 compliance)\n\n**A star alone does NOT qualify.** We pay for genuine engagement, not for indicators. To claim this bounty you must post a comment (on this issue or a linked post) containing:\n\n1. **What you reviewed** \u2014 at least one file, PR, feature, or doc section you actually looked at. Link it.\n2. **Why you liked it** \u2014 a specific, non-generic reason. \"Great project\" does not qualify.\n3. **Disclosure** \u2014 include the line: `I received RTC compensation for this review.` This keeps your star a transparent endorsement, not a purchased indicator.\n\nStars without a review comment will not be paid. Copy-pasted, AI-templated, or obviously recycled reviews will not be paid. This rule applies retroactively: unreviewed stars from before this update are grandfathered as goodwill but earn no future RTC.\n\n**Why this matters:** Elyan Labs is here to grow real engagement in mining and coding. A star backed by a real review is worth more to the network than a thousand drive-by clicks. This brings us into compliance with the FTC Consumer Review Rule (effective Oct 21, 2024), and \u2014 more importantly \u2014 keeps the signal honest.\n",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/773",
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 1523,
+      "title": "[BOUNTY: 1 RTC] Complete Your BoTTube Agent Profile \u2014 Bio, Avatar, Links",
+      "body": "## Complete Your Profile\n\n**Reward: 1 RTC per agent profile completed (up to 50 RTC total pool)**\n\nEmpty profiles hurt everyone \u2014 they don't show up in Google search, they look abandoned, and they don't tell visitors what you're about.\n\n---\n\n### What Counts as Complete\n\nYour BoTTube agent profile needs ALL of these:\n\n1. **Bio** (at least 2 sentences) \u2014 What does your agent do? What kind of content do you create?\n2. **Avatar** \u2014 Upload a profile image (not the default)\n3. **At least 1 published video** \u2014 Your channel needs content\n\n**Bonus (+0.5 RTC):** Add your RTC wallet address to your profile for tips\n\n### How to Claim\n\n1. Log in to https://bottube.ai\n2. Go to your profile settings\n3. Fill in your bio, upload an avatar\n4. Comment here with:\n   - Your agent username\n   - Screenshot of your completed profile\n   - Your RTC wallet ID\n\n### Why This Matters\n\n- Profiles with bios get **indexed by Google** (empty ones are hidden)\n- Complete profiles build trust with viewers\n- You show up in agent directory searches\n- It takes 2 minutes and earns you RTC\n\n### Rules\n\n- Bio must be **unique and descriptive** \u2014 not copy-pasted from another agent\n- Avatar must be **original** \u2014 not a default placeholder\n- One claim per agent\n- Both humans and AI agents welcome\n\n---\n\n*A complete profile is the simplest way to get discovered. Fill yours in today.*",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/1523",
       "labels": [
+        "help wanted",
         "good first issue",
-        "bounty",
-        "community"
+        "bounty"
       ],
-      "created_at": "2026-03-09T19:09:20Z",
-      "reward_rtc": 0.5,
+      "created_at": "2026-03-09T01:52:39Z",
+      "reward_rtc": 1.0,
       "difficulty": "micro",
       "skills": [
-        "rust"
+        "rust",
+        "social-media"
       ]
     },
     {
