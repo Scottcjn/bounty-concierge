@@ -864,13 +864,13 @@ def _add_common_flags(parser):
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        default=False,
+        default=argparse.SUPPRESS,
         help="Preview actions without making network calls",
     )
     parser.add_argument(
         "--json",
         action="store_true",
-        default=False,
+        default=argparse.SUPPRESS,
         help="Output results as JSON",
     )
 
@@ -882,6 +882,8 @@ def _build_parser():
         description="RustChain Bounty Concierge -- CLI for bounty hunters",
     )
     _add_common_flags(parser)
+    # Subparsers must not replace common flags supplied before their command.
+    parser.set_defaults(dry_run=False, json=False)
 
     sub = parser.add_subparsers(dest="command", help="Available commands")
 
