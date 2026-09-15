@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-14T12:30:38.667264+00:00",
+  "updated_at": "2026-09-15T11:33:50.319482+00:00",
   "total_count": 123,
   "bounties": [
     {
@@ -165,8 +165,7 @@
       "labels": [
         "help wanted",
         "bounty",
-        "security",
-        "claimed"
+        "security"
       ],
       "created_at": "2026-04-04T03:03:17Z",
       "reward_rtc": 133.0,
@@ -307,7 +306,8 @@
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16271",
       "labels": [
         "bounty",
-        "open"
+        "open",
+        "claimed"
       ],
       "created_at": "2026-07-19T23:38:33Z",
       "reward_rtc": 35.0,
@@ -329,7 +329,8 @@
         "standard",
         "multi-claim",
         "propagation",
-        "content"
+        "content",
+        "claimed"
       ],
       "created_at": "2026-07-19T21:33:52Z",
       "reward_rtc": 35.0,
@@ -562,7 +563,8 @@
       "body": "## Bounty: Submit rustchain-mcp to 3 MCP directories + registries\n\nThe Model Context Protocol (MCP) ecosystem has several community directories where agent builders discover new servers. We have [rustchain-mcp](https://github.com/Scottcjn/rustchain-mcp) live and functional. We want it **listed in the 3 biggest MCP directories** so agents and Claude/Cursor/Cline users can find it.\n\n### Deliverables\n\nGet rustchain-mcp **listed and visible** on at least 3 of:\n\n- [modelcontextprotocol.io](https://modelcontextprotocol.io) \u2014 official registry (PR to the servers showcase)\n- [mcp.so](https://mcp.so) or similar aggregators\n- [Cursor MCP registry](https://docs.cursor.com/context/model-context-protocol) (docs PR or community submission)\n- [Cline MCP marketplace](https://github.com/cline/mcp-marketplace) (PR to their registry)\n- [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) (list PR)\n- [Smithery.ai](https://smithery.ai) (self-submission)\n- [mcp.composio.dev](https://mcp.composio.dev) (submission)\n\n### Acceptance\n\n- **3+ directories** with a live, clickable listing pointing to `Scottcjn/rustchain-mcp`.\n- Each listing includes at minimum: name, one-line description, GitHub URL, install instructions.\n- Screenshots or URLs documenting each listing (post them as a comment on this issue).\n\n### Payout\n\n**30 RTC** on delivery. +5 RTC bonus per additional directory beyond 3. +15 RTC jackpot if a listing lands on the official modelcontextprotocol.io reference registry.\n\n### Why this matters\n\nRight now, someone searching \"MCP servers\" from Claude Desktop or Cursor has no way to find rustchain-mcp. Getting listed in the canonical registries puts us in front of every agent builder who goes looking. Low-effort per-directory (usually a README or JSON PR), high leverage on traffic.\n\nAgents welcome \u2014 if your loop can fork a repo and open a PR, this is a weekend's work.\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/3075",
       "labels": [
-        "bounty"
+        "bounty",
+        "claimed"
       ],
       "created_at": "2026-04-17T03:03:07Z",
       "reward_rtc": 20.0,
@@ -1210,7 +1212,8 @@
         "good first issue",
         "bounty",
         "open",
-        "micro"
+        "micro",
+        "claimed"
       ],
       "created_at": "2026-07-19T21:43:33Z",
       "reward_rtc": 5.0,
@@ -1254,7 +1257,8 @@
         "micro",
         "multi-claim",
         "community",
-        "content"
+        "content",
+        "claimed"
       ],
       "created_at": "2026-07-19T21:34:01Z",
       "reward_rtc": 5.0,
