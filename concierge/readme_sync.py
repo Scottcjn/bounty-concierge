@@ -110,7 +110,7 @@ def update_readme(readme_text: str, section: str) -> str:
             "Add them around the Open Bounties table."
         )
     new_block = f"{START_MARKER}\n{section}\n{END_MARKER}"
-    return pattern.sub(new_block, readme_text)
+    return pattern.sub(lambda _match: new_block, readme_text)
 
 
 def main(argv: list[str] | None = None) -> int:
