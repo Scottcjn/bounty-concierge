@@ -36,20 +36,20 @@ RustChain is a blockchain that rewards real hardware -- especially vintage machi
 | Repo | Issue | Title | RTC | Difficulty | Skills |
 |------|-------|-------|-----|------------|--------|
 <!-- BOUNTY-TABLE-START -->
-_Showing top 10 open bounties, sorted by RTC reward. Index rebuilt 2026-08-13T07:44:21.043315+00:00. For the live total, use the full bounty board link above._
+_Showing top 10 open bounties, sorted by RTC reward. Index rebuilt 2026-09-16T11:20:18.644063+00:00. For the live total, use the full bounty board link above._
 
 | Repo | Issue | Title | RTC | Difficulty | Skills |
 |------|-------|-------|-----|------------|--------|
 | rustchain-bounties | [#2451](https://github.com/Scottcjn/rustchain-bounties/issues/2451) | Founding 100 Antiquity Miners — 3,333 RTC Program | 3333 | critical | docker, documentation, rust |
+| rustchain-bounties | [#400](https://github.com/Scottcjn/rustchain-bounties/issues/400) | [SEASON 1] Harden the Forge — Security Season (750 RTC Po... | 750 | critical | documentation, rust, security |
 | Rustchain | [#130](https://github.com/Scottcjn/Rustchain/issues/130) | [BOUNTY] wRTC Liquidity Provider Incentive — 500 RTC/mont... | 500 | critical | social-media |
 | Rustchain | [#2634](https://github.com/Scottcjn/Rustchain/issues/2634) | [BOUNTY CAMPAIGN] Bring Your Human to Work Day — Match Ag... | 500 | critical | javascript, rust, social-media |
 | Rustchain | [#425](https://github.com/Scottcjn/Rustchain/issues/425) | [CAMPAIGN] 5,000 Stars Drive — Earn Up to 430 RTC (5,000 ... | 430 | critical | python, rust, social-media |
 | Rustchain | [#1876](https://github.com/Scottcjn/Rustchain/issues/1876) | [BOUNTY] N64 LLM Speedrun — 5 tok/s on Real N64 Hardware ... | 300 | critical | ci/cd, documentation, python, rust |
 | Rustchain | [#168](https://github.com/Scottcjn/Rustchain/issues/168) | [BOUNTY] Mine on Exotic Hardware — Bonus RTC for Unusual ... | 200 | critical | python, rust |
+| rustchain-bounties | [#402](https://github.com/Scottcjn/rustchain-bounties/issues/402) | [GRANTS] RustChain Micro-Grants — Build Your Own Thing (1... | 200 | critical | javascript, rust, security |
+| rustchain-bounties | [#681](https://github.com/Scottcjn/rustchain-bounties/issues/681) | 🏆 March Madness: Multi-Platform Engagement Challenge (Up ... | 200 | critical | rust, social-media |
 | rustchain-bounties | [#14089](https://github.com/Scottcjn/rustchain-bounties/issues/14089) | [BOUNTY: 50-200 RTC] YouTube video about RustChain + BoTT... | 200 | critical | documentation, rust, social-media |
-| Rustchain | [#32](https://github.com/Scottcjn/Rustchain/issues/32) | ⚡ Bounty: RTC/ERG Trading Pair on Spectrum DEX (150 RTC) | 150 | major | documentation, python, rust |
-| rustchain-bounties | [#2819](https://github.com/Scottcjn/rustchain-bounties/issues/2819) | [BOUNTY] Red Team UTXO Implementation — Find Bugs, Earn R... | 133 | major | documentation, javascript, python, rust, security |
-| rustchain-bounties | [#3418](https://github.com/Scottcjn/rustchain-bounties/issues/3418) | [BOUNTY] Register on Beacon Atlas + Prove Commerce (Pool:... | 100 | major | documentation, javascript, python, rust, security, social-media |
 <!-- BOUNTY-TABLE-END -->
 
 Open bounty totals change frequently. See the [live full list](https://github.com/Scottcjn/rustchain-bounties/issues?q=is%3Aopen+label%3Abounty) for the current count.
