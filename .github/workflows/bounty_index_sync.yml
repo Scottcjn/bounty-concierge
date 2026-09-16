@@ -28,8 +28,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python -m concierge.bounty_index > data/bounty_index.json
 
-      - name: Auto-commit updated index
+      - name: Refresh README Open Bounties table
+        run: python -m concierge.readme_sync
+
+      - name: Auto-commit updated index and README
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "chore: update bounty index [automated]"
-          file_pattern: data/bounty_index.json
+          commit_message: "chore: update bounty index and README [automated]"
+          file_pattern: data/bounty_index.json README.md
