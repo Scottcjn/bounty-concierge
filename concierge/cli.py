@@ -237,12 +237,15 @@ def _cmd_wallet(args):
             print(f"[dry-run] Would check balance for: {name}")
             return
         result = get_balance(name)
+        if "error" in result:
+            if args.json:
+                _print_json(result)
+            else:
+                print(f"Error: {result['error']}", file=sys.stderr)
+            sys.exit(1)
         if args.json:
             _print_json(result)
         else:
-            if "error" in result:
-                print(f"Error: {result['error']}", file=sys.stderr)
-                sys.exit(1)
             print(f"Wallet:  {name}")
             if "balance_rtc" in result:
                 print(f"Balance: {result['balance_rtc']:.6f} RTC")

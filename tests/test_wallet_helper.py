@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from concierge import wallet_helper
+from concierge import cli
 
 
 # ---------------------------------------------------------------------------
@@ -240,6 +241,45 @@ class TestLegacyAliases(unittest.TestCase):
     def test_registration_instructions_alias(self):
         result = wallet_helper.registration_instructions("my-wallet")
         self.assertIn("my-wallet", result)
+
+
+# ---------------------------------------------------------------------------
+# CLI wallet balance exit code tests
+# ---------------------------------------------------------------------------
+
+class TestWalletBalanceCLI(unittest.TestCase):
+
+    @patch("concierge.cli.get_balance")
+    def test_json_error_exits_nonzero(self, mock_get_balance):
+        mock_get_balance.return_value = {"error": "Request to node timed out (10s)"}
+        argv = ["concierge", "wallet", "balance", "example-wallet", "--json"]
+        with patch("sys.argv", argv), patch("sys.stdout"):
+            with self.assertRaises(SystemExit) as cm:
+                cli.main()
+            self.assertEqual(cm.exception.code, 1)
+
+    @patch("concierge.cli.get_balance")
+    def test_text_error_exits_nonzero(self, mock_get_balance):
+        mock_get_balance.return_value = {"error": "Request to node timed out (10s)"}
+        argv = ["concierge", "wallet", "balance", "example-wallet"]
+        with patch("sys.argv", argv), patch("sys.stderr"):
+            with self.assertRaises(SystemExit) as cm:
+                cli.main()
+            self.assertEqual(cm.exception.code, 1)
+
+    @patch("concierge.cli.get_balance")
+    def test_json_success_exits_zero(self, mock_get_balance):
+        mock_get_balance.return_value = {"miner_id": "example-wallet", "balance_rtc": 15.5}
+        argv = ["concierge", "wallet", "balance", "example-wallet", "--json"]
+        with patch("sys.argv", argv), patch("sys.stdout"):
+            cli.main()
+
+    @patch("concierge.cli.get_balance")
+    def test_text_success_exits_zero(self, mock_get_balance):
+        mock_get_balance.return_value = {"miner_id": "example-wallet", "balance_rtc": 15.5}
+        argv = ["concierge", "wallet", "balance", "example-wallet"]
+        with patch("sys.argv", argv), patch("sys.stdout"):
+            cli.main()
 
 
 if __name__ == "__main__":
