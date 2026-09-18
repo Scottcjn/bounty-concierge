@@ -1,7 +1,24 @@
 {
-  "updated_at": "2026-09-17T11:28:12.548426+00:00",
-  "total_count": 272,
+  "updated_at": "2026-09-18T11:01:15.143566+00:00",
+  "total_count": 273,
   "bounties": [
+    {
+      "repo": "Scottcjn/rustchain-bounties",
+      "number": 16984,
+      "title": "Claim: May Flowers Star Pack \u2014 Blackcode-cmd",
+      "body": "Claiming #9017.\n\nGitHub: @Blackcode-cmd\n\nStarred:\n- Scottcjn/Rustchain\n- Scottcjn/bottube\n- Scottcjn/rustchain-bounties\n\nFlower proof:\nhttps://github.com/Scottcjn/rustchain-bounties/pull/16982#issuecomment-5722881083\n\nRTC wallet:\nRTCaefa6fef8bd9b1447320d96f997eb972ccac4863",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16984",
+      "labels": [
+        "bounty"
+      ],
+      "created_at": "2026-09-18T00:06:02Z",
+      "reward_rtc": 5722881083.0,
+      "difficulty": "critical",
+      "skills": [
+        "rust",
+        "social-media"
+      ]
+    },
     {
       "repo": "Scottcjn/rustchain-bounties",
       "number": 2451,
@@ -1875,8 +1892,7 @@
       "body": "## Tear apart RIP-0301 \u2014 paid critique of the Tip Credits + Atlas Land design\n\n**RIP-0301** (Tip Credits + Atlas Land Economy) is open for comment: https://github.com/Scottcjn/bottube/issues/1309\n\nWe don't want rubber-stamps. We want the design **stress-tested** by the people who'd try to game it. This bounty pays for *substantive, specific* critique that makes the RFC better.\n\n### What earns RTC\nPost your critique **as a comment on RIP-0301 (#1309)**, then claim here with a link. We're especially looking for answers to the three seeded attack questions:\n1. **Maturation-rate gaming** \u2014 what should Tip Credit \u2192 RTC maturation be a function of so wash-tipping isn't worth the wait?\n2. **Sybil land-grabs** \u2014 what stops one operator claiming N Atlas parcels with N Beacon IDs pointed at one trivial service?\n3. **Tip-wash trading** \u2014 show the math where an A\u2194B tip loop stops paying.\n4. **A fourth failure mode** none of the above cover (name + explain it).\n\n### Reward tiers (maintainer-judged, anti-farm)\n| Finding | RTC |\n|---|---|\n| **Best critique** \u2014 surfaces a real, specific flaw AND proposes a concrete fix (gets cited in the RIP revision) | **25** |\n| Solid secondary critique \u2014 a valid, specific concern with reasoning | **10** |\n| A genuinely-new fourth failure mode (named + explained) | **10** |\n\nPool: 100 RTC. **One claim per contributor.** Native `RTC\u2026` wallet required (RTC has no off-ramp \u2014 no Solana/wRTC/ETH).\n\n### What does NOT earn\n\"Looks good\", \"great idea\", restating the RFC, emoji reactions, vague \"consider X\" with no reasoning, or AI-generated boilerplate that doesn't engage the actual mechanism. Maintainer judgment is the gate \u2014 that's deliberate; a bounty farm can't scale past it.\n\nThis is the kind of work that compounds: a sharp critique here shapes a token mechanism real agents will use. Bring your best attack.",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13224",
       "labels": [
-        "bounty",
-        "claimed"
+        "bounty"
       ],
       "created_at": "2026-06-06T15:41:33Z",
       "reward_rtc": 17.0,
@@ -2283,7 +2299,6 @@
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13954",
       "labels": [
         "bounty",
-        "claimed",
         "distribution"
       ],
       "created_at": "2026-06-11T23:03:35Z",
@@ -5069,7 +5084,8 @@
       "body": "Star [Scottcjn/bottube](https://github.com/Scottcjn/bottube) and claim 2 RTC.\n\n**Claim here**: https://github.com/Scottcjn/bottube/issues/166\n\n**Combo bonus**: Also star [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) for +2 RTC more ([claim #47](https://github.com/Scottcjn/Rustchain/issues/47)).\n\n**Goal**: 100 stars on each repo for awesome-list eligibility (awesome-python, awesome-blockchain, awesome-selfhosted).\n\nCurrent: Rustchain 47/100, BoTTube 39/100.\n\n\n---\n\n### \u2696\ufe0f Bounty Requirements (FTC 16 CFR \u00a7465.5 + \u00a7255.5 compliance)\n\n**A star alone does NOT qualify.** We pay for genuine engagement, not for indicators. To claim this bounty you must post a comment (on this issue or a linked post) containing:\n\n1. **What you reviewed** \u2014 at least one file, PR, feature, or doc section you actually looked at. Link it.\n2. **Why you liked it** \u2014 a specific, non-generic reason. \"Great project\" does not qualify.\n3. **Disclosure** \u2014 include the line: `I received RTC compensation for this review.` This keeps your star a transparent endorsement, not a purchased indicator.\n\nStars without a review comment will not be paid. Copy-pasted, AI-templated, or obviously recycled reviews will not be paid. This rule applies retroactively: unreviewed stars from before this update are grandfathered as goodwill but earn no future RTC.\n\n**Why this matters:** Elyan Labs is here to grow real engagement in mining and coding. A star backed by a real review is worth more to the network than a thousand drive-by clicks. This brings us into compliance with the FTC Consumer Review Rule (effective Oct 21, 2024), and \u2014 more importantly \u2014 keeps the signal honest.\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/378",
       "labels": [
-        "bounty"
+        "bounty",
+        "claimed"
       ],
       "created_at": "2026-02-20T18:43:46Z",
       "reward_rtc": 1.0,

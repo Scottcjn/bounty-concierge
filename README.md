@@ -36,10 +36,11 @@ RustChain is a blockchain that rewards real hardware -- especially vintage machi
 | Repo | Issue | Title | RTC | Difficulty | Skills |
 |------|-------|-------|-----|------------|--------|
 <!-- BOUNTY-TABLE-START -->
-_Showing top 10 open bounties, sorted by RTC reward. Index rebuilt 2026-09-17T11:28:12.548426+00:00. For the live total, use the full bounty board link above._
+_Showing top 10 open bounties, sorted by RTC reward. Index rebuilt 2026-09-18T11:01:15.143566+00:00. For the live total, use the full bounty board link above._
 
 | Repo | Issue | Title | RTC | Difficulty | Skills |
 |------|-------|-------|-----|------------|--------|
+| rustchain-bounties | [#16984](https://github.com/Scottcjn/rustchain-bounties/issues/16984) | Claim: May Flowers Star Pack — Blackcode-cmd | 5722881083 | critical | rust, social-media |
 | rustchain-bounties | [#2451](https://github.com/Scottcjn/rustchain-bounties/issues/2451) | Founding 100 Antiquity Miners — 3,333 RTC Program | 3333 | critical | docker, documentation, rust |
 | rustchain-bounties | [#400](https://github.com/Scottcjn/rustchain-bounties/issues/400) | [SEASON 1] Harden the Forge — Security Season (750 RTC Po... | 750 | critical | documentation, rust, security |
 | Rustchain | [#130](https://github.com/Scottcjn/Rustchain/issues/130) | [BOUNTY] wRTC Liquidity Provider Incentive — 500 RTC/mont... | 500 | critical | social-media |
@@ -49,7 +50,6 @@ _Showing top 10 open bounties, sorted by RTC reward. Index rebuilt 2026-09-17T11
 | Rustchain | [#168](https://github.com/Scottcjn/Rustchain/issues/168) | [BOUNTY] Mine on Exotic Hardware — Bonus RTC for Unusual ... | 200 | critical | python, rust |
 | rustchain-bounties | [#402](https://github.com/Scottcjn/rustchain-bounties/issues/402) | [GRANTS] RustChain Micro-Grants — Build Your Own Thing (1... | 200 | critical | javascript, rust, security |
 | rustchain-bounties | [#681](https://github.com/Scottcjn/rustchain-bounties/issues/681) | 🏆 March Madness: Multi-Platform Engagement Challenge (Up ... | 200 | critical | rust, social-media |
-| rustchain-bounties | [#14089](https://github.com/Scottcjn/rustchain-bounties/issues/14089) | [BOUNTY: 50-200 RTC] YouTube video about RustChain + BoTT... | 200 | critical | documentation, rust, social-media |
 <!-- BOUNTY-TABLE-END -->
 
 Open bounty totals change frequently. See the [live full list](https://github.com/Scottcjn/rustchain-bounties/issues?q=is%3Aopen+label%3Abounty) for the current count.
