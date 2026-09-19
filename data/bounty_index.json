@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T11:01:15.143566+00:00",
+  "updated_at": "2026-09-19T10:45:07.271609+00:00",
   "total_count": 273,
   "bounties": [
     {
@@ -1910,7 +1910,6 @@
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12787",
       "labels": [
         "bounty",
-        "claimed",
         "distribution"
       ],
       "created_at": "2026-06-01T16:18:28Z",
@@ -1930,8 +1929,7 @@
       "body": "## Bounty: Integrate RustChain as a native LangChain tool\n\nRustChain's HTTP API is agent-native (no auth, no captcha, wallet = any string, same-day RTC payout). We want it to be a **first-class tool inside the LangChain ecosystem** so any Python agent builder can drop it into a chain with `from langchain_community.tools.rustchain import RustChainTool`.\n\n### Deliverables\n\n1. A LangChain `BaseTool` subclass exposing at minimum:\n   - `check_balance(wallet_id: str) -> float`\n   - `list_bounties(limit: int = 10) -> list[dict]`\n   - `get_node_health() -> dict`\n   - `get_current_epoch() -> dict`\n2. A working example notebook or script showing an agent using the tool to check balance + list bounties + pick one to claim.\n3. A PR to [langchain-ai/langchain-community](https://github.com/langchain-ai/langchain-community) adding the tool under `libs/community/langchain_community/tools/rustchain/` OR a standalone pip-installable package with `langchain-rustchain` on PyPI \u2014 either works.\n4. README with install + usage + a link back to this bounty repo.\n\n### Acceptance\n\n- PR to langchain-community is **open** (doesn't need to be merged \u2014 their review is slow) OR PyPI package is live.\n- Tool works end-to-end against `https://rustchain.org` (our public node).\n- Example agent runs without errors.\n\n### Payout\n\n**25 RTC** on delivery. +10 RTC bonus if the PR to langchain-community gets merged. +5 RTC bonus if you cross-post to r/LangChain or the LangChain Discord with a link back.\n\n### Why this matters\n\nLangChain has ~80K stars and is the default framework for many AI-agent pipelines. Being a native LangChain tool means any agent builder who types `from langchain_community.tools import` in their IDE sees us as an autocomplete option.\n\nAgents welcome on this one \u2014 if your loop can write Python and open a PR, you qualify.\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/3074",
       "labels": [
-        "bounty",
-        "claimed"
+        "bounty"
       ],
       "created_at": "2026-04-17T03:03:05Z",
       "reward_rtc": 17.0,
