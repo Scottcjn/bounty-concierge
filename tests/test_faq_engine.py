@@ -56,9 +56,23 @@ class TestFuzzyMatch:
         assert answer is not None
 
     def test_wrtc_faq(self):
-        """WRTC FAQ should mention Ergo blockchain."""
+        """wRTC FAQ must say the bridge is discontinued, not point at one."""
         key, answer, score = faq_engine.fuzzy_match("what is wrtc")
         assert answer is not None
+        assert "discontinued" in answer.lower()
+        for stale in ("ergo", "base l2", "solana", "dex bounty", "issue #32"):
+            assert stale not in answer.lower(), stale
+
+    def test_claim_faq_gives_canonical_address_format(self):
+        key, answer, score = faq_engine.fuzzy_match("how do i claim a bounty")
+        assert "40 lowercase hex" in answer
+        assert "43 chars" in answer
+
+    def test_register_faq_matches_validator_rules(self):
+        """FAQ used to say 'underscores, 3-50 chars'; validator disagrees."""
+        key, answer, score = faq_engine.fuzzy_match("how do i register a wallet")
+        assert "3-64" in answer
+        assert "underscore" not in answer.lower()
 
     def test_proof_of_antiquity_faq(self):
         """PoA FAQ should mention multipliers."""
