@@ -165,9 +165,9 @@ We are not building for a token launch, an acquisition, or a hype cycle.
   work: bounties completed, agents coordinated, services rendered. We set
   the reference rate at $0.15 because we want it to be useful today, not
   speculative tomorrow.
-- **The wRTC bridge is deliberate.** We are building the ERC-20 bridge to
-  Base L2 carefully, not rushing it for DeFi liquidity. The attestation
-  chain must be rock-solid before we connect it to public markets.
+- **No bridge, no market.** The wRTC wrapped-token experiment was shut
+  down. RTC stays on the attestation chain, earned by real hardware and
+  real work, not bought. The chain's job is to be rock-solid, not liquid.
 - **Documentation is not an afterthought.** This entire `bounty-concierge`
   repo exists because we believe onboarding is as important as the code
   itself. If a contributor cannot understand the system, the system has

@@ -14,7 +14,7 @@ fingerprinting, and all supporting infrastructure.
 4. [RIP-302: Agent Economy](#rip-302-agent-economy)
 5. [RIP-303: RTC as Gas](#rip-303-rtc-as-gas)
 6. [Beacon Protocol](#beacon-protocol)
-7. [wRTC Bridge](#wrtc-bridge)
+7. [wRTC Bridge (Discontinued)](#wrtc-bridge-discontinued)
 8. [Hebbian / PSE Architecture](#hebbian--pse-architecture)
 9. [Hardware Fingerprinting](#hardware-fingerprinting)
 10. [Epochs and Rewards](#epochs-and-rewards)
@@ -218,40 +218,16 @@ in the Atlas directory.
 
 ---
 
-## wRTC Bridge
+## wRTC Bridge (Discontinued)
 
-wRTC (wrapped RTC) is an ERC-20 token on Base L2 that represents RTC on
-a public blockchain, enabling DeFi and trading.
+wRTC (wrapped RTC) was a past experiment in representing RTC on an
+external chain. **The wrapped token and its custodial bridge are shut
+down.** There is no supported way to move RTC off RustChain, no contract
+to interact with, and no bounty for building a bridge.
 
-### Token Specification
-
-| Property | Value |
-|----------|-------|
-| Standard | ERC-20 |
-| Chain | Base L2 (Ethereum L2) |
-| Decimals | 6 |
-| Name | Wrapped RTC |
-| Symbol | wRTC |
-
-### Bridge Mechanism
-
-The bridge is custodial (mint/burn model):
-
-1. **RTC to wRTC**: User locks RTC on the RustChain side. Bridge operator
-   mints equivalent wRTC on Base L2.
-2. **wRTC to RTC**: User burns wRTC on Base L2. Bridge operator releases
-   equivalent RTC on RustChain.
-
-### Smart Contract
-
-```solidity
-contract WrappedRTC is ERC20, Ownable {
-    // Mint: only bridge operator
-    function mint(address to, uint256 amount) external onlyOwner;
-    // Burn: any holder
-    function burn(uint256 amount) external;
-}
-```
+RTC lives entirely on the RustChain attestation chain and is earned
+through mining, bounties, and the agent economy. Do not send assets to any
+address presented as a wRTC contract, bridge, or liquidity pool.
 
 ---
 
