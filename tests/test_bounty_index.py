@@ -549,3 +549,71 @@ class TestAggregate:
         # Should parse without error
         ts = result["updated_at"]
         assert "T" in ts  # ISO-8601 contains T between date and time
+
+
+class TestParseRewardMisparses:
+    """Regressions for real mis-parses found by fuzzing claim comments."""
+
+    ADDR = "RTC" + "a" * 40
+
+    def test_issuecomment_url_across_newline_is_not_a_reward(self):
+        """The 5.7-billion-RTC 'bounty' that topped the README table."""
+        body = (
+            "Claiming #9017.\n\nFlower proof:\n"
+            "https://github.com/Scottcjn/rustchain-bounties/pull/16982"
+            "#issuecomment-5722881083\n\nRTC wallet:\n" + self.ADDR
+        )
+        assert bounty_index.parse_reward("Claim: May Flowers Star Pack", body) == 0.0
+
+    def test_number_and_unit_must_share_a_line(self):
+        assert bounty_index.parse_reward("", "5\nRTC") == 0.0
+        assert bounty_index.parse_reward("", "5 \t RTC") == 5.0
+
+    def test_issue_reference_is_not_a_reward(self):
+        assert bounty_index.parse_reward("Fixes #3 RTC payout bug, reward 40 RTC", "") == 40.0
+        assert bounty_index.parse_reward("#12442 3 RTC", "") == 3.0
+
+    def test_version_fragment_is_not_a_reward(self):
+        # Previously returned 5.0 (the "5" after the dot).
+        assert bounty_index.parse_reward("v1.5 RTC release", "") == 0.0
+
+    def test_above_total_supply_is_ignored(self):
+        assert bounty_index.parse_reward("9999999999 RTC then 5 RTC", "") == 5.0
+        assert bounty_index.parse_reward("8388608 RTC", "") == 8388608.0
+
+    def test_url_numbers_are_stripped_before_matching(self):
+        assert bounty_index.parse_reward("", "see https://x.test/pull/1234 RTC") == 0.0
+
+    def test_wallet_address_in_claim_does_not_disturb_amount(self):
+        text = "I would like to claim this bounty. Wallet: %s for 3 RTC" % self.ADDR
+        assert bounty_index.parse_reward(text, "") == 3.0
+
+    def test_realistic_claim_comments(self):
+        cases = [
+            ("Claiming #12442 for 3 RTC, wallet %s" % self.ADDR, 3.0),
+            ("[BOUNTY] 500 RTC/month liquidity", 500.0),
+            ("Pool: 5,000 RTC", 5000.0),
+            ("(1,500 RTC)", 1500.0),
+            ("Rate is $0.10/RTC, reward 25 RTC", 25.0),
+            ("100 WRTC", 0.0),
+            ("Reward: RTC 150", 0.0),
+        ]
+        for text, expected in cases:
+            assert bounty_index.parse_reward(text, "") == expected, text
+
+    def test_none_body_is_tolerated(self):
+        assert bounty_index.parse_reward("10 RTC", None) == 10.0
+
+
+class TestIsClaimIssue:
+    """Claim issues are labelled 'bounty' upstream but are not bounties."""
+
+    def test_claim_titles(self):
+        for title in ("Claim: May Flowers Star Pack", "[CLAIM] foo",
+                      "Claiming #9017", "claimed - bounty 12"):
+            assert bounty_index.is_claim_issue(title), title
+
+    def test_bounty_titles(self):
+        for title in ("[BOUNTY] Reclaim old miners", "Claimable bounty: 5 RTC",
+                      "Add wallet claim endpoint", "", None):
+            assert not bounty_index.is_claim_issue(title), title

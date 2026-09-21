@@ -62,6 +62,11 @@ def fetch_bounties(repos=None, token=None):
                 body = issue.get("body", "") or ""
                 label_names = [lb["name"] for lb in issue.get("labels", [])]
 
+                # A "Claim: ..." issue is someone claiming a bounty, not a
+                # bounty; advertising it as one misleads contributors.
+                if is_claim_issue(title):
+                    continue
+
                 reward = parse_reward(title, body)
                 difficulty = estimate_difficulty(title, label_names, reward)
                 skills = tag_skills(title, body)
@@ -90,23 +95,53 @@ def fetch_bounties(repos=None, token=None):
 # Parsing helpers
 # ---------------------------------------------------------------------------
 
-_RTC_PATTERN = re.compile(r"(?<![A-Za-z0-9])(\d+(?:[.,]\d+)?)\s*RTC\b", re.IGNORECASE)
+# Reward amount followed by the RTC unit on the SAME line.
+#
+#   * Lookbehind excludes letters/digits (so "WRTC" and "v2" don't count),
+#     "#" (so an issue ref like "#3 RTC" is not a reward), and "."/","
+#     (so the "5" in "v1.5 RTC" is not matched as a standalone number).
+#   * Only horizontal whitespace may sit between the number and "RTC".  A
+#     generic "\s*" spans newlines, which turned
+#     "...#issuecomment-5722881083\n\nRTC wallet:" into a 5.7-billion-RTC
+#     bounty that then sat at the top of the README table.
+_RTC_PATTERN = re.compile(
+    r"(?<![A-Za-z0-9#.,])(\d+(?:[.,]\d+)?)[ \t]*RTC\b", re.IGNORECASE
+)
+# URLs frequently carry long numeric ids (issuecomment-..., pull/...); they
+# are never a reward, so they are removed before matching.
+_URL_PATTERN = re.compile(r"https?://\S+", re.IGNORECASE)
+# No single bounty can exceed the fixed total RTC supply (2**23).
+MAX_REWARD_RTC = 8_388_608.0
+
+# Issues that are a *claim on* a bounty rather than a bounty.  The
+# rustchain-bounties repo labels these "bounty" too, so title is the only
+# signal available without a second API call.
+_CLAIM_TITLE_PATTERN = re.compile(r"^\s*\[?\s*claim(?:ing|ed)?\b", re.IGNORECASE)
+
+
+def is_claim_issue(title):
+    """Return True if an issue title denotes a claim rather than a bounty."""
+    return bool(title) and _CLAIM_TITLE_PATTERN.match(title) is not None
 
 
 def parse_reward(title, body):
     """Extract the first RTC reward amount from a title or body string.
 
     Looks for patterns like '150 RTC', '1,000 RTC', '0.5 RTC'.
-    Returns the amount as a float, or 0.0 if nothing found.
+    Returns the amount as a float, or 0.0 if nothing found.  Amounts above
+    the total RTC supply are treated as mis-parses and ignored.
     """
     for text in (title, body):
-        match = _RTC_PATTERN.search(text)
-        if match:
+        if not text:
+            continue
+        for match in _RTC_PATTERN.finditer(_URL_PATTERN.sub(" ", text)):
             raw = match.group(1).replace(",", "")
             try:
-                return float(raw)
+                amount = float(raw)
             except ValueError:
                 continue
+            if 0 < amount <= MAX_REWARD_RTC:
+                return amount
     return 0.0
 
 

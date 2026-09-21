@@ -284,3 +284,78 @@ class TestWalletBalanceCLI(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ---------------------------------------------------------------------------
+# Canonical RTC addresses (RTC + exactly 40 lowercase hex)
+# ---------------------------------------------------------------------------
+
+CANON = "RTC" + "0123456789abcdef" * 2 + "01234567"  # 43 chars
+
+
+class TestRtcAddressValidation(unittest.TestCase):
+
+    def test_canonical_address_is_accepted_as_wallet(self):
+        self.assertEqual(len(CANON), 43)
+        valid, msg = wallet_helper.validate_wallet_name(CANON)
+        self.assertTrue(valid, msg)
+        self.assertTrue(wallet_helper.is_rtc_address(CANON))
+
+    def test_truncated_address_rejected(self):
+        # 32-char and 42-char variants have stranded real payouts.
+        for bad in (CANON[:-1], "RTC64aa3fc417e75224e1574acae906f"):
+            valid, msg = wallet_helper.validate_wallet_name(bad)
+            self.assertFalse(valid, bad)
+            self.assertIn("exactly 43", msg)
+
+    def test_extended_address_rejected(self):
+        valid, msg = wallet_helper.validate_wallet_name(CANON + "a")
+        self.assertFalse(valid)
+        self.assertIn("exactly 43", msg)
+
+    def test_uppercase_hex_rejected(self):
+        valid, msg = wallet_helper.validate_wallet_name("RTC" + "A" * 40)
+        self.assertFalse(valid)
+        self.assertIn("lowercase", msg)
+
+    def test_non_hex_rejected(self):
+        valid, msg = wallet_helper.validate_wallet_name("RTC" + "g" * 40)
+        self.assertFalse(valid)
+        self.assertIn("hex", msg)
+
+    def test_lowercased_address_is_not_silently_a_name(self):
+        # Before: "rtc" + hex passed as a plain *name*, a different identity
+        # from the address the contributor meant.
+        valid, msg = wallet_helper.validate_wallet_name(CANON.lower())
+        self.assertFalse(valid)
+        self.assertIn("'RTC'", msg)
+
+    def test_solana_lookalike_rejected(self):
+        valid, _ = wallet_helper.validate_wallet_name("RTC29WwMjwcaFeTTQqKaMNmFUFLYz3f")
+        self.assertFalse(valid)
+
+    def test_agent_style_rtc_prefix_rejected(self):
+        valid, _ = wallet_helper.validate_wallet_name("RTC-agent-antigravity-9944")
+        self.assertFalse(valid)
+
+    def test_whitespace_padding_rejected(self):
+        for bad in (" " + CANON, CANON + "\n"):
+            self.assertFalse(wallet_helper.validate_wallet_name(bad)[0])
+
+    def test_short_rtc_names_still_names(self):
+        self.assertTrue(wallet_helper.validate_wallet_name("rtcfan")[0])
+
+    def test_validate_rtc_address_empty(self):
+        self.assertFalse(wallet_helper.validate_rtc_address("")[0])
+        self.assertFalse(wallet_helper.validate_rtc_address(None)[0])
+
+
+class TestClassifyAddress(unittest.TestCase):
+
+    def test_canonical_address(self):
+        self.assertEqual(wallet_helper._classify_wallet(CANON), "address")
+
+    def test_malformed_address(self):
+        for bad in (CANON[:-1], CANON + "a", "RTC" + "A" * 40,
+                    "RTC-agent-antigravity-9944"):
+            self.assertEqual(wallet_helper._classify_wallet(bad), "malformed-address", bad)

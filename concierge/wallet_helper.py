@@ -19,6 +19,69 @@ _TIMEOUT = 10
 
 _WALLET_NAME_RE = re.compile(r"^[a-z0-9][a-z0-9\-]{1,62}[a-z0-9]$")
 
+# Canonical on-chain address: literal "RTC" + sha256(pubkey)[:40] as lowercase
+# hex -- exactly 43 characters.  Anything that *looks* like an address but is
+# not canonical (truncated, extended, uppercase hex, non-hex) has historically
+# been accepted as a destination and stranded real bounty money on unspendable
+# balances, so it is rejected here rather than treated as a plain name.
+_RTC_ADDRESS_HEX_LEN = 40
+_RTC_ADDRESS_LEN = 3 + _RTC_ADDRESS_HEX_LEN
+_RTC_ADDRESS_RE = re.compile(r"RTC[0-9a-f]{40}")
+# "Address-shaped": a lowercased/mixed-case RTC prefix followed by a long hex
+# run.  Used to tell an intended-but-malformed address apart from a name.
+_RTC_ADDRESS_LIKE_RE = re.compile(r"rtc[0-9a-f]{20,}", re.IGNORECASE)
+
+
+def is_rtc_address(value):
+    """Return True only for a canonical RTC address (RTC + 40 lowercase hex).
+
+    Uses fullmatch: a trailing newline or space is NOT canonical.
+    """
+    return bool(value) and _RTC_ADDRESS_RE.fullmatch(value) is not None
+
+
+def looks_like_rtc_address(value):
+    """Return True if *value* appears to be an RTC address (canonical or not).
+
+    Anything with the exact uppercase ``RTC`` prefix is address-shaped: a
+    valid wallet *name* is lowercase, so such a string can never be a name
+    and is always an attempted address (``RTC-agent-...``, ``RTC64aa...``).
+    A case-insensitive ``rtc`` prefix followed by 20+ hex characters is also
+    treated as an attempted (lowercased) address.
+    """
+    if not value:
+        return False
+    if value.startswith("RTC"):
+        return True
+    return _RTC_ADDRESS_LIKE_RE.fullmatch(value) is not None
+
+
+def validate_rtc_address(value):
+    """Validate a string that is meant to be an on-chain RTC address.
+
+    Returns:
+        (is_valid, message) tuple.  The message on failure says precisely
+        what is wrong (length, case, non-hex) so a contributor can fix it.
+    """
+    if not value:
+        return (False, "Address cannot be empty.")
+    if is_rtc_address(value):
+        return (True, "Valid RTC address.")
+    if not value.startswith("RTC"):
+        return (False, "RTC address must start with the uppercase prefix 'RTC'.")
+    body = value[3:]
+    if len(body) != _RTC_ADDRESS_HEX_LEN:
+        return (
+            False,
+            "RTC address must be exactly %d characters (RTC + %d hex); got %d. "
+            "Truncated or extended addresses cannot receive RTC."
+            % (_RTC_ADDRESS_LEN, _RTC_ADDRESS_HEX_LEN, len(value)),
+        )
+    if re.fullmatch(r"[0-9a-fA-F]{40}", body) and body != body.lower():
+        return (False, "RTC address hex must be lowercase.")
+    return (False, "RTC address must be 'RTC' followed by 40 lowercase hex "
+                   "characters (0-9, a-f).")
+
 
 # ---------------------------------------------------------------------------
 # API helpers
@@ -67,19 +130,29 @@ def _post(path, data=None, headers=None):
 def validate_wallet_name(name):
     """Validate a proposed wallet name.
 
-    Rules:
+    Two forms are accepted:
+
+    1. A canonical on-chain address: ``RTC`` + exactly 40 lowercase hex
+       characters (43 chars total).  Anything address-shaped that is not
+       canonical is rejected with a specific reason -- it is *not* silently
+       treated as a name, because that is how payouts get stranded.
+    2. A human-readable wallet name:
         - 3 to 64 characters
         - Lowercase alphanumeric and hyphens only
         - Must start and end with a letter or digit (not a hyphen)
 
     Args:
-        name: Proposed wallet name string.
+        name: Proposed wallet name or address string.
 
     Returns:
         (is_valid, message) tuple.
     """
     if not name:
         return (False, "Wallet name cannot be empty.")
+    if is_rtc_address(name):
+        return (True, "Valid RTC address.")
+    if looks_like_rtc_address(name):
+        return validate_rtc_address(name)
     if len(name) < 3:
         return (False, "Wallet name must be at least 3 characters.")
     if len(name) > 64:
@@ -251,6 +324,12 @@ def _classify_wallet(miner_id):
         return "platform"
     if any(m in miner_id for m in _REDTEAM_MARKERS):
         return "redteam"
+    if is_rtc_address(miner_id):
+        return "address"
+    if looks_like_rtc_address(miner_id):
+        # RTC-prefixed but not canonical: truncated/extended/mixed-case.
+        # Balances here are unspendable until merged to a real address.
+        return "malformed-address"
     if miner_id.endswith("RTC") and len(miner_id) > 30:
         return "auto-hash"
     return "named"
