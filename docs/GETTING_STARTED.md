@@ -49,7 +49,7 @@ that fit your background:
 | Skill Category | What To Look For | Example Bounties |
 |----------------|------------------|-----------------|
 | **Python** | Backend features, API endpoints, test suites, miner scripts | Attestation fuzz harness, Prometheus exporter, API docs |
-| **Rust** | Core blockchain work, performance-critical code | Token bridge, consensus engine changes |
+| **Rust** | Core blockchain work, performance-critical code | Consensus engine changes, miner ports, attestation hardening |
 | **Documentation** | README improvements, API docs, guides, FAQs | OpenAPI/Swagger docs, getting-started guides |
 | **Security** | Red-team challenges, vulnerability reports, audit findings | Fleet detection bypass, epoch settlement attacks, API auth |
 | **Frontend** | HTML/CSS/JS for dashboards and explorers | Miner dashboard, Hall of Fame pages, block explorer UI |
