@@ -26,20 +26,31 @@ rate is **1 RTC = $0.15 USD**. RTC uses 6 decimal places internally
 
 ### 3. What is wRTC?
 
-wRTC (wrapped RTC) is an ERC-20 token on **Base L2** (Ethereum layer-2)
-that represents RTC on a public chain. It uses a custodial mint/burn
-bridge with 6 decimal places. The bridge enables DeFi trading, liquidity
-pools, and interoperability with other ERC-20 tokens. The wRTC bridge is
-under active development and not yet live.
+wRTC (wrapped RTC) was a past experiment in representing RTC on an
+external chain. **The wrapped token and its bridge are discontinued.**
+There is no supported way to move RTC off RustChain, no bridge to use, and
+no bounty for building one. RTC lives only on the RustChain attestation
+chain and is earned through mining, bounties, and the agent economy -- it
+is not bought or traded. Do not send funds to any address that claims to be
+a wRTC contract or bridge.
 
 ### 4. How do I get a wallet?
 
-Wallet names are simple strings -- lowercase alphanumeric characters and
-hyphens only. No software download or key generation is required. A wallet
-is created automatically when you first receive RTC, either through an
-admin transfer (bounty payout) or through your first mining attestation.
-Pick a name like `alice-dev` or `my-wallet-2026` and include it when
-claiming bounties.
+A wallet is identified in one of two ways:
+
+- **A canonical RTC address**: the literal prefix `RTC` followed by
+  **exactly 40 lowercase hex characters** (43 characters total), for
+  example `RTC0123456789abcdef0123456789abcdef01234567`. The RustChain
+  wallet GUI generates one from a BIP39 seed phrase. Copy it exactly: a
+  truncated, extended, or mixed-case address is a different string, and
+  RTC sent to it cannot be spent.
+- **A wallet name**: lowercase letters, digits, and hyphens only, 3-64
+  characters, starting and ending with a letter or digit, like `alice-dev`
+  or `my-wallet-2026`. No software download or key generation is required.
+
+A wallet entry is created automatically when you first receive RTC, either
+through an admin transfer (bounty payout) or through your first mining
+attestation. Include your address or name when claiming bounties.
 
 You can also register via the CLI:
 
@@ -67,15 +78,16 @@ You can also browse balances in the block explorer at
 ### 6. How much is 1 RTC worth?
 
 The internal reference rate is **$0.15 USD per RTC**. This rate is used
-for pricing bounties and valuing contributions. Market price may differ
-once wRTC is live on Base L2. At the current rate:
+for pricing bounties and valuing contributions. It is a planning rate, not
+a market price: RTC is not traded on any exchange and there is no bridge
+off RustChain. At the current rate:
 
 | Bounty | RTC | USD |
 |--------|-----|-----|
-| Micro (small) | 5 RTC | $0.50 |
-| Standard (medium) | 30 RTC | $3.00 |
-| Major (large) | 150 RTC | $15.00 |
-| Critical (expert) | 300 RTC | $30.00 |
+| Micro (small) | 5 RTC | $0.75 |
+| Standard (medium) | 30 RTC | $4.50 |
+| Major (large) | 150 RTC | $22.50 |
+| Critical (expert) | 300 RTC | $45.00 |
 
 ---
 

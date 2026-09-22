@@ -37,9 +37,12 @@ FAQ_ENTRIES = {
         "wallet balance within one epoch (~10 minutes)."
     ),
     "what is wrtc": (
-        "wRTC (Wrapped RTC) is a planned representation of RTC on the Ergo "
-        "blockchain, enabling DEX trading.  The RTC/ERG DEX bounty (Issue #32) "
-        "offers 150 RTC for building this bridge."
+        "wRTC (Wrapped RTC) was an experiment in representing RTC on an "
+        "external chain.  The wrapped token and its bridge are discontinued: "
+        "there is no supported way to move RTC off RustChain, and no bounty "
+        "for building one.  RTC lives only on the RustChain attestation chain "
+        "and is earned, not bought.  Do not send funds to any wRTC or bridge "
+        "address."
     ),
     "what is proof of antiquity": (
         "Proof of Antiquity (PoA) is RustChain's unique consensus mechanism "
@@ -126,15 +129,18 @@ FAQ_ENTRIES = {
     ),
     "how do i claim a bounty": (
         "Comment on the GitHub issue saying you want to work on it, and "
-        "include your RustChain wallet name.  Once assigned, submit a PR "
-        "referencing the issue number.  After merge, RTC is transferred to "
-        "your wallet."
+        "include your RustChain wallet: either a canonical address (RTC + "
+        "exactly 40 lowercase hex characters, 43 chars total) or your wallet "
+        "name.  Paste the address exactly -- a truncated or extended address "
+        "cannot receive RTC.  Once assigned, submit a PR referencing the "
+        "issue number.  After merge, RTC is transferred to your wallet."
     ),
     "how do i register a wallet": (
-        "Pick a wallet name (alphanumeric, hyphens, underscores, 3-50 chars). "
-        "Your first bounty claim automatically registers it.  Or install the "
-        "RustChain wallet GUI to generate a cryptographic wallet with a "
-        "BIP39 seed phrase."
+        "Pick a wallet name: lowercase letters, digits, and hyphens, 3-64 "
+        "chars, starting and ending with a letter or digit.  Your first "
+        "bounty claim automatically registers it.  Or install the RustChain "
+        "wallet GUI to generate a cryptographic wallet with a BIP39 seed "
+        "phrase and an RTC address (RTC + 40 lowercase hex)."
     ),
     "epoch schedule": (
         "Epochs are 600 seconds (10 minutes).  Each epoch distributes a pot "

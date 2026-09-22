@@ -87,7 +87,7 @@ For a deep dive, see [docs/TECH_STACK.md](docs/TECH_STACK.md).
 | **RIP-200** | 1 CPU = 1 Vote. Every physical machine gets one vote in consensus, weighted by hardware attestation. No GPU farms, no cloud VMs. |
 | **Proof-of-Antiquity** | Vintage hardware earns higher rewards. G4 = 2.5x, G5 = 2.0x, G3 = 1.8x, Apple Silicon = 1.2x, modern x86 = 1.0x. Multipliers decay over ~17 years. |
 | **RTC Token** | Native utility token of the RustChain network. Reference rate: **1 RTC = $0.15 USD**. Used for bounties, agent economy, and miner rewards. |
-| **wRTC** | Wrapped RTC on Base L2 for DeFi access. Bridges RTC from the attestation chain to Ethereum L2 liquidity. |
+| **wRTC** | Discontinued. A past experiment in wrapping RTC on an external chain; the token and bridge are shut down. RTC lives only on the RustChain attestation chain and is earned, not bought. Do not send funds to any wRTC or bridge address. |
 | **RIP-201** | Fleet immune system. Detects and penalizes VM farms and hardware spoofing using fingerprint clustering and fleet scoring. |
 | **Beacon Protocol** | Agent-to-agent coordination layer. Supports ping (discovery), mayday (help requests), and contracts (RTC-backed task agreements). |
 | **Hebbian / PSE** | POWER8 vec_perm non-bijunctive collapse. Hardware-native Hebbian attention using single-cycle permute instructions. Research frontier, not required for bounties. |

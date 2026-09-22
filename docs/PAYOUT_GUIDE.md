@@ -209,29 +209,18 @@ The following will cause a submission to be rejected regardless of score:
 
 ---
 
-## wRTC Bridge (Coming Soon)
+## wRTC Bridge (Discontinued)
 
-wRTC is an ERC-20 token on Base L2 that wraps RTC for use on public
-Ethereum infrastructure.
+wRTC (wrapped RTC) was a past experiment in representing RTC on an
+external chain. **The wrapped token and its bridge are shut down.** There
+is no supported way to move RTC off RustChain, and no bounty for building
+one. RTC lives entirely on the RustChain attestation chain and is earned,
+not bought.
 
-| Property | Value |
-|----------|-------|
-| Standard | ERC-20 |
-| Chain | Base L2 (Ethereum layer-2) |
-| Decimals | 6 |
-| Name | Wrapped RTC |
-| Symbol | wRTC |
-| Bridge type | Custodial (mint/burn) |
-
-**How the bridge will work:**
-
-1. **RTC to wRTC**: Lock RTC on the RustChain side. Bridge operator mints
-   equivalent wRTC on Base L2.
-2. **wRTC to RTC**: Burn wRTC on Base L2. Bridge operator releases
-   equivalent RTC on RustChain.
-
-The bridge is under active development. Until it launches, RTC lives
-entirely on the RustChain attestation chain.
+Do not send RTC or any other asset to an address that claims to be a wRTC
+contract, bridge, or liquidity pool. Payouts are only ever made to a
+RustChain wallet name or a canonical RTC address (`RTC` + exactly 40
+lowercase hex characters).
 
 ---
 
