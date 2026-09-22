@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-21T12:36:53.575384+00:00",
+  "updated_at": "2026-09-22T11:23:40.188519+00:00",
   "total_count": 273,
   "bounties": [
     {
@@ -1134,8 +1134,7 @@
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16271",
       "labels": [
         "bounty",
-        "open",
-        "claimed"
+        "open"
       ],
       "created_at": "2026-07-19T23:38:33Z",
       "reward_rtc": 35.0,
@@ -4580,7 +4579,8 @@
       "labels": [
         "bounty",
         "open",
-        "community"
+        "community",
+        "claimed"
       ],
       "created_at": "2026-02-12T03:04:09Z",
       "reward_rtc": 2.0,
