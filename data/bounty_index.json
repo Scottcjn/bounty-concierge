@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-22T11:23:40.188519+00:00",
+  "updated_at": "2026-09-23T11:20:36.799029+00:00",
   "total_count": 273,
   "bounties": [
     {
@@ -1157,7 +1157,6 @@
         "multi-claim",
         "propagation",
         "content",
-        "claimed",
         "distribution"
       ],
       "created_at": "2026-07-19T21:33:52Z",
@@ -1232,7 +1231,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "number": 427,
       "title": "[BOUNTY] Create a RustChain Explainer Video \u2014 33 RTC",
-      "body": "Create a 2-5 minute video explaining RustChain's Proof of Antiquity consensus. Must cover: what makes it different from PoW/PoS, how hardware fingerprinting works, the vintage hardware bonus system, and how to start mining. Upload to BoTTube (bottube.ai) AND YouTube. 50 RTC on publication.",
+      "body": "> **Price update 2026-09-22:** this bounty now pays **33 RTC** (matching the title). As adoption grows, the lower price is the current price.\n\nCreate a 2-5 minute video explaining RustChain's Proof of Antiquity consensus. Must cover: what makes it different from PoW/PoS, how hardware fingerprinting works, the vintage hardware bonus system, and how to start mining. Upload to BoTTube (bottube.ai) AND YouTube. 33 RTC on publication.\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/427",
       "labels": [
         "bounty",
@@ -1734,7 +1733,8 @@
       "labels": [
         "bounty",
         "community",
-        "development"
+        "development",
+        "claimed"
       ],
       "created_at": "2026-03-07T00:15:24Z",
       "reward_rtc": 20.0,
@@ -2234,8 +2234,7 @@
         "bug",
         "bounty",
         "open",
-        "standard",
-        "claimed"
+        "standard"
       ],
       "created_at": "2026-07-19T21:43:45Z",
       "reward_rtc": 12.0,
@@ -2255,8 +2254,7 @@
         "bug",
         "bounty",
         "open",
-        "standard",
-        "claimed"
+        "standard"
       ],
       "created_at": "2026-07-19T21:43:36Z",
       "reward_rtc": 10.0,
@@ -2773,8 +2771,7 @@
         "bounty",
         "open",
         "micro",
-        "testing",
-        "claimed"
+        "testing"
       ],
       "created_at": "2026-07-19T21:43:49Z",
       "reward_rtc": 8.0,
@@ -2851,8 +2848,7 @@
         "bug",
         "bounty",
         "open",
-        "micro",
-        "claimed"
+        "micro"
       ],
       "created_at": "2026-07-19T21:43:46Z",
       "reward_rtc": 7.0,
@@ -3174,8 +3170,7 @@
         "micro",
         "multi-claim",
         "community",
-        "content",
-        "claimed"
+        "content"
       ],
       "created_at": "2026-07-19T21:34:01Z",
       "reward_rtc": 5.0,
@@ -4005,7 +4000,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "number": 443,
       "title": "Write a Review of RustChain \u2014 3 RTC (Good First Issue)",
-      "body": "## Bounty: Write a One-Paragraph Review of RustChain \u2014 5 RTC\n\n**Difficulty:** Beginner (no coding required)\n**Reward:** 5 RTC (+ bonus 2 RTC for posting on social media)\n**Time:** ~15 minutes\n\nWe want honest feedback! Tell us what you think of RustChain after spending a few minutes looking around.\n\n---\n\n### Requirements\n\n- Be a member of the RustChain Discord server\n- A GitHub account to post your comment\n- Willingness to give honest feedback (positive OR negative \u2014 we want real opinions)\n\n---\n\n### Step-by-Step Instructions\n\n**Step 1: Visit these resources (pick at least 2)**\n\n- **Website**: https://rustchain.org \u2014 Read about what RustChain is\n- **Block Explorer**: https://50.28.86.131/explorer \u2014 See the live blockchain\n- **Web Wallet**: http://50.28.86.131:8070/wallet.html \u2014 Try creating a wallet\n- **PyPI Package**: https://pypi.org/project/clawrtc/ \u2014 Read the miner description\n- **GitHub Repos**: https://github.com/Scottcjn/Rustchain \u2014 Browse the code\n\n**Step 2: Write your review**\n\nWrite **2-3 honest sentences** about your impression. Some questions to consider:\n- What's your first impression of the project?\n- Is anything confusing or unclear?\n- What do you find interesting or unique?\n- Would you recommend it to a friend? Why or why not?\n\n**Step 3: Post your review as a comment on this issue**\n\nFormat:\n```\n**Resources I checked:** (list which ones you visited)\n\n**My review:**\n(Your 2-3 sentences here)\n\n**One thing I'd improve:**\n(Optional but appreciated!)\n```\n\n---\n\n### What We're Looking For\n\n- **Genuine opinions** \u2014 not AI-generated marketing copy\n- **Honest criticism is welcome** \u2014 \"the docs are confusing\" is valuable feedback\n- **Your own words** \u2014 we can tell the difference between a real review and ChatGPT output\n- **2-3 sentences minimum** \u2014 a single word doesn't count\n\n### What Doesn't Count\n\n- Copy-pasting text from the website back at us\n- Generic AI-generated reviews (\"RustChain is a revolutionary blockchain...\")\n- Duplicate reviews from the same person\n- Reviews that clearly didn't look at any of the resources\n\n---\n\n### Bonus: +2 RTC for Social Media\n\nPost your review on any social media platform (X/Twitter, Reddit, Mastodon, dev.to, etc.) and link it in your comment for an extra **2 RTC**.\n\nTag us if you're on X: **@RustchainPOA**\n\n---\n\n### How to Get Paid\n\n1. Post your review as a comment below\n2. Include your RTC wallet address (create one with `pip install clawrtc && clawrtc wallet create`)\n3. RTC sent after review is verified as genuine\n\n---\n\n*This is a recurring bounty \u2014 every genuine review earns 5 RTC.*",
+      "body": "> **Price update 2026-09-22:** this bounty now pays **3 RTC** (matching the title). As adoption grows, the lower price is the current price.\n\n## Bounty: Write a One-Paragraph Review of RustChain \u2014 3 RTC\n\n**Difficulty:** Beginner (no coding required)\n**Reward:** 3 RTC (+ bonus 2 RTC for posting on social media)\n**Time:** ~15 minutes\n\nWe want honest feedback! Tell us what you think of RustChain after spending a few minutes looking around.\n\n---\n\n### Requirements\n\n- Be a member of the RustChain Discord server\n- A GitHub account to post your comment\n- Willingness to give honest feedback (positive OR negative \u2014 we want real opinions)\n\n---\n\n### Step-by-Step Instructions\n\n**Step 1: Visit these resources (pick at least 2)**\n\n- **Website**: https://rustchain.org \u2014 Read about what RustChain is\n- **Block Explorer**: https://50.28.86.131/explorer \u2014 See the live blockchain\n- **Web Wallet**: http://50.28.86.131:8070/wallet.html \u2014 Try creating a wallet\n- **PyPI Package**: https://pypi.org/project/clawrtc/ \u2014 Read the miner description\n- **GitHub Repos**: https://github.com/Scottcjn/Rustchain \u2014 Browse the code\n\n**Step 2: Write your review**\n\nWrite **2-3 honest sentences** about your impression. Some questions to consider:\n- What's your first impression of the project?\n- Is anything confusing or unclear?\n- What do you find interesting or unique?\n- Would you recommend it to a friend? Why or why not?\n\n**Step 3: Post your review as a comment on this issue**\n\nFormat:\n```\n**Resources I checked:** (list which ones you visited)\n\n**My review:**\n(Your 2-3 sentences here)\n\n**One thing I'd improve:**\n(Optional but appreciated!)\n```\n\n---\n\n### What We're Looking For\n\n- **Genuine opinions** \u2014 not AI-generated marketing copy\n- **Honest criticism is welcome** \u2014 \"the docs are confusing\" is valuable feedback\n- **Your own words** \u2014 we can tell the difference between a real review and ChatGPT output\n- **2-3 sentences minimum** \u2014 a single word doesn't count\n\n### What Doesn't Count\n\n- Copy-pasting text from the website back at us\n- Generic AI-generated reviews (\"RustChain is a revolutionary blockchain...\")\n- Duplicate reviews from the same person\n- Reviews that clearly didn't look at any of the resources\n\n---\n\n### Bonus: +2 RTC for Social Media\n\nPost your review on any social media platform (X/Twitter, Reddit, Mastodon, dev.to, etc.) and link it in your comment for an extra **2 RTC**.\n\nTag us if you're on X: **@RustchainPOA**\n\n---\n\n### How to Get Paid\n\n1. Post your review as a comment below\n2. Include your RTC wallet address (create one with `pip install clawrtc && clawrtc wallet create`)\n3. RTC sent after review is verified as genuine\n\n---\n\n*This is a recurring bounty \u2014 every genuine review earns 3 RTC.*\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/443",
       "labels": [
         "good first issue",
@@ -4026,7 +4021,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "number": 442,
       "title": "Test the Miner on Your Machine \u2014 3 RTC (Good First Issue)",
-      "body": "## Bounty: Test the RustChain Miner and Report Results \u2014 5 RTC\n\n**Difficulty:** Beginner (no coding required)\n**Reward:** 5 RTC (+ bonus 10 RTC if you run for 24 hours)\n**Time:** ~10 minutes for the basic bounty\n\nHelp us test the miner on different hardware! Every unique hardware report helps us improve compatibility.\n\n---\n\n### Requirements\n\n- Python 3.8+ installed on your machine\n- Any operating system (Linux, macOS, Windows)\n- Be a member of the RustChain Discord server\n\n---\n\n### Step-by-Step Instructions\n\n**Step 1: Install the miner**\n\nOpen your terminal (Command Prompt on Windows, Terminal on Mac/Linux) and run:\n\n```bash\npip install clawrtc\n```\n\nIf that doesn't work, try:\n```bash\npip3 install clawrtc\n```\n\n**Step 2: Run a dry-run test**\n\nThis does NOT actually mine \u2014 it just tests your hardware and shows what would happen:\n\n```bash\nclawrtc mine --dry-run\n```\n\n**Step 3: Copy the output**\n\nThe dry-run will show you:\n- Your detected CPU and architecture\n- Hardware fingerprint check results\n- What your mining rewards would look like\n\nCopy the FULL output.\n\n**Step 4: Post your results as a comment**\n\nCome back to THIS issue and leave a comment with:\n\n1. **Your OS**: (e.g., Ubuntu 22.04, Windows 11, macOS 14)\n2. **Your CPU**: (e.g., Ryzen 5 5600X, Intel i7-12700, Apple M2)\n3. **Python version**: (run `python3 --version`)\n4. **The full dry-run output** (paste in a code block using triple backticks)\n5. **Any errors you encountered**\n\nExample comment format:\n```\n**OS:** Ubuntu 22.04\n**CPU:** AMD Ryzen 5 5600X\n**Python:** 3.10.12\n\n**Output:**\n(paste your dry-run output here)\n\n**Notes:** Everything worked fine!\n```\n\n---\n\n### Bonus: 10 RTC for 24-Hour Mining\n\nWant to earn more? Actually run the miner for 24 hours:\n\n```bash\nclawrtc wallet create\nclawrtc mine\n```\n\nAfter 24 hours, post a screenshot or log snippet showing your miner has been running. That's worth an additional **10 RTC** on top of the 5 RTC base bounty.\n\n---\n\n### How to Get Paid\n\nAfter posting your results:\n1. Create a wallet if you haven't: `clawrtc wallet create`\n2. Post your wallet address in your comment\n3. RTC will be sent after review\n\n---\n\n### Troubleshooting\n\n**\"pip not found\"**: Install Python from python.org, make sure to check \"Add to PATH\" during install.\n\n**\"Permission denied\"**: Try `pip install --user clawrtc` or use a virtual environment.\n\n**\"Connection refused\" on dry-run**: That's fine! Dry-run tests hardware locally, it doesn't need to connect.\n\n**Windows users**: Use PowerShell or Command Prompt, not Git Bash.\n\n---\n\n*This is a recurring bounty \u2014 every unique hardware report earns 5 RTC.*",
+      "body": "> **Price update 2026-09-22:** this bounty now pays **3 RTC** (matching the title). As adoption grows, the lower price is the current price.\n\n## Bounty: Test the RustChain Miner and Report Results \u2014 3 RTC\n\n**Difficulty:** Beginner (no coding required)\n**Reward:** 3 RTC (+ bonus 10 RTC if you run for 24 hours)\n**Time:** ~10 minutes for the basic bounty\n\nHelp us test the miner on different hardware! Every unique hardware report helps us improve compatibility.\n\n---\n\n### Requirements\n\n- Python 3.8+ installed on your machine\n- Any operating system (Linux, macOS, Windows)\n- Be a member of the RustChain Discord server\n\n---\n\n### Step-by-Step Instructions\n\n**Step 1: Install the miner**\n\nOpen your terminal (Command Prompt on Windows, Terminal on Mac/Linux) and run:\n\n```bash\npip install clawrtc\n```\n\nIf that doesn't work, try:\n```bash\npip3 install clawrtc\n```\n\n**Step 2: Run a dry-run test**\n\nThis does NOT actually mine \u2014 it just tests your hardware and shows what would happen:\n\n```bash\nclawrtc mine --dry-run\n```\n\n**Step 3: Copy the output**\n\nThe dry-run will show you:\n- Your detected CPU and architecture\n- Hardware fingerprint check results\n- What your mining rewards would look like\n\nCopy the FULL output.\n\n**Step 4: Post your results as a comment**\n\nCome back to THIS issue and leave a comment with:\n\n1. **Your OS**: (e.g., Ubuntu 22.04, Windows 11, macOS 14)\n2. **Your CPU**: (e.g., Ryzen 5 5600X, Intel i7-12700, Apple M2)\n3. **Python version**: (run `python3 --version`)\n4. **The full dry-run output** (paste in a code block using triple backticks)\n5. **Any errors you encountered**\n\nExample comment format:\n```\n**OS:** Ubuntu 22.04\n**CPU:** AMD Ryzen 5 5600X\n**Python:** 3.10.12\n\n**Output:**\n(paste your dry-run output here)\n\n**Notes:** Everything worked fine!\n```\n\n---\n\n### Bonus: 10 RTC for 24-Hour Mining\n\nWant to earn more? Actually run the miner for 24 hours:\n\n```bash\nclawrtc wallet create\nclawrtc mine\n```\n\nAfter 24 hours, post a screenshot or log snippet showing your miner has been running. That's worth an additional **10 RTC** on top of the 3 RTC base bounty.\n\n---\n\n### How to Get Paid\n\nAfter posting your results:\n1. Create a wallet if you haven't: `clawrtc wallet create`\n2. Post your wallet address in your comment\n3. RTC will be sent after review\n\n---\n\n### Troubleshooting\n\n**\"pip not found\"**: Install Python from python.org, make sure to check \"Add to PATH\" during install.\n\n**\"Permission denied\"**: Try `pip install --user clawrtc` or use a virtual environment.\n\n**\"Connection refused\" on dry-run**: That's fine! Dry-run tests hardware locally, it doesn't need to connect.\n\n**Windows users**: Use PowerShell or Command Prompt, not Git Bash.\n\n---\n\n*This is a recurring bounty \u2014 every unique hardware report earns 3 RTC.*\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/442",
       "labels": [
         "good first issue",
@@ -4064,7 +4059,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "number": 374,
       "title": "[BOUNTY] First Attest Bonus (Latest Miner Required) - 3 RTC",
-      "body": "## [BOUNTY] First Attest Bonus (Latest Miner Required)\n\nWe want more real miners online. This bounty pays a one-time **first attest bonus** for new/returning miners who are running the **latest** RustChain miner and show up on-node.\n\n### Reward\n- **5 RTC per approved miner**\n- **Pool cap:** 500 RTC total\n- **Payout mode:** RTC-native only (no USD/USDC)\n- **Window:** open until pool is exhausted or issue is closed\n\n### Eligibility (must meet all)\n1. Run the latest miner from `main` in `Scottcjn/Rustchain`.\n2. Miner must appear in `GET /api/miners` on the primary node.\n3. Miner must be on real hardware (no VM/emulator abuse).\n4. Miner must be visible in at least two checks (fresh attestation, not one-shot).\n5. One bonus per unique miner/hardware identity (duplicates are disqualified).\n\n### Quick Start\n```bash\ngit clone https://github.com/Scottcjn/Rustchain.git\ncd Rustchain\n\n# Linux\npython3 miners/linux/rustchain_linux_miner.py --wallet YOUR_MINER_ID\n\n# Verify\ncurl -sk https://50.28.86.131/health\ncurl -sk https://50.28.86.131/api/miners\ncurl -sk \"https://50.28.86.131/wallet/balance?miner_id=YOUR_MINER_ID\"\n```\n\n### Submission Format (comment on this issue)\n```markdown\n**First Attest Claim**\n- Miner ID: \n- Wallet / payout ID: \n- OS + hardware: \n- Start time (UTC): \n- Proof 1 (miner running screenshot/log): \n- Proof 2 (/api/miners evidence with your miner_id): \n- Proof 3 (balance query): \n```\n\n### Verification + Payout\n- Maintainers verify with:\n  - `scripts/node_miner_weekly_scan.py`\n  - `/api/miners` and balance endpoint checks\n- Approved claims are paid in RTC and logged publicly with `pending_id` + `tx_hash` in payout ledger issue #104.\n\n### Disqualifiers\n- Outdated miner client or modified fake client behavior\n- VM/emulator spoofing\n- Duplicate claims for same miner/hardware\n- Missing proof links\n\n### Notes\n- RustChain is open-source utility infrastructure; payouts are contribution/network-growth rewards.\n- No promise of token price/value is made or implied.\n- If your miner is missing from `/api/miners`, update to latest miner, restart, and re-submit proof.\n\nNode hosts also welcome. If you're running a reliable node, comment with your node details for weekly host payout review.\n",
+      "body": "> **Price update 2026-09-22:** this bounty now pays **3 RTC** (matching the title). As adoption grows, the lower price is the current price.\n\n## [BOUNTY] First Attest Bonus (Latest Miner Required)\n\nWe want more real miners online. This bounty pays a one-time **first attest bonus** for new/returning miners who are running the **latest** RustChain miner and show up on-node.\n\n### Reward\n- **3 RTC per approved miner**\n- **Pool cap:** 500 RTC total\n- **Payout mode:** RTC-native only (no USD/USDC)\n- **Window:** open until pool is exhausted or issue is closed\n\n### Eligibility (must meet all)\n1. Run the latest miner from `main` in `Scottcjn/Rustchain`.\n2. Miner must appear in `GET /api/miners` on the primary node.\n3. Miner must be on real hardware (no VM/emulator abuse).\n4. Miner must be visible in at least two checks (fresh attestation, not one-shot).\n5. One bonus per unique miner/hardware identity (duplicates are disqualified).\n\n### Quick Start\n```bash\ngit clone https://github.com/Scottcjn/Rustchain.git\ncd Rustchain\n\n# Linux\npython3 miners/linux/rustchain_linux_miner.py --wallet YOUR_MINER_ID\n\n# Verify\ncurl -sk https://50.28.86.131/health\ncurl -sk https://50.28.86.131/api/miners\ncurl -sk \"https://50.28.86.131/wallet/balance?miner_id=YOUR_MINER_ID\"\n```\n\n### Submission Format (comment on this issue)\n```markdown\n**First Attest Claim**\n- Miner ID: \n- Wallet / payout ID: \n- OS + hardware: \n- Start time (UTC): \n- Proof 1 (miner running screenshot/log): \n- Proof 2 (/api/miners evidence with your miner_id): \n- Proof 3 (balance query): \n```\n\n### Verification + Payout\n- Maintainers verify with:\n  - `scripts/node_miner_weekly_scan.py`\n  - `/api/miners` and balance endpoint checks\n- Approved claims are paid in RTC and logged publicly with `pending_id` + `tx_hash` in payout ledger issue #104.\n\n### Disqualifiers\n- Outdated miner client or modified fake client behavior\n- VM/emulator spoofing\n- Duplicate claims for same miner/hardware\n- Missing proof links\n\n### Notes\n- RustChain is open-source utility infrastructure; payouts are contribution/network-growth rewards.\n- No promise of token price/value is made or implied.\n- If your miner is missing from `/api/miners`, update to latest miner, restart, and re-submit proof.\n\nNode hosts also welcome. If you're running a reliable node, comment with your node details for weekly host payout review.\n\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/374",
       "labels": [
         "bounty",
@@ -5079,7 +5074,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "number": 378,
       "title": "[MICRO-BOUNTY] Star BoTTube Repo - 1 RTC (Pool: 133 RTC)",
-      "body": "Star [Scottcjn/bottube](https://github.com/Scottcjn/bottube) and claim 2 RTC.\n\n**Claim here**: https://github.com/Scottcjn/bottube/issues/166\n\n**Combo bonus**: Also star [Scottcjn/Rustchain](https://github.com/Scottcjn/Rustchain) for +2 RTC more ([claim #47](https://github.com/Scottcjn/Rustchain/issues/47)).\n\n**Goal**: 100 stars on each repo for awesome-list eligibility (awesome-python, awesome-blockchain, awesome-selfhosted).\n\nCurrent: Rustchain 47/100, BoTTube 39/100.\n\n\n---\n\n### \u2696\ufe0f Bounty Requirements (FTC 16 CFR \u00a7465.5 + \u00a7255.5 compliance)\n\n**A star alone does NOT qualify.** We pay for genuine engagement, not for indicators. To claim this bounty you must post a comment (on this issue or a linked post) containing:\n\n1. **What you reviewed** \u2014 at least one file, PR, feature, or doc section you actually looked at. Link it.\n2. **Why you liked it** \u2014 a specific, non-generic reason. \"Great project\" does not qualify.\n3. **Disclosure** \u2014 include the line: `I received RTC compensation for this review.` This keeps your star a transparent endorsement, not a purchased indicator.\n\nStars without a review comment will not be paid. Copy-pasted, AI-templated, or obviously recycled reviews will not be paid. This rule applies retroactively: unreviewed stars from before this update are grandfathered as goodwill but earn no future RTC.\n\n**Why this matters:** Elyan Labs is here to grow real engagement in mining and coding. A star backed by a real review is worth more to the network than a thousand drive-by clicks. This brings us into compliance with the FTC Consumer Review Rule (effective Oct 21, 2024), and \u2014 more importantly \u2014 keeps the signal honest.\n",
+      "body": "> **Price update 2026-09-22:** this bounty now pays **1 RTC** (matching the title). As adoption grows, the lower price is the current price.\n\nStar [Scottcjn/bottube](https://github.com/Scottcjn/bottube) and claim 1 RTC.\n\n**Claim here**: comment on this issue (bottube#166 is closed).\n\n~~Combo bonus~~: the Rustchain star bounty (#47) is closed.\n\n**Goal**: 100 stars on each repo for awesome-list eligibility (awesome-python, awesome-blockchain, awesome-selfhosted).\n\nCurrent: Rustchain 47/100, BoTTube 39/100.\n\n\n---\n\n### \u2696\ufe0f Bounty Requirements (FTC 16 CFR \u00a7465.5 + \u00a7255.5 compliance)\n\n**A star alone does NOT qualify.** We pay for genuine engagement, not for indicators. To claim this bounty you must post a comment (on this issue or a linked post) containing:\n\n1. **What you reviewed** \u2014 at least one file, PR, feature, or doc section you actually looked at. Link it.\n2. **Why you liked it** \u2014 a specific, non-generic reason. \"Great project\" does not qualify.\n3. **Disclosure** \u2014 include the line: `I received RTC compensation for this review.` This keeps your star a transparent endorsement, not a purchased indicator.\n\nStars without a review comment will not be paid. Copy-pasted, AI-templated, or obviously recycled reviews will not be paid. This rule applies retroactively: unreviewed stars from before this update are grandfathered as goodwill but earn no future RTC.\n\n**Why this matters:** Elyan Labs is here to grow real engagement in mining and coding. A star backed by a real review is worth more to the network than a thousand drive-by clicks. This brings us into compliance with the FTC Consumer Review Rule (effective Oct 21, 2024), and \u2014 more importantly \u2014 keeps the signal honest.\n\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/378",
       "labels": [
         "bounty",
