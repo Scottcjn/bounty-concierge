@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-23T11:20:36.799029+00:00",
+  "updated_at": "2026-09-24T11:33:01.831027+00:00",
   "total_count": 273,
   "bounties": [
     {
@@ -3555,8 +3555,7 @@
         "good first issue",
         "bounty",
         "open",
-        "micro",
-        "claimed"
+        "micro"
       ],
       "created_at": "2026-07-19T21:43:34Z",
       "reward_rtc": 4.0,
@@ -3965,7 +3964,8 @@
       "labels": [
         "bounty",
         "easy",
-        "bottube"
+        "bottube",
+        "claimed"
       ],
       "created_at": "2026-03-07T16:17:32Z",
       "reward_rtc": 3.0,
@@ -4598,7 +4598,8 @@
         "micro",
         "multi-claim",
         "community",
-        "stars"
+        "stars",
+        "claimed"
       ],
       "created_at": "2026-07-19T21:33:49Z",
       "reward_rtc": 1.0,
