@@ -8,10 +8,17 @@ migrate`` CLI subcommand.
 
 import json
 import os
+import re
 import sqlite3
 import subprocess
 
 from concierge import config
+
+# Discord snowflakes are 17-20 digit integers. We refuse anything else
+# before using the value in a SQL fragment -- this is a defence-in-depth
+# guard that backs the parameterised queries introduced below.
+_DISCORD_USER_ID_RE = re.compile(r"^\d{17,20}$")
+_MIN_BALANCE_MAX = 1_000_000_000.0
 
 # ---------------------------------------------------------------------------
 # Local migration tracking
@@ -113,11 +120,14 @@ def _ssh_cmd():
     ]
 
 
-def _ssh_run_script(script):
+def _ssh_run_script(script, extra_stdin=""):
     """Run a Python script on the NAS via SSH stdin pipe.
 
     Piping via stdin avoids all shell quoting issues with parentheses,
     semicolons, and nested quotes that break when passed as -c args.
+    The optional *extra_stdin* string is prepended before the script --
+    it is the channel used to feed parameter values into the remote script
+    without interpolating them into the SQL text on the client side.
 
     Returns:
         (stdout, stderr, returncode) tuple.
@@ -128,7 +138,8 @@ def _ssh_run_script(script):
     try:
         result = subprocess.run(
             _ssh_cmd(),
-            input=script, capture_output=True, text=True, timeout=30,
+            input=(extra_stdin or "") + script,
+            capture_output=True, text=True, timeout=30,
         )
         return (result.stdout.strip(), result.stderr.strip(), result.returncode)
     except subprocess.TimeoutExpired:
@@ -137,18 +148,31 @@ def _ssh_run_script(script):
         return ("", "sshpass not installed (apt install sshpass)", 1)
 
 
-def _ssh_query(sql):
-    """Run a SQL query on the NAS via SSH and return parsed JSON rows."""
+def _ssh_query(sql, params=()):
+    """Run a parameterised SQL query on the NAS via SSH and return parsed JSON rows.
+
+    *sql* must be a static query string with `?` placeholders. *params* is
+    a tuple of values that are passed to the remote script via stdin as a
+    single JSON line and bound with sqlite3 parameter substitution -- this
+    closes the SQL injection that existed when caller-supplied values were
+    interpolated into the SQL text with `%` formatting.
+    """
     db_path = config.DISCORD_DB_PATH
+    # NOTE: sql is a static literal from our own code; we wrap it in repr()
+    # to make the f-string produce a safe Python literal regardless of any
+    # inner quotes the SQL happens to contain.
+    sql_repr = repr(sql)
     script = (
-        "import sqlite3, json\n"
+        "import json, sqlite3\n"
+        "params = json.loads(__import__('sys').stdin.readline())\n"
         f"c = sqlite3.connect({db_path!r})\n"
         "c.row_factory = sqlite3.Row\n"
-        f"rows = c.execute({sql!r}).fetchall()\n"
+        f"rows = c.execute({sql_repr}, params).fetchall()\n"
         "print(json.dumps([dict(r) for r in rows]))\n"
         "c.close()\n"
     )
-    stdout, stderr, rc = _ssh_run_script(script)
+    param_payload = json.dumps(list(params)) + "\n"
+    stdout, stderr, rc = _ssh_run_script(script, extra_stdin=param_payload)
     if rc != 0:
         return {"error": f"SSH query failed: {stderr}"}
     try:
@@ -164,11 +188,13 @@ def get_discord_balance(user_id):
         Dict with user_id, balance, total_earned, total_spent,
         or an error dict.
     """
+    if not _DISCORD_USER_ID_RE.match(str(user_id or "")):
+        return {"error": f"Invalid Discord user id: {user_id!r}"}
     sql = (
         "SELECT user_id, balance, total_earned, total_spent "
-        "FROM balances WHERE user_id = '%s'" % user_id
+        "FROM balances WHERE user_id = ?"
     )
-    result = _ssh_query(sql)
+    result = _ssh_query(sql, (str(user_id),))
     if isinstance(result, dict) and "error" in result:
         return result
     if not result:
@@ -182,39 +208,61 @@ def list_discord_holders(min_balance=0.1):
     Returns:
         List of dicts sorted by balance descending, or an error dict.
     """
+    try:
+        min_balance_f = float(min_balance)
+    except (TypeError, ValueError):
+        return {"error": f"Invalid min_balance: {min_balance!r}"}
+    if min_balance_f < 0 or min_balance_f > _MIN_BALANCE_MAX:
+        return {"error": f"min_balance out of range: {min_balance_f}"}
     sql = (
         "SELECT user_id, balance, total_earned, total_spent "
-        "FROM balances WHERE balance >= %s "
-        "ORDER BY balance DESC" % min_balance
+        "FROM balances WHERE balance >= ? "
+        "ORDER BY balance DESC"
     )
-    return _ssh_query(sql)
+    return _ssh_query(sql, (min_balance_f,))
 
 
 def debit_discord_balance(user_id, amount):
     """Debit a user's Discord economy balance and record the transaction.
 
-    Runs UPDATE + INSERT in the same script for atomicity.
+    Runs UPDATE + INSERT in the same script for atomicity. Both *user_id*
+    and *amount* are validated client-side and bound via sqlite3 parameters
+    on the remote side so the values never appear in the SQL text.
 
     Returns:
         True on success, error dict on failure.
     """
+    if not _DISCORD_USER_ID_RE.match(str(user_id or "")):
+        return {"error": f"Invalid Discord user id: {user_id!r}"}
+    try:
+        amount_f = float(amount)
+    except (TypeError, ValueError):
+        return {"error": f"Invalid amount: {amount!r}"}
+    if amount_f <= 0 or amount_f > _MIN_BALANCE_MAX:
+        return {"error": f"amount out of range: {amount_f}"}
     db_path = config.DISCORD_DB_PATH
     script = (
-        "import sqlite3\n"
+        "import json, sqlite3\n"
+        "params = json.loads(__import__('sys').stdin.readline())\n"
         f"c = sqlite3.connect({db_path!r})\n"
-        f"c.execute('UPDATE balances SET balance = balance - ?, "
-        f"total_spent = total_spent + ? WHERE user_id = ?', "
-        f"({amount}, {amount}, {user_id!r}))\n"
-        f"c.execute('INSERT INTO transactions "
-        f"(from_user, to_user, amount, type, description) "
-        f"VALUES (?, ?, ?, ?, ?)', "
-        f"({user_id!r}, 'CHAIN_MIGRATION', {amount}, "
-        f"'migration', 'Migrated to on-chain RTC wallet'))\n"
+        "c.execute(\n"
+        "    'UPDATE balances SET balance = balance - ?,\n"
+        "     total_spent = total_spent + ? WHERE user_id = ?',\n"
+        "    (params[1], params[1], params[0]),\n"
+        ")\n"
+        "c.execute(\n"
+        "    'INSERT INTO transactions\n"
+        "     (from_user, to_user, amount, type, description)\n"
+        "     VALUES (?, ?, ?, ?, ?)',\n"
+        "    (params[0], 'CHAIN_MIGRATION', params[1],\n"
+        "     'migration', 'Migrated to on-chain RTC wallet'),\n"
+        ")\n"
         "c.commit()\n"
         "print('OK')\n"
         "c.close()\n"
     )
-    stdout, stderr, rc = _ssh_run_script(script)
+    payload = json.dumps([str(user_id), amount_f]) + "\n"
+    stdout, stderr, rc = _ssh_run_script(script, extra_stdin=payload)
     if rc != 0:
         return {"error": f"Debit failed: {stderr}"}
     if "OK" in stdout:
