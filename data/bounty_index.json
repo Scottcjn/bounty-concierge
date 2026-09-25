@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-24T11:33:01.831027+00:00",
-  "total_count": 273,
+  "updated_at": "2026-09-25T11:39:23.510039+00:00",
+  "total_count": 272,
   "bounties": [
     {
       "repo": "Scottcjn/rustchain-bounties",
@@ -3546,28 +3546,6 @@
     },
     {
       "repo": "Scottcjn/rustchain-bounties",
-      "number": 16249,
-      "title": "[BOUNTY: 4 RTC] Document ram-coffers fallback behavior on non-POWER8 / single-NUMA systems (ram-coffers#664)",
-      "body": "**Repo:** [Scottcjn/ram-coffers](https://github.com/Scottcjn/ram-coffers)\n**Rate:** 4 RTC (micro / good first issue)\n\n## The real gap\nOpen issue Scottcjn/ram-coffers#664 asks: what happens on non-POWER8 or single-NUMA-node systems? The README documents the 4-node POWER8 S824 topology only. Anyone trying the headers on x86 or a single-socket box has no documented expectation (graceful fallback? no-op? compile error?).\n\n## Deliverable\nA docs PR that adds a **\"Fallback behavior\"** section to the README (or `docs/`) covering:\n1. Single-NUMA-node systems \u2014 what the coffer routing does when there's only node 0.\n2. Non-POWER8 architectures \u2014 which parts are POWER8-specific (`mftb`, `dcbt`, vec_perm) and what happens elsewhere (guarded by `#ifdef`? refuse to compile? scalar path?).\n3. A short \"will this build on my machine\" matrix (POWER8 multi-node / POWER8 single-node / x86_64 / aarch64).\n\nThis requires actually reading the headers (`ggml-ram-coffers.h`, `ggml-coffer-mmap.h`, `ggml-neuromorphic-coffers.h`) and reporting what the code truly does \u2014 not guessing. Cite line numbers.\n\n## Acceptance criteria\n- [ ] Each claim in the doc is backed by a header/line reference.\n- [ ] Covers all 3 points above plus the build matrix.\n- [ ] PR closes Scottcjn/ram-coffers#664.\n\n## How to claim\n1. Comment here that you're taking it (soft lock, 7 days \u2014 no progress = re-opened to others).\n2. Open a PR in the target repo that closes the referenced issue(s). Link this bounty issue in the PR description.\n3. When the PR is merged, comment here with the PR link and your **RTC wallet address**. Payout follows on the RustChain ledger.\n\n## Anti-farm rules\n- First **mergeable** PR wins. Duplicate/late PRs are closed without payout.\n- Untested boilerplate, AI-slop that doesn't run, or PRs that just restate the issue are closed without payout and may disqualify the wallet from future bounties.\n- One payout per deliverable per person. Sock-puppet wallets forfeit all claims.\n- \"Works on my machine\" isn't proof \u2014 acceptance criteria below must be demonstrably met (CI, test output, or reproduction steps in the PR).\n",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/16249",
-      "labels": [
-        "documentation",
-        "good first issue",
-        "bounty",
-        "open",
-        "micro"
-      ],
-      "created_at": "2026-07-19T21:43:34Z",
-      "reward_rtc": 4.0,
-      "difficulty": "micro",
-      "skills": [
-        "documentation",
-        "javascript",
-        "rust"
-      ]
-    },
-    {
-      "repo": "Scottcjn/rustchain-bounties",
       "number": 103,
       "title": "[MICRO-BOUNTY] Follow @RustchainPOA on X + Upvote/Like + Join BoTTube (4 RTC)",
       "body": "## X + BoTTube Social Bounty\n\nFollow the RustChain account on X, support a post, and join BoTTube.\n\n**Reward:** 4 RTC per valid claim  \n**Pool:** 200 RTC (first 50 valid claims)\n\n---\n\n### Required Actions\n1. Follow **@RustchainPOA** on X (aka `@rustchianpoa` typo variant seen in chat).  \n2. Upvote/Like one recent RustChainPOA X post (repost optional bonus signal).  \n3. Join BoTTube if you haven't yet (create your BoTTube account).\n\n### Claim Format\nComment on this issue with:\n- GitHub username\n- X username\n- BoTTube username\n- RTC wallet name\n- Proof links/screenshots:\n  - Follow proof\n  - Like/upvote proof\n  - BoTTube profile proof\n\n### Rules\n- One claim per person\n- No fake/alt/spam accounts\n- Accounts must be real and verifiable\n- Low-effort or fraudulent claims are disqualified\n- Maintainer decision is final\n\n### Verification\nMaintainers verify X follow/engagement + BoTTube account before queueing payout.\n\n---\n\nSupport the ecosystem, earn RTC.\n",
@@ -5078,8 +5056,7 @@
       "body": "> **Price update 2026-09-22:** this bounty now pays **1 RTC** (matching the title). As adoption grows, the lower price is the current price.\n\nStar [Scottcjn/bottube](https://github.com/Scottcjn/bottube) and claim 1 RTC.\n\n**Claim here**: comment on this issue (bottube#166 is closed).\n\n~~Combo bonus~~: the Rustchain star bounty (#47) is closed.\n\n**Goal**: 100 stars on each repo for awesome-list eligibility (awesome-python, awesome-blockchain, awesome-selfhosted).\n\nCurrent: Rustchain 47/100, BoTTube 39/100.\n\n\n---\n\n### \u2696\ufe0f Bounty Requirements (FTC 16 CFR \u00a7465.5 + \u00a7255.5 compliance)\n\n**A star alone does NOT qualify.** We pay for genuine engagement, not for indicators. To claim this bounty you must post a comment (on this issue or a linked post) containing:\n\n1. **What you reviewed** \u2014 at least one file, PR, feature, or doc section you actually looked at. Link it.\n2. **Why you liked it** \u2014 a specific, non-generic reason. \"Great project\" does not qualify.\n3. **Disclosure** \u2014 include the line: `I received RTC compensation for this review.` This keeps your star a transparent endorsement, not a purchased indicator.\n\nStars without a review comment will not be paid. Copy-pasted, AI-templated, or obviously recycled reviews will not be paid. This rule applies retroactively: unreviewed stars from before this update are grandfathered as goodwill but earn no future RTC.\n\n**Why this matters:** Elyan Labs is here to grow real engagement in mining and coding. A star backed by a real review is worth more to the network than a thousand drive-by clicks. This brings us into compliance with the FTC Consumer Review Rule (effective Oct 21, 2024), and \u2014 more importantly \u2014 keeps the signal honest.\n\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/378",
       "labels": [
-        "bounty",
-        "claimed"
+        "bounty"
       ],
       "created_at": "2026-02-20T18:43:46Z",
       "reward_rtc": 1.0,
