@@ -47,7 +47,7 @@ def test_render_table_sorts_by_reward_then_number():
     rows = [l for l in table.splitlines() if l.startswith("|") and not l.startswith("|-") and "Issue" not in l and "Repo" not in l]
     # Highest reward first (40 > 12.5 > 0)
     assert "Prometheus" in rows[0]
-    assert "Very \| tricky" in rows[1]  # pipes escaped in markdown
+    assert r"Very \| tricky" in rows[1]  # pipes escaped in markdown
     # Pipes in titles get escaped
     assert "\\|" in rows[1]
     # Long titles truncated to 60 chars + ellipsis
