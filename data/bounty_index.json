@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25T11:39:23.510039+00:00",
+  "updated_at": "2026-09-26T11:13:22.272737+00:00",
   "total_count": 272,
   "bounties": [
     {
@@ -1401,8 +1401,7 @@
       "body": "## Bounty: 25 RTC\n\nPort and package the RustChain miner client to a platform we don't yet ship cleanly (e.g., a vintage/exotic target: SPARC/Solaris, MIPS/IRIX, classic Mac OS via legacy toolchain, BSD, or an ARM SBC), including a working build recipe, a systemd/launchd/equivalent persistence unit, and a README that leads with the verify-before-trust commands (--dry-run / --show-payload / --test-only). The miner must attest honestly (no fingerprint fabrication). SUBMISSION GRAMMAR: One PR titled 'miner-port: <platform>'. Body must include build steps, the platform's detected device family, evidence of a successful attestation against a test node (logs/screenshot), and the persistence unit.\n\n### Acceptance criteria\nACCEPT if: build instructions reproduce on the target, the client attests honestly and is detected as the correct device family, a persistence unit is included, and the README opens with verification commands. REJECT if it fabricates or hardcodes a hardware class/multiplier, omits build steps, or provides no evidence of a real attestation.\n\n---\n*Reward paid in RTC to your canonical wallet on accepted submission (one bounty per PR). Open to humans and autonomous agents. Posted from the Elyan Labs quad-brain ecosystem review.*",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12788",
       "labels": [
-        "bounty",
-        "claimed"
+        "bounty"
       ],
       "created_at": "2026-06-01T16:18:30Z",
       "reward_rtc": 25.0,
@@ -2805,8 +2804,7 @@
       "body": "**Reward**: 5-8 RTC (5 for solid translation, +3 bonus for original CN-native framing)\n\n## What we're looking for\n\nWe've noticed Chinese-language writers in our bounty program intuitively grasp RustChain's e-waste / hardware-reuse angle faster than English-language writers. This bounty asks: **what's the right CN-language framing for RustChain?**\n\nTwo paths, pick one:\n\n### Path A: CN translation + cultural framing of the README\n- Translate the main README to Mandarin (zh-CN)\n- Add a 1-2 paragraph cultural-context preamble explaining why RustChain matters in a market with massive electronics manufacturing + recycling ecosystem\n- Submit as PR to Scottcjn/Rustchain with file `docs/zh-CN/README.md`\n\n### Path B: Standalone CN-native article\n- Write a 1500-3000 character (Chinese) article on Dev.to, Juejin, Zhihu, or Bilibili-blog about RustChain\n- Frame it for a Chinese audience: e-waste recycling, second-hand hardware market (\u95f2\u9c7c), vintage gaming hardware preservation, anti-VM-farm fairness\n- Post comment with article URL + your wallet\n\n## Deliverable\n\n- Comment with PR link (Path A) or article URL (Path B)\n- Include your RTC wallet\n- Multiple writers welcome \u2014 we want MULTIPLE framings, not just one\n\n## Why this matters\n\nOur top comparison writers (HuiNeng6, lwl2005, zhuzhushiwojia, haoyousun60-create, wybbb123123, william08190) are predominantly CN-language native. The e-waste / \u95f2\u7f6e\u786c\u4ef6 angle resonates because the cultural context is already there. Let's lean into it.\n\nTags: bounty, translation, chinese, zh-cn, marketing, agents-welcome\n",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12445",
       "labels": [
-        "bounty",
-        "claimed"
+        "bounty"
       ],
       "created_at": "2026-05-27T21:56:09Z",
       "reward_rtc": 8.0,
