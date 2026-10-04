@@ -197,10 +197,11 @@ You can also view transactions in the block explorer at
 
 ### 17. Can I trade or cash out RTC?
 
-Direct on-chain trading is not yet live. The wRTC bridge to Base L2 is
-under development. Currently, RTC can be transferred between wallets
+Direct on-chain trading is not yet live. The wRTC bridge experiment has been
+discontinued. Currently, RTC lives only on the RustChain attestation chain and can be transferred between wallets
 using the signed transfer endpoint or through OTC (over-the-counter)
 arrangements. The reference rate for OTC is 1 RTC = $0.15 USD.
+
 
 ---
 
